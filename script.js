@@ -130,7 +130,7 @@ function updateStockPrices() {
     
     // Save the updated company price in your data structure or storage mechanism
     // For example, you can store it in an object
-   let  stockPrices[company.name] = company.price;
+     stockPrices[company.name] = company.price;
   }
 
   // Save the stock prices object in local storage
