@@ -469,7 +469,7 @@ function requestLoan() {
 }
 
 // Example usage:
-let playerFunds = 0; // Player's initial funds
+let playerFunds = 500; // Player's initial funds
 
 // Update the lender options in the select element
 updateLenderOptions();
@@ -548,6 +548,36 @@ document.getElementById("close-lender-popup").addEventListener("click", function
   closePopup("lender-popup");
 });
 
-// Repeat the same pattern for other popups
+document.getElementById("open-car-popup").addEventListener("click", function() {
+  openPopup("buy-car-popup");
+});
+
+document.getElementById("close-car-popup").addEventListener("click", function() {
+  closePopup("buy-car-popup");
+});
+
+document.getElementById("open-house-popup").addEventListener("click", function() {
+  openPopup("buy-house-popup");
+});
+
+document.getElementById("close-house-popup").addEventListener("click", function() {
+  closePopup("buy-house-popup");
+});
+
+document.getElementById("open-business-popup").addEventListener("click", function() {
+  openPopup("business-popup");
+});
+
+document.getElementById("close-business-popup").addEventListener("click", function() {
+  closePopup("business-popup");
+});
+
+document.getElementById("open-options-popup").addEventListener("click", function() {
+  openPopup("options-popup");
+});
+
+document.getElementById("close-options-popup").addEventListener("click", function() {
+  closePopup("options-popup");
+});
 
 
