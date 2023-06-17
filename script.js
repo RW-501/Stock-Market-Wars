@@ -26,19 +26,34 @@ const companies = [
 ];
 
 function updateStockQuantity(companyName, updatedStockQuantity) {
-  // Retrieve the current stock quantity for the given company
-  let currentStockQuantity = getStockQuantity(companyName);
+  // Retrieve the current portfolio from local storage
+  const portfolioString = localStorage.getItem('portfolio');
 
-  // Update the stock quantity with the provided value
-  currentStockQuantity = updatedStockQuantity;
+  // Parse the portfolio string to an object or initialize an empty object if no portfolio is stored
+  const portfolio = portfolioString ? JSON.parse(portfolioString) : {};
 
-  // Save the updated stock quantity in your data structure or storage mechanism
-  // For example, you can use localStorage.setItem() to store the value in local storage
-  localStorage.setItem(companyName, currentStockQuantity);
+  // Update the stock quantity for the given company in the portfolio
+  portfolio[companyName] = updatedStockQuantity;
+
+  // Save the updated portfolio back to local storage
+  localStorage.setItem('portfolio', JSON.stringify(portfolio));
 
   // You can also update the UI to reflect the updated stock quantity if necessary
   // For example, you can update a stock quantity display on the screen
 }
+
+
+
+
+
+function getCompanies() {
+  // Retrieve the list of companies from your storage mechanism
+  // Example implementation using local storage
+  const portfolioString = localStorage.getItem('portfolio');
+
+  return portfolioString ? JSON.parse(portfolioString) : {};
+}
+
 
 function displayPortfolio() {
   // Retrieve the list of companies from your data structure or storage mechanism
@@ -73,6 +88,9 @@ function displayPortfolio() {
     portfolioContainer.appendChild(row);
   });
 }
+
+
+
 
 
 
