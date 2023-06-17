@@ -107,8 +107,18 @@ function displayPortfolio() {
 
 
 
-// Function to update stock prices
 function updateStockPrices() {
+  // Retrieve the stock prices from local storage
+  const storedStockPrices = localStorage.getItem('stockPrices');
+
+  // If no stock prices are stored, return or handle it as desired
+  if (!storedStockPrices) {
+    return;
+  }
+
+  // Parse the stored stock prices object
+  const stockPrices = JSON.parse(storedStockPrices);
+
   // Loop through each company
   for (const company of companies) {
     // Simulate market trends, news events, or simulated market behavior
@@ -129,13 +139,13 @@ function updateStockPrices() {
       const newsChange = company.price * 0.1; // 10% change in price
       company.price += newsChange;
     }
-    
+
     // Save the updated company price in your data structure or storage mechanism
-    // For example, you can store it in an object
+    // For example, you can store it in the stockPrices object
     stockPrices[company.name] = company.price;
   }
 
-  // Save the stock prices object in local storage
+  // Save the updated stock prices object in local storage
   localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
 
   // Update the stock prices in the user interface
