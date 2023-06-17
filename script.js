@@ -52,6 +52,7 @@ function getCompanies() {
   // Retrieve the list of companies from your storage mechanism
   // Example implementation using local storage
   const portfolioString = localStorage.getItem('portfolio');
+  console.log("portfolioString   "+portfolioString); // Display the entire portfolio object
 
   return portfolioString ? JSON.parse(portfolioString) : {};
 }
