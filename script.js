@@ -409,6 +409,79 @@ function sellStock(companyName) {
 }
 
 
+
+// List of fictional lenders and their information
+const lenders = [
+  { name: "Lender A", funds: 100000, interestRate: 0.1 },
+  { name: "Lender B", funds: 50000, interestRate: 0.15 },
+  // Add more lenders as needed
+];
+
+// Function to update the lender options in the select element
+function updateLenderOptions() {
+  const lenderSelect = document.getElementById("lender-select");
+  
+  // Clear existing options
+  lenderSelect.innerHTML = "";
+  
+  // Create new options based on the lenders list
+  lenders.forEach(lender => {
+    const option = document.createElement("option");
+    option.value = lender.name;
+    option.textContent = lender.name;
+    lenderSelect.appendChild(option);
+  });
+}
+
+// Function to request a loan
+function requestLoan() {
+  const amountInput = document.getElementById("loan-amount");
+  const lenderSelect = document.getElementById("lender-select");
+  
+  const amount = parseFloat(amountInput.value);
+  const lender = lenderSelect.value;
+  
+  // Find the selected lender
+  const selectedLender = lenders.find(l => l.name === lender);
+  
+  // Check if the lender and loan amount are valid
+  if (selectedLender && !isNaN(amount) && amount > 0) {
+    // Check if the lender has enough funds
+    if (selectedLender.funds >= amount) {
+      // Implement additional checks for loan approval based on credit score, debt, or collateral
+    
+      // If the loan is approved, deduct the loan amount from the lender's funds and add it to the player's funds
+      selectedLender.funds -= amount;
+      addFunds(amount);
+    
+      // Start tracking repayment terms
+      
+      // Display success message or update UI elements
+      console.log("Loan approved! Amount: $" + amount);
+    } else {
+      // Display error message or update UI elements
+      console.log("Loan request denied. Insufficient funds.");
+    }
+  } else {
+    // Display error message or update UI elements for invalid input
+    console.log("Invalid loan request. Please enter a valid amount and select a lender.");
+  }
+}
+
+// Example usage:
+let playerFunds = 0; // Player's initial funds
+
+// Update the lender options in the select element
+updateLenderOptions();
+
+
+
+
+
+
+
+
+
 // Call the updateStockPrices function every 5 seconds (adjust the interval as desired)
 setInterval(updateStockPrices, 5000);
 
@@ -419,22 +492,70 @@ updateNetWorthDisplay();
 
 
 
-// Function to open the pop-up window
-function openPopup() {
-  var popup = document.getElementById("popup");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Function to open the specified popup window
+function openPopup(popupId) {
+  var popup = document.getElementById(popupId);
   popup.style.display = "block";
 }
 
-// Function to close the pop-up window
-function closePopup() {
-  var popup = document.getElementById("popup");
+// Function to close the specified popup window
+function closePopup(popupId) {
+  var popup = document.getElementById(popupId);
   popup.style.display = "none";
 }
 
-// Event listener for opening the pop-up window
-document.getElementById("net-worth").addEventListener("click", openPopup);
+// Event listener for opening the Net Worth popup window
+document.getElementById("net-worth").addEventListener("click", function () {
+  openPopup("net-worth-popup");
+});
 
-// Event listener for closing the pop-up window
-document.getElementById("close-popup").addEventListener("click", closePopup);
+// Event listener for closing the Net Worth popup window
+document.getElementById("close-net-worth-popup").addEventListener("click", function () {
+  closePopup("net-worth-popup");
+});
+
+// Add event listeners for other popups in a similar manner
+document.getElementById("open-bank-popup").addEventListener("click", function () {
+  openPopup("bank-popup");
+});
+
+document.getElementById("close-bank-popup").addEventListener("click", function () {
+  closePopup("bank-popup");
+});
+
+document.getElementById("open-lender-popup").addEventListener("click", function () {
+  openPopup("lender-popup");
+});
+
+document.getElementById("close-lender-popup").addEventListener("click", function () {
+  closePopup("lender-popup");
+});
+
+// Repeat the same pattern for other popups
 
 
