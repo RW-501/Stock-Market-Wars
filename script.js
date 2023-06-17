@@ -25,6 +25,7 @@ const companies = [
   { name: "FutureTech", price: 23 }
 ];
 
+
 function updateStockQuantity(companyName, updatedStockQuantity) {
   // Retrieve the current portfolio from local storage
   const portfolioString = localStorage.getItem('portfolio');
@@ -40,6 +41,7 @@ function updateStockQuantity(companyName, updatedStockQuantity) {
 
   // You can also update the UI to reflect the updated stock quantity if necessary
   // For example, you can update a stock quantity display on the screen
+  console.log("portfolio   "+portfolio); // Display the entire portfolio object
 }
 
 
@@ -59,8 +61,13 @@ function displayPortfolio() {
   // Retrieve the list of companies from your data structure or storage mechanism
   const companies = getCompanies();
 
+
+  
+  console.log("companies   "+companies); // Display the entire portfolio object
+
   // Clear the existing portfolio display
   const portfolioContainer = document.getElementById("portfolio-body");
+  
   portfolioContainer.innerHTML = "";
 
   // Iterate over each company
