@@ -500,9 +500,9 @@ updateLenderOptions();
 
 
 
-
 // Call the updateStockPrices function every 5 seconds (adjust the interval as desired)
-setInterval(updateStockPrices, 5000);
+const interval = setInterval(updateStockPrices, 5000);
+
 
 // Call the updateNetWorthDisplay function initially and whenever there's a change in net worth
 updateNetWorthDisplay();
@@ -532,6 +532,12 @@ updateNetWorthDisplay();
 
 
 
+// Function to pause the game
+function pauseGame() {
+  // Logic to pause the game
+  // Update UI elements or perform necessary actions
+  console.log("Game paused");
+}
 
 
 
@@ -598,5 +604,71 @@ document.getElementById("open-options-popup").addEventListener("click", function
 document.getElementById("close-options-popup").addEventListener("click", function() {
   closePopup("options-popup");
 });
+
+// Event listener for the Pause Game button
+document.getElementById("pause-game-btn").addEventListener("click", function() {
+  clearInterval(interval); // Clear the interval to stop updating stock prices
+  openPopup("pause-popup");
+  pauseGame(); // Pause the game
+});
+
+document.getElementById("close-pause-popup").addEventListener("click", function() {
+  interval = setInterval(updateStockPrices, 5000); // Restart the interval to resume updating stock prices
+  closePopup("pause-popup");
+});
+
+
+
+// Function to restart the game
+function restartGame() {
+  // Clear local storage
+  localStorage.clear();
+  
+  // Reset game state, UI elements, or perform necessary actions
+  playerFunds = 500; // Reset initial funds to 500
+  console.log("Game restarted");
+}
+
+
+// Event listener for restart game button
+document.getElementById("restart-game-btn").addEventListener("click", function() {
+  openPopup("restart-popup"); // Open the restart confirmation popup
+});
+
+// Event listener for confirm restart button
+document.getElementById("confirm-restart-btn").addEventListener("click", function() {
+  restartGame(); // Restart the game
+  closePopup("restart-popup"); // Close the restart confirmation popup
+});
+
+// Event listener for cancel restart button
+document.getElementById("cancel-restart-btn").addEventListener("click", function() {
+  closePopup("restart-popup"); // Close the restart confirmation popup
+});
+
+
+
+
+// Event listener for the End Game button
+document.getElementById("end-game-btn").addEventListener("click", endGame);
+
+
+
+
+// Function to end the game
+function endGame() {
+  // Prompt the player to confirm ending the game
+  const confirmed = confirm("Are you sure you want to end the game?");
+  
+  if (confirmed) {
+    // Logic to end the game
+    // Perform necessary cleanup, save game data, or navigate to a different page
+    console.log("Game ended");
+  } else {
+    // Player canceled, do nothing or handle the cancellation as desired
+  }
+}
+
+
 
 
