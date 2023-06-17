@@ -29,22 +29,85 @@
         </table>
       </div>
 
-      <!-- Net Worth Display -->
-      <div id="net-worth">
-        <h2>Net Worth</h2>
-        <p id="net-worth-value">$0</p>
-      </div>
 
-      <!-- Pop-up Window -->
-      <div id="popup" class="popup">
-        <div class="popup-content">
-          <h2>Popup Window</h2>
-          <p>This is the content of the popup window.</p>
-          <button id="close-popup">Close</button>
-        </div>
-      </div>
-    </div>
+      
+    <!-- Net Worth Display -->
+<div id="net-worth">
+  <h2>Net Worth</h2>
+  <p id="net-worth-value">$0</p>
+</div>
+
+
+
+
+
+
+
+      
+<!-- Bank Popup -->
+<div id="bank-popup" class="popup">
+  <div class="popup-content">
+    <h2>Bank</h2>
+    <!-- Add bank-related content here -->
+    <button id="close-bank-popup">Close</button>
   </div>
+</div>
+
+<!-- Lender Popup -->
+<div id="lender-popup" class="popup">
+  <div class="popup-content">
+    <h2>Lender</h2>
+    <!-- Add lender-related content here -->
+    <!-- Add HTML elements for loan request UI -->
+<label for="loan-amount">Loan Amount:</label>
+<input type="number" id="loan-amount">
+<label for="lender-select">Select Lender:</label>
+<select id="lender-select">
+  <option value="Lender A">Lender A</option>
+  <option value="Lender B">Lender B</option>
+  <!-- Add options for other lenders as needed -->
+</select>
+<button onclick="requestLoan()">Request Loan</button>
+
+    <button id="close-lender-popup">Close</button>
+  </div>
+</div>
+
+<!-- Buy Car Popup -->
+<div id="buy-car-popup" class="popup">
+  <div class="popup-content">
+    <h2>Buy Car</h2>
+    <!-- Add buy car-related content here -->
+    <button id="close-buy-car-popup">Close</button>
+  </div>
+</div>
+
+<!-- Buy House Popup -->
+<div id="buy-house-popup" class="popup">
+  <div class="popup-content">
+    <h2>Buy House</h2>
+    <!-- Add buy house-related content here -->
+    <button id="close-buy-house-popup">Close</button>
+  </div>
+</div>
+
+<!-- Business Popup -->
+<div id="business-popup" class="popup">
+  <div class="popup-content">
+    <h2>Business</h2>
+    <!-- Add business-related content here -->
+    <button id="close-business-popup">Close</button>
+  </div>
+</div>
+
+<!-- Options Popup -->
+<div id="options-popup" class="popup">
+  <div class="popup-content">
+    <h2>Options</h2>
+    <!-- Add options-related content here -->
+    <button id="close-options-popup">Close</button>
+  </div>
+</div>
 
   <script src="script.js"></script>
 </body>
