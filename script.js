@@ -25,6 +25,56 @@ const companies = [
   { name: "FutureTech", price: 23 }
 ];
 
+function updateStockQuantity(companyName, updatedStockQuantity) {
+  // Retrieve the current stock quantity for the given company
+  let currentStockQuantity = getStockQuantity(companyName);
+
+  // Update the stock quantity with the provided value
+  currentStockQuantity = updatedStockQuantity;
+
+  // Save the updated stock quantity in your data structure or storage mechanism
+  // For example, you can use localStorage.setItem() to store the value in local storage
+  localStorage.setItem(companyName, currentStockQuantity);
+
+  // You can also update the UI to reflect the updated stock quantity if necessary
+  // For example, you can update a stock quantity display on the screen
+}
+
+function displayPortfolio() {
+  // Retrieve the list of companies from your data structure or storage mechanism
+  const companies = getCompanies();
+
+  // Clear the existing portfolio display
+  const portfolioContainer = document.getElementById("portfolio");
+  portfolioContainer.innerHTML = "";
+
+  // Iterate over each company
+  companies.forEach((company) => {
+    // Retrieve the stock quantity for the current company
+    const stockQuantity = getStockQuantity(company.name);
+
+    // Create a new table row for the company in the portfolio display
+    const row = document.createElement("tr");
+
+    // Create table cells for the company name, stock price, and stock quantity
+    const nameCell = document.createElement("td");
+    nameCell.textContent = company.name;
+    const priceCell = document.createElement("td");
+    priceCell.textContent = company.price;
+    const quantityCell = document.createElement("td");
+    quantityCell.textContent = stockQuantity;
+
+    // Append the table cells to the row
+    row.appendChild(nameCell);
+    row.appendChild(priceCell);
+    row.appendChild(quantityCell);
+
+    // Append the row to the portfolio display
+    portfolioContainer.appendChild(row);
+  });
+}
+
+
 
 // Function to update stock prices
 function updateStockPrices() {
@@ -554,6 +604,22 @@ function closePopup(popupId) {
   popup.style.display = "none";
 }
 
+// Function to open the portfolio popup
+function openPortfolioPopup() {
+  openPopup("portfolio-popup");
+  displayPortfolio();
+}
+
+// Function to close the portfolio popup
+function closePortfolioPopup() {
+  closePopup("portfolio-popup");
+}
+
+// Event listener for opening the portfolio popup
+document.getElementById("portfolio-button").addEventListener("click", openPortfolioPopup);
+
+// Event listener for closing the portfolio popup
+document.getElementById("close-portfolio-popup").addEventListener("click", closePortfolioPopup);
 
 
 // Add event listeners for other popups in a similar manner
