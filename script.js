@@ -108,6 +108,99 @@ function updateNetWorthDisplay() {
   document.getElementById("net-worth-value").textContent = `$${netWorth.toFixed(2)}`;
 }
 
+
+
+function getStockQuantity(companyName) {
+  // Retrieve stock holdings from local storage
+  const stockHoldingsStr = localStorage.getItem("stockHoldings");
+  
+  // If stock holdings exist in local storage, parse the JSON string
+  // Otherwise, set an empty object as the default value
+  const stockHoldings = JSON.parse(stockHoldingsStr) || {};
+
+  // Retrieve the stock quantity for the given company
+  const quantity = stockHoldings[companyName] || 0;
+
+  return quantity;
+}
+
+
+
+// Function to get the player's available funds from the bank account
+function getAvailableFunds() {
+  // Retrieve the available funds from local storage
+  const fundsString = localStorage.getItem('availableFunds');
+  
+  // If no funds are stored, return 0
+  if (!fundsString) {
+    return 0;
+  }
+  
+  // Parse the funds string to a number and return it
+  return parseFloat(fundsString);
+}
+
+
+
+// Function to get the player's stock quantity for a given company
+function deductFunds(amount) {
+  // Retrieve the current available funds from local storage
+  const currentFunds = getAvailableFunds();
+  
+  // Check if the amount is valid (positive and not exceeding the available funds)
+  if (amount <= 0 || amount > currentFunds) {
+    // Handle the error case (e.g., display an error message, throw an error, etc.)
+    return;
+  }
+  
+  // Deduct the specified amount from the current funds
+  const newFunds = currentFunds - amount;
+  
+  // Update the available funds in local storage
+  localStorage.setItem('availableFunds', newFunds.toString());
+}
+
+
+// Function to update the player's stock quantity for a given company
+function getStockQuantity(companyName) {
+  // Retrieve the stock quantity for the given company from your data structure or storage mechanism
+  // Assuming you have a data structure called 'stockQuantities'
+  const stockQuantities = { /* Your stock quantities data structure */ };
+  
+  // Check if the company exists in the stockQuantities object or map
+  if (companyName in stockQuantities) {
+    // Return the stock quantity for the company
+    return stockQuantities[companyName];
+  } else {
+    // Company not found, return 0 or handle the error case accordingly
+    return 0;
+  }
+}
+
+
+// Function to add funds to the player's bank account
+function addFunds(amount) {
+  // Retrieve the current available funds from local storage
+  const currentFunds = getAvailableFunds();
+  
+  // Check if the amount is valid (positive)
+  if (amount <= 0) {
+    // Handle the error case (e.g., display an error message, throw an error, etc.)
+    return;
+  }
+  
+  // Add the specified amount to the current funds
+  const newFunds = currentFunds + amount;
+  
+  // Update the available funds in local storage
+  localStorage.setItem('availableFunds', newFunds.toString());
+}
+
+
+
+
+
+
 // Function to calculate the net worth
 function calculateNetWorth() {
   // Calculate the value of all stocks owned
@@ -117,20 +210,82 @@ function calculateNetWorth() {
     return total + stockPrice * stockQuantity;
   }, 0);
   
-  // Add other assets like cash, cars, houses, etc. to the net worth calculation
+  // Calculate the value of other assets like cash, cars, houses, etc.
+  const cashValue = getAvailableFunds(); // Implement this function to get the available funds
+  const carValue = calculateCarValue(); // Implement this function to calculate the value of cars
+  const houseValue = calculateHouseValue(); // Implement this function to calculate the value of houses
+  
+  // Calculate the total net worth by adding the stock value and other assets value
+  const netWorth = stockValue + cashValue + carValue + houseValue;
   
   // Return the total net worth
-  return stockValue;
+  return netWorth;
 }
 
-// Example functions for buying and selling stocks (you need to implement the logic)
+
 function buyStock(companyName) {
-  // Logic for buying stocks
+  // Retrieve the stock price for the given company
+  const company = companies.find((company) => company.name === companyName);
+  const stockPrice = company.price;
+
+  // Retrieve the player's available funds from the bank account
+  const availableFunds = getAvailableFunds();
+
+  // Prompt the player to enter the quantity of stocks to buy
+  const quantityToBuy = parseInt(prompt(`Enter the quantity of ${companyName} stocks to buy:`), 10);
+
+  // Calculate the total cost of buying stocks
+  const totalCost = stockPrice * quantityToBuy;
+
+  // Check if the player has enough funds to make the purchase
+  if (totalCost <= availableFunds) {
+    // Deduct the total cost from the player's available funds
+    deductFunds(totalCost);
+
+    // Update the player's stock holdings
+    const currentStockQuantity = getStockQuantity(companyName);
+    const updatedStockQuantity = currentStockQuantity + quantityToBuy;
+    updateStockQuantity(companyName, updatedStockQuantity);
+
+    // Display a success message to the player
+    alert(`Successfully bought ${quantityToBuy} ${companyName} stocks.`);
+  } else {
+    // Display an error message to the player
+    alert("Insufficient funds to buy stocks.");
+  }
 }
 
 function sellStock(companyName) {
-  // Logic for selling stocks
+  // Retrieve the stock price for the given company
+  const company = companies.find((company) => company.name === companyName);
+  const stockPrice = company.price;
+
+  // Retrieve the player's stock quantity for the given company
+  const stockQuantity = getStockQuantity(companyName);
+
+  // Prompt the player to enter the quantity of stocks to sell
+  const quantityToSell = parseInt(prompt(`Enter the quantity of ${companyName} stocks to sell:`), 10);
+
+  // Check if the player has enough stocks to make the sale
+  if (quantityToSell <= stockQuantity) {
+    // Calculate the total amount earned from selling stocks
+    const totalEarnings = stockPrice * quantityToSell;
+
+    // Add the total earnings to the player's available funds
+    addFunds(totalEarnings);
+
+    // Update the player's stock holdings
+    const updatedStockQuantity = stockQuantity - quantityToSell;
+    updateStockQuantity(companyName, updatedStockQuantity);
+
+    // Display a success message to the player
+    alert(`Successfully sold ${quantityToSell} ${companyName} stocks.`);
+  } else {
+    // Display an error message to the player
+    alert("Insufficient stocks to sell.");
+  }
 }
+
 
 // Call the updateStockPrices function every 5 seconds (adjust the interval as desired)
 setInterval(updateStockPrices, 5000);
