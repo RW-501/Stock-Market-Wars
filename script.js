@@ -607,6 +607,7 @@ document.getElementById("close-options-popup").addEventListener("click", functio
 
 // Event listener for the Pause Game button
 document.getElementById("pause-game-btn").addEventListener("click", function() {
+    closePopup("options-popup");
   clearInterval(interval); // Clear the interval to stop updating stock prices
   openPopup("pause-popup");
   pauseGame(); // Pause the game
@@ -632,6 +633,7 @@ function restartGame() {
 
 // Event listener for restart game button
 document.getElementById("restart-game-btn").addEventListener("click", function() {
+    closePopup("options-popup");
   openPopup("restart-popup"); // Open the restart confirmation popup
 });
 
@@ -657,6 +659,7 @@ document.getElementById("end-game-btn").addEventListener("click", endGame);
 
 // Function to end the game
 function endGame() {
+    closePopup("options-popup");
   // Prompt the player to confirm ending the game
   const confirmed = confirm("Are you sure you want to end the game?");
   
