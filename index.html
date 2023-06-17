@@ -7,34 +7,42 @@
 <body>
   <h1>Stock Market Wars</h1>
 
-  <div class="container">
-    <div class="game">
-      <!-- Stock Market Information -->
-      <div id="stocks">
-        <h2>Stock Market</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Company</th>
-              <th>Price</th>
-              <th>Action</th>
-            </tr>
-                      <tbody>
-            <!-- Stock data will be populated dynamically -->
-            <div id="stocks-table-body"></div>
-          </tbody>
-          
-          </thead>
+<div class="container">
+  <div class="game">
+    <!-- Stock Market Information -->
+    <div id="stocks">
+      <h2>Stock Market</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Price</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="stocks-table-body">
+          <!-- Stock data will be populated dynamically -->
+        </tbody>
+      </table>
+    </div>
 
-        </table>
-      </div>
+    <!-- Buttons -->
+    <div class="buttons">
+      <button id="open-net-worth-popup">Net Worth</button>
+      <button id="open-bank-popup">Bank</button>
+      <button id="open-lender-popup">Lender</button>
+      <button id="open-buy-car-popup">Buy Car</button>
+      <button id="open-buy-house-popup">Buy House</button>
+      <button id="open-business-popup">Business</button>
+      <button id="open-options-popup">Options</button>
+    </div>
 
-
-      
     <!-- Net Worth Display -->
-<div id="net-worth">
-  <h2>Net Worth</h2>
-  <p id="net-worth-value">$0</p>
+    <div id="net-worth">
+      <h2>Net Worth</h2>
+      <p id="net-worth-value">$0</p>
+    </div>
+  </div>
 </div>
 
 
