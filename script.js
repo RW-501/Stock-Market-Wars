@@ -567,19 +567,19 @@ document.getElementById("close-lender-popup").addEventListener("click", function
   closePopup("lender-popup");
 });
 
-document.getElementById("open-car-popup").addEventListener("click", function() {
+document.getElementById("open-buy-car-popup").addEventListener("click", function() {
   openPopup("buy-car-popup");
 });
 
-document.getElementById("close-car-popup").addEventListener("click", function() {
+document.getElementById("close-buy-car-popup").addEventListener("click", function() {
   closePopup("buy-car-popup");
 });
 
-document.getElementById("open-house-popup").addEventListener("click", function() {
+document.getElementById("open-buy-house-popup").addEventListener("click", function() {
   openPopup("buy-house-popup");
 });
 
-document.getElementById("close-house-popup").addEventListener("click", function() {
+document.getElementById("close-buy-house-popup").addEventListener("click", function() {
   closePopup("buy-house-popup");
 });
 
