@@ -126,6 +126,40 @@ function getStockQuantity(companyName) {
 
 
 
+function calculateCarValue() {
+  // Retrieve the list of cars owned by the player from your data structure or storage mechanism
+  const cars = getPlayerCars(); // Implement this function to get the list of cars owned
+  
+  // Calculate the total value of cars by summing up the individual car values
+  const totalCarValue = cars.reduce((total, car) => {
+    const carPrice = car.price; // Retrieve the price of the car
+    const carQuantity = car.quantity; // Retrieve the quantity of the car owned
+    return total + carPrice * carQuantity;
+  }, 0);
+  
+  return totalCarValue;
+}
+
+function calculateHouseValue() {
+  // Retrieve the list of houses owned by the player from your data structure or storage mechanism
+  const houses = getPlayerHouses(); // Implement this function to get the list of houses owned
+  
+  // Calculate the total value of houses by summing up the individual house values
+  const totalHouseValue = houses.reduce((total, house) => {
+    const housePrice = house.price; // Retrieve the price of the house
+    const houseQuantity = house.quantity; // Retrieve the quantity of the house owned
+    return total + housePrice * houseQuantity;
+  }, 0);
+  
+  return totalHouseValue;
+}
+
+
+
+
+
+
+
 // Function to get the player's available funds from the bank account
 function getAvailableFunds() {
   // Retrieve the available funds from local storage
