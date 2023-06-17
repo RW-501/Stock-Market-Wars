@@ -53,14 +53,50 @@ function updateStockPrices() {
 
 // Function to update the stock prices in the user interface
 function updateStockPricesUI() {
-  // Loop through each company and update the price in the UI
-  for (let i = 0; i < companies.length; i++) {
-    const companyName = companies[i].name;
-    const companyPrice = companies[i].price.toFixed(2);
-    const elementId = `company-${i + 1}-price`;
-    document.getElementById(elementId).textContent = companyPrice;
-  }
+  const stocksTableBody = document.getElementById("stocks-table-body");
+
+  // Clear the existing rows
+  stocksTableBody.innerHTML = "";
+
+  // Loop through each company and update the price and buttons in the UI
+  companies.forEach((company) => {
+    const { name, price } = company;
+
+    // Create a new row for the company
+    const row = document.createElement("tr");
+
+    // Create cells for company name, price, buy button, and sell button
+    const nameCell = document.createElement("td");
+    nameCell.textContent = name;
+    row.appendChild(nameCell);
+
+    const priceCell = document.createElement("td");
+    priceCell.textContent = price.toFixed(2);
+    row.appendChild(priceCell);
+
+    const buyButtonCell = document.createElement("td");
+    const buyButton = createButton("Buy", () => buyStock(name));
+    buyButtonCell.appendChild(buyButton);
+    row.appendChild(buyButtonCell);
+
+    const sellButtonCell = document.createElement("td");
+    const sellButton = createButton("Sell", () => sellStock(name));
+    sellButtonCell.appendChild(sellButton);
+    row.appendChild(sellButtonCell);
+
+    // Append the row to the table body
+    stocksTableBody.appendChild(row);
+  });
 }
+
+// Helper function to create a button element with a specific text and click event handler
+function createButton(text, onClick) {
+  const button = document.createElement("button");
+  button.textContent = text;
+  button.addEventListener("click", onClick);
+  return button;
+}
+
 
 
 // Function to update the net worth display
