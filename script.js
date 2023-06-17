@@ -529,15 +529,7 @@ function closePopup(popupId) {
   popup.style.display = "none";
 }
 
-// Event listener for opening the Net Worth popup window
-document.getElementById("net-worth").addEventListener("click", function () {
-  openPopup("net-worth-popup");
-});
 
-// Event listener for closing the Net Worth popup window
-document.getElementById("close-net-worth-popup").addEventListener("click", function () {
-  closePopup("net-worth-popup");
-});
 
 // Add event listeners for other popups in a similar manner
 document.getElementById("open-bank-popup").addEventListener("click", function () {
