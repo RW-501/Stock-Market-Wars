@@ -45,7 +45,7 @@ function displayPortfolio() {
   const companies = getCompanies();
 
   // Clear the existing portfolio display
-  const portfolioContainer = document.getElementById("portfolio");
+  const portfolioContainer = document.getElementById("portfolio-body");
   portfolioContainer.innerHTML = "";
 
   // Iterate over each company
