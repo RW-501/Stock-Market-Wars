@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stock Market Wars</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <h1>Stock Market Wars</h1>
+
+  <div class="container">
+    <div class="game">
+      <!-- Stock Market Information -->
+      <div id="stocks">
+        <h2>Stock Market</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>Price</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Stock data will be populated dynamically -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Net Worth Display -->
+      <div id="net-worth">
+        <h2>Net Worth</h2>
+        <p id="net-worth-value">$0</p>
+      </div>
+
+      <!-- Pop-up Window -->
+      <div id="popup" class="popup">
+        <div class="popup-content">
+          <h2>Popup Window</h2>
+          <p>This is the content of the popup window.</p>
+          <button id="close-popup">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
