@@ -1,3 +1,6 @@
+
+
+
 // Sample fictional companies and their initial stock prices
 const companies = [
   { name: "TechCom", price: 10 },
@@ -71,7 +74,7 @@ function updateStockPricesUI() {
     row.appendChild(nameCell);
 
     const priceCell = document.createElement("td");
-    priceCell.textContent = price.toFixed(2);
+    priceCell.textContent = "$"+price.toFixed(2);
     row.appendChild(priceCell);
 
     const buyButtonCell = document.createElement("td");
@@ -245,9 +248,26 @@ function calculateHouseValue() {
 
 
 
+function getAvailableFunds() {
+  // Retrieve the available funds from local storage
+  const fundsString = localStorage.getItem('availableFunds');
+  
+  // If no funds are stored, set the initial funds and return it
+  if (!fundsString) {
+    const initialFunds = 500;
+    localStorage.setItem('availableFunds', initialFunds.toString());
+    return initialFunds;
+  }
+  
+  // Remove the stored funds from local storage
+  localStorage.removeItem('availableFunds');
+  
+  // Parse the funds string to a number and return it
+  return parseFloat(fundsString);
+}
 
 
-
+/*
 // Function to get the player's available funds from the bank account
 function getAvailableFunds() {
   // Retrieve the available funds from local storage
@@ -261,7 +281,7 @@ function getAvailableFunds() {
   // Parse the funds string to a number and return it
   return parseFloat(fundsString);
 }
-
+*/
 
 
 // Function to get the player's stock quantity for a given company
@@ -468,8 +488,7 @@ function requestLoan() {
   }
 }
 
-// Example usage:
-let playerFunds = 500; // Player's initial funds
+
 
 // Update the lender options in the select element
 updateLenderOptions();
