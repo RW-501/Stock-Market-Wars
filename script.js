@@ -45,7 +45,24 @@ function updateStockQuantity(companyName, updatedStockQuantity) {
 }
 
 
+function getStockPrice(companyName) {
+  // Retrieve the stock prices from local storage
+  const storedStockPrices = localStorage.getItem('stockPrices');
+  
+  // If no stock prices are stored, return null or a default value
+  if (!storedStockPrices) {
+    return null; // or a default value like 0
+  }
+  
+  // Parse the stored stock prices object
+  const stockPrices = JSON.parse(storedStockPrices);
+  
+  // Retrieve the stock price for the given company name
+  const stockPrice = stockPrices[companyName];
 
+  // Return the stock price
+  return stockPrice;
+}
 
 
 
@@ -112,13 +129,21 @@ function updateStockPrices() {
       const newsChange = company.price * 0.1; // 10% change in price
       company.price += newsChange;
     }
+    
+    // Save the updated company price in your data structure or storage mechanism
+    // For example, you can store it in an object
+    stockPrices[company.name] = company.price;
   }
-  
+
+  // Save the stock prices object in local storage
+  localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
+
   // Update the stock prices in the user interface
   updateStockPricesUI();
 
- // calculateNetWorth();
+  // calculateNetWorth();
 }
+
 
 // Function to update the stock prices in the user interface
 function updateStockPricesUI() {
