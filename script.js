@@ -48,42 +48,31 @@ function updateStockQuantity(companyName, updatedStockQuantity) {
 
 
 
-function getCompanies() {
-  // Retrieve the list of companies from your storage mechanism
-  // Example implementation using local storage
-  const portfolioString = localStorage.getItem('portfolio');
-  console.log("portfolioString   "+portfolioString); // Display the entire portfolio object
-
-  return portfolioString ;
-}
-
 
 function displayPortfolio() {
-  // Retrieve the list of companies from your data structure or storage mechanism
-  const companies = getCompanies();
-
-
+  // Retrieve the portfolio from local storage
+  const portfolioString = localStorage.getItem('portfolio');
   
-  console.log("companies   "+companies); // Display the entire portfolio object
+  // Parse the portfolio string into an array of company objects
+  const companies = JSON.parse(portfolioString);
 
   // Clear the existing portfolio display
   const portfolioContainer = document.getElementById("portfolio-body");
-  
   portfolioContainer.innerHTML = "";
 
   // Iterate over each company
-  companies.forEach((company) => {
-    // Retrieve the stock quantity for the current company
-    const stockQuantity = getStockQuantity(company.name);
+  for (const [name, stockQuantity] of Object.entries(companies)) {
+    // Retrieve the stock price for the current company (assuming it's stored somewhere)
+    const stockPrice = getStockPrice(name);
 
     // Create a new table row for the company in the portfolio display
     const row = document.createElement("tr");
 
     // Create table cells for the company name, stock price, and stock quantity
     const nameCell = document.createElement("td");
-    nameCell.textContent = company.name;
+    nameCell.textContent = name;
     const priceCell = document.createElement("td");
-    priceCell.textContent = company.price;
+    priceCell.textContent = stockPrice;
     const quantityCell = document.createElement("td");
     quantityCell.textContent = stockQuantity;
 
@@ -94,9 +83,8 @@ function displayPortfolio() {
 
     // Append the row to the portfolio display
     portfolioContainer.appendChild(row);
-  });
+  }
 }
-
 
 
 
