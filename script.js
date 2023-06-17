@@ -54,7 +54,7 @@ function getCompanies() {
   const portfolioString = localStorage.getItem('portfolio');
   console.log("portfolioString   "+portfolioString); // Display the entire portfolio object
 
-  return portfolioString ? JSON.parse(portfolioString) : {};
+  return portfolioString ;
 }
 
 
@@ -129,7 +129,7 @@ function updateStockPrices() {
   // Update the stock prices in the user interface
   updateStockPricesUI();
 
-  calculateNetWorth();
+ // calculateNetWorth();
 }
 
 // Function to update the stock prices in the user interface
