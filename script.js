@@ -210,7 +210,7 @@ simulateTrendingMarket();
 
 
 
-
+/*
     
  companies = getMarket();
 
@@ -230,7 +230,7 @@ if (Math.random() < 0.1) { // 10% chance of a news event
   }
 }
 
-
+*/
 
   // Save the updated stock prices object in local storage
   localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
@@ -795,7 +795,8 @@ if (lenderPaymentInfo && lenderPaymentInfo.automaticPayments && lenderPaymentInf
 
 
 // Function to add news event
-function addNewsEvent(event) {
+function addNewsEvent(event) {  }
+function addNewsEventsss(event) {
   eventDayCount = 0;
   const newsContent = document.getElementById("news-content");
   const newsItem = document.createElement("div");
@@ -815,7 +816,7 @@ function addNewsEvent(event) {
 window.addEventListener("DOMContentLoaded", function () {
   const savedEvents = JSON.parse(localStorage.getItem("savedEvents")) || [];
   savedEvents.forEach(function (event) {
-    addNewsEvent(event);
+   // addNewsEvent(event);
   });
 });
 
