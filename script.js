@@ -196,6 +196,9 @@ function updateStockPrices() {
     company.price += priceChange;
 
 
+    // Example 2: Simulate trending market
+simulateTrendingMarket(); 
+
 
     // Save the updated company price in your data structure or storage mechanism
     // For example, you can store it in the stockPrices object
@@ -204,10 +207,6 @@ function updateStockPrices() {
 
 
     
-    // Example 2: Simulate trending market
-simulateTrendingMarket(); 
-
-
 
  companies = getMarket();
 
@@ -785,7 +784,7 @@ if (lenderPaymentInfo && lenderPaymentInfo.automaticPayments && lenderPaymentInf
   openPopup("pause-popup");
   pauseGame(); // Pause the game
   }
-  eventDayCount += 1;
+  eventDayCount++;
   console.log("eventDayCount   "+eventDayCount);
 }
 
