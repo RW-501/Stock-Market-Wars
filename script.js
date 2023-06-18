@@ -430,6 +430,7 @@ function deductFunds(amount) {
   
   // Update the available funds in local storage
   localStorage.setItem('availableFunds', newFunds.toString());
+       updateNetWorthDisplay();
 }
 
 
@@ -448,9 +449,13 @@ function addFunds(amount) {
   
   // Add the specified amount to the current funds
   const newFunds = currentFunds + amount;
-  
+         console.log("amount 00   "+amount);
+         console.log("currentFunds 44   "+currentFunds);
+         console.log("newFunds 44   "+newFunds);
+
   // Update the available funds in local storage
   localStorage.setItem('availableFunds', newFunds.toString());
+       updateNetWorthDisplay();
 }
 
 
@@ -590,10 +595,10 @@ function requestLoan() {
       addFunds(amount);
     
       // Start tracking repayment terms
-      
+       console.log("amount 44   "+amount);
       // Display success message or update UI elements
-calculateNetWorth(); 
-   updateNetWorthDisplay();
+
+         updateNetWorthDisplay();
       console.log("Loan approved! Amount: $" + amount);
     } else {
       // Display error message or update UI elements
