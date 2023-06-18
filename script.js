@@ -78,8 +78,8 @@ function displayPortfolio() {
   
   // Parse the portfolio string into an array of company objects
   const companies = JSON.parse(portfolioString);
-  console.log("portfolioString   "+portfolioString);
-  console.log("companies   "+companies);
+//  console.log("portfolioString   "+portfolioString);
+//  console.log("companies   "+companies);
 
   
   // Iterate over each company
@@ -94,7 +94,7 @@ function displayPortfolio() {
     const nameCell = document.createElement("td");
     nameCell.textContent = name;
     const priceCell = document.createElement("td");
-    priceCell.textContent = stockPrice;
+    priceCell.textContent = "$"+stockPrice.toFixed(2);;
     const quantityCell = document.createElement("td");
     quantityCell.textContent = stockQuantity;
 
@@ -157,7 +157,7 @@ function updateStockPrices() {
   // Update the stock prices in the user interface
   updateStockPricesUI();
 
-  // calculateNetWorth();
+   calculateNetWorth();
 }
 
 
