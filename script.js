@@ -24,7 +24,7 @@ function getMarket() {
 
   // Retrieve the stored stock prices from local storage
   const storedStockPrices = localStorage.getItem('stockPrices');
-console.log("storedStockPrices   "+storedStockPrices);
+//console.log("storedStockPrices   "+storedStockPrices);
   // Parse the stored stock prices string into an object or set it to an empty object if null
   const stockPrices = JSON.parse(storedStockPrices) || {};
 
