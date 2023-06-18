@@ -463,7 +463,7 @@ function getAvailableFunds() {
   
   // If no funds are stored, set the initial funds and return it
   if (!fundsString) {
-    const initialFunds = 100;
+    const initialFunds = 500;
     localStorage.setItem('availableFunds', initialFunds.toString());
     return initialFunds;
   }
@@ -785,7 +785,8 @@ if (lenderPaymentInfo && lenderPaymentInfo.automaticPayments && lenderPaymentInf
   openPopup("pause-popup");
   pauseGame(); // Pause the game
   }
-  eventDayCount +=1;
+  eventDayCount =+ 1;
+  console.log("eventDayCount   "+eventDayCount);
 }
 
 
