@@ -29,12 +29,12 @@ function getMarket() {
   // Retrieve the stored stock prices from local storage
   const storedStockPrices = localStorage.getItem('stockPrices');
 
-  // Parse the stored stock prices string into an object
+ // Parse the stored stock prices string into an object
   const stockPrices = JSON.parse(storedStockPrices);
 
   // Update the prices of the companies with the stored stock prices
-  const updatedCompanies = companies.map(market => {
-    const { name } = market;
+  const updatedCompanies = market.map(company => {
+    const { name } = company;
     const price = stockPrices[name];
     return { name, price };
   });
@@ -47,8 +47,8 @@ function getMarket() {
 }
 
 // Example usage
-var company = getMarket();
-console.log(company);
+var companies = getMarket();
+console.log(companies);
 
 
 
