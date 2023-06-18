@@ -41,7 +41,7 @@ function updateStockQuantity(companyName, updatedStockQuantity) {
 
   // You can also update the UI to reflect the updated stock quantity if necessary
   // For example, you can update a stock quantity display on the screen
-  console.log("portfolio   "+portfolio); // Display the entire portfolio object
+  console.log("portfolioString 44   "+portfolioString); // Display the entire portfolio object
 }
 
 
