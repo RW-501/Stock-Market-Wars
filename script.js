@@ -21,7 +21,9 @@ function getMarket() {
     { name: "TechWave", price: 17 },
     { name: "FutureTech", price: 23 }
   ];
-
+  // Save the updated market data back to local storage
+  localStorage.setItem('marketData', JSON.stringify(market));
+  
   // Retrieve the stored stock prices from local storage
   const storedStockPrices = localStorage.getItem('stockPrices');
 
@@ -753,6 +755,21 @@ document.getElementById("close-pause-popup").addEventListener("click", function(
   closePopup("pause-popup");
 });
 
+function resetPrices() {
+  // Retrieve the market data from local storage
+  const storedMarketData = localStorage.getItem('marketData');
+
+  // Parse the stored market data string into an object or set it to an empty object if null
+  const marketData = JSON.parse(storedMarketData) || {};
+
+  // Reset the prices of all companies in the market data to their original values
+  const resetMarketData = marketData.map(company => {
+    return { name: company.name, price: company.originalPrice };
+  });
+
+  // Save the updated market data back to local storage
+  localStorage.setItem('marketData', JSON.stringify(resetMarketData));
+}
 
 
 // Function to restart the game
@@ -761,7 +778,7 @@ function restartGame() {
 document.addEventListener('DOMContentLoaded', function() {
   localStorage.clear();
 
-  getMarket();
+  resetPrices();
     // Update the stock prices in the user interface
     playerFunds = 500; // Reset initial funds to 500
 
