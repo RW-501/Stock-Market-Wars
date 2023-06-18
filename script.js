@@ -245,6 +245,7 @@ function createButton(text, onClick) {
 }
 
 
+let counterValue = 0;
 
 // Function to update the net worth display
 function updateNetWorthDisplay() {
@@ -256,6 +257,11 @@ function updateNetWorthDisplay() {
   totalCashCell.textContent = "$" +  `${cash.toFixed(2)}`;
   // Update the net worth value in the UI
   document.getElementById("net-worth-value").textContent = `$${netWorth.toFixed(2)}`;
+  
+    counterValue++;
+
+    const counter = document.getElementById("counter");
+  counter.textContent = counterValue;
 }
 
 
@@ -553,55 +559,56 @@ function sellStock(companyName) {
 
 // List of fictional lenders and their information
 const lenders = [
-  { name: "Fortune Finance", funds: 100000, interestRate: 0.1, minNetWorth: 500 },
-  { name: "Prestige Bank", funds: 50000, interestRate: 0.15, minNetWorth: 2500 },
-  { name: "Elite Capital", funds: 75000, interestRate: 0.12, minNetWorth: 3000 },
-  { name: "Opulent Investments", funds: 200000, interestRate: 0.08, minNetWorth: 15000 },
-  { name: "Prosperity Lending", funds: 150000, interestRate: 0.11, minNetWorth: 55000 },
-  { name: "Wealthy Trust", funds: 300000, interestRate: 0.07, minNetWorth: 250500 },
-  { name: "Grandiose Bank", funds: 1000000, interestRate: 0.05, minNetWorth: 5000000 },
-  { name: "Noble Finance", funds: 250000, interestRate: 0.09, minNetWorth: 800000 },
-  { name: "Luxe Lenders", funds: 400000, interestRate: 0.06, minNetWorth: 2000000 },
-  { name: "Exquisite Funding", funds: 600000, interestRate: 0.04, minNetWorth: 20500100 }
+  { name: "Fortune Finance", funds: 100000, interestRate: 0.1, minNetWorth: 500, automaticPayments: true, paymentAmount: 1000, paymentFrequency: "monthly" },
+  { name: "Prestige Bank", funds: 50000, interestRate: 0.15, minNetWorth: 2500, automaticPayments: false, paymentAmount: 0, paymentFrequency: "" },
+  { name: "Elite Capital", funds: 75000, interestRate: 0.12, minNetWorth: 3000, automaticPayments: true, paymentAmount: 500, paymentFrequency: "biweekly" },
+  { name: "Opulent Investments", funds: 200000, interestRate: 0.08, minNetWorth: 15000, automaticPayments: true, paymentAmount: 2000, paymentFrequency: "monthly" },
+  { name: "Prosperity Lending", funds: 150000, interestRate: 0.11, minNetWorth: 55000, automaticPayments: false, paymentAmount: 0, paymentFrequency: "" },
+  { name: "Wealthy Trust", funds: 300000, interestRate: 0.07, minNetWorth: 250500, automaticPayments: true, paymentAmount: 1500, paymentFrequency: "monthly" },
+  { name: "Grandiose Bank", funds: 1000000, interestRate: 0.05, minNetWorth: 5000000, automaticPayments: true, paymentAmount: 5000, paymentFrequency: "monthly" },
+  { name: "Noble Finance", funds: 250000, interestRate: 0.09, minNetWorth: 800000, automaticPayments: true, paymentAmount: 1000, paymentFrequency: "biweekly" },
+  { name: "Luxe Lenders", funds: 400000, interestRate: 0.06, minNetWorth: 2000000, automaticPayments: true, paymentAmount: 2000, paymentFrequency: "monthly" },
+  { name: "Exquisite Funding", funds: 600000, interestRate: 0.04, minNetWorth: 20500100, automaticPayments: false, paymentAmount: 0, paymentFrequency: "" }
 ];
 
+function updateLenderDetails() {
+  const lenderSelect = document.getElementById("lender-select");
+  const selectedLenderName = lenderSelect.value;
+  const selectedLender = lenders.find(lender => lender.name === selectedLenderName);
 
+  if (selectedLender) {
+    document.getElementById("lender-Max").textContent = selectedLender.funds;
+    document.getElementById("lender-Rate").textContent = selectedLender.interestRate;
+    document.getElementById("lender-AutoPayments").textContent = selectedLender.automaticPayments ? "Yes" : "No";
+    document.getElementById("lender-PaymentAmount").textContent = selectedLender.paymentAmount;
+    document.getElementById("lender-PaymentFrequency").textContent = selectedLender.paymentFrequency;
+  }
+}
 
-// Function to update the lender options in the select element
 function updateLenderOptions() {
   const lenderSelect = document.getElementById("lender-select");
-  const lenderMax = document.getElementById("lender-Max");
-  const lenderInterestRate = document.getElementById("lender-Rate");
-  
-  // Clear existing options
-  lenderSelect.innerHTML = "";
-  
-  // Calculate the net worth
   const newWorth = calculateNetWorth();
-         console.log("newWorth 581   "+newWorth);
-
-  // Filter lenders based on minimum net worth
   const eligibleLenders = lenders.filter(lender => lender.minNetWorth <= newWorth);
-  
-  // Create new options based on the eligible lenders list
+
+  lenderSelect.innerHTML = "";
+
   eligibleLenders.forEach(lender => {
     const option = document.createElement("option");
     option.value = lender.name;
     option.textContent = lender.name;
     lenderSelect.appendChild(option);
   });
-  
-  // Update the lender funding maximum and interest rate display
+
   const selectedLender = eligibleLenders.find(lender => lender.name === lenderSelect.value);
+
   if (selectedLender) {
-    lenderMax.textContent = `Funding Maximum: $${selectedLender.funds}`;
-    lenderInterestRate.textContent = `Interest Rate: ${selectedLender.interestRate * 100}%`;
+    document.getElementById("lender-Max").textContent = `Funding Maximum: $${selectedLender.funds}`;
+    document.getElementById("lender-Rate").textContent = `Interest Rate: ${selectedLender.interestRate * 100}%`;
   } else {
-    lenderMax.textContent = "";
-    lenderInterestRate.textContent = "";
+    document.getElementById("lender-Max").textContent = "";
+    document.getElementById("lender-Rate").textContent = "";
   }
 }
-
 
 
 // Function to request a loan
