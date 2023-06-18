@@ -48,7 +48,7 @@ function getMarket() {
 
 // Example usage
 var company = getMarket();
-console.log(market);
+console.log(company);
 
 
 
