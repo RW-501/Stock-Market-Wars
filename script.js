@@ -778,7 +778,7 @@ console.log("resetMarketData   "+resetMarketData);
 function restartGame() {
   // Clear local storage
 document.addEventListener('DOMContentLoaded', function() {
-  localStorage.clear();
+ // localStorage.clear();
 
   resetPrices();
     // Update the stock prices in the user interface
