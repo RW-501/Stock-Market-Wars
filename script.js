@@ -79,7 +79,7 @@ function displayPortfolio() {
   // Parse the portfolio string into an array of company objects
   const companies = JSON.parse(portfolioString);
   console.log("portfolioString   "+portfolio);
-  console.log("portfolio 2   "+portfolio);
+  console.log("companies   "+companies);
 
   
   // Iterate over each company
