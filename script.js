@@ -113,10 +113,7 @@ function updateStockPrices() {
   // Retrieve the stock prices from local storage
   const storedStockPrices = localStorage.getItem('stockPrices');
 
-  // If no stock prices are stored, return or handle it as desired
-  if (!storedStockPrices) {
-    return;
-  }
+
 
   // Parse the stored stock prices object
   let stockPrices = JSON.parse(storedStockPrices);
