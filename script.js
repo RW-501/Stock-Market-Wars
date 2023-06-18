@@ -1,6 +1,5 @@
 function getMarket() {
-}
-  function getMakkkrket() {
+
   const market = [
     { id: 1, name: "TechCom", price: 10 },
     { id: 2, name: "EcoTech", price: 20 },
@@ -167,8 +166,8 @@ function simulateTrendingMarket() {
   updateCompanyPrice(randomCompany);
 
   // Trigger the news event
-//  const event = `Stock market update: ${randomCompany.name} price changed to ${randomCompany.price}`;
-//  addNewsEvent(event);
+  const event = `Stock market update: ${randomCompany.name} price changed to ${randomCompany.price}`;
+  addNewsEvent(event);
 }
 
 
@@ -210,8 +209,6 @@ simulateTrendingMarket();
 
 
 
-/*
-    
  companies = getMarket();
 
 // Example 3: Simulate news events
@@ -230,7 +227,7 @@ if (Math.random() < 0.1) { // 10% chance of a news event
   }
 }
 
-*/
+
 
   // Save the updated stock prices object in local storage
   localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
@@ -795,8 +792,7 @@ if (lenderPaymentInfo && lenderPaymentInfo.automaticPayments && lenderPaymentInf
 
 
 // Function to add news event
-function addNewsEvent(event) {  }
-function addNewsEventsss(event) {
+function addNewsEvent(event) {
   eventDayCount = 0;
   const newsContent = document.getElementById("news-content");
   const newsItem = document.createElement("div");
@@ -817,6 +813,13 @@ window.addEventListener("DOMContentLoaded", function () {
   const savedEvents = JSON.parse(localStorage.getItem("savedEvents")) || [];
   savedEvents.forEach(function (event) {
    // addNewsEvent(event);
+
+      const newsContent = document.getElementById("news-content");
+  const newsItem = document.createElement("div");
+  newsItem.classList.add("news-item");
+  newsItem.textContent = event;
+  newsContent.appendChild(newsItem);
+  newsContent.scrollTop = newsContent.scrollHeight;
   });
 });
 
@@ -836,11 +839,11 @@ updateLenderOptions();
 
 
 // Call the updateStockPrices function every 5 seconds (adjust the interval as desired)
-var interval ;//= setInterval(updateStockPrices, 5000);
+var interval = setInterval(updateStockPrices, 5000);
 
 
 // Call the updateNetWorthDisplay function initially and whenever there's a change in net worth
-//updateNetWorthDisplay();
+updateNetWorthDisplay();
 
 
 
