@@ -67,15 +67,18 @@ function getStockPrice(companyName) {
 
 
 function displayPortfolio() {
+
+
+    // Clear the existing portfolio display
+  const portfolioContainer = document.getElementById("portfolio-body");
+  portfolioContainer.innerHTML = "";
+
   // Retrieve the portfolio from local storage
   const portfolioString = localStorage.getItem('portfolio');
   
   // Parse the portfolio string into an array of company objects
   const companies = JSON.parse(portfolioString);
 
-  // Clear the existing portfolio display
-  const portfolioContainer = document.getElementById("portfolio-body");
-  portfolioContainer.innerHTML = "";
 
   // Iterate over each company
   for (const [name, stockQuantity] of Object.entries(companies)) {
@@ -107,10 +110,23 @@ function displayPortfolio() {
 
 
 function updateStockPrices() {
-  // Loop through each company
+  // Retrieve the stock prices from local storage
+  const storedStockPrices = localStorage.getItem('stockPrices');
 
-  let stockPrices;
-  
+  // If no stock prices are stored, return or handle it as desired
+  if (!storedStockPrices) {
+    return;
+  }
+
+  // Parse the stored stock prices object
+  let stockPrices = JSON.parse(storedStockPrices);
+
+  // If stockPrices is null or not an object, initialize it as an empty object
+  if (!stockPrices || typeof stockPrices !== 'object') {
+    stockPrices = {};
+  }
+
+  // Loop through each company
   for (const company of companies) {
     // Simulate market trends, news events, or simulated market behavior
     // Adjust the stock price based on these factors
@@ -130,16 +146,13 @@ function updateStockPrices() {
       const newsChange = company.price * 0.1; // 10% change in price
       company.price += newsChange;
     }
-    
+
     // Save the updated company price in your data structure or storage mechanism
-    // For example, you can store it in an object
-     stockPrices[company.name] = company.price;
-
-   //   console.log("   stockPrices   "+company.price); 
-
+    // For example, you can store it in the stockPrices object
+    stockPrices[company.name] = company.price;
   }
-  
-  // Save the stock prices object in local storage
+
+  // Save the updated stock prices object in local storage
   localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
 
   // Update the stock prices in the user interface
@@ -147,6 +160,7 @@ function updateStockPrices() {
 
   // calculateNetWorth();
 }
+
 
 
 // Function to update the stock prices in the user interface
