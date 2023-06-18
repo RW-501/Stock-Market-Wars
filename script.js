@@ -1,4 +1,6 @@
 function getMarket() {
+}
+  function getMakkkrket() {
   const market = [
     { id: 1, name: "TechCom", price: 10 },
     { id: 2, name: "EcoTech", price: 20 },
