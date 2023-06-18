@@ -135,7 +135,7 @@ function updateStockPrices() {
     // For example, you can store it in an object
    //  stockPrices[company.name] = company.price;
 
-      console.log(stockPrices[company.name]+"   stockPrices   "+company.price); 
+      console.log("   stockPrices   "+company.price); 
 
   }
   
