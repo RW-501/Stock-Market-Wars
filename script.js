@@ -190,7 +190,7 @@ function updateStockPrices() {
 
   // Update the stock prices in the user interface
 updateStockPricesUI();
-   updateNetWorthDisplay();
+  // updateNetWorthDisplay();
 }
 
 
@@ -231,6 +231,7 @@ function updateStockPricesUI() {
     // Append the row to the table body
     stocksTableBody.appendChild(row);
   });
+    // updateNetWorthDisplay();
 }
 
 // Helper function to create a button element with a specific text and click event handler
