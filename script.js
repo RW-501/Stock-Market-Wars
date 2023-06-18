@@ -162,7 +162,6 @@ function simulateTrendingMarket() {
     const trendChange = company.price * 0.02 * trend; // 2% change in price
     company.price += trendChange;
     
-        stockPrices[company.name] = company.price;
 
   }
 
