@@ -137,6 +137,8 @@ function displayPortfolio() {
     portfolioContainer.appendChild(row);
   }
 
+
+
   // Display the total value of the portfolio
   const totalValueCell = document.getElementById("portfolio-total-value");
   totalValueCell.textContent = "$" + totalValue.toFixed(2);
@@ -248,7 +250,9 @@ function createButton(text, onClick) {
 function updateNetWorthDisplay() {
   // Calculate the net worth based on the stocks owned and their current prices
   const netWorth = calculateNetWorth();
-  
+
+     const totalCashCell = document.getElementById("cash-total-value");
+  totalCashCell.textContent = "$" +  getAvailableFunds();
   // Update the net worth value in the UI
   document.getElementById("net-worth-value").textContent = `$${netWorth.toFixed(2)}`;
 }
