@@ -763,12 +763,11 @@ function restartGame() {
   // Clear local storage
   localStorage.clear();
 
-  getMarket();
+//  getMarket();
     // Update the stock prices in the user interface
     playerFunds = 500; // Reset initial funds to 500
 
   updateStockPricesUI();
-calculateNetWorth(); 
    updateNetWorthDisplay();
   clearInterval(interval); // Clear the interval to stop updating stock prices
     interval = setInterval(updateStockPrices, 5000); // Restart the interval to resume updating stock prices
