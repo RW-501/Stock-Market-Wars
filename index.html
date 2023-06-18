@@ -30,6 +30,7 @@
     <div class="buttons">
       <!-- Portfolio Button -->
 <button id="portfolio-button">View Portfolio</button>
+      <button id="open-news-popup">News</button>
       <button id="open-bank-popup">Bank</button>
       <button id="open-lender-popup">Lender</button>
       <button id="open-buy-car-popup">Buy Car</button>
@@ -72,20 +73,34 @@
     <h2>Lender</h2>
     <!-- Add lender-related content here -->
     <!-- Add HTML elements for loan request UI -->
-<label for="loan-amount">Loan Amount:</label>
-<input type="number" id="loan-amount">
-<label for="lender-select">Select Lender:</label>
-<select id="lender-select">
-  <option value="Lender A">Lender A</option>
-  <option value="Lender B">Lender B</option>
-  <!-- Add options for other lenders as needed -->
-</select>
-<button onclick="requestLoan()">Request Loan</button>
+    <label for="loan-amount">Loan Amount:</label>
+    <input type="number" id="loan-amount">
+    <label for="lender-select">Select Lender:</label>
+    <select id="lender-select" onchange="updateLenderDetails()">
+      <!-- Options will be dynamically updated by JavaScript -->
+    </select>
+    <p id="lender-Max"></p>
+    <p id="lender-Rate"></p>
+    <button onclick="requestLoan()">Request Loan</button>
 
     <button id="close-lender-popup">Close</button>
   </div>
 </div>
 
+
+<!-- News Popup -->
+<div id="news-popup" class="popup">
+  <div class="popup-content">
+    <h2>News</h2>
+    <!-- Add buy car-related content here -->
+    <button id="close-news-popup">Close</button>
+  </div>
+</div>
+
+
+
+
+  
 <!-- Buy Car Popup -->
 <div id="buy-car-popup" class="popup">
   <div class="popup-content">
