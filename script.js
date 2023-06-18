@@ -448,9 +448,9 @@ function addFunds(amount) {
   
   // Add the specified amount to the current funds
   const newFunds = currentFunds + amount;
-         console.log("amount 00   "+amount);
+         console.log("amount 451 add   "+amount);
          console.log("currentFunds 44   "+currentFunds);
-         console.log("newFunds 44   "+newFunds);
+         console.log("newFunds add   "+newFunds);
 
   // Update the available funds in local storage
   localStorage.setItem('availableFunds', newFunds.toString());
