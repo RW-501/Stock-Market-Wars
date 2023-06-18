@@ -833,11 +833,11 @@ updateLenderOptions();
 
 
 // Call the updateStockPrices function every 5 seconds (adjust the interval as desired)
-var interval = setInterval(updateStockPrices, 5000);
+var interval ;//= setInterval(updateStockPrices, 5000);
 
 
 // Call the updateNetWorthDisplay function initially and whenever there's a change in net worth
-updateNetWorthDisplay();
+//updateNetWorthDisplay();
 
 
 
