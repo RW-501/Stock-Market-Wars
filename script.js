@@ -109,7 +109,7 @@ function displayPortfolio() {
 function updateStockPrices() {
   // Loop through each company
 
-  //let stockPrices;
+  let stockPrices;
   
   for (const company of companies) {
     // Simulate market trends, news events, or simulated market behavior
@@ -135,7 +135,8 @@ function updateStockPrices() {
     // For example, you can store it in an object
      stockPrices[company.name] = company.price;
   }
-
+  console.log("stockPrices   "+stockPrices); 
+  
   // Save the stock prices object in local storage
   localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
 
