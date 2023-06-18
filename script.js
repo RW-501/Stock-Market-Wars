@@ -735,6 +735,7 @@ localStorage.setItem('lenderPaymentInfo', JSON.stringify(lenderPaymentInfo));
   }
 }
 
+var eventDayCount = 0;
 
 function newDayFunc(counterValue){
 // Retrieve the lender payment information from local storage
@@ -780,6 +781,12 @@ if (lenderPaymentInfo && lenderPaymentInfo.automaticPayments && lenderPaymentInf
       // Start tracking repayment terms
 //       console.log("paymentToDeduct 597   "+paymentToDeduct);
 
+  if(eventDayCount > 10){
+    clearInterval(interval); // Clear the interval to stop updating stock prices
+  openPopup("pause-popup");
+  pauseGame(); // Pause the game
+  }
+  eventDayCount +=1;
 }
 
 
@@ -787,6 +794,7 @@ if (lenderPaymentInfo && lenderPaymentInfo.automaticPayments && lenderPaymentInf
 
 // Function to add news event
 function addNewsEvent(event) {
+  eventDayCount = 0;
   const newsContent = document.getElementById("news-content");
   const newsItem = document.createElement("div");
   newsItem.classList.add("news-item");
