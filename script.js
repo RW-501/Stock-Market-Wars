@@ -783,6 +783,7 @@ if (lenderPaymentInfo && lenderPaymentInfo.automaticPayments && lenderPaymentInf
     clearInterval(interval); // Clear the interval to stop updating stock prices
   openPopup("pause-popup");
   pauseGame(); // Pause the game
+     eventDayCount = 0;
   }
   eventDayCount++;
   console.log("eventDayCount   "+eventDayCount);
