@@ -221,7 +221,7 @@ function updateNetWorthDisplay() {
 
 function getStockQuantity(companyName) {
   // Retrieve stock holdings from local storage
-  const stockHoldingsStr = localStorage.getItem("stockHoldings");
+  const stockHoldingsStr = localStorage.getItem("portfolio");
   
   // If stock holdings exist in local storage, parse the JSON string
   // Otherwise, set an empty object as the default value
