@@ -758,15 +758,17 @@ document.getElementById("close-pause-popup").addEventListener("click", function(
 function resetPrices() {
   // Retrieve the market data from local storage
   const storedMarketData = localStorage.getItem('marketData');
+console.log("storedMarketData   "+storedMarketData);
 
   // Parse the stored market data string into an object or set it to an empty object if null
   const marketData = JSON.parse(storedMarketData) || {};
-
+console.log(marketData);
+  
   // Reset the prices of all companies in the market data to their original values
   const resetMarketData = marketData.map(company => {
     return { name: company.name, price: company.originalPrice };
   });
-
+console.log("resetMarketData   "+resetMarketData);
   // Save the updated market data back to local storage
   localStorage.setItem('marketData', JSON.stringify(resetMarketData));
 }
