@@ -253,7 +253,7 @@ function updateNetWorthDisplay() {
 
      const totalCashCell = document.getElementById("cash-total-value");
   let cash = getAvailableFunds();
-  totalCashCell.textContent = "$" +  `$${cash.toFixed(2)}`;
+  totalCashCell.textContent = "$" +  `${cash.toFixed(2)}`;
   // Update the net worth value in the UI
   document.getElementById("net-worth-value").textContent = `$${netWorth.toFixed(2)}`;
 }
@@ -553,31 +553,61 @@ function sellStock(companyName) {
 
 // List of fictional lenders and their information
 const lenders = [
-  { name: "Lender A", funds: 100000, interestRate: 0.1 },
-  { name: "Lender B", funds: 50000, interestRate: 0.15 },
-  // Add more lenders as needed
+  { name: "Fortune Finance", funds: 100000, interestRate: 0.1, minNetWorth: 500000 },
+  { name: "Prestige Bank", funds: 50000, interestRate: 0.15, minNetWorth: 250000 },
+  { name: "Elite Capital", funds: 75000, interestRate: 0.12, minNetWorth: 300000 },
+  { name: "Opulent Investments", funds: 200000, interestRate: 0.08, minNetWorth: 1000000 },
+  { name: "Prosperity Lending", funds: 150000, interestRate: 0.11, minNetWorth: 700000 },
+  { name: "Wealthy Trust", funds: 300000, interestRate: 0.07, minNetWorth: 1500000 },
+  { name: "Grandiose Bank", funds: 1000000, interestRate: 0.05, minNetWorth: 5000000 },
+  { name: "Noble Finance", funds: 250000, interestRate: 0.09, minNetWorth: 800000 },
+  { name: "Luxe Lenders", funds: 400000, interestRate: 0.06, minNetWorth: 2000000 },
+  { name: "Exquisite Funding", funds: 600000, interestRate: 0.04, minNetWorth: 3000000 }
 ];
+
+
 
 // Function to update the lender options in the select element
 function updateLenderOptions() {
   const lenderSelect = document.getElementById("lender-select");
+  const lenderMax = document.getElementById("lender-Max");
+  const lenderInterestRate = document.getElementById("lender-Rate");
   
   // Clear existing options
   lenderSelect.innerHTML = "";
   
-  // Create new options based on the lenders list
-  lenders.forEach(lender => {
+  // Calculate the net worth
+  const newWorth = calculateNetWorth();
+  
+  // Filter lenders based on minimum net worth
+  const eligibleLenders = lenders.filter(lender => lender.minNetWorth <= newWorth);
+  
+  // Create new options based on the eligible lenders list
+  eligibleLenders.forEach(lender => {
     const option = document.createElement("option");
     option.value = lender.name;
     option.textContent = lender.name;
     lenderSelect.appendChild(option);
   });
+  
+  // Update the lender funding maximum and interest rate display
+  const selectedLender = eligibleLenders.find(lender => lender.name === lenderSelect.value);
+  if (selectedLender) {
+    lenderMax.textContent = `Funding Maximum: $${selectedLender.funds}`;
+    lenderInterestRate.textContent = `Interest Rate: ${selectedLender.interestRate * 100}%`;
+  } else {
+    lenderMax.textContent = "";
+    lenderInterestRate.textContent = "";
+  }
 }
+
+
 
 // Function to request a loan
 function requestLoan() {
   const amountInput = document.getElementById("loan-amount");
   const lenderSelect = document.getElementById("lender-select");
+
   
   const amount = parseFloat(amountInput.value);
   const lender = lenderSelect.value;
@@ -743,6 +773,17 @@ document.getElementById("open-options-popup").addEventListener("click", function
 document.getElementById("close-options-popup").addEventListener("click", function() {
   closePopup("options-popup");
 });
+
+
+document.getElementById("open-news-popup").addEventListener("click", function() {
+  openPopup("options-popup");
+});
+
+document.getElementById("close-news-popup").addEventListener("click", function() {
+  closePopup("news-popup");
+});
+
+
 
 // Event listener for the Pause Game button
 document.getElementById("pause-game-btn").addEventListener("click", function() {
