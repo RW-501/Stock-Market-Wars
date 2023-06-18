@@ -403,7 +403,7 @@ function getAvailableFunds() {
   }
   
   // Remove the stored funds from local storage
-  localStorage.removeItem('availableFunds');
+  //localStorage.removeItem('availableFunds');
   
   // Parse the funds string to a number and return it
   return parseFloat(fundsString);
