@@ -168,7 +168,7 @@ function simulateTrendingMarket() {
 
   // Trigger the news event
 //  const event = `Stock market update: ${randomCompany.name} price changed to ${randomCompany.price}`;
-  addNewsEvent(event);
+//  addNewsEvent(event);
 }
 
 
@@ -198,6 +198,10 @@ function updateStockPrices() {
 
 
 
+    // Save the updated company price in your data structure or storage mechanism
+    // For example, you can store it in the stockPrices object
+    stockPrices[company.name] = company.price;
+  }
 
 
     
@@ -227,10 +231,6 @@ if (Math.random() < 0.1) { // 10% chance of a news event
 }
 
 
-    // Save the updated company price in your data structure or storage mechanism
-    // For example, you can store it in the stockPrices object
-    stockPrices[company.name] = company.price;
-  }
 
   // Save the updated stock prices object in local storage
   localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
