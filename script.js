@@ -166,8 +166,8 @@ function simulateTrendingMarket() {
   updateCompanyPrice(randomCompany);
 
   // Trigger the news event
-  const event = `Stock market update: ${randomCompany.name} price changed to ${randomCompany.price}`;
-  addNewsEvent(event);
+//  const event = `Update: ${randomCompany.name} price changed to $${randomCompany.price}`;
+  //addNewsEvent(event);
 }
 
 
