@@ -200,13 +200,13 @@ if (Math.random() < 0.1) { // 10% chance of a news event
     if (Math.random() < newsChance) {
       const newsChange = company.price * (Math.random() * 0.05 + 0.05); // Random change between 5% and 10%
       company.price += newsChange;
-          stockPrices[company.name] = company.price;
-     const newsEvent = `Breaking News: ${company.name} price changed by ${newsChange.toFixed(2)}%`;
+      stockPrices[company.name] = company.price;
+      const newsEvent = `Breaking News: ${company.name} price changed by ${newsChange.toFixed(2)}%`;
       addNewsEvent(newsEvent);
-      runCount = 0;
     }
   }
 }
+
   }else{
       runCount++;
 
