@@ -221,7 +221,7 @@ if (Math.random() < 0.1) { // 10% chance of a news event
     if (Math.random() < newsChance) {
       const newsChange = company.price * (Math.random() * 0.05 + 0.05); // Random change between 5% and 10%
       company.price += newsChange;
-    //  const newsEvent = `News event: ${company.name} price changed by ${newsChange.toFixed(2)}%`;
+     const newsEvent = `News event: ${company.name} price changed by ${newsChange.toFixed(2)}%`;
       addNewsEvent(newsEvent);
     }
   }
@@ -785,7 +785,7 @@ if (lenderPaymentInfo && lenderPaymentInfo.automaticPayments && lenderPaymentInf
   openPopup("pause-popup");
   pauseGame(); // Pause the game
   }
-  eventDayCount =+ 1;
+  eventDayCount += 1;
   console.log("eventDayCount   "+eventDayCount);
 }
 
