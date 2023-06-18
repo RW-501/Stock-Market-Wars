@@ -231,7 +231,7 @@ function updateStockPricesUI() {
     // Append the row to the table body
     stocksTableBody.appendChild(row);
   });
-    // updateNetWorthDisplay();
+     updateNetWorthDisplay();
 }
 
 // Helper function to create a button element with a specific text and click event handler
