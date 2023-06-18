@@ -553,16 +553,16 @@ function sellStock(companyName) {
 
 // List of fictional lenders and their information
 const lenders = [
-  { name: "Fortune Finance", funds: 100000, interestRate: 0.1, minNetWorth: 500000 },
-  { name: "Prestige Bank", funds: 50000, interestRate: 0.15, minNetWorth: 250000 },
-  { name: "Elite Capital", funds: 75000, interestRate: 0.12, minNetWorth: 300000 },
-  { name: "Opulent Investments", funds: 200000, interestRate: 0.08, minNetWorth: 1000000 },
-  { name: "Prosperity Lending", funds: 150000, interestRate: 0.11, minNetWorth: 700000 },
-  { name: "Wealthy Trust", funds: 300000, interestRate: 0.07, minNetWorth: 1500000 },
+  { name: "Fortune Finance", funds: 100000, interestRate: 0.1, minNetWorth: 500 },
+  { name: "Prestige Bank", funds: 50000, interestRate: 0.15, minNetWorth: 2500 },
+  { name: "Elite Capital", funds: 75000, interestRate: 0.12, minNetWorth: 3000 },
+  { name: "Opulent Investments", funds: 200000, interestRate: 0.08, minNetWorth: 15000 },
+  { name: "Prosperity Lending", funds: 150000, interestRate: 0.11, minNetWorth: 55000 },
+  { name: "Wealthy Trust", funds: 300000, interestRate: 0.07, minNetWorth: 250500 },
   { name: "Grandiose Bank", funds: 1000000, interestRate: 0.05, minNetWorth: 5000000 },
   { name: "Noble Finance", funds: 250000, interestRate: 0.09, minNetWorth: 800000 },
   { name: "Luxe Lenders", funds: 400000, interestRate: 0.06, minNetWorth: 2000000 },
-  { name: "Exquisite Funding", funds: 600000, interestRate: 0.04, minNetWorth: 3000000 }
+  { name: "Exquisite Funding", funds: 600000, interestRate: 0.04, minNetWorth: 20500100 }
 ];
 
 
@@ -578,7 +578,8 @@ function updateLenderOptions() {
   
   // Calculate the net worth
   const newWorth = calculateNetWorth();
-  
+         console.log("newWorth 581   "+newWorth);
+
   // Filter lenders based on minimum net worth
   const eligibleLenders = lenders.filter(lender => lender.minNetWorth <= newWorth);
   
