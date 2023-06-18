@@ -1,30 +1,32 @@
 function getMarket() {
   const market = [
-    { name: "TechCom", price: 10 },
-    { name: "EcoTech", price: 20 },
-    { name: "GlobeCorp", price: 30 },
-    { name: "InfoSys", price: 15 },
-    { name: "InnovaTech", price: 25 },
-    { name: "GlobalSoft", price: 18 },
-    { name: "DataDynamics", price: 22 },
-    { name: "CyberTech", price: 27 },
-    { name: "TechLink", price: 13 },
-    { name: "PrimeSystems", price: 32 },
-    { name: "SmartSolutions", price: 16 },
-    { name: "NexGen", price: 24 },
-    { name: "MegaTech", price: 19 },
-    { name: "ByteCorp", price: 29 },
-    { name: "InfiniteSolutions", price: 21 },
-    { name: "ElevateTech", price: 11 },
-    { name: "VistaSoft", price: 26 },
-    { name: "AgileSystems", price: 14 },
-    { name: "TechWave", price: 17 },
-    { name: "FutureTech", price: 23 }
+    { id: 1, name: "TechCom", price: 10 },
+    { id: 2, name: "EcoTech", price: 20 },
+    { id: 3, name: "GlobeCorp", price: 30 },
+    { id: 4, name: "InfoSys", price: 15 },
+    { id: 5, name: "InnovaTech", price: 25 },
+    { id: 6, name: "GlobalSoft", price: 18 },
+    { id: 7, name: "DataDynamics", price: 22 },
+    { id: 8, name: "CyberTech", price: 27 },
+    { id: 9, name: "TechLink", price: 13 },
+    { id: 10, name: "PrimeSystems", price: 32 },
+    { id: 11, name: "SmartSolutions", price: 16 },
+    { id: 12, name: "NexGen", price: 24 },
+    { id: 13, name: "MegaTech", price: 19 },
+    { id: 14, name: "ByteCorp", price: 29 },
+    { id: 15, name: "InfiniteSolutions", price: 21 },
+    { id: 16, name: "ElevateTech", price: 11 },
+    { id: 17, name: "VistaSoft", price: 26 },
+    { id: 18, name: "AgileSystems", price: 14 },
+    { id: 19, name: "TechWave", price: 17 },
+    { id: 20, name: "FutureTech", price: 23 }
   ];
+
+
 
   // Retrieve the stored stock prices from local storage
   const storedStockPrices = localStorage.getItem('stockPrices');
-//console.log("storedStockPrices   "+storedStockPrices);
+console.log("storedStockPrices   "+storedStockPrices);
   // Parse the stored stock prices string into an object or set it to an empty object if null
   const stockPrices = JSON.parse(storedStockPrices) || {};
 
@@ -64,7 +66,7 @@ function updateStockQuantity(companyName, updatedStockQuantity) {
 
   // You can also update the UI to reflect the updated stock quantity if necessary
   // For example, you can update a stock quantity display on the screen
-  console.log("portfolioString 44   "+portfolioString); // Display the entire portfolio object
+ // console.log("portfolioString 44   "+portfolioString); // Display the entire portfolio object
 }
 
 
@@ -144,7 +146,28 @@ function displayPortfolio() {
   totalValueCell.textContent = "$" + totalValue.toFixed(2);
 }
 
+// Function to simulate trending market
+function simulateTrendingMarket() {
+  const companies =  getMarket();// Your list of companies
 
+  // Function to update the price of a company
+  function updateCompanyPrice(company) {
+    const trend = Math.random() > 0.5 ? 1 : -1; // Positive or negative trend
+    const trendChange = company.price * 0.02 * trend; // 2% change in price
+    company.price += trendChange;
+  }
+
+  // Randomly select a company
+  const randomIndex = Math.floor(Math.random() * companies.length);
+  const randomCompany = companies[randomIndex];
+
+  // Update the price of the selected company
+  updateCompanyPrice(randomCompany);
+
+  // Trigger the news event
+  const event = `Stock market update: ${randomCompany.name} price changed to ${randomCompany.price}`;
+  addNewsEvent(event);
+}
 
 
 function updateStockPrices() {
@@ -171,16 +194,36 @@ function updateStockPrices() {
     const priceChange = company.price * randomChange;
     company.price += priceChange;
 
-    // Example 2: Simulate trending market
-    const trend = Math.random() > 0.5 ? 1 : -1; // Positive or negative trend
-    const trendChange = company.price * 0.02 * trend; // 2% change in price
-    company.price += trendChange;
 
-    // Example 3: Simulate news events
-    if (Math.random() < 0.1) { // 10% chance of a news event
-      const newsChange = company.price * 0.1; // 10% change in price
+
+
+
+    
+    // Example 2: Simulate trending market
+simulateTrendingMarket(); 
+
+
+
+
+    
+ companies = getMarket();
+
+// Example 3: Simulate news events
+if (Math.random() < 0.1) { // 10% chance of a news event
+  const numCompaniesAffected = Math.floor(Math.random() * 3) + 1; // Randomly select 1 to 3 companies
+  for (let i = 0; i < numCompaniesAffected; i++) {
+    const randomCompanyIndex = Math.floor(Math.random() * companies.length);
+    const company = companies[randomCompanyIndex];
+    const newsChance = Math.random() * 0.6 + 0.1; // Random chance between 10% and 70%
+    if (Math.random() < newsChance) {
+      const newsChange = company.price * (Math.random() * 0.05 + 0.05); // Random change between 5% and 10%
       company.price += newsChange;
+      const newsEvent = `News event: ${company.name} price changed by ${newsChange.toFixed(2)}%`;
+      addNewsEvent(newsEvent);
     }
+  }
+}
+
 
     // Save the updated company price in your data structure or storage mechanism
     // For example, you can store it in the stockPrices object
