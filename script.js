@@ -186,14 +186,8 @@ function updateStockPrices() {
 
 
 
-    if(runCount < 2){
-console.log("runCount??    "+runCount); 
-
-    }else{
-console.log("runCount !!   "+runCount); 
-
-    }
-runCount++;
+    if(runCount > 10){
+ 
 console.log("runCount    "+runCount); 
     
 // Example 3: Simulate news events
@@ -209,10 +203,16 @@ if (Math.random() < 0.1) { // 10% chance of a news event
           stockPrices[company.name] = company.price;
      const newsEvent = `Breaking News: ${company.name} price changed by ${newsChange.toFixed(2)}%`;
       addNewsEvent(newsEvent);
+      runCount = 0;
     }
   }
 }
+  }else{
+      runCount++;
 
+console.log("runCount else   "+runCount); 
+
+    }
 
     // Save the updated company price in your data structure or storage mechanism
     // For example, you can store it in the stockPrices object
