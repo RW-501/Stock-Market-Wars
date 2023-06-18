@@ -262,7 +262,17 @@ function updateNetWorthDisplay() {
 localStorage.setItem('counterValue', JSON.stringify(counterValue));
   
     const counter = document.getElementById("counter");
-  counter.textContent = counterValue;
+
+  
+if (counterValue > 365) {
+  const years = Math.floor(counterValue / 365);
+  const remainingDays = counterValue % 365;
+  counter.textContent = `${years} years, ${remainingDays} days`;
+  // Show reminder or perform any other actions
+} else {
+  counter.textContent = `${counterValue} days`;
+}
+
 
   newDayFunc(counterValue);
 }
@@ -432,6 +442,10 @@ function deductFunds(amount) {
   
   // Check if the amount is valid (positive and not exceeding the available funds)
   if (amount <= 0 || amount > currentFunds) {
+        // Add the news event
+  const event = `Funds are low ${amount}`;
+  addNewsEvent(event);
+    
     // Handle the error case (e.g., display an error message, throw an error, etc.)
     return;
   }
@@ -455,6 +469,10 @@ function addFunds(amount) {
   // Check if the amount is valid (positive)
   if (amount <= 0) {
     // Handle the error case (e.g., display an error message, throw an error, etc.)
+
+    // Add the news event
+  const event = `Funds are low ${amount}`;
+  addNewsEvent(event);
     return;
   }
   
@@ -521,6 +539,9 @@ function buyStock(companyName) {
 
     // Display a success message to the player
     alert(`Successfully bought ${quantityToBuy} ${companyName} stocks.`);
+     // Add news event
+  const event = `Bought ${quantityToBuy} shares of ${companyName} for `+ stockPrice;
+  addNewsEvent(event);
   } else {
     // Display an error message to the player
     alert("Insufficient funds to buy stocks.");
@@ -552,6 +573,9 @@ function sellStock(companyName) {
 
     // Display a success message to the player
     alert(`Successfully sold ${quantityToSell} ${companyName} stocks. for  `+ stockPrice);
+     // Add news event
+  const event = `Sold ${quantityToSell} shares of ${companyName} for `+ stockPrice;
+  addNewsEvent(event);
   } else {
     // Display an error message to the player
     alert("Insufficient stocks to sell.");
@@ -641,6 +665,7 @@ function requestLoan() {
 const lenderPaymentInfo = {
   id: selectedLender.id,
   borrowedAmount: amount,
+  name: selectedLender.name,
   paymentFrequency: selectedLender.paymentFrequency,
   interestRate: selectedLender.interestRate,
   paymentAmount: selectedLender.paymentAmount,
@@ -651,8 +676,10 @@ const lenderPaymentInfo = {
 // Save the lender payment information to local storage
 localStorage.setItem('lenderPaymentInfo', JSON.stringify(lenderPaymentInfo));
 
-      // Display success message or update UI elements
-
+ // Add news event
+  const event = `Borrowed $${amount} from ${selectedLender.name}`;
+  addNewsEvent(event);
+      
         // updateNetWorthDisplay();
       console.log("Loan approved! Amount: $" + amount);
     } else {
@@ -685,6 +712,10 @@ if (lenderPaymentInfo && lenderPaymentInfo.automaticPayments && lenderPaymentInf
 
     // Deduct funds from available funds
     deductFunds(paymentToDeduct);
+    // Add news event
+  const event = `Made a loan payment of $${paymentToDeduct} to ${lenderPaymentInfo.name} `;
+  addNewsEvent(event);
+    
   } else {
     // Calculate the total payment amount based on paymentCycles
     const totalPaymentAmount = lenderPaymentInfo.paymentAmount * paymentCycles;
@@ -694,6 +725,8 @@ if (lenderPaymentInfo && lenderPaymentInfo.automaticPayments && lenderPaymentInf
 
       // Deduct funds from available funds
       deductFunds(paymentToDeduct);
+        const event = `Made a loan payment of $${paymentToDeduct} to ${lenderPaymentInfo.name} `;
+  addNewsEvent(event);
     } else {
       // Handle the case when the borrower owes more than the total payment amount
       // You can add your own logic here based on your requirements
@@ -702,9 +735,37 @@ if (lenderPaymentInfo && lenderPaymentInfo.automaticPayments && lenderPaymentInf
 }
 
       // Start tracking repayment terms
-       console.log("paymentToDeduct 597   "+paymentToDeduct);
+//       console.log("paymentToDeduct 597   "+paymentToDeduct);
 
 }
+
+
+
+
+// Function to add news event
+function addNewsEvent(event) {
+  const newsContent = document.getElementById("news-content");
+  const newsItem = document.createElement("div");
+  newsItem.classList.add("news-item");
+  newsItem.textContent = event;
+  newsContent.appendChild(newsItem);
+  newsContent.scrollTop = newsContent.scrollHeight;
+
+  // Save the event to localStorage
+  const savedEvents = JSON.parse(localStorage.getItem("savedEvents")) || [];
+  savedEvents.push(event);
+  localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
+}
+
+
+
+window.addEventListener("DOMContentLoaded", function () {
+  const savedEvents = JSON.parse(localStorage.getItem("savedEvents")) || [];
+  savedEvents.forEach(function (event) {
+    addNewsEvent(event);
+  });
+});
+
 
 
 
@@ -843,7 +904,7 @@ document.getElementById("close-options-popup").addEventListener("click", functio
 
 
 document.getElementById("open-news-popup").addEventListener("click", function() {
-  openPopup("options-popup");
+  openPopup("news-popup");
 });
 
 document.getElementById("close-news-popup").addEventListener("click", function() {
