@@ -78,8 +78,10 @@ function displayPortfolio() {
   
   // Parse the portfolio string into an array of company objects
   const companies = JSON.parse(portfolioString);
+  console.log("portfolioString   "+portfolio);
+  console.log("portfolio 2   "+portfolio);
 
-
+  
   // Iterate over each company
   for (const [name, stockQuantity] of Object.entries(companies)) {
     // Retrieve the stock price for the current company (assuming it's stored somewhere)
