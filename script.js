@@ -583,7 +583,7 @@ function buyStock(companyName) {
     // Display a success message to the player
     alert(`Successfully bought ${quantityToBuy} ${companyName} stocks.`);
      // Add news event
-  const event = `Bought ${quantityToBuy} shares of ${companyName} for `+ stockPrice;
+  const event = `Bought ${quantityToBuy} shares of ${companyName} for `+ "$" +  `${stockPrice.toFixed(2)}`;
   addNewsEvent(event);
   } else {
     // Display an error message to the player
@@ -615,9 +615,9 @@ function sellStock(companyName) {
     updateStockQuantity(companyName, updatedStockQuantity);
 
     // Display a success message to the player
-    alert(`Successfully sold ${quantityToSell} ${companyName} stocks. for  `+ stockPrice);
+    alert(`Successfully sold ${quantityToSell} ${companyName} stocks. for  `+  "$" +  `${stockPrice.toFixed(2)}`);
      // Add news event
-  const event = `Sold ${quantityToSell} shares of ${companyName} for `+ stockPrice;
+  const event = `Sold ${quantityToSell} shares of ${companyName} for `+  "$" +  `${stockPrice.toFixed(2)}`;
   addNewsEvent(event);
   } else {
     // Display an error message to the player
@@ -750,7 +750,7 @@ if (lenderPaymentInfo && lenderPaymentInfo.automaticPayments && lenderPaymentInf
   const paymentCycles = Math.floor(counterValue / paymentFrequency);
 
   // Check if the borrower owes any payment
-  if (borrowedAmount < lenderPaymentInfo.paymentAmount) {
+  if (lenderPaymentInfo.borrowedAmount < lenderPaymentInfo.paymentAmount) {
     const paymentToDeduct = borrowedAmount;
 
     // Deduct funds from available funds
@@ -763,8 +763,8 @@ if (lenderPaymentInfo && lenderPaymentInfo.automaticPayments && lenderPaymentInf
     // Calculate the total payment amount based on paymentCycles
     const totalPaymentAmount = lenderPaymentInfo.paymentAmount * paymentCycles;
 
-    if (borrowedAmount < totalPaymentAmount) {
-      const paymentToDeduct = borrowedAmount;
+    if (lenderPaymentInfo.borrowedAmount < totalPaymentAmount) {
+      const paymentToDeduct = lenderPaymentInfo.borrowedAmount;
 
       // Deduct funds from available funds
       deductFunds(paymentToDeduct);
