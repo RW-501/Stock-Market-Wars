@@ -48,7 +48,7 @@ function getMarket() {
 
 // Example usage
 var companies = getMarket();
-//console.log(companies);
+console.log(companies);
 
 
 
@@ -192,7 +192,7 @@ function updateStockPrices() {
   localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
 
   // Update the stock prices in the user interface
-
+updateStockPricesUI();
    updateNetWorthDisplay();
 }
 
