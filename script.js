@@ -252,7 +252,8 @@ function updateNetWorthDisplay() {
   const netWorth = calculateNetWorth();
 
      const totalCashCell = document.getElementById("cash-total-value");
-  totalCashCell.textContent = "$" +  getAvailableFunds();
+  let cash = getAvailableFunds();
+  totalCashCell.textContent = "$" +  `$${cash.toFixed(2)}`;
   // Update the net worth value in the UI
   document.getElementById("net-worth-value").textContent = `$${netWorth.toFixed(2)}`;
 }
@@ -450,8 +451,7 @@ function addFunds(amount) {
   
   // Add the specified amount to the current funds
   const newFunds = currentFunds + amount;
-         console.log("amount 451 add   "+amount);
-         console.log("currentFunds 44   "+currentFunds);
+
          console.log("newFunds add   "+newFunds);
 
   // Update the available funds in local storage
