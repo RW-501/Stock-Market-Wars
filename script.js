@@ -67,45 +67,56 @@ function getStockPrice(companyName) {
 
 
 function displayPortfolio() {
-
-
-    // Clear the existing portfolio display
+  // Clear the existing portfolio display
   const portfolioContainer = document.getElementById("portfolio-body");
   portfolioContainer.innerHTML = "";
 
   // Retrieve the portfolio from local storage
   const portfolioString = localStorage.getItem('portfolio');
-  
-  // Parse the portfolio string into an array of company objects
-  const companies = JSON.parse(portfolioString);
-//  console.log("portfolioString   "+portfolioString);
-//  console.log("companies   "+companies);
 
-  
-  // Iterate over each company
-  for (const [name, stockQuantity] of Object.entries(companies)) {
+  // Parse the portfolio string into an object
+  const portfolio = JSON.parse(portfolioString);
+
+  // Initialize the total value variable
+  let totalValue = 0;
+
+  // Iterate over each company in the portfolio
+  for (const [name, stockQuantity] of Object.entries(portfolio)) {
     // Retrieve the stock price for the current company (assuming it's stored somewhere)
     const stockPrice = getStockPrice(name);
+
+    // Calculate the value of the current company's stocks
+    const companyValue = stockPrice * stockQuantity;
+
+    // Add the company value to the total value
+    totalValue += companyValue;
 
     // Create a new table row for the company in the portfolio display
     const row = document.createElement("tr");
 
-    // Create table cells for the company name, stock price, and stock quantity
+    // Create table cells for the company name, stock price, stock quantity, and company value
     const nameCell = document.createElement("td");
     nameCell.textContent = name;
     const priceCell = document.createElement("td");
-    priceCell.textContent = "$"+stockPrice.toFixed(2);;
+    priceCell.textContent = "$" + stockPrice.toFixed(2);
     const quantityCell = document.createElement("td");
     quantityCell.textContent = stockQuantity;
+    const valueCell = document.createElement("td");
+    valueCell.textContent = "$" + companyValue.toFixed(2);
 
     // Append the table cells to the row
     row.appendChild(nameCell);
     row.appendChild(priceCell);
     row.appendChild(quantityCell);
+    row.appendChild(valueCell);
 
     // Append the row to the portfolio display
     portfolioContainer.appendChild(row);
   }
+
+  // Display the total value of the portfolio
+  const totalValueCell = document.getElementById("portfolio-total-value");
+  totalValueCell.textContent = "$" + totalValue.toFixed(2);
 }
 
 
