@@ -985,10 +985,25 @@ document.getElementById("close-pause-popup").addEventListener("click", function(
 function restartGame() {
   // Clear local storage
 document.addEventListener('DOMContentLoaded', function() {
+  // Clean variables
+counterValue = 0;
+
   localStorage.clear();
-for (const key in localStorage) {
+
+
+  function getLocalStorageKeys() {
+  const keys = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    keys.push(localStorage.key(i));
+  }
+  return keys;
+}
+const keys = getLocalStorageKeys();
+for (const key in keys) {
   localStorage.setItem(key, null);
 }
+  
+console.log(keys);
 
 //getMarket();
   
