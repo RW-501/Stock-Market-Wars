@@ -150,38 +150,8 @@ function displayPortfolio() {
 }
 
 
-/// UPDATE PRICES PART 2
 
-// Function to simulate trending market
-function simulateTrendingMarket() {
-  const companies =  getMarket();// Your list of companies
-
-  // Function to update the price of a company
-  function updateCompanyPrice(company) {
-    const trend = Math.random() > 0.5 ? 1 : -1; // Positive or negative trend
-    const trendChange = company.price * 0.02 * trend; // 2% change in price
-    company.price += trendChange;
-    
-
-  }
-
-  // Randomly select a company
-  const randomIndex = Math.floor(Math.random() * companies.length);
-  const randomCompany = companies[randomIndex];
-
-  // Update the price of the selected company
-  updateCompanyPrice(randomCompany);
-
-  // Trigger the news event
-//  const event = `Update: ${randomCompany.name} price changed to $${randomCompany.price}`;
-  //addNewsEvent(event);
-}
-
-
-
-
-
-
+var runCount = 0;
 
 /// START UPDATE PRICES
 function updateStockPrices() {
@@ -205,21 +175,27 @@ function updateStockPrices() {
     const randomChange = Math.random() * 0.1 - 0.05; // Random change between -5% and +5%
     const priceChange = company.price * randomChange;
     company.price += priceChange;
- stockPrices[company.name] = company.price;
-
-    // Example 2: Simulate trending market
-simulateTrendingMarket(); 
-
-
-    // Save the updated company price in your data structure or storage mechanism
-    // For example, you can store it in the stockPrices object
-  }
-
-
     
 
- companies = getMarket();
 
+    // Example 2: Simulate trending market
+    const trend = Math.random() > 0.5 ? 1 : -1; // Positive or negative trend
+    const trendChange = company.price * 0.02 * trend; // 2% change in price
+    company.price += trendChange;
+
+
+
+
+    if(runCount < 2){
+console.log("runCount??    "+runCount); 
+
+    }else{
+console.log("runCount !!   "+runCount); 
+
+    }
+runCount++;
+console.log("runCount    "+runCount); 
+    
 // Example 3: Simulate news events
 if (Math.random() < 0.1) { // 10% chance of a news event
   const numCompaniesAffected = Math.floor(Math.random() * 3) + 1; // Randomly select 1 to 3 companies
@@ -238,6 +214,13 @@ if (Math.random() < 0.1) { // 10% chance of a news event
 }
 
 
+    // Save the updated company price in your data structure or storage mechanism
+    // For example, you can store it in the stockPrices object
+     stockPrices[company.name] = company.price;
+
+  }
+
+    
 
   // Save the updated stock prices object in local storage
   localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
