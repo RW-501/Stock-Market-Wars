@@ -192,8 +192,7 @@ function updateStockPrices() {
   localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
 
   // Update the stock prices in the user interface
-  updateStockPricesUI();
-calculateNetWorth(); 
+
    updateNetWorthDisplay();
 }
 
@@ -763,14 +762,14 @@ function restartGame() {
   // Clear local storage
 document.addEventListener('DOMContentLoaded', function() {
   localStorage.clear();
-});
 
-//  getMarket();
+  getMarket();
     // Update the stock prices in the user interface
     playerFunds = 500; // Reset initial funds to 500
 
   updateStockPricesUI();
    updateNetWorthDisplay();
+  });
   clearInterval(interval); // Clear the interval to stop updating stock prices
     interval = setInterval(updateStockPrices, 5000); // Restart the interval to resume updating stock prices
 
