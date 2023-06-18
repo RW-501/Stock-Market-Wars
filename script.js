@@ -26,7 +26,7 @@ function getMarket() {
 
   // Retrieve the stored stock prices from local storage
   const storedStockPrices = localStorage.getItem('stockPrices');
-console.log("storedStockPrices   "+storedStockPrices);
+//console.log("storedStockPrices   "+storedStockPrices);
   // Parse the stored stock prices string into an object or set it to an empty object if null
   const stockPrices = JSON.parse(storedStockPrices) || {};
 
@@ -218,7 +218,7 @@ if (Math.random() < 0.1) { // 10% chance of a news event
     if (Math.random() < newsChance) {
       const newsChange = company.price * (Math.random() * 0.05 + 0.05); // Random change between 5% and 10%
       company.price += newsChange;
-      const newsEvent = `News event: ${company.name} price changed by ${newsChange.toFixed(2)}%`;
+    //  const newsEvent = `News event: ${company.name} price changed by ${newsChange.toFixed(2)}%`;
       addNewsEvent(newsEvent);
     }
   }
