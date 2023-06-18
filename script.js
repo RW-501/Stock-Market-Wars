@@ -48,7 +48,7 @@ function getMarket() {
 
 // Example usage
 var companies = getMarket();
-console.log(companies);
+//console.log(companies);
 
 
 
@@ -755,9 +755,18 @@ document.getElementById("close-pause-popup").addEventListener("click", function(
 function restartGame() {
   // Clear local storage
   localStorage.clear();
-  
+
+  getMarket();
+    // Update the stock prices in the user interface
+    playerFunds = 500; // Reset initial funds to 500
+
+  updateStockPricesUI();
+calculateNetWorth(); 
+   updateNetWorthDisplay();
+  clearInterval(interval); // Clear the interval to stop updating stock prices
+    interval = setInterval(updateStockPrices, 5000); // Restart the interval to resume updating stock prices
+
   // Reset game state, UI elements, or perform necessary actions
-  playerFunds = 500; // Reset initial funds to 500
   console.log("Game restarted");
 }
 
