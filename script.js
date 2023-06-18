@@ -659,7 +659,7 @@ function requestLoan() {
 }
 
 
-newDayFunc(counterValue){
+function newDayFunc(counterValue){
 
 
 }
