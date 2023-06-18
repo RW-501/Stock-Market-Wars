@@ -99,12 +99,15 @@ h1 {
 }
 
 .popup-content {
-  background-color: #fff;
-  max-width: 400px;
-  margin: 100px auto;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    height: 80%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+
 }
 
 .popup h2 {
@@ -173,3 +176,16 @@ h1 {
   font-size: 36px;
   margin-top: 30px;
 }
+
+
+
+
+#news-content {
+    height: 80%;
+    width: auto;
+    overflow-y: scroll;
+    padding: 5%;
+}
+
+
+  
