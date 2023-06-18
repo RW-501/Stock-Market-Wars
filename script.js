@@ -1,7 +1,3 @@
-
-
-
-// Sample fictional companies and their initial stock prices
 function getMarket() {
   const market = [
     { name: "TechCom", price: 10 },
@@ -29,13 +25,13 @@ function getMarket() {
   // Retrieve the stored stock prices from local storage
   const storedStockPrices = localStorage.getItem('stockPrices');
 
- // Parse the stored stock prices string into an object or set it to an empty object if null
+  // Parse the stored stock prices string into an object or set it to an empty object if null
   const stockPrices = JSON.parse(storedStockPrices) || {};
 
   // Update the prices of the companies with the stored stock prices
   const updatedCompanies = market.map(company => {
     const { name } = company;
-    const price = stockPrices[name] || market.price;
+    const price = stockPrices[name] || company.price;
     return { name, price };
   });
 
@@ -46,9 +42,10 @@ function getMarket() {
   return updatedCompanies;
 }
 
+
 // Example usage
 var companies = getMarket();
-console.log(companies);
+//console.log(companies);
 
 
 
@@ -597,7 +594,7 @@ function requestLoan() {
        console.log("amount 597   "+amount);
       // Display success message or update UI elements
 
-         updateNetWorthDisplay();
+        // updateNetWorthDisplay();
       console.log("Loan approved! Amount: $" + amount);
     } else {
       // Display error message or update UI elements
