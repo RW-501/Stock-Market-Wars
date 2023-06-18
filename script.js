@@ -167,7 +167,7 @@ function updateStockPrices() {
 
   // Update the stock prices in the user interface
   updateStockPricesUI();
-
+calculateNetWorth(); 
    updateNetWorthDisplay();
 }
 
