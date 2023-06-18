@@ -2,28 +2,54 @@
 
 
 // Sample fictional companies and their initial stock prices
-const companies = [
-  { name: "TechCom", price: 10 },
-  { name: "EcoTech", price: 20 },
-  { name: "GlobeCorp", price: 30 },
-  { name: "InfoSys", price: 15 },
-  { name: "InnovaTech", price: 25 },
-  { name: "GlobalSoft", price: 18 },
-  { name: "DataDynamics", price: 22 },
-  { name: "CyberTech", price: 27 },
-  { name: "TechLink", price: 13 },
-  { name: "PrimeSystems", price: 32 },
-  { name: "SmartSolutions", price: 16 },
-  { name: "NexGen", price: 24 },
-  { name: "MegaTech", price: 19 },
-  { name: "ByteCorp", price: 29 },
-  { name: "InfiniteSolutions", price: 21 },
-  { name: "ElevateTech", price: 11 },
-  { name: "VistaSoft", price: 26 },
-  { name: "AgileSystems", price: 14 },
-  { name: "TechWave", price: 17 },
-  { name: "FutureTech", price: 23 }
-];
+function getMarket() {
+  const market = [
+    { name: "TechCom", price: 10 },
+    { name: "EcoTech", price: 20 },
+    { name: "GlobeCorp", price: 30 },
+    { name: "InfoSys", price: 15 },
+    { name: "InnovaTech", price: 25 },
+    { name: "GlobalSoft", price: 18 },
+    { name: "DataDynamics", price: 22 },
+    { name: "CyberTech", price: 27 },
+    { name: "TechLink", price: 13 },
+    { name: "PrimeSystems", price: 32 },
+    { name: "SmartSolutions", price: 16 },
+    { name: "NexGen", price: 24 },
+    { name: "MegaTech", price: 19 },
+    { name: "ByteCorp", price: 29 },
+    { name: "InfiniteSolutions", price: 21 },
+    { name: "ElevateTech", price: 11 },
+    { name: "VistaSoft", price: 26 },
+    { name: "AgileSystems", price: 14 },
+    { name: "TechWave", price: 17 },
+    { name: "FutureTech", price: 23 }
+  ];
+
+  // Retrieve the stored stock prices from local storage
+  const storedStockPrices = localStorage.getItem('stockPrices');
+
+  // Parse the stored stock prices string into an object
+  const stockPrices = JSON.parse(storedStockPrices);
+
+  // Update the prices of the companies with the stored stock prices
+  const updatedCompanies = companies.map(market => {
+    const { name } = market;
+    const price = stockPrices[name];
+    return { name, price };
+  });
+
+  // Now the updatedCompanies array contains the companies with the updated stock prices
+
+  // You can use the updatedCompanies array in your code as needed
+
+  return updatedCompanies;
+}
+
+// Example usage
+var company = getMarket();
+console.log(market);
+
 
 
 function updateStockQuantity(companyName, updatedStockQuantity) {
@@ -374,7 +400,7 @@ function getAvailableFunds() {
   
   // If no funds are stored, set the initial funds and return it
   if (!fundsString) {
-    const initialFunds = 500;
+    const initialFunds = 100;
     localStorage.setItem('availableFunds', initialFunds.toString());
     return initialFunds;
   }
@@ -510,7 +536,7 @@ function sellStock(companyName) {
     updateStockQuantity(companyName, updatedStockQuantity);
 
     // Display a success message to the player
-    alert(`Successfully sold ${quantityToSell} ${companyName} stocks.`);
+    alert(`Successfully sold ${quantityToSell} ${companyName} stocks. for  `+ stockPrice);
   } else {
     // Display an error message to the player
     alert("Insufficient stocks to sell.");
