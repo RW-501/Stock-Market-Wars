@@ -231,7 +231,7 @@ function updateNetWorthDisplay() {
 }
 
 
-
+// Function to update the player's stock quantity for a given company
 function getStockQuantity(companyName) {
   // Retrieve stock holdings from local storage
   const stockHoldingsStr = localStorage.getItem("portfolio");
@@ -245,6 +245,7 @@ function getStockQuantity(companyName) {
 
   return quantity;
 }
+
 
 
 
@@ -386,22 +387,6 @@ function getAvailableFunds() {
 }
 
 
-/*
-// Function to get the player's available funds from the bank account
-function getAvailableFunds() {
-  // Retrieve the available funds from local storage
-  const fundsString = localStorage.getItem('availableFunds');
-  
-  // If no funds are stored, return 0
-  if (!fundsString) {
-    return 0;
-  }
-  
-  // Parse the funds string to a number and return it
-  return parseFloat(fundsString);
-}
-*/
-
 
 // Function to get the player's stock quantity for a given company
 function deductFunds(amount) {
@@ -422,21 +407,6 @@ function deductFunds(amount) {
 }
 
 
-// Function to update the player's stock quantity for a given company
-function getStockQuantity(companyName) {
-  // Retrieve the stock quantity for the given company from your data structure or storage mechanism
-  // Assuming you have a data structure called 'stockQuantities'
-  const stockQuantities = { /* Your stock quantities data structure */ };
-  
-  // Check if the company exists in the stockQuantities object or map
-  if (companyName in stockQuantities) {
-    // Return the stock quantity for the company
-    return stockQuantities[companyName];
-  } else {
-    // Company not found, return 0 or handle the error case accordingly
-    return 0;
-  }
-}
 
 
 // Function to add funds to the player's bank account
