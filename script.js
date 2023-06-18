@@ -28,7 +28,7 @@ const companies = [
 
 function updateStockQuantity(companyName, updatedStockQuantity) {
   // Retrieve the current portfolio from local storage
-  const portfolioString = localStorage.getItem('stockHoldings');
+  const portfolioString = localStorage.getItem('portfolio');
 
   // Parse the portfolio string to an object or initialize an empty object if no portfolio is stored
   const portfolio = portfolioString ? JSON.parse(portfolioString) : {};
