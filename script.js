@@ -31,7 +31,7 @@ console.log("storedStockPrices   "+storedStockPrices);
   // Update the prices of the companies with the stored stock prices
   const updatedCompanies = market.map(company => {
     const { name } = company;
-    const price = stockPrices[name] || company.price;
+    const price = company.price || stockPrices[name];
     return { name, price };
   });
 
