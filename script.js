@@ -761,7 +761,9 @@ document.getElementById("close-pause-popup").addEventListener("click", function(
 // Function to restart the game
 function restartGame() {
   // Clear local storage
+document.addEventListener('DOMContentLoaded', function() {
   localStorage.clear();
+});
 
 //  getMarket();
     // Update the stock prices in the user interface
