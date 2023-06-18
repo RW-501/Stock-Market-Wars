@@ -262,6 +262,8 @@ function updateNetWorthDisplay() {
 
     const counter = document.getElementById("counter");
   counter.textContent = counterValue;
+
+  newDayFunc(counterValue);
 }
 
 
@@ -559,16 +561,16 @@ function sellStock(companyName) {
 
 // List of fictional lenders and their information
 const lenders = [
-  { name: "Fortune Finance", funds: 100000, interestRate: 0.1, minNetWorth: 500, automaticPayments: true, paymentAmount: 1000, paymentFrequency: "monthly" },
-  { name: "Prestige Bank", funds: 50000, interestRate: 0.15, minNetWorth: 2500, automaticPayments: false, paymentAmount: 0, paymentFrequency: "" },
-  { name: "Elite Capital", funds: 75000, interestRate: 0.12, minNetWorth: 3000, automaticPayments: true, paymentAmount: 500, paymentFrequency: "biweekly" },
-  { name: "Opulent Investments", funds: 200000, interestRate: 0.08, minNetWorth: 15000, automaticPayments: true, paymentAmount: 2000, paymentFrequency: "monthly" },
-  { name: "Prosperity Lending", funds: 150000, interestRate: 0.11, minNetWorth: 55000, automaticPayments: false, paymentAmount: 0, paymentFrequency: "" },
-  { name: "Wealthy Trust", funds: 300000, interestRate: 0.07, minNetWorth: 250500, automaticPayments: true, paymentAmount: 1500, paymentFrequency: "monthly" },
-  { name: "Grandiose Bank", funds: 1000000, interestRate: 0.05, minNetWorth: 5000000, automaticPayments: true, paymentAmount: 5000, paymentFrequency: "monthly" },
-  { name: "Noble Finance", funds: 250000, interestRate: 0.09, minNetWorth: 800000, automaticPayments: true, paymentAmount: 1000, paymentFrequency: "biweekly" },
-  { name: "Luxe Lenders", funds: 400000, interestRate: 0.06, minNetWorth: 2000000, automaticPayments: true, paymentAmount: 2000, paymentFrequency: "monthly" },
-  { name: "Exquisite Funding", funds: 600000, interestRate: 0.04, minNetWorth: 20500100, automaticPayments: false, paymentAmount: 0, paymentFrequency: "" }
+  { id: "1", name: "Fortune Finance", funds: 100000, interestRate: 0.1, minNetWorth: 500, automaticPayments: true, paymentAmount: 50, paymentFrequency: "30" },
+  {  id: "2", name: "Prestige Bank", funds: 50000, interestRate: 0.15, minNetWorth: 2500, automaticPayments: false, paymentAmount: 100, paymentFrequency: "" },
+  {  id: "3", name: "Elite Capital", funds: 75000, interestRate: 0.12, minNetWorth: 3000, automaticPayments: true, paymentAmount: 25, paymentFrequency: "15" },
+  {  id: "4", name: "Opulent Investments", funds: 200000, interestRate: 0.08, minNetWorth: 15000, automaticPayments: true, paymentAmount: 50, paymentFrequency: "30" },
+  {  id: "5", name: "Prosperity Lending", funds: 150000, interestRate: 0.11, minNetWorth: 55000, automaticPayments: false, paymentAmount: 100, paymentFrequency: "" },
+  {  id: "6", name: "Wealthy Trust", funds: 300000, interestRate: 0.07, minNetWorth: 250500, automaticPayments: true, paymentAmount: 25, paymentFrequency: "15" },
+  {  id: "7", name: "Grandiose Bank", funds: 1000000, interestRate: 0.05, minNetWorth: 5000000, automaticPayments: true, paymentAmount: 50, paymentFrequency: "30" },
+  {  id: "8", name: "Noble Finance", funds: 250000, interestRate: 0.09, minNetWorth: 800000, automaticPayments: true, paymentAmount: 25, paymentFrequency: "15" },
+  {  id: "9", name: "Luxe Lenders", funds: 400000, interestRate: 0.06, minNetWorth: 2000000, automaticPayments: true, paymentAmount: 25, paymentFrequency: "30" },
+  {  id: "10", name: "Exquisite Funding", funds: 600000, interestRate: 0.04, minNetWorth: 20500100, automaticPayments: false, paymentAmount: 100, paymentFrequency: "" }
 ];
 
 function updateLenderDetails() {
@@ -632,9 +634,16 @@ function requestLoan() {
       // If the loan is approved, deduct the loan amount from the lender's funds and add it to the player's funds
       selectedLender.funds -= amount;
       addFunds(amount);
+      let lenderID = selectedLender.id;
+      let lenderPaymentFrequency = selectedLender.paymentFrequency;
+      let lenderInterestRate = selectedLender.interestRate;
+      let lenderPaymentAmount = selectedLender.paymentAmount;
+      let lenderAutomaticPayments = selectedLender.automaticPayments;
     
       // Start tracking repayment terms
-       console.log("amount 597   "+amount);
+       console.log("lenderAutomaticPayments 597   "+lenderAutomaticPayments);
+       console.log("lenderPaymentAmount 597   "+lenderPaymentAmount);
+       console.log("lenderInterestRate 597   "+lenderInterestRate);
       // Display success message or update UI elements
 
         // updateNetWorthDisplay();
@@ -648,6 +657,14 @@ function requestLoan() {
     console.log("Invalid loan request. Please enter a valid amount and select a lender.");
   }
 }
+
+
+newDayFunc(counterValue){
+
+
+}
+
+
 
 
 
