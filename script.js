@@ -109,7 +109,7 @@ function displayPortfolio() {
 function updateStockPrices() {
   // Loop through each company
 
-  let stockPrices;
+  //let stockPrices;
   
   for (const company of companies) {
     // Simulate market trends, news events, or simulated market behavior
