@@ -38,8 +38,6 @@ function getMarket() {
     return { name, price };
   });
 
-  // Now the updatedCompanies array contains the companies with the updated stock prices
-
   // You can use the updatedCompanies array in your code as needed
 
   return updatedCompanies;
@@ -92,6 +90,12 @@ function getStockPrice(companyName) {
 
 
 
+
+
+
+
+//// DISPLAY PORFTFOLIO
+
 function displayPortfolio() {
   // Clear the existing portfolio display
   const portfolioContainer = document.getElementById("portfolio-body");
@@ -140,12 +144,13 @@ function displayPortfolio() {
     portfolioContainer.appendChild(row);
   }
 
-
-
   // Display the total value of the portfolio
   const totalValueCell = document.getElementById("portfolio-total-value");
   totalValueCell.textContent = "$" + totalValue.toFixed(2);
 }
+
+
+/// UPDATE PRICES PART 2
 
 // Function to simulate trending market
 function simulateTrendingMarket() {
@@ -156,6 +161,9 @@ function simulateTrendingMarket() {
     const trend = Math.random() > 0.5 ? 1 : -1; // Positive or negative trend
     const trendChange = company.price * 0.02 * trend; // 2% change in price
     company.price += trendChange;
+    
+        stockPrices[company.name] = company.price;
+
   }
 
   // Randomly select a company
@@ -171,11 +179,15 @@ function simulateTrendingMarket() {
 }
 
 
+
+
+
+
+
+/// START UPDATE PRICES
 function updateStockPrices() {
   // Retrieve the stock prices from local storage
   const storedStockPrices = localStorage.getItem('stockPrices');
-
-
 
   // Parse the stored stock prices object
   let stockPrices = JSON.parse(storedStockPrices);
@@ -194,7 +206,7 @@ function updateStockPrices() {
     const randomChange = Math.random() * 0.1 - 0.05; // Random change between -5% and +5%
     const priceChange = company.price * randomChange;
     company.price += priceChange;
-
+ stockPrices[company.name] = company.price;
 
     // Example 2: Simulate trending market
 simulateTrendingMarket(); 
@@ -202,7 +214,6 @@ simulateTrendingMarket();
 
     // Save the updated company price in your data structure or storage mechanism
     // For example, you can store it in the stockPrices object
-    stockPrices[company.name] = company.price;
   }
 
 
@@ -220,7 +231,8 @@ if (Math.random() < 0.1) { // 10% chance of a news event
     if (Math.random() < newsChance) {
       const newsChange = company.price * (Math.random() * 0.05 + 0.05); // Random change between 5% and 10%
       company.price += newsChange;
-     const newsEvent = `News event: ${company.name} price changed by ${newsChange.toFixed(2)}%`;
+          stockPrices[company.name] = company.price;
+     const newsEvent = `Breaking News: ${company.name} price changed by ${newsChange.toFixed(2)}%`;
       addNewsEvent(newsEvent);
     }
   }
