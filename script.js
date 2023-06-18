@@ -198,11 +198,12 @@ if (Math.random() < 0.1) { // 10% chance of a news event
     const company = companies[randomCompanyIndex];
     const newsChance = Math.random() * 0.6 + 0.1; // Random chance between 10% and 70%
     if (Math.random() < newsChance) {
-      const newsChange = company.price * (Math.random() * 0.05 + 0.05); // Random change between 5% and 10%
+      const newsChange = company.price * (Math.random() * 0.05 + 0.8); // Random change between 5% and 10%
       company.price += newsChange;
       stockPrices[company.name] = company.price;
       const newsEvent = `Breaking News: ${company.name} price changed by ${newsChange.toFixed(2)}%`;
       addNewsEvent(newsEvent);
+      runCount = 0;
     }
   }
 }
@@ -773,7 +774,7 @@ if (lenderPaymentInfo && lenderPaymentInfo.automaticPayments && lenderPaymentInf
       // Start tracking repayment terms
 //       console.log("paymentToDeduct 597   "+paymentToDeduct);
 
-  if(eventDayCount > 30){
+  if(eventDayCount > 10){
     clearInterval(interval); // Clear the interval to stop updating stock prices
   openPopup("pause-popup");
   pauseGame(); // Pause the game
