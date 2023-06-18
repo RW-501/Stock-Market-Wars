@@ -592,6 +592,8 @@ function requestLoan() {
       // Start tracking repayment terms
       
       // Display success message or update UI elements
+calculateNetWorth(); 
+   updateNetWorthDisplay();
       console.log("Loan approved! Amount: $" + amount);
     } else {
       // Display error message or update UI elements
