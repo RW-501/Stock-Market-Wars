@@ -594,7 +594,7 @@ function requestLoan() {
       addFunds(amount);
     
       // Start tracking repayment terms
-       console.log("amount 44   "+amount);
+       console.log("amount 597   "+amount);
       // Display success message or update UI elements
 
          updateNetWorthDisplay();
