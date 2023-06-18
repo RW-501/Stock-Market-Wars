@@ -245,7 +245,7 @@ function createButton(text, onClick) {
 }
 
 
-let counterValue = 0;
+let counterValue = localStorage.getItem('counterValue') || 0;
 
 // Function to update the net worth display
 function updateNetWorthDisplay() {
@@ -259,7 +259,8 @@ function updateNetWorthDisplay() {
   document.getElementById("net-worth-value").textContent = `$${netWorth.toFixed(2)}`;
   
     counterValue++;
-
+localStorage.setItem('counterValue', JSON.stringify(counterValue));
+  
     const counter = document.getElementById("counter");
   counter.textContent = counterValue;
 
@@ -634,16 +635,22 @@ function requestLoan() {
       // If the loan is approved, deduct the loan amount from the lender's funds and add it to the player's funds
       selectedLender.funds -= amount;
       addFunds(amount);
-      let lenderID = selectedLender.id;
-      let lenderPaymentFrequency = selectedLender.paymentFrequency;
-      let lenderInterestRate = selectedLender.interestRate;
-      let lenderPaymentAmount = selectedLender.paymentAmount;
-      let lenderAutomaticPayments = selectedLender.automaticPayments;
-    
-      // Start tracking repayment terms
-       console.log("lenderAutomaticPayments 597   "+lenderAutomaticPayments);
-       console.log("lenderPaymentAmount 597   "+lenderPaymentAmount);
-       console.log("lenderInterestRate 597   "+lenderInterestRate);
+ 
+      
+// Create an object to store the lender payment information
+const lenderPaymentInfo = {
+  id: selectedLender.id,
+  borrowedAmount: amount,
+  paymentFrequency: selectedLender.paymentFrequency,
+  interestRate: selectedLender.interestRate,
+  paymentAmount: selectedLender.paymentAmount,
+  automaticPayments: selectedLender.automaticPayments,
+  startDay: counterValue
+};
+
+// Save the lender payment information to local storage
+localStorage.setItem('lenderPaymentInfo', JSON.stringify(lenderPaymentInfo));
+
       // Display success message or update UI elements
 
         // updateNetWorthDisplay();
@@ -660,7 +667,42 @@ function requestLoan() {
 
 
 function newDayFunc(counterValue){
+// Retrieve the lender payment information from local storage
+const lenderPaymentInfoString = localStorage.getItem('lenderPaymentInfo');
+const lenderPaymentInfo = JSON.parse(lenderPaymentInfoString);
 
+// Check if automaticPayments is true and paymentFrequency is valid
+if (lenderPaymentInfo && lenderPaymentInfo.automaticPayments && lenderPaymentInfo.paymentFrequency > 0) {
+  const paymentFrequency = lenderPaymentInfo.paymentFrequency;
+  const counterValue = parseInt(localStorage.getItem('counterValue')) || 0;
+
+  // Calculate the number of payment cycles based on paymentFrequency and counterValue
+  const paymentCycles = Math.floor(counterValue / paymentFrequency);
+
+  // Check if the borrower owes any payment
+  if (borrowedAmount < lenderPaymentInfo.paymentAmount) {
+    const paymentToDeduct = borrowedAmount;
+
+    // Deduct funds from available funds
+    deductFunds(paymentToDeduct);
+  } else {
+    // Calculate the total payment amount based on paymentCycles
+    const totalPaymentAmount = lenderPaymentInfo.paymentAmount * paymentCycles;
+
+    if (borrowedAmount < totalPaymentAmount) {
+      const paymentToDeduct = borrowedAmount;
+
+      // Deduct funds from available funds
+      deductFunds(paymentToDeduct);
+    } else {
+      // Handle the case when the borrower owes more than the total payment amount
+      // You can add your own logic here based on your requirements
+    }
+  }
+}
+
+      // Start tracking repayment terms
+       console.log("paymentToDeduct 597   "+paymentToDeduct);
 
 }
 
