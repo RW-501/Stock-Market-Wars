@@ -779,7 +779,7 @@ if (lenderPaymentInfo && lenderPaymentInfo.automaticPayments && lenderPaymentInf
       // Start tracking repayment terms
 //       console.log("paymentToDeduct 597   "+paymentToDeduct);
 
-  if(eventDayCount > 10){
+  if(eventDayCount > 30){
     clearInterval(interval); // Clear the interval to stop updating stock prices
   openPopup("pause-popup");
   pauseGame(); // Pause the game
