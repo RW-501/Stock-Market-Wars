@@ -813,7 +813,8 @@ function addNewsEvent(event) {
     newsItem.textContent = event;
     newsContent.prepend(newsItem); // Add the event to the top of the news content
     newsContent.scrollTop = 0; // Scroll to the top of the news content
-  });
+
+
   // Save the event to localStorage
   const savedEvents = JSON.parse(localStorage.getItem("savedEvents")) || [];
   savedEvents.push(event);
