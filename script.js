@@ -231,9 +231,42 @@ updateStockPricesUI();
   // updateNetWorthDisplay();
 }
 
+// Open the stock popup and populate it with the company details
+function openStockPopup(company) {
+  const stockPopup = document.getElementById("stock-popup");
+  const stockPopupTitle = document.getElementById("stock-popup-title");
+  const stockPopupPrice = document.getElementById("stock-popup-price");
+  const stockPopupQuantity = document.getElementById("stock-popup-quantity");
+  const stockPopupInput = document.getElementById("stock-popup-input");
+  const stockPopupBuy = document.getElementById("stock-popup-buy");
+  const stockPopupSell = document.getElementById("stock-popup-sell");
+  const stockPopupCash = document.getElementById("stock-popup-cash");
+
+  stockPopupTitle.textContent = company.name;
+  stockPopupPrice.textContent = `Price: $${company.price.toFixed(2)}`;
+  stockPopupQuantity.textContent = `Own: ${company.quantity}`;
+  stockPopupInput.value = "";
+  stockPopupCash.textContent = `Cash: $${getCash().toFixed(2)}`;
+
+  stockPopupBuy.addEventListener("click", () => buyStock(company.name, parseInt(stockPopupInput.value)));
+  stockPopupSell.addEventListener("click", () => sellStock(company.name, parseInt(stockPopupInput.value)));
+
+  openPopup("stock-popup");
+}
+
+// Close the stock popup and remove event listeners
+function closeStockPopup() {
+  const stockPopupBuy = document.getElementById("stock-popup-buy");
+  const stockPopupSell = document.getElementById("stock-popup-sell");
+
+  stockPopupBuy.removeEventListener("click", buyStock);
+  stockPopupSell.removeEventListener("click", sellStock);
+
+  closePopup("stock-popup");
+}
 
 
-// Function to update the stock prices in the user interface
+// Function to update the UI for stock prices
 function updateStockPricesUI() {
   const stocksTableBody = document.getElementById("stocks-table-body");
 
@@ -242,7 +275,7 @@ function updateStockPricesUI() {
 
   // Loop through each company and update the price and buttons in the UI
   companies.forEach((company) => {
-    const { name, price } = company;
+    const { name, price, quantity } = company;
 
     // Create a new row for the company
     const row = document.createElement("tr");
@@ -250,26 +283,27 @@ function updateStockPricesUI() {
     // Create cells for company name, price, buy button, and sell button
     const nameCell = document.createElement("td");
     nameCell.textContent = name;
+    nameCell.addEventListener("click", () => openStockPopup(company));
     row.appendChild(nameCell);
 
     const priceCell = document.createElement("td");
-    priceCell.textContent = "$"+price.toFixed(2);
+    priceCell.textContent = "$" + price.toFixed(2);
+    priceCell.addEventListener("click", () => openStockPopup(company));
     row.appendChild(priceCell);
-
+/*
     const buyButtonCell = document.createElement("td");
-    const buyButton = createButton("Buy", () => buyStock(name));
+    const buyButton = createButton("Buy", () => openStockPopup(company));
     buyButtonCell.appendChild(buyButton);
     row.appendChild(buyButtonCell);
 
     const sellButtonCell = document.createElement("td");
-    const sellButton = createButton("Sell", () => sellStock(name));
+    const sellButton = createButton("Sell", () => openStockPopup(company));
     sellButtonCell.appendChild(sellButton);
     row.appendChild(sellButtonCell);
-
+*/
     // Append the row to the table body
     stocksTableBody.appendChild(row);
   });
-     updateNetWorthDisplay();
 }
 
 // Helper function to create a button element with a specific text and click event handler
@@ -279,7 +313,6 @@ function createButton(text, onClick) {
   button.addEventListener("click", onClick);
   return button;
 }
-
 
 let counterValue = localStorage.getItem('counterValue') || 0;
 
