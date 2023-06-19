@@ -361,8 +361,8 @@ var intervalId;
 
 function startUITimer(){
   clearInterval(intervalId);
-   intervalId = setInterval(openStockPopup() => {
-
+   intervalId = setInterval(() => {
+openStockPopup();
   }, 5000);
 }
   let theCompany;
