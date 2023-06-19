@@ -91,7 +91,13 @@ function getStockPrice(companyName) {
 
 
 
+function isOdd(number) {
+  return number % 2 === 1;
+}
+var counterValue = localStorage.getItem('counterValue') || 0;
 
+
+var runCount = 0;
 
 
 //// DISPLAY PORFTFOLIO
@@ -148,13 +154,7 @@ function displayPortfolio() {
   const totalValueCell = document.getElementById("portfolio-total-value");
   totalValueCell.textContent = "$" + totalValue.toFixed(2);
 }
-function isOdd(number) {
-  return number % 2 === 1;
-}
-var counterValue = localStorage.getItem('counterValue') || 0;
 
-
-var runCount = 0;
 
 /// START UPDATE PRICES
 function updateStockPrices() {
