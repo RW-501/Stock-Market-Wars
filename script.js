@@ -294,6 +294,8 @@ function updateStockPricesUI() {
 
     // Append the row to the table body
     stocksTableBody.appendChild(row);
+
+    updateNetWorthDisplay();
   });
 }
 
