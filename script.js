@@ -425,6 +425,7 @@ function updateStockPricesUI() {
 }
 
 function timeAndDateFunc() {
+  counterValue++;
 localStorage.setItem('counterValue', JSON.stringify(counterValue));
   
     const counter = document.getElementById("counter");
