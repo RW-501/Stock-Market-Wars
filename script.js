@@ -1075,14 +1075,14 @@ function pauseGame() {
 
 
 
-var newOpen = false;
+var newsOpen = false;
 // Function to open the specified popup window
 function openPopup(popupId) {
-if(popupId ==="portfolio-popup" ||popupId === "news-popup" &&   newOpen === false || popupId ==="bank-popup"|| popupId ==="stock-popup" ){
+if(popupId ==="portfolio-popup"  &&   newsOpen === false ||popupId === "news-popup" &&   newsOpen === false || popupId ==="bank-popup"  &&   newsOpen === false || popupId ==="stock-popup"  &&   newsOpen === false){
     var popup = document.getElementById(popupId);
   popup.style.display = "block";
-    if(popupId === "news-popup" &&   newOpen === true){
-  newOpen = true;
+    if(popupId === "news-popup" &&   newsOpen === true){
+  newsOpen = true;
 
     }
   /*
@@ -1108,7 +1108,7 @@ if(popupId ==="portfolio-popup" ||popupId === "news-popup" || popupId ==="bank-p
     clearInterval(interval); // Clear the interval to stop updating stock prices
   interval = setInterval(updateStockPrices, 5000); // Restart the interval to resume updating stock prices
   console.log("closePopup");
-      if(popupId === "news-popup" &&   newOpen === true){
+      if(popupId === "news-popup" &&   newsOpen === true){
   newOpen = false;
 
     }
