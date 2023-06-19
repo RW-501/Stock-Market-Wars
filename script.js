@@ -365,6 +365,8 @@ function openStockPopup(company) {
  intervalId = setInterval(() => {
 const stockPrices = getStockPrices(company.name);
 generateStockChart(stockPrices);
+     const stockPopupPrice = document.getElementById("stock-popup-price");
+  stockPopupPrice.textContent = `Price: $${company.price.toFixed(2)}`;
 }, 5000);
 
 
@@ -435,12 +437,7 @@ function updateStockPricesUI() {
 
   });
 }
-function updateStockPrices(company) {
 
-
-  const stockPopupPrice = document.getElementById("stock-popup-price");
-  stockPopupPrice.textContent = `Price: $${company.price.toFixed(2)}`;
-}
 function timeAndDateFunc() {
 localStorage.setItem('counterValue', JSON.stringify(counterValue));
   
