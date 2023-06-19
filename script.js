@@ -54,7 +54,7 @@ function saveStockPrices(xxx) {
   // Convert the updatedStockData to an array of objects
   const stockData = Object.entries(data).map(([name, price]) => ({ name, price }));
 
-  console.log("stockData   " + stockData);
+  //console.log("stockData   " + stockData);
 
   // Retrieve the existing stock prices from local storage or initialize an empty object
   const storedStockPrices = JSON.parse(localStorage.getItem('stockPrices')) || {};
@@ -81,7 +81,6 @@ function saveStockPrices(xxx) {
 
   console.log("storedStockPrices   " + JSON.stringify(storedStockPrices));
 
-  generateStockChart(storedStockPrices);
 
   // Save the updated stock prices to local storage
   localStorage.setItem('stockPrices', JSON.stringify(storedStockPrices));
