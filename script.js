@@ -51,7 +51,7 @@ var companies = getMarket();
 
 function saveStockPrices(xxx) {
 
-  let updatedStockData = stringify(xxx);
+  let updatedStockData = JSON.stringify(xxx);
   
 // Convert the updatedStockData to an array of objects
 const stockData = Object.entries(updatedStockData).map(([name, price]) => ({ name, price }));
