@@ -50,10 +50,14 @@ var companies = getMarket();
 
 
 function saveStockPrices(stockData) {
+
+const updatedStockData = JSON.parse(stockData);
+// Convert the updatedStockData to an array of objects
+const stockData = Object.entries(updatedStockData).map(([name, price]) => ({ name, price }));
+
+  
   // Retrieve the existing stock prices from local storage or initialize an empty object
   const storedStockPrices = JSON.parse(localStorage.getItem('stockPrices')) || {};
-
-
   console.log("stockData   "+stockData);
   
   // Update the stock prices for each stock in the stockData array
