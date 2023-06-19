@@ -72,7 +72,7 @@ function saveStockPrices(xxx) {
     lastSevenPrices.push(price);
 
     // Limit the array to store only the last 7 prices
-    if (lastSevenPrices.length > 7) {
+    if (lastSevenPrices.length > 10) {
       lastSevenPrices.shift();
     }
 
@@ -134,6 +134,7 @@ function generateStockChart(stockData) {
   ctx.lineWidth = 2;
   ctx.stroke();
 }
+
 
 function getStockPrices(stockName) {
   // Retrieve the stored stock prices from local storage
