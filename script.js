@@ -48,57 +48,43 @@ function getMarket() {
 var companies = getMarket();
 //console.log(companies);
 
-
 function saveStockPrices(xxx) {
+  let data = JSON.parse(JSON.stringify(xxx));
 
-//  let updatedStockData = JSON.stringify(xxx);
-    let data = JSON.parse(JSON.stringify(xxx));
+  // Convert the updatedStockData to an array of objects
+  const stockData = Object.entries(data).map(([name, price]) => ({ name, price }));
 
-// Convert the updatedStockData to an array of objects
-const stockData = Object.entries(data).map(([name, price]) => ({ name, price }));
-
-  
-//   console.log("updatedStockData   "+JSON.stringify(updatedStockData));
-   //console.log("stockData   "+JSON.stringify(stockData));
-
-  console.log("stockData   "+stockData);
-
+  console.log("stockData   " + stockData);
 
   // Retrieve the existing stock prices from local storage or initialize an empty object
   const storedStockPrices = JSON.parse(localStorage.getItem('stockPrices')) || {};
-  
-  //console.log("stockData  json "+JSON.parse(stockData));
 
-  
-  ///console.log("data   "+data);
-
-  
   // Update the stock prices for each stock in the stockData array
   stockData.forEach(stock => {
     const { name, price } = stock;
-    const lastSevenPrices = storedStockPrices[name] || [];
-    lastSevenPrices.push(price);
+    let lastSevenPrices = storedStockPrices[name] || [];
 
     // Ensure lastSevenPrices is an array
-  if (!Array.isArray(lastSevenPrices)) {
-    lastSevenPrices = [];
-  }
+    if (!Array.isArray(lastSevenPrices)) {
+      lastSevenPrices = [];
+    }
 
-  lastSevenPrices.push(price);
+    lastSevenPrices.push(price);
 
-  // Limit the array to store only the last 7 prices
-  if (lastSevenPrices.length > 7) {
-    lastSevenPrices.shift();
-  }
+    // Limit the array to store only the last 7 prices
+    if (lastSevenPrices.length > 7) {
+      lastSevenPrices.shift();
+    }
 
-  storedStockPrices[name] = lastSevenPrices;
-});
+    storedStockPrices[name] = lastSevenPrices;
+  });
 
-    console.log("storedStockPrices   "+storedStockPrices);
+  console.log("storedStockPrices   " + JSON.stringify(storedStockPrices));
 
- generateStockChart(storedStockPrices);
-// Save the updated stock prices to local storage
-localStorage.setItem('stockPrices', JSON.stringify(storedStockPrices));
+  generateStockChart(storedStockPrices);
+
+  // Save the updated stock prices to local storage
+  localStorage.setItem('stockPrices', JSON.stringify(storedStockPrices));
 }
 
 
