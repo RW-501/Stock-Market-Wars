@@ -343,13 +343,17 @@ updateStockPricesUI();
    timeAndDateFunc();
 }
 
+
 // Open the stock popup and populate it with the company details
 function openStockPopup(company) {
 
+
+
+setInterval(() => {
 const stockPrices = getStockPrices(company.name);
-  console.log("company 44   "+company.name);
-console.log("stockPrices ????????????????????????????//  " +stockPrices); // Array of the last 7 stock prices for "TechCom"
 generateStockChart(stockPrices);
+  
+}, 5000);
   
   const stockPopup = document.getElementById("stock-popup");
   const stockPopupTitle = document.getElementById("stock-popup-title");
@@ -417,7 +421,13 @@ function updateStockPricesUI() {
 
   });
 }
+function updateStockPrices(company) {
+  const stockPrices = getStockPrices(company.name);
+  generateStockChart(stockPrices);
 
+  const stockPopupPrice = document.getElementById("stock-popup-price");
+  stockPopupPrice.textContent = `Price: $${company.price.toFixed(2)}`;
+}
 function timeAndDateFunc() {
 localStorage.setItem('counterValue', JSON.stringify(counterValue));
   
