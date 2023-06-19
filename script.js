@@ -57,8 +57,6 @@ function saveStockPrices(xxx) {
   // Convert the updatedStockData to an array of objects
   const stockData = Object.entries(data).map(([name, price]) => ({ name, price }));
 
-  //console.log("stockData   " + stockData);
-
   // Retrieve the existing stock prices from local storage or initialize an empty object
   const storedStockPrices = JSON.parse(localStorage.getItem('stockPrices7Day')) || {};
 
@@ -72,22 +70,20 @@ function saveStockPrices(xxx) {
       lastSevenPrices = [];
     }
 
-    lastSevenPrices.push(price);
+    lastSevenPrices.push(price.toFixed(2)); // Round the price to two decimal places
 
     // Limit the array to store only the last 7 prices
-    if (lastSevenPrices.length > 10) {
+    if (lastSevenPrices.length > 12) {
       lastSevenPrices.shift();
     }
 
     storedStockPrices[name] = lastSevenPrices;
   });
 
- // console.log("storedStockPrices   " + JSON.stringify(storedStockPrices));
-
-
   // Save the updated stock prices to local storage
   localStorage.setItem('stockPrices7Day', JSON.stringify(storedStockPrices));
 }
+
 
 
 function getStockPrices(stockName) {
@@ -328,14 +324,17 @@ if (Math.random() < 0.1) { // 10% chance of a news event
       const isPositiveChange = Math.random() < 0.5; // 50% chance of positive change
       const changePercentage = Math.min(newsChangePercentage, 30); // Limit change to 30%
       const newsChange = (isPositiveChange ? 1 : -1) * (company.price * (changePercentage / 100));
-      company.price += newsChange;
-      stockPrices[company.name] = company.price;
-       const isPositiveLabel = ${isPositiveChange ? 'increased' : 'decreased'};
-            console.log("isPositiveLabel    " + isPositiveLabel); 
+company.price += newsChange;
+stockPrices[company.name] = company.price;
+const isPositiveChange = newsChange >= 0;
+const changePercentage = (newsChange / company.price) * 100;
+const isPositiveLabel = isPositiveChange ? 'increased' : 'decreased';
+     const changePercentageFormatted =    `${Math.abs(changePercentage).toFixed(2)}%`;
 
-      const newsEvent = `Breaking News: ${company.name} price ${isPositiveChange ? 'increased' : 'decreased'} by ${Math.abs(changePercentage).toFixed(2)}%`;
-      addNewsEvent(newsEvent);
-      console.log("newsEvent    " + newsEvent); 
+const newsEvent = `Breaking News: ${company.name} price ${isPositiveLabel} by ${Math.abs(changePercentage).toFixed(2)}%`;
+addNewsEvent(newsEvent);
+console.log("newsEvent    " + newsEvent);
+
     }
   }
 }
