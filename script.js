@@ -425,8 +425,12 @@ function updateStockPricesUI() {
 }
 
 function timeAndDateFunc() {
-  counterValue++;
-localStorage.setItem('counterValue', JSON.stringify(counterValue));
+
+  if(counterValue == null){
+    counterValue = 0;)else{
+     counterValue++;
+  }
+  localStorage.setItem('counterValue', JSON.stringify(counterValue));
   
     const counter = document.getElementById("counter");
 
@@ -439,7 +443,6 @@ if (counterValue > 365) {
 } else {
   counter.textContent = `${counterValue} days`;
 }
-   counterValue++;
 updateNetWorthDisplay();
 
 }
