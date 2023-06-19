@@ -226,7 +226,7 @@ if (Math.random() < 0.1) { // 10% chance of a news event
 
   // Update the stock prices in the user interface
 updateStockPricesUI();
-   updateNetWorthDisplay();
+   timeAndDateFunc();
 }
 
 // Open the stock popup and populate it with the company details
@@ -298,6 +298,23 @@ function updateStockPricesUI() {
   });
 }
 
+function timeAndDateFunc() {
+localStorage.setItem('counterValue', JSON.stringify(counterValue));
+  
+    const counter = document.getElementById("counter");
+
+  
+if (counterValue > 365) {
+  const years = Math.floor(counterValue / 365);
+  const remainingDays = counterValue % 365;
+  counter.textContent = `${years} years, ${remainingDays} days`;
+  // Show reminder or perform any other actions
+} else {
+  counter.textContent = `${counterValue} days`;
+}
+updateNetWorthDisplay();
+
+}
 
 
 // Function to update the net worth display
@@ -312,19 +329,6 @@ function updateNetWorthDisplay() {
 document.getElementById("net-worth-value").textContent = `$${netWorth.toFixed(2).toLocaleString()}`;
       counterValue++;
 
-localStorage.setItem('counterValue', JSON.stringify(counterValue));
-  
-    const counter = document.getElementById("counter");
-
-  
-if (counterValue > 365) {
-  const years = Math.floor(counterValue / 365);
-  const remainingDays = counterValue % 365;
-  counter.textContent = `${years} years, ${remainingDays} days`;
-  // Show reminder or perform any other actions
-} else {
-  counter.textContent = `${counterValue} days`;
-}
 
 
   newDayFunc(counterValue);
@@ -510,7 +514,6 @@ function deductFunds(amount) {
   localStorage.setItem('availableFunds', newFunds.toString());
        updateNetWorthDisplay();
 }
-
 
 
 
@@ -820,6 +823,7 @@ function addNewsEvent(event) {
   const savedEvents = JSON.parse(localStorage.getItem("savedEvents")) || [];
   savedEvents.push(event);
   localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
+  updateNetWorthDisplay();
 }
 
 
