@@ -115,11 +115,11 @@ function generateStockChart(stockData) {
   const marginRight = 10;
 
   // Calculate the maximum and minimum values of the stock data
-  const maxValue = Math.max(...stockData);
-  const minValue = Math.min(...stockData);
+  const maxPrice = Math.max(...stockData.map(item => item.price));
+  const minPrice = Math.min(...stockData.map(item => item.price));
 
   // Calculate the height of each data point on the chart
-  const dataHeight = (chartHeight - marginTop - marginBottom) / (maxValue - minValue);
+  const dataHeight = (chartHeight - marginTop - marginBottom) / (maxPrice - minPrice);
 
   // Calculate the width of each data point on the chart
   const dataWidth = (chartWidth - marginLeft - marginRight) / (stockData.length - 1);
@@ -138,10 +138,10 @@ function generateStockChart(stockData) {
 
   // Draw the data points on the chart
   ctx.beginPath();
-  ctx.moveTo(marginLeft, chartHeight - marginBottom - (stockData[0] - minValue) * dataHeight);
+  ctx.moveTo(marginLeft, chartHeight - marginBottom - (stockData[0].price - minPrice) * dataHeight);
   for (let i = 1; i < stockData.length; i++) {
     const x = marginLeft + i * dataWidth;
-    const y = chartHeight - marginBottom - (stockData[i] - minValue) * dataHeight;
+    const y = chartHeight - marginBottom - (stockData[i].price - minPrice) * dataHeight;
     ctx.lineTo(x, y);
   }
   ctx.strokeStyle = "blue";
