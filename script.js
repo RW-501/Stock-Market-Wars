@@ -1064,8 +1064,8 @@ function pauseGame() {
 // Function to open the specified popup window
 function openPopup(popupId) {
 if(popupId =="portfolio-popup" || popupId =="bank-popup"|| popupId =="stock-popup" ){}else{
-    clearInterval(interval); // Clear the interval to stop updating stock prices
-
+ //   clearInterval(interval); // Clear the interval to stop updating stock prices
+  console.log("openPopup");
 }
   
   var popup = document.getElementById(popupId);
@@ -1075,9 +1075,9 @@ if(popupId =="portfolio-popup" || popupId =="bank-popup"|| popupId =="stock-popu
 // Function to close the specified popup window
 function closePopup(popupId) {
   if(popupId =="portfolio-popup" || popupId =="bank-popup"|| popupId =="stock-popup" ){}else{
-    clearInterval(interval); // Clear the interval to stop updating stock prices
-  interval = setInterval(updateStockPrices, 5000); // Restart the interval to resume updating stock prices
-
+ //   clearInterval(interval); // Clear the interval to stop updating stock prices
+//  interval = setInterval(updateStockPrices, 5000); // Restart the interval to resume updating stock prices
+  console.log("closePopup");
   var popup = document.getElementById(popupId);
   popup.style.display = "none";
 }
