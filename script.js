@@ -312,6 +312,7 @@ if (counterValue > 365) {
 } else {
   counter.textContent = `${counterValue} days`;
 }
+   counterValue++;
 updateNetWorthDisplay();
 
 }
@@ -327,7 +328,7 @@ function updateNetWorthDisplay() {
   totalCashCell.textContent = "$" +  `${cash.toFixed(2)}`;
   // Update the net worth value in the UI
 document.getElementById("net-worth-value").textContent = `$${netWorth.toFixed(2).toLocaleString()}`;
-      counterValue++;
+     
 
 
 
