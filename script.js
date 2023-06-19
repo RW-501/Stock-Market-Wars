@@ -683,8 +683,11 @@ function updateLenderOptions() {
     document.getElementById("lender-Max").textContent = "";
     document.getElementById("lender-Rate").textContent = "";
   }
-}
 */
+
+  
+}
+
 
 // Function to request a loan
 function requestLoan() {
