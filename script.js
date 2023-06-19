@@ -324,15 +324,22 @@ if (Math.random() < 0.1) { // 10% chance of a news event
     const company = companies[randomCompanyIndex];
     const newsChance = Math.random() * 0.6 + 0.1; // Random chance between 10% and 70%
     if (Math.random() < newsChance) {
-      const newsChange = company.price * (Math.random() * 0.05 + 0.5); // Random change between 5% and 10%
+      const newsChangePercentage = (Math.random() * 0.05 + 0.5) * 100; // Random change between 5% and 10%
+      const isPositiveChange = Math.random() < 0.5; // 50% chance of positive change
+      const changePercentage = Math.min(newsChangePercentage, 30); // Limit change to 30%
+      const newsChange = (isPositiveChange ? 1 : -1) * (company.price * (changePercentage / 100));
       company.price += newsChange;
       stockPrices[company.name] = company.price;
-      const newsEvent = `Breaking News: ${company.name} price changed by ${newsChange.toFixed(2)}%`;
+       const isPositiveLabel = ${isPositiveChange ? 'increased' : 'decreased'};
+            console.log("isPositiveLabel    " + isPositiveLabel); 
+
+      const newsEvent = `Breaking News: ${company.name} price ${isPositiveChange ? 'increased' : 'decreased'} by ${Math.abs(changePercentage).toFixed(2)}%`;
       addNewsEvent(newsEvent);
-      console.log("newsEvent    "+newsEvent); 
+      console.log("newsEvent    " + newsEvent); 
     }
   }
 }
+
 
   }
    
@@ -358,27 +365,24 @@ updateStockPricesUI();
 var intervalId;
 let theCompany;
 
-function startUITimer(){
+function startUITimer() {
   clearInterval(intervalId);
-   intervalId = setInterval(() => {
-openStockPopup();
+  intervalId = setTimeout(() => {
+    openStockPopup();
   }, 5000);
 }
-  
+
 // Open the stock popup and populate it with the company details
-function openStockPopup(xxx) {
+function openStockPopup() {
+ // console.log("company.name   " + theCompany.name);
 
-   theCompany = xxx;
-  console.log("company.name   "+theCompany.name); 
+  const stockPrices = getStockPrices(theCompany.name);
+  console.log("stockPrices xxxx   " + stockPrices);
 
-    const stockPrices = getStockPrices(theCompany.name);
-    console.log("stockPrices xxxx   "+stockPrices); 
+  generateStockChart(stockPrices);
 
-    generateStockChart(stockPrices);
+  startUITimer();
 
-
-  //clearInterval(intervalId);
-//startUITimer();
   
   const stockPopup = document.getElementById("stock-popup");
   const stockPopupTitle = document.getElementById("stock-popup-title");
