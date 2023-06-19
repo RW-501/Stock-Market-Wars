@@ -220,7 +220,7 @@ function isOdd(number) {
 
 
 //// DISPLAY PORFTFOLIO
-/*
+
 function displayPortfolio() {
   // Clear the existing portfolio display
   const portfolioContainer = document.getElementById("portfolio-body");
@@ -274,7 +274,7 @@ function displayPortfolio() {
   totalValueCell.textContent = "$" + totalValue.toFixed(2);
 }
 
-*/
+
 /// START UPDATE PRICES
 function updateStockPrices() {
   // Retrieve the stock prices from local storage
@@ -311,7 +311,7 @@ let randomNum = Math.floor(Math.random() * 100) + 1;
 //console.log("randomNum   "+randomNum); 
    if(isOdd(randomNum)  == true){
  
-    /*
+    
 if (Math.random() < 0.1) { // 10% chance of a news event
   const numCompaniesAffected = Math.floor(Math.random() * 2) + 1; // Randomly select 1 to 2 companies
   for (let i = 0; i < numCompaniesAffected; i++) {
@@ -334,7 +334,7 @@ if (Math.random() < 0.1) { // 10% chance of a news event
     }
   }
 }
-*/
+
 
 
 
@@ -370,7 +370,9 @@ function startUITimer() {
 }
 
 // Open the stock popup and populate it with the company details
-function openStockPopup() {
+function openStockPopup(xxx) {
+
+  theCompany = xxx;
  // console.log("company.name   " + theCompany.name);
 
   const stockPrices = getStockPrices(theCompany.name);
