@@ -343,17 +343,17 @@ updateStockPricesUI();
    timeAndDateFunc();
 }
 
+var intervalId;
 
 // Open the stock popup and populate it with the company details
 function openStockPopup(company) {
 
-
-
-setInterval(() => {
+ intervalId = setInterval(() => {
 const stockPrices = getStockPrices(company.name);
 generateStockChart(stockPrices);
-  
 }, 5000);
+
+
   
   const stockPopup = document.getElementById("stock-popup");
   const stockPopupTitle = document.getElementById("stock-popup-title");
@@ -383,7 +383,7 @@ function closeStockPopup() {
 
   stockPopupBuy.removeEventListener("click", buyStock);
   stockPopupSell.removeEventListener("click", sellStock);
-
+clearInterval(intervalId);
   closePopup("stock-popup");
 }
 
