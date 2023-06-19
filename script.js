@@ -65,17 +65,23 @@ const stockData = Object.entries(updatedStockData).map(([name, price]) => ({ nam
     const lastSevenPrices = storedStockPrices[name] || [];
     lastSevenPrices.push(price);
 
-    // If the number of stored prices exceeds 7, remove the oldest price
-    if (lastSevenPrices.length > 7) {
-      lastSevenPrices.shift();
-    }
+    // Ensure lastSevenPrices is an array
+  if (!Array.isArray(lastSevenPrices)) {
+    lastSevenPrices = [];
+  }
 
-    // Update the stored stock prices for the stock
-    storedStockPrices[name] = lastSevenPrices;
-  });
+  lastSevenPrices.push(price);
 
-  // Save the updated stock prices to local storage
-  localStorage.setItem('stockPrices', JSON.stringify(storedStockPrices));
+  // Limit the array to store only the last 7 prices
+  if (lastSevenPrices.length > 7) {
+    lastSevenPrices.shift();
+  }
+
+  storedStockPrices[name] = lastSevenPrices;
+});
+
+// Save the updated stock prices to local storage
+localStorage.setItem('stockPrices', JSON.stringify(storedStockPrices));
 }
 function generateStockChart(stockData) {
   const canvas = document.getElementById("stock-chart");
