@@ -368,12 +368,13 @@ openStockPopup();
   let theCompany;
 // Open the stock popup and populate it with the company details
 function openStockPopup(xxx) {
+  console.log("company xxxx   "+xxx); 
+
   if(xxx){ 
   theCompany = xxx;
   }
     const stockPrices = getStockPrices(theCompany.name);
     generateStockChart(stockPrices);
-console.log("company xxxx   "+xxx); 
 console.log("company.name   "+theCompany.name); 
 
 
