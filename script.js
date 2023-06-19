@@ -107,19 +107,19 @@ function generateStockChart(stockData) {
   const ctx = canvas.getContext("2d");
 
   // Define the chart dimensions and margins
-  const chartWidth = canvas.width - 20;
-  const chartHeight = canvas.height - 20;
-  const marginTop = 10;
-  const marginBottom = 10;
-  const marginLeft = 10;
-  const marginRight = 10;
+  const chartWidth = canvas.width - 40;
+  const chartHeight = canvas.height - 40;
+  const marginTop = 20;
+  const marginBottom = 20;
+  const marginLeft = 20;
+  const marginRight = 20;
 
   // Calculate the maximum and minimum values of the stock data
-  const maxPrice = Math.max(...stockData.map(item => item.price));
-  const minPrice = Math.min(...stockData.map(item => item.price));
+  const maxValue = Math.max(...stockData);
+  const minValue = Math.min(...stockData);
 
   // Calculate the height of each data point on the chart
-  const dataHeight = (chartHeight - marginTop - marginBottom) / (maxPrice - minPrice);
+  const dataHeight = (chartHeight - marginTop - marginBottom) / (maxValue - minValue);
 
   // Calculate the width of each data point on the chart
   const dataWidth = (chartWidth - marginLeft - marginRight) / (stockData.length - 1);
@@ -127,27 +127,51 @@ function generateStockChart(stockData) {
   // Clear the canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+  // Draw the chart background
+  ctx.fillStyle = "#f2f2f2";
+  ctx.fillRect(marginLeft, marginTop, chartWidth, chartHeight);
+
   // Draw the chart axes
   ctx.beginPath();
   ctx.moveTo(marginLeft, marginTop);
   ctx.lineTo(marginLeft, chartHeight - marginBottom);
-  ctx.lineTo(chartWidth - marginRight, chartHeight - marginBottom);
-  ctx.strokeStyle = "black";
+  ctx.lineTo(chartWidth + marginLeft, chartHeight - marginBottom);
+  ctx.strokeStyle = "rgba(0, 0, 0, 0.3)";
   ctx.lineWidth = 1;
   ctx.stroke();
 
   // Draw the data points on the chart
   ctx.beginPath();
-  ctx.moveTo(marginLeft, chartHeight - marginBottom - (stockData[0].price - minPrice) * dataHeight);
+  ctx.moveTo(marginLeft, chartHeight - marginBottom - (stockData[0] - minValue) * dataHeight);
   for (let i = 1; i < stockData.length; i++) {
     const x = marginLeft + i * dataWidth;
-    const y = chartHeight - marginBottom - (stockData[i].price - minPrice) * dataHeight;
+    const y = chartHeight - marginBottom - (stockData[i] - minValue) * dataHeight;
     ctx.lineTo(x, y);
   }
-  ctx.strokeStyle = "blue";
+  ctx.strokeStyle = "#007bff";
   ctx.lineWidth = 2;
   ctx.stroke();
+
+  // Draw the data point markers
+  ctx.fillStyle = "#007bff";
+  for (let i = 0; i < stockData.length; i++) {
+    const x = marginLeft + i * dataWidth;
+    const y = chartHeight - marginBottom - (stockData[i] - minValue) * dataHeight;
+    ctx.beginPath();
+    ctx.arc(x, y, 3, 0, 2 * Math.PI);
+    ctx.fill();
+  }
+
+  // Add labels to the axes
+  ctx.font = "12px Arial";
+  ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+  ctx.textAlign = "center";
+  ctx.fillText("Date", canvas.width / 2, chartHeight + marginBottom - 5);
+  ctx.textAlign = "right";
+  ctx.fillText(maxValue.toFixed(2), marginLeft - 5, marginTop + 12);
+  ctx.fillText(minValue.toFixed(2), marginLeft - 5, chartHeight - marginBottom + 12);
 }
+
 
 
 
