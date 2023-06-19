@@ -80,9 +80,15 @@ const stockData = Object.entries(updatedStockData).map(([name, price]) => ({ nam
   storedStockPrices[name] = lastSevenPrices;
 });
 
+    console.log("storedStockPrices   "+storedStockPrices);
+
+ generateStockChart(storedStockPrices);
 // Save the updated stock prices to local storage
 localStorage.setItem('stockPrices', JSON.stringify(storedStockPrices));
 }
+
+
+
 function generateStockChart(stockData) {
   const canvas = document.getElementById("stock-chart");
   const ctx = canvas.getContext("2d");
