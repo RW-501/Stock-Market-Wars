@@ -376,6 +376,8 @@ function openStockPopup(xxx) {
   console.log("company.name   "+theCompany.name); 
 
     const stockPrices = getStockPrices(theCompany.name);
+    console.log("stockPrices xxxx   "+stockPrices); 
+
     generateStockChart(stockPrices);
 
 
