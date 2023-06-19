@@ -370,9 +370,9 @@ openStockPopup();
 function openStockPopup(xxx) {
   console.log("company xxxx   "+xxx); 
 
-  if(xxx){ 
+
   theCompany = xxx;
-  }
+  
   console.log("company.name   "+theCompany.name); 
 
     const stockPrices = getStockPrices(theCompany.name);
