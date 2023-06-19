@@ -66,6 +66,7 @@ h1 {
   gap: 10px;
   justify-content: center;
   margin-bottom: 20px;
+  overflow-x: auto;
 }
 
 .buttons button {
@@ -200,6 +201,7 @@ font-size: 30px;
     width: auto;
     overflow-y: scroll;
     padding: 5%;
+  block-size: auto;
 }
 
 
