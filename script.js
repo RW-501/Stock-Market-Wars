@@ -427,7 +427,7 @@ function updateStockPricesUI() {
 function timeAndDateFunc() {
 
   if(counterValue == null){
-    counterValue = 0;)else{
+    counterValue = 0;}else{
      counterValue++;
   }
   localStorage.setItem('counterValue', JSON.stringify(counterValue));
