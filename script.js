@@ -220,7 +220,7 @@ function isOdd(number) {
 
 
 //// DISPLAY PORFTFOLIO
-
+/*
 function displayPortfolio() {
   // Clear the existing portfolio display
   const portfolioContainer = document.getElementById("portfolio-body");
@@ -274,7 +274,7 @@ function displayPortfolio() {
   totalValueCell.textContent = "$" + totalValue.toFixed(2);
 }
 
-
+*/
 /// START UPDATE PRICES
 function updateStockPrices() {
   // Retrieve the stock prices from local storage
