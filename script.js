@@ -326,13 +326,13 @@ if (Math.random() < 0.1) { // 10% chance of a news event
       const newsChange = (isPositiveChange ? 1 : -1) * (company.price * (changePercentage / 100));
 company.price += newsChange;
 stockPrices[company.name] = company.price;
-const isPositiveChange = newsChange >= 0;
+const isPositiveChangeNew = newsChange >= 0;
 const changePercentage = (newsChange / company.price) * 100;
-const isPositiveLabel = isPositiveChange ? 'increased' : 'decreased';
+const isPositiveLabel = isPositiveChangeNew ? 'increased' : 'decreased';
      const changePercentageFormatted =    `${Math.abs(changePercentage).toFixed(2)}%`;
 
 const newsEvent = `Breaking News: ${company.name} price ${isPositiveLabel} by ${Math.abs(changePercentage).toFixed(2)}%`;
-addNewsEvent(newsEvent);
+addNewsEvent(newsEvent,"main");
 console.log("newsEvent    " + newsEvent);
 
     }
@@ -962,9 +962,12 @@ if (lenderPaymentInfo && lenderPaymentInfo.automaticPayments && counterValue - s
 
 
 // Function to add news event
-function addNewsEvent(event) {
+function addNewsEvent(event, xxx) {
   eventDayCount = 0;
+if(xxx =="main"){
 
+
+}
 
     const newsContent = document.getElementById("news-content");
     const newsItem = document.createElement("div");
@@ -1052,6 +1055,11 @@ function pauseGame() {
 
 // Function to open the specified popup window
 function openPopup(popupId) {
+if(popupId =="portfolio-popup" || popupId =="kkkk" ){}else{
+    clearInterval(interval); // Clear the interval to stop updating stock prices
+
+}
+  
   var popup = document.getElementById(popupId);
   popup.style.display = "block";
 }
