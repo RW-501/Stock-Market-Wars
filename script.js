@@ -1110,9 +1110,8 @@ if (interval) {
   interval = setInterval(updateStockPrices, 5000); // Restart the interval to resume updating stock prices
 }
   console.log("closePopup");
-      if(popupId === "news-popup" &&   newsOpen === fasle){
+      if(popupId === "news-popup" &&   newsOpen === false){
   newsOpen = true;
-
   }
   var popup = document.getElementById(popupId);
   popup.style.display = "none";
