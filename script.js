@@ -334,7 +334,7 @@ saveStockPrices(stockPrices);
 updateStockPricesUI();
    timeAndDateFunc();
 }
-
+/*
 var intervalId;
 
 function startUITimer(){
@@ -343,13 +343,10 @@ function startUITimer(){
 openStockPopup();
   }, 5000);
 }
-  let theCompany;
+  */
 // Open the stock popup and populate it with the company details
-function openStockPopup(xxx) {
-  console.log("company xxxx   "+xxx); 
+function openStockPopup(theCompany) {
 
-
-  theCompany = xxx;
   
   console.log("company.name   "+theCompany.name); 
 
@@ -372,7 +369,7 @@ function openStockPopup(xxx) {
   const stockPopupCash = document.getElementById("stock-popup-cash");
 
   stockPopupTitle.textContent = theCompany.name;
-  stockPopupPrice.textContent = `Price: $${company.price.toFixed(2)}`;
+  stockPopupPrice.textContent = `Price: $${theCompany.price.toFixed(2)}`;
   stockPopupQuantity.textContent = `Own: ${getStockQuantity(theCompany.name)}`;
   stockPopupInput.value = "";
   stockPopupCash.textContent = `Cash: $${getAvailableFunds().toFixed(2)}`;
@@ -390,7 +387,7 @@ function closeStockPopup() {
 
   stockPopupBuy.removeEventListener("click", buyStock);
   stockPopupSell.removeEventListener("click", sellStock);
-clearInterval(intervalId);
+//clearInterval(intervalId);
   closePopup("stock-popup");
 }
 
