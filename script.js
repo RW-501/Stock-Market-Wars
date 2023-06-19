@@ -579,7 +579,6 @@ function buyStock(companyName, quantityToBuy) {
 
   stockPopup.style.display = "block";
   document.getElementById("stock-popup-title").textContent = companyName;
-  document.getElementById("stock-price").textContent = `$${stockPrice.toFixed(2)}`;
 
   cashDisplay.textContent = `$${availableFunds.toFixed(2)}`;
 
@@ -618,9 +617,8 @@ function sellStock(companyName, quantityToSell) {
 
   stockPopup.style.display = "block";
   document.getElementById("stock-popup-title").textContent = companyName;
-  document.getElementById("stock-price").textContent = `$${stockPrice.toFixed(2)}`;
-  stockQuantityInput.value = "";
-  cashDisplay.textContent = `$${availableFunds.toFixed(2)}`;
+
+    cashDisplay.textContent = `$${availableFunds.toFixed(2)}`;
 
 
 
