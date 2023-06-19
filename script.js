@@ -244,7 +244,7 @@ function openStockPopup(company) {
 
   stockPopupTitle.textContent = company.name;
   stockPopupPrice.textContent = `Price: $${company.price.toFixed(2)}`;
-  stockPopupQuantity.textContent = `Own: ${company.quantity}`;
+  stockPopupQuantity.textContent = `Own: ${getStockQuantity(company.name)}`;
   stockPopupInput.value = "";
   stockPopupCash.textContent = `Cash: $${getAvailableFunds().toFixed(2)}`;
 
@@ -265,6 +265,9 @@ function closeStockPopup() {
   closePopup("stock-popup");
 }
 
+document.getElementById("close-stock-popup").addEventListener("click", function () {
+  closePopup("stock-popup");
+});
 
 // Function to update the UI for stock prices
 function updateStockPricesUI() {
@@ -290,29 +293,12 @@ function updateStockPricesUI() {
     priceCell.textContent = "$" + price.toFixed(2);
     priceCell.addEventListener("click", () => openStockPopup(company));
     row.appendChild(priceCell);
-/*
-    const buyButtonCell = document.createElement("td");
-    const buyButton = createButton("Buy", () => openStockPopup(company));
-    buyButtonCell.appendChild(buyButton);
-    row.appendChild(buyButtonCell);
 
-    const sellButtonCell = document.createElement("td");
-    const sellButton = createButton("Sell", () => openStockPopup(company));
-    sellButtonCell.appendChild(sellButton);
-    row.appendChild(sellButtonCell);
-*/
     // Append the row to the table body
     stocksTableBody.appendChild(row);
   });
 }
 
-// Helper function to create a button element with a specific text and click event handler
-function createButton(text, onClick) {
-  const button = document.createElement("button");
-  button.textContent = text;
-  button.addEventListener("click", onClick);
-  return button;
-}
 
 
 // Function to update the net worth display
@@ -580,24 +566,22 @@ function calculateNetWorth() {
   return netWorth;
 }
 
-function buyStock(companyName) {
+function buyStock(companyName, quantityToBuy) {
   const company = companies.find((company) => company.name === companyName);
   const stockPrice = company.price;
   const availableFunds = getAvailableFunds();
 
   const stockPopup = document.getElementById("stock-popup");
-  const stockQuantityInput = document.getElementById("stock-quantity-input");
+
   const cashDisplay = document.getElementById("cash-display");
 
   stockPopup.style.display = "block";
   document.getElementById("stock-popup-title").textContent = companyName;
   document.getElementById("stock-price").textContent = `$${stockPrice.toFixed(2)}`;
-  stockQuantityInput.value = "";
+
   cashDisplay.textContent = `$${availableFunds.toFixed(2)}`;
 
-  const buyButton = document.getElementById("buy-button");
-  buyButton.addEventListener("click", function () {
-    const quantityToBuy = parseInt(stockQuantityInput.value, 10);
+
     const totalCost = stockPrice * quantityToBuy;
 
     if (totalCost <= availableFunds && quantityToBuy > 0) {
@@ -620,15 +604,15 @@ function buyStock(companyName) {
   });
 }
 
-function sellStock(companyName) {
+function sellStock(companyName, quantityToSell) {
   const company = companies.find((company) => company.name === companyName);
   const stockPrice = company.price;
   const stockQuantity = getStockQuantity(companyName);
   const availableFunds = getAvailableFunds();
 
   const stockPopup = document.getElementById("stock-popup");
-  const stockQuantityInput = document.getElementById("stock-quantity-input");
-  const cashDisplay = document.getElementById("cash-display");
+
+    const cashDisplay = document.getElementById("cash-display");
 
   stockPopup.style.display = "block";
   document.getElementById("stock-popup-title").textContent = companyName;
@@ -636,9 +620,7 @@ function sellStock(companyName) {
   stockQuantityInput.value = "";
   cashDisplay.textContent = `$${availableFunds.toFixed(2)}`;
 
-  const sellButton = document.getElementById("sell-button");
-  sellButton.addEventListener("click", function () {
-    const quantityToSell = parseInt(stockQuantityInput.value, 10);
+
 
     if (quantityToSell <= stockQuantity && quantityToSell > 0) {
       const totalEarnings = stockPrice * quantityToSell;
