@@ -87,6 +87,20 @@ function saveStockPrices(xxx) {
 }
 
 
+function getStockPrices(stockName) {
+  // Retrieve the stored stock prices from local storage
+  const storedStockPrices = JSON.parse(localStorage.getItem('stockPrices')) || {};
+
+  // Retrieve the last 7 stock prices for the given stock name
+  const stockPrices = storedStockPrices[stockName] || [];
+
+  return stockPrices;
+}
+
+
+
+
+
 
 function generateStockChart(stockData) {
   const canvas = document.getElementById("stock-chart");
