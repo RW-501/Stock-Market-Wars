@@ -151,7 +151,7 @@ function displayPortfolio() {
 function isOdd(number) {
   return number % 2 === 1;
 }
-let counterValue = localStorage.getItem('counterValue') || 0;
+var counterValue = localStorage.getItem('counterValue') || 0;
 
 
 var runCount = 0;
@@ -187,7 +187,7 @@ function updateStockPrices() {
     company.price += trendChange;
 
 
-const randomNum = Math.random() ; 
+let randomNum = Math.random() ; 
 
    if(isOdd(randomNum)){
  
@@ -210,12 +210,8 @@ if (Math.random() < 0.1) { // 10% chance of a news event
   }
 }
 
-  }else{
-      runCount++;
-
-//console.log("runCount else   "+runCount); 
-
-    }
+  }
+   
 
     // Save the updated company price in your data structure or storage mechanism
     // For example, you can store it in the stockPrices object
