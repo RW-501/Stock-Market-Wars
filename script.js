@@ -436,8 +436,7 @@ function updateStockPricesUI() {
   });
 }
 function updateStockPrices(company) {
-  const stockPrices = getStockPrices(company.name);
-  generateStockChart(stockPrices);
+
 
   const stockPopupPrice = document.getElementById("stock-popup-price");
   stockPopupPrice.textContent = `Price: $${company.price.toFixed(2)}`;
