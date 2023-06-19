@@ -24,7 +24,6 @@ function getMarket() {
   ];
 
 
-var counterValue = localStorage.getItem('counterValue') || 0;
 
 
 var runCount = 0;
@@ -423,15 +422,15 @@ function updateStockPricesUI() {
 
   });
 }
+let counterValue = 0;
+
+counterValue = parseInt(localStorage.getItem('counterValue')) || 0;
 
 function timeAndDateFunc() {
+  counterValue++;
+  localStorage.setItem('counterValue', counterValue.toString());
 
-  if(counterValue === null){
-    counterValue = 0;}else{
-     counterValue++;
-  }
-  localStorage.setItem('counterValue', JSON.stringify(counterValue));
-  
+
     const counter = document.getElementById("counter");
 
   
