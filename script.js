@@ -837,11 +837,6 @@ window.addEventListener("DOMContentLoaded", function () {
 
 
 
-// Update the lender options in the select element
-updateLenderOptions();
-
-
-
 
 
 
@@ -929,6 +924,7 @@ document.getElementById("close-bank-popup").addEventListener("click", function (
 });
 
 document.getElementById("open-lender-popup").addEventListener("click", function () {
+  updateLenderDetails();
   openPopup("lender-popup");
 });
 
