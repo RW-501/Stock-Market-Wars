@@ -1082,7 +1082,7 @@ if(popupId ==="portfolio-popup"  &&   newsOpen === true ||popupId === "news-popu
     var popup = document.getElementById(popupId);
   popup.style.display = "block";
     if(popupId === "news-popup" &&   newsOpen === true){
-  newsOpen = fasle;
+  newsOpen = false;
 
     }
   /*
