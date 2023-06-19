@@ -603,7 +603,7 @@ function buyStock(companyName, quantityToBuy) {
     } else {
       alert("Invalid quantity or insufficient funds to buy stocks.");
     }
-  });
+
 }
 
 function sellStock(companyName, quantityToSell) {
@@ -642,7 +642,8 @@ function sellStock(companyName, quantityToSell) {
     } else {
       alert("Invalid quantity or insufficient stocks to sell.");
     }
-  });
+  
+
 }
 
 
