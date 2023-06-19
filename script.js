@@ -378,7 +378,7 @@ function openStockPopup() {
 
   generateStockChart(stockPrices);
 
-  startUITimer();
+  //startUITimer();
 
   
   const stockPopup = document.getElementById("stock-popup");
@@ -961,6 +961,8 @@ if (lenderPaymentInfo && lenderPaymentInfo.automaticPayments && counterValue - s
 
 // Function to add news event
 function addNewsEvent(event, xxx) {
+        console.log(xxx +"  event    " + event);
+
   eventDayCount = 0;
 if(xxx =="main"){
 
