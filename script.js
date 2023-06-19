@@ -361,14 +361,14 @@ var intervalId;
 
 // Open the stock popup and populate it with the company details
 function openStockPopup(company) {
+  // Start the interval and store the identifier in the intervalId variable
+  intervalId = setInterval((company) => {
+    const stockPrices = getStockPrices(company.name);
+    generateStockChart(stockPrices);
 
- intervalId = setInterval(() => {
-const stockPrices = getStockPrices(company.name);
-generateStockChart(stockPrices);
-     const stockPopupPrice = document.getElementById("stock-popup-price");
-  stockPopupPrice.textContent = `Price: $${company.price.toFixed(2)}`;
-}, 5000);
-
+    const stockPopupPrice = document.getElementById("stock-popup-price");
+    stockPopupPrice.textContent = `Price: $${company.price.toFixed(2)}`;
+  }, 5000);
 
   
   const stockPopup = document.getElementById("stock-popup");
