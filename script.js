@@ -308,7 +308,8 @@ if (Math.random() < 0.1) { // 10% chance of a news event
   }
 
  //   console.log(JSON.stringify(stockPrices)+" <br> stockPrices 44   "+stockPrices);
-saveStockPrices(JSON.parse(JSON.stringify(stockPrices)));
+//saveStockPrices(JSON.parse(JSON.stringify(stockPrices)));
+saveStockPrices(stockPrices);
 
   // Save the updated stock prices object in local storage
   localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
