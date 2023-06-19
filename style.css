@@ -62,11 +62,14 @@ h1 {
 }
 
 .buttons {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 20px;
-  overflow-x: auto;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    width: 100%;
+    padding-left: 20%;
+    box-sizing: border-box;
 }
 
 .buttons button {
