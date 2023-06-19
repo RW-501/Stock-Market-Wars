@@ -360,12 +360,14 @@ updateStockPricesUI();
 var intervalId;
 
 // Open the stock popup and populate it with the company details
-function openStockPopup(company) {
+function openStockPopup(xxx) {
+  let company = xxx;
+  
   // Start the interval and store the identifier in the intervalId variable
-  intervalId = setInterval((company) => {
+  intervalId = setInterval(() => {
     const stockPrices = getStockPrices(company.name);
     generateStockChart(stockPrices);
-
+console.log("company.name   "+company.name); 
     const stockPopupPrice = document.getElementById("stock-popup-price");
     stockPopupPrice.textContent = `Price: $${company.price.toFixed(2)}`;
   }, 5000);
