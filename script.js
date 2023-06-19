@@ -373,9 +373,10 @@ function openStockPopup(xxx) {
   if(xxx){ 
   theCompany = xxx;
   }
+  console.log("company.name   "+theCompany.name); 
+
     const stockPrices = getStockPrices(theCompany.name);
     generateStockChart(stockPrices);
-console.log("company.name   "+theCompany.name); 
 
 
   //clearInterval(intervalId);
