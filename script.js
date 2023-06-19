@@ -75,7 +75,7 @@ function saveStockPrices(xxx) {
     lastSevenPrices.push(price);
 
     // Limit the array to store only the last 7 prices
-    if (lastSevenPrices.length > 7) {
+    if (lastSevenPrices.length > 10) {
       lastSevenPrices.shift();
     }
 
@@ -330,8 +330,9 @@ saveStockPrices(stockPrices);
 updateStockPricesUI();
    timeAndDateFunc();
 }
-/*
+
 var intervalId;
+let theCompany;
 
 function startUITimer(){
   clearInterval(intervalId);
@@ -339,11 +340,11 @@ function startUITimer(){
 openStockPopup();
   }, 5000);
 }
-  */
-// Open the stock popup and populate it with the company details
-function openStockPopup(theCompany) {
-
   
+// Open the stock popup and populate it with the company details
+function openStockPopup(xxx) {
+
+   theCompany = xxx;
   console.log("company.name   "+theCompany.name); 
 
     const stockPrices = getStockPrices(theCompany.name);
@@ -383,7 +384,7 @@ function closeStockPopup() {
 
   stockPopupBuy.removeEventListener("click", buyStock);
   stockPopupSell.removeEventListener("click", sellStock);
-//clearInterval(intervalId);
+clearInterval(intervalId);
   closePopup("stock-popup");
 }
 
