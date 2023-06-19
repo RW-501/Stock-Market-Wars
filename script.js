@@ -148,7 +148,9 @@ function displayPortfolio() {
   const totalValueCell = document.getElementById("portfolio-total-value");
   totalValueCell.textContent = "$" + totalValue.toFixed(2);
 }
-
+function isOdd(number) {
+  return number % 2 === 1;
+}
 let counterValue = localStorage.getItem('counterValue') || 0;
 
 
