@@ -858,8 +858,8 @@ function newDayFunc(counterValue){
 // Retrieve the lender payment information from local storage
 const lenderPaymentInfoString = localStorage.getItem('lenderPaymentInfo');
 const lenderPaymentInfo = JSON.parse(lenderPaymentInfoString);
-  let startDay = lenderPaymentInfo.startDay || 0;
-  let paymentFrequency = lenderPaymentInfo.paymentFrequency || 0;
+  let startDay = lenderPaymentInfo?.startDay || 0;
+  let paymentFrequency = lenderPaymentInfo?.paymentFrequency || 0;
 
   
 // Check if automaticPayments is true and paymentFrequency is valid
