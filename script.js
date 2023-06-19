@@ -359,19 +359,27 @@ updateStockPricesUI();
 
 var intervalId;
 
+function startUITimer(){
+  clearInterval(intervalId);
+   intervalId = setInterval(openStockPopup() => {
+
+  }, 5000);
+}
+  let theCompany;
 // Open the stock popup and populate it with the company details
 function openStockPopup(xxx) {
-  let company = xxx;
-  
+  if(xxx){ 
+  theCompany = xxx;
+  }
   // Start the interval and store the identifier in the intervalId variable
-  intervalId = setInterval(() => {
-    const stockPrices = getStockPrices(company.name);
+    const stockPrices = getStockPrices(theCompany.name);
     generateStockChart(stockPrices);
-console.log("company.name   "+company.name); 
+console.log("company.name   "+theCompany.name); 
     const stockPopupPrice = document.getElementById("stock-popup-price");
-    stockPopupPrice.textContent = `Price: $${company.price.toFixed(2)}`;
-  }, 5000);
+    stockPopupPrice.textContent = `Price: $${theCompany.price.toFixed(2)}`;
 
+  clearInterval(intervalId);
+startUITimer();
   
   const stockPopup = document.getElementById("stock-popup");
   const stockPopupTitle = document.getElementById("stock-popup-title");
@@ -382,14 +390,14 @@ console.log("company.name   "+company.name);
   const stockPopupSell = document.getElementById("stock-popup-sell");
   const stockPopupCash = document.getElementById("stock-popup-cash");
 
-  stockPopupTitle.textContent = company.name;
+  stockPopupTitle.textContent = theCompany.name;
   stockPopupPrice.textContent = `Price: $${company.price.toFixed(2)}`;
-  stockPopupQuantity.textContent = `Own: ${getStockQuantity(company.name)}`;
+  stockPopupQuantity.textContent = `Own: ${getStockQuantity(theCompany.name)}`;
   stockPopupInput.value = "";
   stockPopupCash.textContent = `Cash: $${getAvailableFunds().toFixed(2)}`;
 
-  stockPopupBuy.addEventListener("click", () => buyStock(company.name, parseInt(stockPopupInput.value)));
-  stockPopupSell.addEventListener("click", () => sellStock(company.name, parseInt(stockPopupInput.value)));
+  stockPopupBuy.addEventListener("click", () => buyStock(theCompany.name, parseInt(stockPopupInput.value)));
+  stockPopupSell.addEventListener("click", () => sellStock(theCompany.name, parseInt(stockPopupInput.value)));
 
   openPopup("stock-popup");
 }
