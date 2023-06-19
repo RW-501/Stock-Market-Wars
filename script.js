@@ -58,17 +58,23 @@ const stockData = Object.entries(updatedStockData).map(([name, price]) => ({ nam
 
   
     console.log("updatedStockData   "+JSON.stringify(updatedStockData));
+    console.log("stockData   "+JSON.stringify(stockData));
 
-  console.log("stockData   "+stockData);
+//  console.log("stockData   "+stockData);
 
 
   // Retrieve the existing stock prices from local storage or initialize an empty object
   const storedStockPrices = JSON.parse(localStorage.getItem('stockPrices')) || {};
   
   console.log("stockData  json "+JSON.parse(stockData));
+
+  
+  let data = JSON.parse(JSON.stringify(updatedStockData));
+  console.log("data   "+data);
+
   
   // Update the stock prices for each stock in the stockData array
-  stockData.forEach(stock => {
+  data.forEach(stock => {
     const { name, price } = stock;
     const lastSevenPrices = storedStockPrices[name] || [];
     lastSevenPrices.push(price);
