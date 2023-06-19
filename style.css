@@ -35,6 +35,7 @@ h1 {
 #stocks table {
   width: 100%;
   border-collapse: collapse;
+      cursor: pointer;
 }
 
 #stocks th,
@@ -82,6 +83,14 @@ h1 {
 #net-worth {
   text-align: center;
 }
+
+#stocks-table-body{
+
+font-size: 30px;
+}
+
+
+
 
 #net-worth h2 {
   font-size: 24px;
