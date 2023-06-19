@@ -311,7 +311,7 @@ let randomNum = Math.floor(Math.random() * 100) + 1;
 //console.log("randomNum   "+randomNum); 
    if(isOdd(randomNum)  == true){
  
-    
+    /*
 if (Math.random() < 0.1) { // 10% chance of a news event
   const numCompaniesAffected = Math.floor(Math.random() * 2) + 1; // Randomly select 1 to 2 companies
   for (let i = 0; i < numCompaniesAffected; i++) {
@@ -334,7 +334,7 @@ if (Math.random() < 0.1) { // 10% chance of a news event
     }
   }
 }
-
+*/
 
 
 
