@@ -188,7 +188,7 @@ function updateStockPrices() {
 
 
 let randomNum = Math.floor(Math.random() * 100) + 1;
-console.log("randomNum   "+randomNum); 
+//console.log("randomNum   "+randomNum); 
    if(isOdd(randomNum)  == true){
  
     
