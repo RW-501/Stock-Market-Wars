@@ -1104,14 +1104,15 @@ if(popupId ==="portfolio-popup"  &&   newsOpen === true ||popupId === "news-popu
 
 // Function to close the specified popup window
 function closePopup(popupId) {
-if(popupId ==="portfolio-popup" ||popupId === "news-popup" || popupId ==="bank-popup"|| popupId ==="stock-popup" ){}else{
-    clearInterval(interval); // Clear the interval to stop updating stock prices
+if (interval) {
+  console.log("Interval is running.");
+} else {
   interval = setInterval(updateStockPrices, 5000); // Restart the interval to resume updating stock prices
+}
   console.log("closePopup");
       if(popupId === "news-popup" &&   newsOpen === fasle){
-  newOpen = true;
+  newsOpen = true;
 
-    }
   }
   var popup = document.getElementById(popupId);
   popup.style.display = "none";
