@@ -115,7 +115,7 @@ font-size: 30px;
 
 .popup-content {
     background-color: #fff;
-    max-width: 400px;
+    max-width: 90%;
     margin: 100px auto;
     padding: 20px;
     border-radius: 5px;
