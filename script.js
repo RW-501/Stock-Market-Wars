@@ -655,11 +655,11 @@ function updateLenderDetails() {
     document.getElementById("lender-Max").textContent = selectedLender.funds;
     document.getElementById("lender-Rate").textContent = selectedLender.interestRate;
     document.getElementById("lender-AutoPayments").textContent = selectedLender.automaticPayments ? "Yes" : "No";
-    document.getElementById("lender-PaymentAmount").textContent = selectedLender.paymentAmount;
+    document.getElementById("lender-PaymentAmount").textContent = "$"+selectedLender.paymentAmount;
     document.getElementById("lender-PaymentFrequency").textContent = selectedLender.paymentFrequency;
   }
 }
-
+/*
 function updateLenderOptions() {
   const lenderSelect = document.getElementById("lender-select");
   const newWorth = calculateNetWorth();
@@ -677,14 +677,14 @@ function updateLenderOptions() {
   const selectedLender = eligibleLenders.find(lender => lender.name === lenderSelect.value);
 
   if (selectedLender) {
-    document.getElementById("lender-Max").textContent = `Funding Maximum: $${selectedLender.funds}`;
-    document.getElementById("lender-Rate").textContent = `Interest Rate: ${selectedLender.interestRate * 100}%`;
+    document.getElementById("lender-Max").textContent = `$${selectedLender.funds}`;
+    document.getElementById("lender-Rate").textContent = `${selectedLender.interestRate * 100}%`;
   } else {
     document.getElementById("lender-Max").textContent = "";
     document.getElementById("lender-Rate").textContent = "";
   }
 }
-
+*/
 
 // Function to request a loan
 function requestLoan() {
@@ -707,7 +707,7 @@ function requestLoan() {
       // If the loan is approved, deduct the loan amount from the lender's funds and add it to the player's funds
       selectedLender.funds -= amount;
       addFunds(amount);
- 
+  closePopup("lender-popup");
       
 // Create an object to store the lender payment information
 const lenderPaymentInfo = {
