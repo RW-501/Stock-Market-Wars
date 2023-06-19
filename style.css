@@ -119,16 +119,21 @@ font-size: 30px;
 }
 
 .popup-content {
- background-color: #fff;
-    max-width: 90%;
-    margin: 100px auto;
+    background-color: #fff;
+    max-width: fit-content;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     overflow: auto;
-    height: 90%;
+    max-height: fit-content;
     display: block;
     margin: auto;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    min-width: 40%;
 }
 
 .popup h2 {
