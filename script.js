@@ -57,7 +57,7 @@ function saveStockPrices(xxx) {
   //console.log("stockData   " + stockData);
 
   // Retrieve the existing stock prices from local storage or initialize an empty object
-  const storedStockPrices = JSON.parse(localStorage.getItem('stockPrices')) || {};
+  const storedStockPrices = JSON.parse(localStorage.getItem('stockPrices7Day')) || {};
 
   // Update the stock prices for each stock in the stockData array
   stockData.forEach(stock => {
@@ -79,11 +79,11 @@ function saveStockPrices(xxx) {
     storedStockPrices[name] = lastSevenPrices;
   });
 
-  console.log("storedStockPrices   " + JSON.stringify(storedStockPrices));
+ // console.log("storedStockPrices   " + JSON.stringify(storedStockPrices));
 
 
   // Save the updated stock prices to local storage
-  localStorage.setItem('stockPrices', JSON.stringify(storedStockPrices));
+  localStorage.setItem('stockPrices7Day', JSON.stringify(storedStockPrices));
 }
 
 
@@ -137,7 +137,7 @@ function generateStockChart(stockData) {
 
 function getStockPrices(stockName) {
   // Retrieve the stored stock prices from local storage
-  const storedStockPrices = JSON.parse(localStorage.getItem('stockPrices')) || {};
+  const storedStockPrices = JSON.parse(localStorage.getItem('stockPrices7Day')) || {};
 
   // Retrieve the last 7 stock prices for the given stock name
   const stockPrices = storedStockPrices[stockName] || [];
@@ -333,7 +333,8 @@ updateStockPricesUI();
 function openStockPopup(company) {
 
 const stockPrices = getStockPrices(company);
-console.log("stockPrices   " +stockPrices); // Array of the last 7 stock prices for "TechCom"
+  console.log("company 44   "+company);
+console.log("stockPrices ????????????????????????????//  " +stockPrices); // Array of the last 7 stock prices for "TechCom"
 generateStockChart(stockPrices);
   
   const stockPopup = document.getElementById("stock-popup");
