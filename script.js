@@ -426,7 +426,7 @@ function updateStockPricesUI() {
 
 function timeAndDateFunc() {
 
-  if(counterValue ==== null){
+  if(counterValue === null){
     counterValue = 0;}else{
      counterValue++;
   }
