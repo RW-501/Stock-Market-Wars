@@ -656,7 +656,7 @@ function updateLenderDetails() {
     document.getElementById("lender-Rate").textContent = selectedLender.interestRate;
     document.getElementById("lender-AutoPayments").textContent = selectedLender.automaticPayments ? "Yes" : "No";
     document.getElementById("lender-PaymentAmount").textContent = "$"+selectedLender.paymentAmount;
-    document.getElementById("lender-PaymentFrequency").textContent = selectedLender.paymentFrequency;
+    document.getElementById("lender-PaymentFrequency").textContent = selectedLender.paymentFrequency+" days";
   }
 }
 
@@ -673,7 +673,7 @@ function updateLenderOptions() {
     option.textContent = lender.name;
     lenderSelect.appendChild(option);
   });
-
+/*
   const selectedLender = eligibleLenders.find(lender => lender.name === lenderSelect.value);
 
   if (selectedLender) {
@@ -684,7 +684,7 @@ function updateLenderOptions() {
     document.getElementById("lender-Rate").textContent = "";
   }
 }
-
+*/
 
 // Function to request a loan
 function requestLoan() {
