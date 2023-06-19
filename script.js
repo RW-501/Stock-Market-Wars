@@ -186,9 +186,9 @@ function updateStockPrices() {
 
 
 
-    if(runCount > 10){
+    if(runCount > 30){
  
-console.log("runCount    "+runCount); 
+//console.log("runCount    "+runCount); 
     
 // Example 3: Simulate news events
 if (Math.random() < 0.1) { // 10% chance of a news event
@@ -203,6 +203,7 @@ if (Math.random() < 0.1) { // 10% chance of a news event
       stockPrices[company.name] = company.price;
       const newsEvent = `Breaking News: ${company.name} price changed by ${newsChange.toFixed(2)}%`;
       addNewsEvent(newsEvent);
+      console.log("newsEvent    "+newsEvent); 
       runCount = 0;
     }
   }
@@ -211,7 +212,7 @@ if (Math.random() < 0.1) { // 10% chance of a news event
   }else{
       runCount++;
 
-console.log("runCount else   "+runCount); 
+//console.log("runCount else   "+runCount); 
 
     }
 
@@ -325,7 +326,7 @@ function updateNetWorthDisplay() {
   let cash = getAvailableFunds();
   totalCashCell.textContent = "$" +  `${cash.toFixed(2)}`;
   // Update the net worth value in the UI
-  document.getElementById("net-worth-value").textContent = `$${netWorth.toFixed(2)}`;
+document.getElementById("net-worth-value").textContent = `$${netWorth.toFixed(2).toLocaleString()}`;
   
     counterValue++;
 localStorage.setItem('counterValue', JSON.stringify(counterValue));
