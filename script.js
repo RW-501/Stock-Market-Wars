@@ -246,7 +246,7 @@ function openStockPopup(company) {
   stockPopupPrice.textContent = `Price: $${company.price.toFixed(2)}`;
   stockPopupQuantity.textContent = `Own: ${company.quantity}`;
   stockPopupInput.value = "";
-  stockPopupCash.textContent = `Cash: $${getCash().toFixed(2)}`;
+  stockPopupCash.textContent = `Cash: $${getAvailableFunds().toFixed(2)}`;
 
   stockPopupBuy.addEventListener("click", () => buyStock(company.name, parseInt(stockPopupInput.value)));
   stockPopupSell.addEventListener("click", () => sellStock(company.name, parseInt(stockPopupInput.value)));
