@@ -187,9 +187,9 @@ function updateStockPrices() {
     company.price += trendChange;
 
 
+const randomNum = Math.random() ; 
 
-
-    if(counterValue > 10 && isOdd(counterValue)){
+   if(isOdd(randomNum)){
  
     
 // Example 3: Simulate news events
