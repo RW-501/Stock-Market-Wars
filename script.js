@@ -149,6 +149,7 @@ function displayPortfolio() {
   totalValueCell.textContent = "$" + totalValue.toFixed(2);
 }
 
+let counterValue = localStorage.getItem('counterValue') || 0;
 
 
 var runCount = 0;
@@ -186,25 +187,23 @@ function updateStockPrices() {
 
 
 
-    if(runCount > 30){
+    if(counterValue > 10 && isOdd(counterValue)){
  
-//console.log("runCount    "+runCount); 
     
 // Example 3: Simulate news events
 if (Math.random() < 0.1) { // 10% chance of a news event
-  const numCompaniesAffected = Math.floor(Math.random() * 3) + 1; // Randomly select 1 to 3 companies
+  const numCompaniesAffected = Math.floor(Math.random() * 2) + 1; // Randomly select 1 to 2 companies
   for (let i = 0; i < numCompaniesAffected; i++) {
     const randomCompanyIndex = Math.floor(Math.random() * companies.length);
     const company = companies[randomCompanyIndex];
     const newsChance = Math.random() * 0.6 + 0.1; // Random chance between 10% and 70%
     if (Math.random() < newsChance) {
-      const newsChange = company.price * (Math.random() * 0.05 + 0.8); // Random change between 5% and 10%
+      const newsChange = company.price * (Math.random() * 0.05 + 0.5); // Random change between 5% and 10%
       company.price += newsChange;
       stockPrices[company.name] = company.price;
       const newsEvent = `Breaking News: ${company.name} price changed by ${newsChange.toFixed(2)}%`;
       addNewsEvent(newsEvent);
       console.log("newsEvent    "+newsEvent); 
-      runCount = 0;
     }
   }
 }
@@ -315,7 +314,6 @@ function createButton(text, onClick) {
   return button;
 }
 
-let counterValue = localStorage.getItem('counterValue') || 0;
 
 // Function to update the net worth display
 function updateNetWorthDisplay() {
