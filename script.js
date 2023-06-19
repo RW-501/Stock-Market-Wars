@@ -659,7 +659,7 @@ function updateLenderDetails() {
     document.getElementById("lender-PaymentFrequency").textContent = selectedLender.paymentFrequency;
   }
 }
-/*
+
 function updateLenderOptions() {
   const lenderSelect = document.getElementById("lender-select");
   const newWorth = calculateNetWorth();
@@ -684,7 +684,7 @@ function updateLenderOptions() {
     document.getElementById("lender-Rate").textContent = "";
   }
 }
-*/
+
 
 // Function to request a loan
 function requestLoan() {
@@ -924,7 +924,7 @@ document.getElementById("close-bank-popup").addEventListener("click", function (
 });
 
 document.getElementById("open-lender-popup").addEventListener("click", function () {
-  updateLenderDetails();
+  updateLenderOptions();
   openPopup("lender-popup");
 });
 
