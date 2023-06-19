@@ -230,7 +230,6 @@ function updateStockPrices() {
   // Retrieve the stock prices from local storage
   const storedStockPrices = localStorage.getItem('stockPrices');
 
-  saveStockPrices(storedStockPrices);
   
   // Parse the stored stock prices object
   let stockPrices = JSON.parse(storedStockPrices);
@@ -290,7 +289,8 @@ if (Math.random() < 0.1) { // 10% chance of a news event
 
   }
 
-    
+    console.log("stockPrices 44   "+stockPrices);
+  saveStockPrices(stockPrices);
 
   // Save the updated stock prices object in local storage
   localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
