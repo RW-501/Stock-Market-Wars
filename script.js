@@ -375,8 +375,7 @@ function openStockPopup(xxx) {
     const stockPrices = getStockPrices(theCompany.name);
     generateStockChart(stockPrices);
 console.log("company.name   "+theCompany.name); 
-    const stockPopupPrice = document.getElementById("stock-popup-price");
-    stockPopupPrice.textContent = `Price: $${theCompany.price.toFixed(2)}`;
+
 
   clearInterval(intervalId);
 startUITimer();
