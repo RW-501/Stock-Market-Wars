@@ -462,7 +462,7 @@ document.getElementById("net-worth-value").textContent = `$${netWorth.toFixed(2)
 
 
 
-  newDayFunc(counterValue);
+  newDayFunc();
 }
 
 
@@ -875,7 +875,7 @@ localStorage.setItem('lenderPaymentInfo', JSON.stringify(lenderPaymentInfo));
 
 var eventDayCount = 0;
 
-function newDayFunc(counterValue){
+function newDayFunc(){
 // Retrieve the lender payment information from local storage
 const lenderPaymentInfoString = localStorage.getItem('lenderPaymentInfo');
 const lenderPaymentInfo = JSON.parse(lenderPaymentInfoString);
