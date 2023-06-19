@@ -49,16 +49,15 @@ var companies = getMarket();
 //console.log(companies);
 
 
-function saveStockPrices(xxx) {
+function saveStockPrices(updatedStockData) {
 
-const updatedStockData = JSON.parse(xxx);
 // Convert the updatedStockData to an array of objects
 const stockData = Object.entries(updatedStockData).map(([name, price]) => ({ name, price }));
 
   
   // Retrieve the existing stock prices from local storage or initialize an empty object
   const storedStockPrices = JSON.parse(localStorage.getItem('stockPrices')) || {};
-  console.log("stockData   "+stockData);
+  console.log("updatedStockData   "+updatedStockData);
   
   // Update the stock prices for each stock in the stockData array
   stockData.forEach(stock => {
@@ -297,7 +296,7 @@ if (Math.random() < 0.1) { // 10% chance of a news event
   }
 
  //   console.log(JSON.stringify(stockPrices)+" <br> stockPrices 44   "+stockPrices);
-  saveStockPrices(JSON.stringify(stockPrices));
+saveStockPrices(JSON.parse(JSON.stringify(stockPrices)));
 
   // Save the updated stock prices object in local storage
   localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
