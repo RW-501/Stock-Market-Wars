@@ -135,6 +135,17 @@ function generateStockChart(stockData) {
   ctx.stroke();
 }
 
+function getStockPrices(stockName) {
+  // Retrieve the stored stock prices from local storage
+  const storedStockPrices = JSON.parse(localStorage.getItem('stockPrices')) || {};
+
+  // Retrieve the last 7 stock prices for the given stock name
+  const stockPrices = storedStockPrices[stockName] || [];
+
+  return stockPrices;
+}
+
+
 
 function updateStockQuantity(companyName, updatedStockQuantity) {
   // Retrieve the current portfolio from local storage
