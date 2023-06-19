@@ -188,14 +188,18 @@ font-size: 30px;
   background-color: #d32f2f;
 }
 
-/* Lender Details Styles */
-#lender-Max,
-#lender-Rate {
-  font-size: 0.9rem;
-  margin-top: 10px;
-  margin-bottom: 0;
-}
 
+
+
+
+.news-item{
+    padding: 5%;
+    box-sizing: content-box;
+}
+.breaking-news-item{
+    padding: 5%;
+    box-sizing: content-box;
+}
 
 
 #counter {
