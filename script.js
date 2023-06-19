@@ -806,10 +806,7 @@ if (lenderPaymentInfo && lenderPaymentInfo.automaticPayments && counterValue - s
 function addNewsEvent(event) {
   eventDayCount = 0;
 
-  // Reverse the order of savedEvents array to display the events in descending order (latest events on top)
-  const reversedEvents = savedEvents.reverse();
-  
-  reversedEvents.forEach(function (event) {
+
     const newsContent = document.getElementById("news-content");
     const newsItem = document.createElement("div");
     newsItem.classList.add("news-item");
