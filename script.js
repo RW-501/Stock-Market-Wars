@@ -581,75 +581,87 @@ function calculateNetWorth() {
   return netWorth;
 }
 
-
 function buyStock(companyName) {
-  // Retrieve the stock price for the given company
   const company = companies.find((company) => company.name === companyName);
   const stockPrice = company.price;
-
-  // Retrieve the player's available funds from the bank account
   const availableFunds = getAvailableFunds();
 
-  // Prompt the player to enter the quantity of stocks to buy
-  const quantityToBuy = parseInt(prompt(`Enter the quantity of ${companyName} stocks to buy:`), 10);
+  const stockPopup = document.getElementById("stock-popup");
+  const stockQuantityInput = document.getElementById("stock-quantity-input");
+  const cashDisplay = document.getElementById("cash-display");
 
-  // Calculate the total cost of buying stocks
-  const totalCost = stockPrice * quantityToBuy;
+  stockPopup.style.display = "block";
+  document.getElementById("stock-popup-title").textContent = companyName;
+  document.getElementById("stock-price").textContent = `$${stockPrice.toFixed(2)}`;
+  stockQuantityInput.value = "";
+  cashDisplay.textContent = `$${availableFunds.toFixed(2)}`;
 
-  // Check if the player has enough funds to make the purchase
-  if (totalCost <= availableFunds) {
-    // Deduct the total cost from the player's available funds
-    deductFunds(totalCost);
+  const buyButton = document.getElementById("buy-button");
+  buyButton.addEventListener("click", function () {
+    const quantityToBuy = parseInt(stockQuantityInput.value, 10);
+    const totalCost = stockPrice * quantityToBuy;
 
-    // Update the player's stock holdings
-    const currentStockQuantity = getStockQuantity(companyName);
-    const updatedStockQuantity = currentStockQuantity + quantityToBuy;
-    updateStockQuantity(companyName, updatedStockQuantity);
+    if (totalCost <= availableFunds && quantityToBuy > 0) {
+      deductFunds(totalCost);
+      const currentStockQuantity = getStockQuantity(companyName);
+      const updatedStockQuantity = currentStockQuantity + quantityToBuy;
+      updateStockQuantity(companyName, updatedStockQuantity);
 
-    // Display a success message to the player
-    alert(`Successfully bought ${quantityToBuy} ${companyName} stocks.`);
-     // Add news event
-  const event = `Bought ${quantityToBuy} shares of ${companyName} for `+ "$" +  `${stockPrice.toFixed(2)}`;
-  addNewsEvent(event);
-  } else {
-    // Display an error message to the player
-    alert("Insufficient funds to buy stocks.");
-  }
+      alert(`Successfully bought ${quantityToBuy} ${companyName} stocks for $${totalCost.toFixed(2)}.`);
+
+      stockPopup.style.display = "none";
+      stockQuantityInput.value = "";
+      updateNetWorthDisplay();
+
+      const event = `Bought ${quantityToBuy} shares of ${companyName} for $${totalCost.toFixed(2)}`;
+      addNewsEvent(event);
+    } else {
+      alert("Invalid quantity or insufficient funds to buy stocks.");
+    }
+  });
 }
 
 function sellStock(companyName) {
-  // Retrieve the stock price for the given company
   const company = companies.find((company) => company.name === companyName);
   const stockPrice = company.price;
-
-  // Retrieve the player's stock quantity for the given company
   const stockQuantity = getStockQuantity(companyName);
+  const availableFunds = getAvailableFunds();
 
-  // Prompt the player to enter the quantity of stocks to sell
-  const quantityToSell = parseInt(prompt(`Enter the quantity of ${companyName} stocks to sell:`), 10);
+  const stockPopup = document.getElementById("stock-popup");
+  const stockQuantityInput = document.getElementById("stock-quantity-input");
+  const cashDisplay = document.getElementById("cash-display");
 
-  // Check if the player has enough stocks to make the sale
-  if (quantityToSell <= stockQuantity) {
-    // Calculate the total amount earned from selling stocks
-    const totalEarnings = stockPrice * quantityToSell;
+  stockPopup.style.display = "block";
+  document.getElementById("stock-popup-title").textContent = companyName;
+  document.getElementById("stock-price").textContent = `$${stockPrice.toFixed(2)}`;
+  stockQuantityInput.value = "";
+  cashDisplay.textContent = `$${availableFunds.toFixed(2)}`;
 
-    // Add the total earnings to the player's available funds
-    addFunds(totalEarnings);
+  const sellButton = document.getElementById("sell-button");
+  sellButton.addEventListener("click", function () {
+    const quantityToSell = parseInt(stockQuantityInput.value, 10);
 
-    // Update the player's stock holdings
-    const updatedStockQuantity = stockQuantity - quantityToSell;
-    updateStockQuantity(companyName, updatedStockQuantity);
+    if (quantityToSell <= stockQuantity && quantityToSell > 0) {
+      const totalEarnings = stockPrice * quantityToSell;
+      addFunds(totalEarnings);
 
-    // Display a success message to the player
-    alert(`Successfully sold ${quantityToSell} ${companyName} stocks. for  `+  "$" +  `${stockPrice.toFixed(2)}`);
-     // Add news event
-  const event = `Sold ${quantityToSell} shares of ${companyName} for `+  "$" +  `${stockPrice.toFixed(2)}`;
-  addNewsEvent(event);
-  } else {
-    // Display an error message to the player
-    alert("Insufficient stocks to sell.");
-  }
+      const updatedStockQuantity = stockQuantity - quantityToSell;
+      updateStockQuantity(companyName, updatedStockQuantity);
+
+      alert(`Successfully sold ${quantityToSell} ${companyName} stocks for $${totalEarnings.toFixed(2)}.`);
+
+      stockPopup.style.display = "none";
+      stockQuantityInput.value = "";
+      updateNetWorthDisplay();
+
+      const event = `Sold ${quantityToSell} shares of ${companyName} for $${totalEarnings.toFixed(2)}`;
+      addNewsEvent(event);
+    } else {
+      alert("Invalid quantity or insufficient stocks to sell.");
+    }
+  });
 }
+
 
 
 
