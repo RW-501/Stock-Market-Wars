@@ -187,7 +187,7 @@ function updateStockPrices() {
     company.price += trendChange;
 
 
-let randomNum = Math.random() ; 
+let randomNum = Math.floor(Math.random() * 100) + 1;
 console.log("randomNum   "+randomNum); 
    if(isOdd(randomNum)  == true){
  
