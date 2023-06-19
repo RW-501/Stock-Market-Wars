@@ -226,7 +226,7 @@ if (Math.random() < 0.1) { // 10% chance of a news event
 
   // Update the stock prices in the user interface
 updateStockPricesUI();
-  // updateNetWorthDisplay();
+   updateNetWorthDisplay();
 }
 
 // Open the stock popup and populate it with the company details
@@ -295,7 +295,6 @@ function updateStockPricesUI() {
     // Append the row to the table body
     stocksTableBody.appendChild(row);
 
-    updateNetWorthDisplay();
   });
 }
 
@@ -311,8 +310,8 @@ function updateNetWorthDisplay() {
   totalCashCell.textContent = "$" +  `${cash.toFixed(2)}`;
   // Update the net worth value in the UI
 document.getElementById("net-worth-value").textContent = `$${netWorth.toFixed(2).toLocaleString()}`;
-  
-    counterValue++;
+      counterValue++;
+
 localStorage.setItem('counterValue', JSON.stringify(counterValue));
   
     const counter = document.getElementById("counter");
