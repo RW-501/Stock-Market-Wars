@@ -966,8 +966,16 @@ function addNewsEvent(event, xxx) {
   eventDayCount = 0;
 if(xxx =="main"){
 
+      const newsContent = document.getElementById("news-content");
+    const newsItem = document.createElement("div");
+    newsItem.classList.add("breaking-news-item");
+    newsItem.textContent = event;
+    newsContent.prepend(newsItem); // Add the event to the top of the news content
+    newsContent.scrollTop = 0; // Scroll to the top of the news content
+  
+  openPopup("news-popup");
 
-}
+}else{
 
     const newsContent = document.getElementById("news-content");
     const newsItem = document.createElement("div");
@@ -975,7 +983,7 @@ if(xxx =="main"){
     newsItem.textContent = event;
     newsContent.prepend(newsItem); // Add the event to the top of the news content
     newsContent.scrollTop = 0; // Scroll to the top of the news content
-
+}
 
   // Save the event to localStorage
   const savedEvents = JSON.parse(localStorage.getItem("savedEvents")) || [];
@@ -1055,7 +1063,7 @@ function pauseGame() {
 
 // Function to open the specified popup window
 function openPopup(popupId) {
-if(popupId =="portfolio-popup" || popupId =="kkkk" ){}else{
+if(popupId =="portfolio-popup" || popupId =="bank-popup"|| popupId =="stock-popup" ){}else{
     clearInterval(interval); // Clear the interval to stop updating stock prices
 
 }
@@ -1066,6 +1074,10 @@ if(popupId =="portfolio-popup" || popupId =="kkkk" ){}else{
 
 // Function to close the specified popup window
 function closePopup(popupId) {
+  if(popupId =="portfolio-popup" || popupId =="bank-popup"|| popupId =="stock-popup" ){}else{
+    clearInterval(interval); // Clear the interval to stop updating stock prices
+  interval = setInterval(updateStockPrices, 5000); // Restart the interval to resume updating stock prices
+
   var popup = document.getElementById(popupId);
   popup.style.display = "none";
 }
@@ -1158,7 +1170,6 @@ document.getElementById("pause-game-btn").addEventListener("click", function() {
 });
 
 document.getElementById("close-pause-popup").addEventListener("click", function() {
-  interval = setInterval(updateStockPrices, 5000); // Restart the interval to resume updating stock prices
   closePopup("pause-popup");
 });
 
