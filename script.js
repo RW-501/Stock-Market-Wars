@@ -805,12 +805,17 @@ if (lenderPaymentInfo && lenderPaymentInfo.automaticPayments && counterValue - s
 // Function to add news event
 function addNewsEvent(event) {
   eventDayCount = 0;
-  const newsContent = document.getElementById("news-content");
-  const newsItem = document.createElement("div");
-  newsItem.classList.add("news-item");
-  newsItem.textContent = event;
-  newsContent.appendChild(newsItem);
-  newsContent.scrollTop = newsContent.scrollHeight;
+
+  // Reverse the order of savedEvents array to display the events in descending order (latest events on top)
+  const reversedEvents = savedEvents.reverse();
+  
+  reversedEvents.forEach(function (event) {
+    const newsContent = document.getElementById("news-content");
+    const newsItem = document.createElement("div");
+    newsItem.classList.add("news-item");
+    newsItem.textContent = event;
+    newsContent.prepend(newsItem); // Add the event to the top of the news content
+    newsContent.scrollTop = 0; // Scroll to the top of the news content
 
   // Save the event to localStorage
   const savedEvents = JSON.parse(localStorage.getItem("savedEvents")) || [];
@@ -823,18 +828,19 @@ function addNewsEvent(event) {
 
 window.addEventListener("DOMContentLoaded", function () {
   const savedEvents = JSON.parse(localStorage.getItem("savedEvents")) || [];
-  savedEvents.forEach(function (event) {
-   // addNewsEvent(event);
-
-      const newsContent = document.getElementById("news-content");
-  const newsItem = document.createElement("div");
-  newsItem.classList.add("news-item");
-  newsItem.textContent = event;
-  newsContent.appendChild(newsItem);
-  newsContent.scrollTop = newsContent.scrollHeight;
+  
+  // Reverse the order of savedEvents array to display the events in descending order (latest events on top)
+  const reversedEvents = savedEvents.reverse();
+  
+  reversedEvents.forEach(function (event) {
+    const newsContent = document.getElementById("news-content");
+    const newsItem = document.createElement("div");
+    newsItem.classList.add("news-item");
+    newsItem.textContent = event;
+    newsContent.prepend(newsItem); // Add the event to the top of the news content
+    newsContent.scrollTop = 0; // Scroll to the top of the news content
   });
 });
-
 
 
 
