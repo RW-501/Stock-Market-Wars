@@ -334,8 +334,8 @@ updateStockPricesUI();
 // Open the stock popup and populate it with the company details
 function openStockPopup(company) {
 
-const stockPrices = getStockPrices(company);
-  console.log("company 44   "+company);
+const stockPrices = getStockPrices(company.name);
+  console.log("company 44   "+company.name);
 console.log("stockPrices ????????????????????????????//  " +stockPrices); // Array of the last 7 stock prices for "TechCom"
 generateStockChart(stockPrices);
   
