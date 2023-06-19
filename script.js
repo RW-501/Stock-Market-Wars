@@ -72,7 +72,7 @@ function saveStockPrices(xxx) {
     lastSevenPrices.push(price);
 
     // Limit the array to store only the last 7 prices
-    if (lastSevenPrices.length > 10) {
+    if (lastSevenPrices.length > 7) {
       lastSevenPrices.shift();
     }
 
