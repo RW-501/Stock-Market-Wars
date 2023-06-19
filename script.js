@@ -321,9 +321,9 @@ updateNetWorthDisplay();
 // Function to update the net worth display
 function updateNetWorthDisplay() {
   // Calculate the net worth based on the stocks owned and their current prices
-  const netWorth = calculateNetWorth();
+  let netWorth = calculateNetWorth();
 
-     const totalCashCell = document.getElementById("cash-total-value");
+     let totalCashCell = document.getElementById("cash-total-value");
   let cash = getAvailableFunds();
   totalCashCell.textContent = "$" +  `${cash.toFixed(2)}`;
   // Update the net worth value in the UI
@@ -574,13 +574,7 @@ function buyStock(companyName, quantityToBuy) {
   const stockPrice = company.price;
   const availableFunds = getAvailableFunds();
 
-  const stockPopup = document.getElementById("stock-popup");
-
-  const cashDisplay = document.getElementById("cash-display");
-
-  stockPopup.style.display = "block";
-
-
+         console.log("availableFunds buy   "+availableFunds);
 
     const totalCost = stockPrice * quantityToBuy;
 
@@ -589,11 +583,11 @@ function buyStock(companyName, quantityToBuy) {
       const currentStockQuantity = getStockQuantity(companyName);
       const updatedStockQuantity = currentStockQuantity + quantityToBuy;
       updateStockQuantity(companyName, updatedStockQuantity);
+         console.log("totalCost buy   "+totalCost);
 
       alert(`Successfully bought ${quantityToBuy} ${companyName} stocks for $${totalCost.toFixed(2)}.`);
 
-      stockPopup.style.display = "none";
-      stockQuantityInput.value = "";
+
       updateNetWorthDisplay();
 
       const event = `Bought ${quantityToBuy} shares of ${companyName} for $${totalCost.toFixed(2)}`;
@@ -601,6 +595,7 @@ function buyStock(companyName, quantityToBuy) {
     } else {
       alert("Invalid quantity or insufficient funds to buy stocks.");
     }
+  closePopup("stock-popup");
 
 }
 
@@ -610,25 +605,18 @@ function sellStock(companyName, quantityToSell) {
   const stockQuantity = getStockQuantity(companyName);
   const availableFunds = getAvailableFunds();
 
-  const stockPopup = document.getElementById("stock-popup");
-
-
-  stockPopup.style.display = "block";
- 
-
 
 
     if (quantityToSell <= stockQuantity && quantityToSell > 0) {
       const totalEarnings = stockPrice * quantityToSell;
       addFunds(totalEarnings);
+         console.log("totalEarnings sell   "+totalEarnings);
 
       const updatedStockQuantity = stockQuantity - quantityToSell;
       updateStockQuantity(companyName, updatedStockQuantity);
 
       alert(`Successfully sold ${quantityToSell} ${companyName} stocks for $${totalEarnings.toFixed(2)}.`);
 
-      stockPopup.style.display = "none";
-      stockQuantityInput.value = "";
       updateNetWorthDisplay();
 
       const event = `Sold ${quantityToSell} shares of ${companyName} for $${totalEarnings.toFixed(2)}`;
@@ -637,6 +625,7 @@ function sellStock(companyName, quantityToSell) {
       alert("Invalid quantity or insufficient stocks to sell.");
     }
   
+  closePopup("stock-popup");
 
 }
 
@@ -645,8 +634,8 @@ function sellStock(companyName, quantityToSell) {
 
 // List of fictional lenders and their information
 const lenders = [
-  { id: "1", name: "Fortune Finance", funds: 100000, interestRate: 0.1, minNetWorth: 500, automaticPayments: true, paymentAmount: 50, paymentFrequency: "30" },
-  {  id: "2", name: "Prestige Bank", funds: 50000, interestRate: 0.15, minNetWorth: 2500, automaticPayments: false, paymentAmount: 100, paymentFrequency: "" },
+  { id: "1", name: "Fortune Finance", funds: 100000, interestRate: 0.1, minNetWorth: 100, automaticPayments: true, paymentAmount: 50, paymentFrequency: "30" },
+  {  id: "2", name: "Prestige Bank", funds: 50000, interestRate: 0.15, minNetWorth: 300, automaticPayments: false, paymentAmount: 100, paymentFrequency: "" },
   {  id: "3", name: "Elite Capital", funds: 75000, interestRate: 0.12, minNetWorth: 3000, automaticPayments: true, paymentAmount: 25, paymentFrequency: "15" },
   {  id: "4", name: "Opulent Investments", funds: 200000, interestRate: 0.08, minNetWorth: 15000, automaticPayments: true, paymentAmount: 50, paymentFrequency: "30" },
   {  id: "5", name: "Prosperity Lending", funds: 150000, interestRate: 0.11, minNetWorth: 55000, automaticPayments: false, paymentAmount: 100, paymentFrequency: "" },
