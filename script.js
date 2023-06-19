@@ -314,26 +314,38 @@ let randomNum = Math.floor(Math.random() * 100) + 1;
     
 if (Math.random() < 0.1) { // 10% chance of a news event
   const numCompaniesAffected = Math.floor(Math.random() * 2) + 1; // Randomly select 1 to 2 companies
+
   for (let i = 0; i < numCompaniesAffected; i++) {
     const randomCompanyIndex = Math.floor(Math.random() * companies.length);
     const company = companies[randomCompanyIndex];
+
     const newsChance = Math.random() * 0.6 + 0.1; // Random chance between 10% and 70%
-    if (Math.random() < newsChance) {
+
+    if (Math.random() < newsChance) { // Check if the news event occurs based on the chance
       const newsChangePercentage = (Math.random() * 0.05 + 0.5) * 100; // Random change between 5% and 10%
+
       const isPositiveChange = Math.random() < 0.5; // 50% chance of positive change
+
       const changePercentage = Math.min(newsChangePercentage, 30); // Limit change to 30%
-      const newsChange = (isPositiveChange ? 1 : -1) * (company.price * (changePercentage / 100));
-      company.price += newsChange;
-      stockPrices[company.name] = company.price;
+
+      const newsChange = (isPositiveChange ? 1 : -1) * (company.price * (changePercentage / 100)); // Calculate the news change
+
+      company.price += newsChange; // Apply the news change to the company's stock price
+
+      stockPrices[company.name] = company.price; // Update the stock price in the stockPrices object
+
       const isPositiveChangeNew = newsChange >= 0;
       const changePercentageFormatted = `${Math.abs(changePercentage).toFixed(2)}%`;
       const isPositiveLabel = isPositiveChangeNew ? 'increased' : 'decreased';
       const newsEvent = `Breaking News: ${company.name} price ${isPositiveLabel} by ${changePercentageFormatted}`;
-      addNewsEvent(newsEvent, "main");
+
+      addNewsEvent(newsEvent, "main"); // Add the news event to the UI
+
       console.log("newsEvent    " + newsEvent);
     }
   }
 }
+
 
 
 
