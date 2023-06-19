@@ -371,14 +371,14 @@ function openStockPopup(xxx) {
   if(xxx){ 
   theCompany = xxx;
   }
-  // Start the interval and store the identifier in the intervalId variable
     const stockPrices = getStockPrices(theCompany.name);
     generateStockChart(stockPrices);
+console.log("company xxxx   "+xxx); 
 console.log("company.name   "+theCompany.name); 
 
 
-  clearInterval(intervalId);
-startUITimer();
+  //clearInterval(intervalId);
+//startUITimer();
   
   const stockPopup = document.getElementById("stock-popup");
   const stockPopupTitle = document.getElementById("stock-popup-title");
