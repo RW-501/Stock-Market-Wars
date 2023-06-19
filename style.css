@@ -199,6 +199,12 @@ font-size: 30px;
 }
 
 
+#stock-chart {
+    margin: auto;
+    width: 90%;
+    padding: 5%;
+    box-sizing: content-box;
+}
 
 
 #news-content {
