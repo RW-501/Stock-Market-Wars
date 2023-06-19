@@ -53,6 +53,9 @@ function saveStockPrices(stockData) {
   // Retrieve the existing stock prices from local storage or initialize an empty object
   const storedStockPrices = JSON.parse(localStorage.getItem('stockPrices')) || {};
 
+
+  console.log("stockData   "+stockData);
+  
   // Update the stock prices for each stock in the stockData array
   stockData.forEach(stock => {
     const { name, price } = stock;
