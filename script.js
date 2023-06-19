@@ -49,6 +49,75 @@ var companies = getMarket();
 //console.log(companies);
 
 
+function saveStockPrices(stockData) {
+  // Retrieve the existing stock prices from local storage or initialize an empty object
+  const storedStockPrices = JSON.parse(localStorage.getItem('stockPrices')) || {};
+
+  // Update the stock prices for each stock in the stockData array
+  stockData.forEach(stock => {
+    const { name, price } = stock;
+    const lastSevenPrices = storedStockPrices[name] || [];
+    lastSevenPrices.push(price);
+
+    // If the number of stored prices exceeds 7, remove the oldest price
+    if (lastSevenPrices.length > 7) {
+      lastSevenPrices.shift();
+    }
+
+    // Update the stored stock prices for the stock
+    storedStockPrices[name] = lastSevenPrices;
+  });
+
+  // Save the updated stock prices to local storage
+  localStorage.setItem('stockPrices', JSON.stringify(storedStockPrices));
+}
+function generateStockChart(stockData) {
+  const canvas = document.getElementById("stock-chart");
+  const ctx = canvas.getContext("2d");
+
+  // Define the chart dimensions and margins
+  const chartWidth = canvas.width - 20;
+  const chartHeight = canvas.height - 20;
+  const marginTop = 10;
+  const marginBottom = 10;
+  const marginLeft = 10;
+  const marginRight = 10;
+
+  // Calculate the maximum and minimum values of the stock data
+  const maxValue = Math.max(...stockData);
+  const minValue = Math.min(...stockData);
+
+  // Calculate the height of each data point on the chart
+  const dataHeight = (chartHeight - marginTop - marginBottom) / (maxValue - minValue);
+
+  // Calculate the width of each data point on the chart
+  const dataWidth = (chartWidth - marginLeft - marginRight) / (stockData.length - 1);
+
+  // Clear the canvas
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Draw the chart axes
+  ctx.beginPath();
+  ctx.moveTo(marginLeft, marginTop);
+  ctx.lineTo(marginLeft, chartHeight - marginBottom);
+  ctx.lineTo(chartWidth - marginRight, chartHeight - marginBottom);
+  ctx.strokeStyle = "black";
+  ctx.lineWidth = 1;
+  ctx.stroke();
+
+  // Draw the data points on the chart
+  ctx.beginPath();
+  ctx.moveTo(marginLeft, chartHeight - marginBottom - (stockData[0] - minValue) * dataHeight);
+  for (let i = 1; i < stockData.length; i++) {
+    const x = marginLeft + i * dataWidth;
+    const y = chartHeight - marginBottom - (stockData[i] - minValue) * dataHeight;
+    ctx.lineTo(x, y);
+  }
+  ctx.strokeStyle = "blue";
+  ctx.lineWidth = 2;
+  ctx.stroke();
+}
+
 
 function updateStockQuantity(companyName, updatedStockQuantity) {
   // Retrieve the current portfolio from local storage
@@ -161,6 +230,8 @@ function updateStockPrices() {
   // Retrieve the stock prices from local storage
   const storedStockPrices = localStorage.getItem('stockPrices');
 
+  saveStockPrices(storedStockPrices);
+  
   // Parse the stored stock prices object
   let stockPrices = JSON.parse(storedStockPrices);
 
@@ -231,6 +302,11 @@ updateStockPricesUI();
 
 // Open the stock popup and populate it with the company details
 function openStockPopup(company) {
+
+const stockPrices = getStockPrices(company);
+console.log("stockPrices   " +stockPrices); // Array of the last 7 stock prices for "TechCom"
+generateStockChart(stockPrices);
+  
   const stockPopup = document.getElementById("stock-popup");
   const stockPopupTitle = document.getElementById("stock-popup-title");
   const stockPopupPrice = document.getElementById("stock-popup-price");
