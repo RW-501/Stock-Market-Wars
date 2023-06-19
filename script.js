@@ -24,6 +24,10 @@ function getMarket() {
   ];
 
 
+var counterValue = localStorage.getItem('counterValue') || 0;
+
+
+var runCount = 0;
 
   // Retrieve the stored stock prices from local storage
   const storedStockPrices = localStorage.getItem('stockPrices');
@@ -195,10 +199,6 @@ function getStockPrice(companyName) {
 function isOdd(number) {
   return number % 2 === 1;
 }
-var counterValue = localStorage.getItem('counterValue') || 0;
-
-
-var runCount = 0;
 
 
 //// DISPLAY PORFTFOLIO
@@ -426,7 +426,7 @@ function updateStockPricesUI() {
 
 function timeAndDateFunc() {
 
-  if(counterValue == null){
+  if(counterValue ==== null){
     counterValue = 0;}else{
      counterValue++;
   }
