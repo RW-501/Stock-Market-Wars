@@ -966,6 +966,7 @@ function addNewsEvent(event, xxx) {
         console.log(xxx +"  event    " + event);
 
   eventDayCount = 0;
+  
 if(xxx =="main"){
 
       const newsContent = document.getElementById("news-content");
@@ -1080,8 +1081,10 @@ function closePopup(popupId) {
  //   clearInterval(interval); // Clear the interval to stop updating stock prices
 //  interval = setInterval(updateStockPrices, 5000); // Restart the interval to resume updating stock prices
   console.log("closePopup");
+  }
   var popup = document.getElementById(popupId);
   popup.style.display = "none";
+
 }
 
 // Function to open the portfolio popup
