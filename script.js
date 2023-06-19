@@ -1078,7 +1078,7 @@ function pauseGame() {
 var newsOpen = true;
 // Function to open the specified popup window
 function openPopup(popupId) {
-if(popupId ==="portfolio-popup"  &&   newsOpen === false ||popupId === "news-popup" &&   newsOpen === true || popupId ==="bank-popup"  &&   newsOpen === false || popupId ==="stock-popup"  &&   newsOpen === false){
+if(popupId ==="portfolio-popup"  &&   newsOpen === true ||popupId === "news-popup" &&   newsOpen === true || popupId ==="bank-popup"  &&   newsOpen === true || popupId ==="stock-popup"  &&   newsOpen === true){
     var popup = document.getElementById(popupId);
   popup.style.display = "block";
     if(popupId === "news-popup" &&   newsOpen === true){
