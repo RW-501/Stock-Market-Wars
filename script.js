@@ -188,8 +188,8 @@ function updateStockPrices() {
 
 
 let randomNum = Math.random() ; 
-
-   if(isOdd(randomNum)){
+console.log("randomNum   "+randomNum); 
+   if(isOdd(randomNum)  == true){
  
     
 // Example 3: Simulate news events
