@@ -415,8 +415,7 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
 
   generateStockChart(stockPrices);
   
-clearInterval(intervalStock);
-  startUITimer();
+
   const stockPrice = getStockPrice(theCompanyName);
   console.log("stockPrice?? xxxx   " + stockPrice);
   
@@ -438,9 +437,10 @@ clearInterval(intervalStock);
   stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
   stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
 if(intervalStock){}else{
+    startUITimer();
   openPopup("stock-popup");
 }
-  
+  //clearInterval(intervalStock);
 }
 
 // Close the stock popup and remove event listeners
