@@ -260,9 +260,10 @@ function displayPortfolio() {
 
   // Initialize the total value variable
   let totalValue = 0;
+//portfolio = `{"SmartSolutions":{"stockQuantity":30,"avgStockPrice":14.993866453874158}}`;
 
  // Iterate over each company in the portfolio
-for (const [name, stockQuantity , avgStockPrice] of Object.entries(portfolio)) {
+for (const [name, { stockQuantity, avgStockPrice }] of Object.entries(portfolio)) {
   // Retrieve the stock price for the current company (assuming it's stored somewhere)
   const stockPrice = getStockPrice(name);
   
