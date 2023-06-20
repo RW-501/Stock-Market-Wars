@@ -235,6 +235,13 @@ function displayPortfolio() {
 
   // Parse the portfolio string into an object
   const portfolio = JSON.parse(portfolioString);
+  
+// Check if the portfolio is null or undefined
+  if (!portfolio) {
+    // Handle the case when the portfolio is empty or not available
+    console.log("Portfolio is empty or not available");
+    return;
+  }
 
   // Initialize the total value variable
   let totalValue = 0;
