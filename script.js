@@ -413,18 +413,19 @@ function startUITimer() {
 // Open the stock popup and populate it with the company details
 function openStockPopup(xxx) {
 
-      console.log("xxxxxxxxxxxxxxxxxxxxxxx   " + xxx);
+      //console.log("xxxxxxxxxxxxxxxxxxxxxxx   " + xxx);
 
 if (xxx !== '' && xxx !== null && xxx !== undefined) {
   theCompany = xxx;
   theCompanyName = xxx.name;
   console.log("company.name   " + theCompanyName);
+  
 }else{
-      console.log("storged company.name   " + theCompanyName);
- console.log("????????????????????????????????????>   ");
+    //  console.log("storged company.name   " + theCompanyName);
+// console.log("????????????????????????????????????>   ");
 }
   const stockPrices = getStockPrices(theCompanyName);
-  console.log("stockPrices xxxx   " + stockPrices);
+//  console.log("stockPrices xxxx   " + stockPrices);
 
   generateStockChart(stockPrices);
   
@@ -449,10 +450,14 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
 
   stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
   stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
-if(intervalStock){}else{
+
+
+if (xxx !== '' && xxx !== null && xxx !== undefined) {
+
     startUITimer();
   openPopup("stock-popup");
 }
+  
   //clearInterval(intervalStock);
 }
 
