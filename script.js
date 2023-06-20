@@ -818,7 +818,7 @@ if (totalCost <= availableFunds && quantityToBuy > 0) {
   const currentStockQuantity = getStockQuantity(companyName).stockQuantity || 0;
   const updatedStockQuantity = currentStockQuantity + quantityToBuy;
   
-  const currentTotalCost = currentStockQuantity.totalCost;
+  const currentTotalCost = getStockQuantity(companyName).totalCost;
 
   let stockCost = currentTotalCost + totalCost;
 
