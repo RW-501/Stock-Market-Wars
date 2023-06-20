@@ -214,9 +214,9 @@ function getStockPrice(companyName) {
   // Retrieve the stock prices from local storage
   const storedStockPrices = localStorage.getItem('stockPrices');
   
-  // If no stock prices are stored, return null or a default value
+  // If no stock prices are stored, return a default value like 0
   if (!storedStockPrices) {
-    return null; // or a default value like 0
+    return 0; // or any other default value you prefer
   }
   
   // Parse the stored stock prices object
@@ -260,39 +260,47 @@ function displayPortfolio() {
   // Initialize the total value variable
   let totalValue = 0;
 
-  // Iterate over each company in the portfolio
-  for (const [name, stockQuantity] of Object.entries(portfolio)) {
-    // Retrieve the stock price for the current company (assuming it's stored somewhere)
-    const stockPrice = getStockPrice(name);
+ // Iterate over each company in the portfolio
+for (const [name, stockQuantity] of Object.entries(portfolio)) {
+  // Retrieve the stock price for the current company (assuming it's stored somewhere)
+  const stockPrice = getStockPrice(name);
+  
+  // Retrieve the average stock price for the current company (assuming it's available)
+  const avgStockPrice = getAvgStockPrice(name);
 
-    // Calculate the value of the current company's stocks
-    const companyValue = stockPrice * stockQuantity;
+  // Calculate the value of the current company's stocks
+  const companyValue = stockPrice * stockQuantity;
 
-    // Add the company value to the total value
-    totalValue += companyValue;
+  // Add the company value to the total value
+  totalValue += companyValue;
 
-    // Create a new table row for the company in the portfolio display
-    const row = document.createElement("tr");
+  // Create a new table row for the company in the portfolio display
+  const row = document.createElement("tr");
 
-    // Create table cells for the company name, stock price, stock quantity, and company value
-    const nameCell = document.createElement("td");
-    nameCell.textContent = name;
-    const priceCell = document.createElement("td");
-    priceCell.textContent = "$" + stockPrice.toFixed(2);
-    const quantityCell = document.createElement("td");
-    quantityCell.textContent = stockQuantity;
-    const valueCell = document.createElement("td");
-    valueCell.textContent = "$" + companyValue.toFixed(2);
+  // Create table cells for the company name, stock price, average stock price, stock quantity, and company value
+  const nameCell = document.createElement("td");
+  nameCell.textContent = name;
+  const priceCell = document.createElement("td");
+  priceCell.textContent = "$" + stockPrice.toFixed(2);
+  const avgPriceCell = document.createElement("td");
+  avgPriceCell.textContent = "$" + avgStockPrice.toFixed(2); // Display the average stock price
+  const quantityCell = document.createElement("td");
+  quantityCell.textContent = stockQuantity;
+  const valueCell = document.createElement("td");
+  valueCell.textContent = "$" + companyValue.toFixed(2);
 
-    // Append the table cells to the row
-    row.appendChild(nameCell);
-    row.appendChild(priceCell);
-    row.appendChild(quantityCell);
-    row.appendChild(valueCell);
+  // Append the table cells to the row
+  row.appendChild(nameCell);
+  row.appendChild(priceCell);
+  row.appendChild(avgPriceCell);
+  row.appendChild(quantityCell);
+  row.appendChild(valueCell);
 
-    // Append the row to the portfolio display
-    portfolioContainer.appendChild(row);
-  }
+  // Append the row to the portfolio display
+  portfolioContainer.appendChild(row);
+}
+
+  
 
   // Display the total value of the portfolio
   const totalValueCell = document.getElementById("portfolio-total-value");
