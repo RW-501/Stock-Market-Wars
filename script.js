@@ -1087,39 +1087,42 @@ function openPopup(popupId) {
   // Check if the popupId matches specific conditions, and don't take any action
   if (popupId === "portfolio-popup" || popupId === "news-popup" || popupId === "bank-popup" || popupId === "stock-popup") {
     // Do nothing for specific popups
+    
   } else {
     clearInterval(interval); // Clear the interval to stop updating stock prices
     console.log("Timer stopped");
   }
+if(popupId === "news-popup"){
+const popups = document.querySelectorAll(".popup");
+  for (const popup of popups) {
+ if (popup.classList.contains("popupOpened")) {
+       console.log("  popupOpened");
 
- // Get the specified popup element
+  }else{
+    popup.style.display = "none";
+          console.log("blocked  popup");
+
+ }
+
+}
+
+}else{
+// Get the specified popup element
   var popupElement = document.getElementById(popupId);
-
-  // Check if the popup element is already opened
-  if (popupElement.classList.contains("popupOpened")) {
-    console.log("Container opened");
-     closeAllPopups(popupElement);
-  } else {
-    // Close any opened popups
-    closeAllPopups();
 
     console.log("Open popup");
     popupElement.style.display = "block";
     popupElement.classList.add("popupOpened");
   }
+
+
 }
 
-// Function to close all popups
-function closeAllPopups(xxx) {
-  const popups = document.querySelectorAll(".popup");
-  for (const popup of popups) {
-    popup.style.display = "none";
-    popup.classList.remove("popupOpened");
-    xxx.classList.add("popupOpened");
-        xxx.style.display = "block";
+  
+ 
 
-  }
-}
+
+
 
 // Function to close the specified popup window
 function closePopup(popupId) {
