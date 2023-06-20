@@ -825,7 +825,7 @@ if (totalCost <= availableFunds && quantityToBuy > 0) {
   
     console.log(currentTotalCost + " currentTotalCost " + totalCost);
   
-  console.log("currentStockQuantity    " + stockQuantity);
+  console.log("stockCost    " + stockCost);
 
   updateStockQuantity(companyName, updatedStockQuantity, stockCost);
 
