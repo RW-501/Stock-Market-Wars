@@ -220,7 +220,7 @@ function getStockPrice(companyName) {
   }
   
   // Parse the stored stock prices object
-  const stockPrices = JSON.parse(storedStockPrices);
+  const stockPrices = JSON.parse(stockPrices);
   
   // Retrieve the stock price for the given company name
   const stockPrice = stockPrices[companyName];
