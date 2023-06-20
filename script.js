@@ -803,21 +803,23 @@ function buyStock(companyName, quantityToBuy) {
 
          console.log("availableFunds buy   "+availableFunds);
 
-    const totalCost = stockPrice * quantityToBuy;
+  const totalCost = stockPrice * quantityToBuy;
 
-    if (totalCost <= availableFunds && quantityToBuy > 0) {
-      deductFunds(totalCost);
-      const currentStockQuantity = getStockQuantity(companyName);
-      const updatedStockQuantity = currentStockQuantity + quantityToBuy;
+if (totalCost <= availableFunds && quantityToBuy > 0) {
+  deductFunds(totalCost);
+  const currentStockQuantity = getStockQuantity(companyName);
+  const updatedStockQuantity = currentStockQuantity + quantityToBuy;
 
-            const stockCostOld = getStockQuantity(companyName);
-      let stockCost = stockCostOld + totalCost;
-      let avgStockCost = stockCost / updatedStockQuantity;
+  const stockCostOld = getStockQuantity(companyName);
+  let stockCost = stockCostOld + totalCost;
+  let avgStockCost = stockCost / updatedStockQuantity;
 
-      updateStockQuantity(companyName, updatedStockQuantity, avgStockCost );
-         console.log("totalCost buy   "+totalCost);
+  updateStockQuantity(companyName, updatedStockQuantity, avgStockCost);
+  console.log("totalCost buy   " + totalCost);
 
-      alert(`Successfully bought ${quantityToBuy} ${companyName} stocks for $${totalCost.toFixed(2)}.`);
+  alert(`Successfully bought ${quantityToBuy} ${companyName} stocks for $${totalCost.toFixed(2)}. Average stock price: $${avgStockCost.toFixed(2)}.`);
+}
+
 
 
       updateNetWorthDisplay();
