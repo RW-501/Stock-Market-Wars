@@ -244,10 +244,10 @@ function displayPortfolio() {
   portfolioContainer.innerHTML = "";
 
   // Retrieve the portfolio from local storage
-  //const portfolio = localStorage.getItem('portfolio');
+  const portfolio = localStorage.getItem('portfolio');
 
   // Parse the portfolio string into an object
- const portfolio = JSON.parse(portfolioString);
+// const portfolio = JSON.parse(portfolioString);
 
   
    //console.log(portfolio+"    portfolioString    " + portfolioString);
