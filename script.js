@@ -385,7 +385,7 @@ let theCompanyName;
 function startUITimer() {
   clearInterval(intervalId);
   intervalId = setTimeout(() => {
-    openStockPopup();
+    openStockPopup('');
   }, 5000);
 }
 
