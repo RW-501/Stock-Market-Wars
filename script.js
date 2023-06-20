@@ -35,6 +35,10 @@ function getMarket() {
   // Retrieve the stored stock prices from local storage
   const storedStockPrices = localStorage.getItem('stockPrices');
 //console.log("storedStockPrices   "+storedStockPrices);
+
+ // Check if stockPrices data exists in local storage
+  if (storedStockPrices) {
+    
   // Parse the stored stock prices string into an object or set it to an empty object if null
   const stockPrices = JSON.parse(storedStockPrices) || {};
 
@@ -49,6 +53,15 @@ function getMarket() {
 
   return updatedCompanies;
 }
+  
+// If stockPrices data doesn't exist in local storage, return the default market data
+  return market;
+}
+
+
+
+
+
 
 
 // Example usage
