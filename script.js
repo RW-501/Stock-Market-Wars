@@ -1075,30 +1075,29 @@ function pauseGame() {
 
 
 
-var newsOpen = true;
 // Function to open the specified popup window
 function openPopup(popupId) {
-if(popupId ==="portfolio-popup"  &&   newsOpen === true ||popupId === "news-popup" &&   newsOpen === true || popupId ==="bank-popup"  &&   newsOpen === true || popupId ==="stock-popup"  &&   newsOpen === true){
-    var popup = document.getElementById(popupId);
-  popup.style.display = "block";
-    if(popupId === "news-popup" &&   newsOpen === true){
-  newsOpen = false;
-
-    }
-  /*
-  if(popupId === "news-popup" &&   newOpen === true){
-  if (popupId ==="portfolio-popup" || popupId ==="bank-popup"|| popupId ==="stock-popup") {
-  newOpen = true;
-} else {
-  }*/
-  
+if(popupId ==="portfolio-popup" ||popupId === "news-popup"|| popupId ==="bank-popup"  || popupId ==="stock-popup"){
 }else{
-    clearInterval(interval); // Clear the interval to stop updating stock prices
+
+
+
+  const popups = document.querySelectorAll(".popup");
+  
+  for (const popup of popups) {
+    if (popup.classList.contains("popupOpened")) {
+      return true; // At least one popup has the "popupOpened" class
+    }
+  }
+      clearInterval(interval); // Clear the interval to stop updating stock prices
   console.log("openPopup");
     var popup = document.getElementById(popupId);
   popup.style.display = "block";
+    document.getElementById(popupId).classList.add("popupOpened");
+
 }
-  
+  return false; // No popups have the "popupOpened" class
+
 
 }
 
@@ -1110,9 +1109,8 @@ if (interval) {
   interval = setInterval(updateStockPrices, 5000); // Restart the interval to resume updating stock prices
 }
   console.log("closePopup");
-      if(popupId === "news-popup" &&   newsOpen === false){
-  newsOpen = true;
-  }
+  document.getElementById(popupId).classList.remove("popupOpened");
+
   var popup = document.getElementById(popupId);
   popup.style.display = "none";
 
