@@ -392,7 +392,7 @@ function openStockPopup(xxx) {
 
   generateStockChart(stockPrices);
 
-  //startUITimer();
+  startUITimer();
 
   
   const stockPopup = document.getElementById("stock-popup");
