@@ -323,9 +323,10 @@ updateStockPricesUI();
     company.price += trendChange;
 
 
-let randomNum = Math.floor(Math.random() * 100) + 1;
+let randomNum = Math.floor(Math.random() * 15) + 1;
 //console.log("randomNum   "+randomNum); 
-   if(isOdd(randomNum)  == true){
+   if(randomNum == 8){
+//   if(isOdd(randomNum)  == true){
  
     
 if (Math.random() < 0.1) { // 10% chance of a news event
