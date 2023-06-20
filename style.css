@@ -68,7 +68,7 @@ h1 {
     margin-bottom: 20px;
     overflow-x: auto;
     width: 100%;
-    padding-left: 20%;
+    padding-left: 5%;
     box-sizing: border-box;
 }
 
@@ -199,6 +199,7 @@ font-size: 30px;
 .breaking-news-item{
     padding: 5%;
     box-sizing: content-box;
+      text-align: center;
 }
 
 
