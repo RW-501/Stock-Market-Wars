@@ -190,7 +190,7 @@ function generateStockChart(stockData) {
 
 
 
-function updateStockQuantity(companyName, updatedStockQuantity) {
+function updateStockQuantity(companyName, updatedStockQuantity, avgStockPrice) {
   // Retrieve the current portfolio from local storage
   const portfolioString = localStorage.getItem('portfolio');
 
@@ -198,16 +198,17 @@ function updateStockQuantity(companyName, updatedStockQuantity) {
   const portfolio = portfolioString ? JSON.parse(portfolioString) : {};
 
   // Update the stock quantity for the given company in the portfolio
-  portfolio[companyName] = updatedStockQuantity;
+  portfolio[companyName] = {
+    stockQuantity: updatedStockQuantity,
+    avgStockPrice: avgStockPrice
+  };
 
   // Save the updated portfolio back to local storage
   localStorage.setItem('portfolio', JSON.stringify(portfolio));
 
   // You can also update the UI to reflect the updated stock quantity if necessary
   // For example, you can update a stock quantity display on the screen
- // console.log("portfolioString 44   "+portfolioString); // Display the entire portfolio object
 }
-
 
 function getStockPrice(companyName) {
   // Retrieve the stock prices from local storage
