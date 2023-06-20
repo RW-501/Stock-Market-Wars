@@ -1,3 +1,9 @@
+
+var dayTimer = 10000; //10000 = 10sec 5000 = 5sec
+
+var runCount = 0;
+
+
 function getMarket() {
 
   const market = [
@@ -24,9 +30,7 @@ function getMarket() {
   ];
 
 
-var dayTimer = 10000; //10000 = 10sec 5000 = 5sec
 
-var runCount = 0;
 
   // Retrieve the stored stock prices from local storage
   const storedStockPrices = localStorage.getItem('stockPrices');
