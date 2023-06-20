@@ -781,11 +781,11 @@ function calculateNetWorth() {
   // Calculate the value of all stocks owned
   const stockValue = companies.reduce((total, company) => {
     const stockPrice = getStockPrice(company.name); // Retrieve the current stock price for the company
-    const stockQuantity = getStockQuantity(company.name).stockQuantity; // Retrieve the stock quantity owned
+    const stockQuantity = getStockQuantity(company.name); // Retrieve the stock quantity owned
     
-             console.log(stockQuantity +"    calculateNetWorth    "+company.name);
+             console.log(stockQuantity.stockQuantity +"    calculateNetWorth    "+company.name);
 
-    return total + stockPrice * stockQuantity;
+    return total + stockPrice * stockQuantity.stockQuantity;
   }, 0);
   
   // Calculate the value of other assets like cash, cars, houses, etc.
@@ -811,15 +811,15 @@ function buyStock(companyName, quantityToBuy) {
 
 if (totalCost <= availableFunds && quantityToBuy > 0) {
   deductFunds(totalCost);
-  const currentStockQuantity = getStockQuantity(companyName).stockQuantity;
-  const updatedStockQuantity = currentStockQuantity + quantityToBuy;
+  const currentStockQuantity = getStockQuantity(companyName);
+  const updatedStockQuantity = currentStockQuantity.stockQuantity + quantityToBuy;
   
   const currentTotalCost = getStockQuantity(companyName).totalCost;
 
   let stockCost = currentTotalCost + totalCost;
 
   updateStockQuantity(companyName, updatedStockQuantity, stockCost);
- // console.log("totalCost buy   " + totalCost);
+  console.log("currentStockQuantity buy   " + currentStockQuantity);
 
   alert(`Successfully bought ${quantityToBuy} ${companyName} stocks for $${totalCost.toFixed(2)}. total stock price: $${stockCost.toFixed(2)}.`);
 
