@@ -247,7 +247,7 @@ function displayPortfolio() {
   //const portfolio = localStorage.getItem('portfolio');
 
   // Parse the portfolio string into an object
- // const portfolio = JSON.parse(portfolioString);
+ const portfolio = JSON.parse(portfolioString);
 
   
    //console.log(portfolio+"    portfolioString    " + portfolioString);
@@ -261,7 +261,7 @@ function displayPortfolio() {
   // Initialize the total value variable
   let totalValue = 0;
   
-let portfolio = {"SmartSolutions":{"stockQuantity":30,"avgStockPrice":14.993866453874158}};
+//let portfolio = {"SmartSolutions":{"stockQuantity":30,"avgStockPrice":14.993866453874158}};
 
  // Iterate over each company in the portfolio
 for (const [name, { stockQuantity, avgStockPrice }] of Object.entries(portfolio)) {
