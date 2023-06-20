@@ -781,7 +781,7 @@ function calculateNetWorth() {
   // Calculate the value of all stocks owned
   const stockValue = companies.reduce((total, company) => {
     const stockPrice = getStockPrice(company.name); // Retrieve the current stock price for the company
-    const { stockQuantity } = getStockQuantity(company.name); // Retrieve the stock quantity owned
+    const  stockQuantity  = getStockQuantity(company.name); // Retrieve the stock quantity owned
 
     console.log(stockQuantity + " stocks owned of " + company.name);
 
@@ -818,7 +818,7 @@ if (totalCost <= availableFunds && quantityToBuy > 0) {
   const currentStockQuantity = getStockQuantity(companyName);
   const updatedStockQuantity = currentStockQuantity.stockQuantity + quantityToBuy;
   
-  const currentTotalCost = getStockQuantity(companyName).totalCost;
+  const currentTotalCost = currentStockQuantity.totalCost;
 
   let stockCost = currentTotalCost + totalCost;
 
