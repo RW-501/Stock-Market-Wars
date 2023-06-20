@@ -1117,10 +1117,10 @@ function openPopup(popupId) {
     }
   } else {
     // Get the specified popup element
-    var popupElement = document.getElementById(popupId);
-    console.log("Open popup");
-    popupElement.style.display = "block";
-    popupElement.classList.add("popupOpened");
+ //   var popupElement = document.getElementById(popupId);
+    console.log("Open popup  ?????");
+//    popupElement.style.display = "block";
+   // popupElement.classList.add("popupOpened");
   }
 }
 
