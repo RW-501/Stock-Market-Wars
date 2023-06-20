@@ -800,7 +800,12 @@ function buyStock(companyName, quantityToBuy) {
       deductFunds(totalCost);
       const currentStockQuantity = getStockQuantity(companyName);
       const updatedStockQuantity = currentStockQuantity + quantityToBuy;
-      updateStockQuantity(companyName, updatedStockQuantity);
+
+            const stockCostOld = getStockQuantity(companyName);
+      let stockCost = stockCostOld + totalCost;
+      let avgStockCost = stockCost / updatedStockQuantity;
+
+      updateStockQuantity(companyName, updatedStockQuantity, avgStockCost );
          console.log("totalCost buy   "+totalCost);
 
       alert(`Successfully bought ${quantityToBuy} ${companyName} stocks for $${totalCost.toFixed(2)}.`);
