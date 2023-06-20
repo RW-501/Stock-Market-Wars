@@ -264,11 +264,10 @@ function displayPortfolio() {
 //let portfolio = {"SmartSolutions":{"stockQuantity":30,"avgStockPrice":14.993866453874158}};
 
  // Iterate over each company in the portfolio
-for (const [name, { stockQuantity, totalCost }] of Object.entries(portfolioString)) {
+for (const [name, { stockQuantity, totalCost }] of Object.entries(portfolio)) {
   // Retrieve the stock price for the current company (assuming it's stored somewhere)
   const stockPrice = getStockPrice(name);
-  
-//console.log(name+"    avgSto    "+stockPrice  +"    ckPrice    " + portfolioString);
+
   // Calculate the value of the current company's stocks
   const companyValue = stockPrice * stockQuantity;
 
@@ -284,11 +283,11 @@ for (const [name, { stockQuantity, totalCost }] of Object.entries(portfolioStrin
   const priceCell = document.createElement("td");
   priceCell.textContent = "$" + stockPrice.toFixed(2);
   const totalCostCell = document.createElement("td");
-  totalCostCell.textContent = "$" + totalCost.toFixed(2) || ""; // Display the average stock price
+  totalCostCell.textContent = "$" + (totalCost || ""); // Display the average stock price
   const quantityCell = document.createElement("td");
-  quantityCell.textContent = stockQuantity  || ""; 
+  quantityCell.textContent = stockQuantity || "";
   const valueCell = document.createElement("td");
-  valueCell.textContent = "$" + companyValue.toFixed(2)  || ""; 
+  valueCell.textContent = "$" + (companyValue || "");
 
   // Append the table cells to the row
   row.appendChild(nameCell);
@@ -301,7 +300,6 @@ for (const [name, { stockQuantity, totalCost }] of Object.entries(portfolioStrin
   portfolioContainer.appendChild(row);
 }
 
-  
 
   // Display the total value of the portfolio
   const totalValueCell = document.getElementById("portfolio-total-value");
