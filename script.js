@@ -783,7 +783,6 @@ function calculateNetWorth() {
     const stockPrice = getStockPrice(company.name); // Retrieve the current stock price for the company
     const  stockQuantity  = getStockQuantity(company.name).stockQuantity || 0; // Retrieve the stock quantity owned
 
-    console.log(stockQuantity + " stocks owned of " + company.name);
 
     return total + stockPrice * stockQuantity;
   }, 0);
@@ -815,15 +814,20 @@ function buyStock(companyName, quantityToBuy) {
 
 if (totalCost <= availableFunds && quantityToBuy > 0) {
   deductFunds(totalCost);
-  const currentStockQuantity = getStockQuantity(companyName).stockQuantity || 0;
-  const updatedStockQuantity = currentStockQuantity + quantityToBuy;
+  const currentStock = getStockQuantity(companyName);
+  let stockQuantity = currentStock.stockQuantity || 0;
   
-  const currentTotalCost = getStockQuantity(companyName).totalCost;
+  const updatedStockQuantity = stockQuantity + quantityToBuy;
+  
+  const currentTotalCost = currentStock.totalCost;
 
   let stockCost = currentTotalCost + totalCost;
+  
+    console.log(currentTotalCost + " currentTotalCost " + totalCost);
+  
+  console.log("currentStockQuantity    " + stockQuantity);
 
   updateStockQuantity(companyName, updatedStockQuantity, stockCost);
-  console.log("currentStockQuantity buy   " + currentStockQuantity);
 
   alert(`Successfully bought ${quantityToBuy} ${companyName} stocks for $${totalCost.toFixed(2)}. total stock price: $${stockCost.toFixed(2)}.`);
 
