@@ -484,6 +484,7 @@ if (counterValue > 365) {
 } else {
   counter.textContent = `${counterValue} days`;
 }
+  displayPortfolio();
 updateNetWorthDisplay();
 
 }
