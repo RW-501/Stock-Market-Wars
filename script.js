@@ -436,8 +436,9 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
 
   stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
   stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
-
+if(intervalId){}else{
   openPopup("stock-popup");
+}
 }
 
 // Close the stock popup and remove event listeners
