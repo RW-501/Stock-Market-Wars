@@ -464,7 +464,9 @@ function updateStockPricesUI() {
   // Loop through each company and update the price and buttons in the UI
   companies.forEach((company) => {
     const { name, price, quantity } = company;
-
+    
+    console.log("company   " + company);
+    
     // Create a new row for the company
     const row = document.createElement("tr");
 
