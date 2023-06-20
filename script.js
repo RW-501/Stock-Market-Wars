@@ -388,7 +388,7 @@ function startUITimer() {
 function openStockPopup(xxx) {
 
   theCompany = xxx.name;
- // console.log("company.name   " + theCompany.name);
+  console.log("company.name   " + theCompany);
 
   const stockPrices = getStockPrices(theCompany);
   console.log("stockPrices xxxx   " + stockPrices);
@@ -408,7 +408,7 @@ function openStockPopup(xxx) {
   const stockPopupCash = document.getElementById("stock-popup-cash");
 
   stockPopupTitle.textContent = theCompany.name;
-  stockPopupPrice.textContent = `Price: $${theCompany.price.toFixed(2)}`;
+  stockPopupPrice.textContent = `Price: $${theCompany.price}`;
   stockPopupQuantity.textContent = `Own: ${getStockQuantity(theCompany.name)}`;
   stockPopupInput.value = "";
   stockPopupCash.textContent = `Cash: $${getAvailableFunds().toFixed(2)}`;
