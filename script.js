@@ -244,7 +244,7 @@ function displayPortfolio() {
   portfolioContainer.innerHTML = "";
 
   // Retrieve the portfolio from local storage
-  const portfolio = localStorage.getItem('portfolio');
+  //const portfolio = localStorage.getItem('portfolio');
 
   // Parse the portfolio string into an object
  // const portfolio = JSON.parse(portfolioString);
@@ -260,14 +260,15 @@ function displayPortfolio() {
 
   // Initialize the total value variable
   let totalValue = 0;
-//portfolio = `{"SmartSolutions":{"stockQuantity":30,"avgStockPrice":14.993866453874158}}`;
+  
+let portfolio = {"SmartSolutions":{"stockQuantity":30,"avgStockPrice":14.993866453874158}};
 
  // Iterate over each company in the portfolio
 for (const [name, { stockQuantity, avgStockPrice }] of Object.entries(portfolio)) {
   // Retrieve the stock price for the current company (assuming it's stored somewhere)
   const stockPrice = getStockPrice(name);
   
-console.log(name+"    avgStockPrice    " + portfolio);
+console.log(name+"    avgSto    "+stockPrice  +"    ckPrice    " + portfolio);
   // Calculate the value of the current company's stocks
   const companyValue = stockPrice * stockQuantity;
 
