@@ -815,7 +815,7 @@ if (totalCost <= availableFunds && quantityToBuy > 0) {
   console.log("totalCost buy   " + totalCost);
 
   alert(`Successfully bought ${quantityToBuy} ${companyName} stocks for $${totalCost.toFixed(2)}. Average stock price: $${avgStockCost.toFixed(2)}.`);
-}
+
 
 
 
