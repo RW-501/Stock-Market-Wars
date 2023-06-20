@@ -1,5 +1,5 @@
 
-var dayTimer = 10000; //10000 = 10sec 5000 = 5sec
+var dayTimer = 5000; //10000 = 10sec 5000 = 5sec
 
 var runCount = 0;
 
@@ -394,7 +394,7 @@ function openStockPopup(xxx) {
 
       console.log("xxxxxxxxxxxxxxxxxxxxxxx   " + xxx);
 
-if(xxx == ''){
+if(xxx == '' || xxx !== null){
     console.log("company.name   " + theCompanyName);
  console.log("????????????????????????????????????>   ");
 }else{
