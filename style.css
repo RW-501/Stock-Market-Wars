@@ -190,6 +190,12 @@ font-size: 30px;
 
 
 
+.stock-row{
+    border: #3371AB solid 2px;
+    border-left: none;
+    border-right: none;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
 
 
 .news-item{
