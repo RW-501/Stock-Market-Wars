@@ -214,13 +214,13 @@ function getStockPrice(companyName) {
   // Retrieve the stock prices from local storage
   const storedStockPrices = localStorage.getItem('stockPrices');
   
-  // If no stock prices are stored, return a default value like 0
+  // If no stock prices are stored, return null or a default value
   if (!storedStockPrices) {
-    return 0; // or any other default value you prefer
+    return null; // or a default value like 0
   }
   
   // Parse the stored stock prices object
-  const stockPrices = JSON.parse(stockPrices);
+  const stockPrices = JSON.parse(storedStockPrices);
   
   // Retrieve the stock price for the given company name
   const stockPrice = stockPrices[companyName];
@@ -228,7 +228,6 @@ function getStockPrice(companyName) {
   // Return the stock price
   return stockPrice;
 }
-
 
 
 
