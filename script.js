@@ -264,7 +264,7 @@ function displayPortfolio() {
 //let portfolio = {"SmartSolutions":{"stockQuantity":30,"avgStockPrice":14.993866453874158}};
 
  // Iterate over each company in the portfolio
-for (const [name, { stockQuantity, avgStockPrice }] of Object.entries(portfolioString)) {
+for (const [name, { stockQuantity, totalCost }] of Object.entries(portfolioString)) {
   // Retrieve the stock price for the current company (assuming it's stored somewhere)
   const stockPrice = getStockPrice(name);
   
@@ -283,8 +283,8 @@ for (const [name, { stockQuantity, avgStockPrice }] of Object.entries(portfolioS
   nameCell.textContent = name;
   const priceCell = document.createElement("td");
   priceCell.textContent = "$" + stockPrice.toFixed(2);
-  const avgPriceCell = document.createElement("td");
-  avgPriceCell.textContent = "$" + avgStockPrice.toFixed(2) || ""; // Display the average stock price
+  const totalCostCell = document.createElement("td");
+  totalCostCell.textContent = "$" + totalCost.toFixed(2) || ""; // Display the average stock price
   const quantityCell = document.createElement("td");
   quantityCell.textContent = stockQuantity  || ""; 
   const valueCell = document.createElement("td");
@@ -293,7 +293,7 @@ for (const [name, { stockQuantity, avgStockPrice }] of Object.entries(portfolioS
   // Append the table cells to the row
   row.appendChild(nameCell);
   row.appendChild(priceCell);
-  row.appendChild(avgPriceCell);
+  row.appendChild(totalCostCell);
   row.appendChild(quantityCell);
   row.appendChild(valueCell);
 
@@ -783,7 +783,7 @@ function calculateNetWorth() {
     const stockPrice = getStockPrice(company.name); // Retrieve the current stock price for the company
     const stockQuantity = getStockQuantity(company.name).stockQuantity; // Retrieve the stock quantity owned
     
-             console.log(stockPrice +"    stockQuantity add   "+company.name);
+             console.log(stockQuantity +"    calculateNetWorth    "+company.name);
 
     return total + stockPrice * stockQuantity;
   }, 0);
