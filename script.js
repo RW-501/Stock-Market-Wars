@@ -813,15 +813,15 @@ if (totalCost <= availableFunds && quantityToBuy > 0) {
   deductFunds(totalCost);
   const currentStockQuantity = getStockQuantity(companyName).stockQuantity;
   const updatedStockQuantity = currentStockQuantity + quantityToBuy;
+  
+  const currentTotalCost = getStockQuantity(companyName).totalCost;
 
-  const stockCostOld = getStockQuantity(companyName).stockQuantity;
-  let stockCost = stockCostOld + totalCost;
-  let avgStockCost = stockCost / updatedStockQuantity;
+  let stockCost = currentTotalCost + totalCost;
 
-  updateStockQuantity(companyName, updatedStockQuantity, avgStockCost);
-  console.log("totalCost buy   " + totalCost);
+  updateStockQuantity(companyName, updatedStockQuantity, stockCost);
+ // console.log("totalCost buy   " + totalCost);
 
-  alert(`Successfully bought ${quantityToBuy} ${companyName} stocks for $${totalCost.toFixed(2)}. Average stock price: $${avgStockCost.toFixed(2)}.`);
+  alert(`Successfully bought ${quantityToBuy} ${companyName} stocks for $${totalCost.toFixed(2)}. total stock price: $${stockCost.toFixed(2)}.`);
 
 
 
