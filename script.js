@@ -783,7 +783,7 @@ function calculateNetWorth() {
     const stockPrice = getStockPrice(company.name); // Retrieve the current stock price for the company
     const stockQuantity = getStockQuantity(company.name).stockQuantity; // Retrieve the stock quantity owned
     
-             console.log("stockQuantity add   "+stockQuantity);
+             console.log(stockPrice +"    stockQuantity add   "+company.name);
 
     return total + stockPrice * stockQuantity;
   }, 0);
