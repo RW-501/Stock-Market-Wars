@@ -284,11 +284,11 @@ for (const [name, { stockQuantity, avgStockPrice }] of Object.entries(portfolioS
   const priceCell = document.createElement("td");
   priceCell.textContent = "$" + stockPrice.toFixed(2);
   const avgPriceCell = document.createElement("td");
-  avgPriceCell.textContent = "$" + avgStockPrice.toFixed(2); // Display the average stock price
+  avgPriceCell.textContent = "$" + avgStockPrice.toFixed(2) || ""; // Display the average stock price
   const quantityCell = document.createElement("td");
-  quantityCell.textContent = stockQuantity;
+  quantityCell.textContent = stockQuantity  || ""; 
   const valueCell = document.createElement("td");
-  valueCell.textContent = "$" + companyValue.toFixed(2);
+  valueCell.textContent = "$" + companyValue.toFixed(2)  || ""; 
 
   // Append the table cells to the row
   row.appendChild(nameCell);
