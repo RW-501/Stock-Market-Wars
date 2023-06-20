@@ -24,7 +24,7 @@ function getMarket() {
   ];
 
 
-
+var dayTimer = 10000; //10000 = 10sec 5000 = 5sec
 
 var runCount = 0;
 
@@ -277,6 +277,11 @@ function displayPortfolio() {
 
 /// START UPDATE PRICES
 function updateStockPrices() {
+
+     timeAndDateFunc();
+  // Update the stock prices in the user interface
+updateStockPricesUI();
+  
   // Retrieve the stock prices from local storage
   const storedStockPrices = localStorage.getItem('stockPrices');
 
@@ -366,9 +371,7 @@ saveStockPrices(stockPrices);
   // Save the updated stock prices object in local storage
   localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
 
-  // Update the stock prices in the user interface
-updateStockPricesUI();
-   timeAndDateFunc();
+
 }
 
 var intervalId;
@@ -1106,7 +1109,7 @@ function closePopup(popupId) {
 if (interval) {
   console.log("Interval is running.");
 } else {
-  interval = setInterval(updateStockPrices, 5000); // Restart the interval to resume updating stock prices
+  interval = setInterval(updateStockPrices, dayTimer); // Restart the interval to resume updating stock prices
 }
   console.log("closePopup");
   document.getElementById(popupId).classList.remove("popupOpened");
@@ -1245,7 +1248,7 @@ updateNetWorthDisplay();
   
   });
   clearInterval(interval); // Clear the interval to stop updating stock prices
-    interval = setInterval(updateStockPrices, 5000); // Restart the interval to resume updating stock prices
+    interval = setInterval(updateStockPrices, dayTimer); // Restart the interval to resume updating stock prices
 
   // Reset game state, UI elements, or perform necessary actions
   console.log("Game restarted");
