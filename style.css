@@ -61,6 +61,12 @@ h1 {
   width: 20%;
 }
 
+#portfolio-table th,
+#portfolio-table td {
+  padding: 8px;
+  text-align: center;
+}
+
 .buttons {
     display: flex;
     gap: 10px;
