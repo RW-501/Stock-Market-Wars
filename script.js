@@ -245,13 +245,13 @@ function displayPortfolio() {
   portfolioContainer.innerHTML = "";
 
   // Retrieve the portfolio from local storage
-  const portfolioString = localStorage.getItem('portfolio');
+  const portfolio = localStorage.getItem('portfolio');
 
   // Parse the portfolio string into an object
-  const portfolio = JSON.parse(portfolioString);
+ // const portfolio = JSON.parse(portfolioString);
 
   
-   console.log(portfolio+"    portfolioString    " + portfolioString);
+   //console.log(portfolio+"    portfolioString    " + portfolioString);
 // Check if the portfolio is null or undefined
   if (!portfolio) {
     // Handle the case when the portfolio is empty or not available
