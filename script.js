@@ -391,13 +391,13 @@ function startUITimer() {
 // Open the stock popup and populate it with the company details
 function openStockPopup(xxx) {
 if(xxx == ''){
-    console.log("company.name   " + theCompany);
+    console.log("company.name   " + theCompany.name);
 
 }else{
-  theCompany = xxx.name;
-  console.log("company.name   " + theCompany);
+  theCompany = xxx;
+  console.log("company.name   " + theCompany.name);
 }
-  const stockPrices = getStockPrices(theCompany);
+  const stockPrices = getStockPrices(theCompany.name);
   console.log("stockPrices xxxx   " + stockPrices);
 
   generateStockChart(stockPrices);
