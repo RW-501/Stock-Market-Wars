@@ -261,12 +261,9 @@ function displayPortfolio() {
   let totalValue = 0;
 
  // Iterate over each company in the portfolio
-for (const [name, stockQuantity] of Object.entries(portfolio)) {
+for (const [name, stockQuantity , avgStockPrice] of Object.entries(portfolio)) {
   // Retrieve the stock price for the current company (assuming it's stored somewhere)
   const stockPrice = getStockPrice(name);
-  
-  // Retrieve the average stock price for the current company (assuming it's available)
-  const avgStockPrice = getAvgStockPrice(name);
 
   // Calculate the value of the current company's stocks
   const companyValue = stockPrice * stockQuantity;
