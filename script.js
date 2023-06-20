@@ -454,7 +454,7 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
 
   stockPopupTitle.textContent = theCompanyName;
   stockPopupPrice.textContent = `Price: $${theCompany.price.toFixed(2)}`;
-  stockPopupQuantity.textContent = `Own: ${getStockQuantity(theCompanyName).stockQuantity}`;
+stockPopupQuantity.textContent = `Own: ${getStockQuantity(theCompanyName)?.stockQuantity || 0}`;
   stockPopupInput.value = "";
   stockPopupCash.textContent = `Cash: $${getAvailableFunds().toFixed(2)}`;
 
@@ -782,6 +782,9 @@ function calculateNetWorth() {
   const stockValue = companies.reduce((total, company) => {
     const stockPrice = getStockPrice(company.name); // Retrieve the current stock price for the company
     const stockQuantity = getStockQuantity(company.name); // Retrieve the stock quantity owned
+    
+             console.log("stockQuantity add   "+stockQuantity);
+
     return total + stockPrice * stockQuantity;
   }, 0);
   
