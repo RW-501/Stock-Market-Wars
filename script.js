@@ -470,6 +470,7 @@ function updateStockPricesUI() {
     
     // Create a new row for the company
     const row = document.createElement("tr");
+    row.classList.add("stock-row");
 
     // Create cells for company name, price, buy button, and sell button
     const nameCell = document.createElement("td");
