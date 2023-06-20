@@ -386,13 +386,13 @@ saveStockPrices(stockPrices);
 
 }
 
-var intervalId;
+var intervalStock;
 let theCompany;
 let theCompanyName;
 
 function startUITimer() {
-  clearInterval(intervalId);
-  intervalId = setTimeout(() => {
+  clearInterval(intervalStock);
+  intervalStock = setTimeout(() => {
     openStockPopup('');
   }, 5000);
 }
@@ -414,7 +414,8 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
   console.log("stockPrices xxxx   " + stockPrices);
 
   generateStockChart(stockPrices);
-
+  
+clearInterval(intervalId);
   startUITimer();
   const stockPrice = getStockPrice(theCompanyName);
   console.log("stockPrice?? xxxx   " + stockPrice);
@@ -436,9 +437,10 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
 
   stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
   stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
-if(intervalId){}else{
+if(intervalStock){}else{
   openPopup("stock-popup");
 }
+  
 }
 
 // Close the stock popup and remove event listeners
@@ -453,6 +455,7 @@ clearInterval(intervalId);
 }
 
 document.getElementById("close-stock-popup").addEventListener("click", function () {
+  clearInterval(intervalId);
   closePopup("stock-popup");
 });
 
@@ -790,8 +793,9 @@ function buyStock(companyName, quantityToBuy) {
       const event = `Bought ${quantityToBuy} shares of ${companyName} for $${totalCost.toFixed(2)}`;
       addNewsEvent(event);
     } else {
-      alert("Invalid quantity or insufficient funds to buy stocks.");
+      alert("1 buy : Invalid quantity or insufficient funds to buy stocks.");
     }
+  clearInterval(intervalId);
   closePopup("stock-popup");
 
 }
@@ -819,9 +823,9 @@ function sellStock(companyName, quantityToSell) {
       const event = `Sold ${quantityToSell} shares of ${companyName} for $${totalEarnings.toFixed(2)}`;
       addNewsEvent(event);
     } else {
-      alert("Invalid quantity or insufficient stocks to sell.");
+      alert("1 sell : Invalid quantity or insufficient stocks to sell.");
     }
-  
+  clearInterval(intervalId);
   closePopup("stock-popup");
 
 }
