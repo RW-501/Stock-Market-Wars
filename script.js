@@ -450,7 +450,7 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
 
   stockPopupTitle.textContent = theCompanyName;
   stockPopupPrice.textContent = `Price: $${theCompany.price.toFixed(2)}`;
-  stockPopupQuantity.textContent = `Own: ${getStockQuantity(theCompanyName)}`;
+  stockPopupQuantity.textContent = `Own: ${getStockQuantity(theCompanyName).stockQuantity}`;
   stockPopupInput.value = "";
   stockPopupCash.textContent = `Cash: $${getAvailableFunds().toFixed(2)}`;
 
