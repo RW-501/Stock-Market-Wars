@@ -781,11 +781,11 @@ function calculateNetWorth() {
   // Calculate the value of all stocks owned
   const stockValue = companies.reduce((total, company) => {
     const stockPrice = getStockPrice(company.name); // Retrieve the current stock price for the company
-    const stockQuantity = getStockQuantity(company.name); // Retrieve the stock quantity owned
-    
-             console.log(stockQuantity.stockQuantity +"    calculateNetWorth  "+total+"  to  "+company.name);
+    const { stockQuantity } = getStockQuantity(company.name); // Retrieve the stock quantity owned
 
-    return total + stockPrice * stockQuantity.stockQuantity;
+    console.log(stockQuantity + " stocks owned of " + company.name);
+
+    return total + stockPrice * stockQuantity;
   }, 0);
   
   // Calculate the value of other assets like cash, cars, houses, etc.
@@ -794,7 +794,7 @@ function calculateNetWorth() {
   const houseValue = calculateHouseValue(); // Implement this function to calculate the value of houses
 
 
-               console.log(cashValue +"    calculate   "+carValue+"   NetWorth    "+houseValue);
+              // console.log(cashValue +"    calculate   "+carValue+"   NetWorth    "+houseValue);
 
   // Calculate the total net worth by adding the stock value and other assets value
   const netWorth = stockValue + cashValue + carValue + houseValue;
