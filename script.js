@@ -1099,9 +1099,12 @@ const popups = document.querySelectorAll(".popup");
        console.log("  popupOpened");
 
   }else{
-    popup.style.display = "none";
-          console.log("blocked  popup");
+    //popup.style.display = "none";
+      //    console.log("blocked  popup");
+ var popupElement = document.getElementById(popupId);
 
+    console.log("Open news popup");
+    popupElement.style.display = "block";
  }
 
 }
