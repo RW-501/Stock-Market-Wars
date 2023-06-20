@@ -468,7 +468,7 @@ clearInterval(intervalStock);
 }
 
 document.getElementById("close-stock-popup").addEventListener("click", function () {
-  clearInterval(intervalId);
+  clearInterval(intervalStock);
   closePopup("stock-popup");
 });
 
