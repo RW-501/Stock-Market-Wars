@@ -415,7 +415,7 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
 
   generateStockChart(stockPrices);
   
-clearInterval(intervalId);
+clearInterval(intervalStock);
   startUITimer();
   const stockPrice = getStockPrice(theCompanyName);
   console.log("stockPrice?? xxxx   " + stockPrice);
@@ -450,7 +450,7 @@ function closeStockPopup() {
 
   stockPopupBuy.removeEventListener("click", buyStock);
   stockPopupSell.removeEventListener("click", sellStock);
-clearInterval(intervalId);
+clearInterval(intervalStock);
   closePopup("stock-popup");
 }
 
@@ -795,7 +795,7 @@ function buyStock(companyName, quantityToBuy) {
     } else {
       alert("1 buy : Invalid quantity or insufficient funds to buy stocks.");
     }
-  clearInterval(intervalId);
+  clearInterval(intervalStock);
   closePopup("stock-popup");
 
 }
@@ -825,7 +825,7 @@ function sellStock(companyName, quantityToSell) {
     } else {
       alert("1 sell : Invalid quantity or insufficient stocks to sell.");
     }
-  clearInterval(intervalId);
+  clearInterval(intervalStock);
   closePopup("stock-popup");
 
 }
