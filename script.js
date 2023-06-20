@@ -783,7 +783,7 @@ function calculateNetWorth() {
     const stockPrice = getStockPrice(company.name); // Retrieve the current stock price for the company
     const stockQuantity = getStockQuantity(company.name); // Retrieve the stock quantity owned
     
-             console.log(stockQuantity.stockQuantity +"    calculateNetWorth    "+company.name);
+             console.log(stockPrice +"    calculateNetWorth    "+company.name);
 
     return total + stockPrice * stockQuantity.stockQuantity;
   }, 0);
@@ -792,10 +792,14 @@ function calculateNetWorth() {
   const cashValue = getAvailableFunds(); // Implement this function to get the available funds
   const carValue = calculateCarValue(); // Implement this function to calculate the value of cars
   const houseValue = calculateHouseValue(); // Implement this function to calculate the value of houses
-  
+
+
+               console.log(cashValue +"    calculate   "+carValue+"   NetWorth    "+houseValue);
+
   // Calculate the total net worth by adding the stock value and other assets value
   const netWorth = stockValue + cashValue + carValue + houseValue;
-  
+    console.log("stockValue    " + stockValue);
+
   // Return the total net worth
   return netWorth;
 }
