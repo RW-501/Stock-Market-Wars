@@ -1087,41 +1087,33 @@ function openPopup(popupId) {
   // Check if the popupId matches specific conditions, and don't take any action
   if (popupId === "portfolio-popup" || popupId === "news-popup" || popupId === "bank-popup" || popupId === "stock-popup") {
     // Do nothing for specific popups
-    
   } else {
     clearInterval(interval); // Clear the interval to stop updating stock prices
     console.log("Timer stopped");
   }
-if(popupId === "news-popup"){
-const popups = document.querySelectorAll(".popup");
-  for (const popup of popups) {
- if (popup.classList.contains("popupOpened")) {
-       console.log("  popupOpened");
 
-  }else{
-    //popup.style.display = "none";
-      //    console.log("blocked  popup");
- var popupElement = document.getElementById(popupId);
-
-    console.log("Open news popup");
-    popupElement.style.display = "block";
- }
-
-}
-
-}else{
-// Get the specified popup element
-  var popupElement = document.getElementById(popupId);
-
+  // Check if the popupId is "news-popup"
+  if (popupId === "news-popup") {
+    const popups = document.querySelectorAll(".popup");
+    for (const popup of popups) {
+      if (popup.classList.contains("popupOpened")) {
+        console.log("popupOpened");
+        return; // Exit the function if the "news-popup" is already opened
+      } else {
+        var popupElement = document.getElementById(popupId);
+        console.log("Open news popup");
+        popupElement.style.display = "block";
+      }
+    }
+  } else {
+    // Get the specified popup element
+    var popupElement = document.getElementById(popupId);
     console.log("Open popup");
     popupElement.style.display = "block";
     popupElement.classList.add("popupOpened");
   }
-
-
 }
 
-  
  
 
 
