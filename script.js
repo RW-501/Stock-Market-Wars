@@ -250,7 +250,7 @@ function displayPortfolio() {
  const portfolioString = JSON.parse(portfolio);
 
   
-   console.log(portfolio+"    portfolioString    " + portfolioString);
+//   console.log(portfolio+"    portfolioString    " + portfolioString);
 // Check if the portfolio is null or undefined
   if (!portfolio) {
     // Handle the case when the portfolio is empty or not available
@@ -268,7 +268,7 @@ for (const [name, { stockQuantity, avgStockPrice }] of Object.entries(portfolioS
   // Retrieve the stock price for the current company (assuming it's stored somewhere)
   const stockPrice = getStockPrice(name);
   
-console.log(name+"    avgSto    "+stockPrice  +"    ckPrice    " + portfolioString);
+//console.log(name+"    avgSto    "+stockPrice  +"    ckPrice    " + portfolioString);
   // Calculate the value of the current company's stocks
   const companyValue = stockPrice * stockQuantity;
 
