@@ -190,7 +190,7 @@ function generateStockChart(stockData) {
 
 
 
-function updateStockQuantity(companyName, updatedStockQuantity, avgStockPrice) {
+function updateStockQuantity(companyName, updatedStockQuantity, totalStockCost) {
   // Retrieve the current portfolio from local storage
   const portfolioString = localStorage.getItem('portfolio');
 
@@ -200,7 +200,7 @@ function updateStockQuantity(companyName, updatedStockQuantity, avgStockPrice) {
   // Update the stock quantity for the given company in the portfolio
   portfolio[companyName] = {
     stockQuantity: updatedStockQuantity,
-    avgStockPrice: avgStockPrice
+    totalCost: totalStockCost
   };
 
   // Save the updated portfolio back to local storage
