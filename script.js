@@ -1080,32 +1080,31 @@ function pauseGame() {
 
 // Function to open the specified popup window
 function openPopup(popupId) {
-if(popupId ==="portfolio-popup" ||popupId === "news-popup"|| popupId ==="bank-popup"  || popupId ==="stock-popup"){
-}else{
-      clearInterval(interval); // Clear the interval to stop updating stock prices
-  console.log("timer stopped");
+  // Check if the popupId matches specific conditions, and don't take any action
+  if (popupId === "portfolio-popup" || popupId === "news-popup" || popupId === "bank-popup" || popupId === "stock-popup") {
+    // Do nothing for specific popups
+  } else {
+    clearInterval(interval); // Clear the interval to stop updating stock prices
+    console.log("Timer stopped");
+  }
 
-}
-    const popups = document.querySelectorAll(".popup");
-  
+  // Get all popup elements
+  const popups = document.querySelectorAll(".popup");
+
+  // Loop through each popup element
   for (const popup of popups) {
+    // Check if the popup element is already opened
     if (popup.classList.contains("popupOpened")) {
-      return true; // At least one popup has the "popupOpened" class
+      console.log("Container opened");
+    } else {
+      console.log("Open popup");
+      // Get the specified popup element
+      var popupElement = document.getElementById(popupId);
+      popupElement.style.display = "block";
+      popupElement.classList.add("popupOpened");
     }
   }
-  console.log("openPopup");
-    var popup = document.getElementById(popupId);
-  popup.style.display = "block";
-    document.getElementById(popupId).classList.add("popupOpened");
-
 }
-  return false; // No popups have the "popupOpened" class
-
-
-
-
-}
-
 
 
 
