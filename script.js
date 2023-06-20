@@ -1095,6 +1095,7 @@ function openPopup(popupId) {
   // Check if the popup element is already opened
   if (popupElement.classList.contains("popupOpened")) {
     console.log("Container opened");
+     closeAllPopups(popupElement);
   } else {
     // Close any opened popups
     closeAllPopups();
@@ -1106,11 +1107,14 @@ function openPopup(popupId) {
 }
 
 // Function to close all popups
-function closeAllPopups() {
+function closeAllPopups(xxx) {
   const popups = document.querySelectorAll(".popup");
   for (const popup of popups) {
     popup.style.display = "none";
     popup.classList.remove("popupOpened");
+    xxx.classList.add("popupOpened");
+        xxx.style.display = "block";
+
   }
 }
 
