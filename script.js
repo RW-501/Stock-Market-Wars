@@ -387,7 +387,7 @@ function startUITimer() {
 // Open the stock popup and populate it with the company details
 function openStockPopup(xxx) {
 
-  theCompany = theCompany.name;
+  theCompany = xxx.name;
  // console.log("company.name   " + theCompany.name);
 
   const stockPrices = getStockPrices(theCompany);
@@ -1088,25 +1088,30 @@ function openPopup(popupId) {
     console.log("Timer stopped");
   }
 
-  // Get all popup elements
-  const popups = document.querySelectorAll(".popup");
+ // Get the specified popup element
+  var popupElement = document.getElementById(popupId);
 
-  // Loop through each popup element
-  for (const popup of popups) {
-    // Check if the popup element is already opened
-    if (popup.classList.contains("popupOpened")) {
-      console.log("Container opened");
-    } else {
-      console.log("Open popup");
-      // Get the specified popup element
-      var popupElement = document.getElementById(popupId);
-      popupElement.style.display = "block";
-      popupElement.classList.add("popupOpened");
-    }
+  // Check if the popup element is already opened
+  if (popupElement.classList.contains("popupOpened")) {
+    console.log("Container opened");
+  } else {
+    // Close any opened popups
+    closeAllPopups();
+
+    console.log("Open popup");
+    popupElement.style.display = "block";
+    popupElement.classList.add("popupOpened");
   }
 }
 
-
+// Function to close all popups
+function closeAllPopups() {
+  const popups = document.querySelectorAll(".popup");
+  for (const popup of popups) {
+    popup.style.display = "none";
+    popup.classList.remove("popupOpened");
+  }
+}
 
 // Function to close the specified popup window
 function closePopup(popupId) {
