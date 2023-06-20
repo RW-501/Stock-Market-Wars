@@ -402,7 +402,7 @@ function openStockPopup(xxx) {
 
       console.log("xxxxxxxxxxxxxxxxxxxxxxx   " + xxx);
 
-if (xxx === '' && xxx !== null && xxx !== undefined) {
+if (xxx !== '' && xxx !== null && xxx !== undefined) {
   theCompany = xxx;
   theCompanyName = xxx.name;
   console.log("company.name   " + theCompanyName);
