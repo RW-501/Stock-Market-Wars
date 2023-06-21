@@ -290,7 +290,7 @@ priceCell.textContent = "$" + (stockPrice.toFixed(2) || 0);
 totalCostCell.textContent = "$" + (totalCost.toFixed(2) || 0);
 valueCell.textContent = "$" + (companyValue.toFixed(2) || 0);
   
-    row.addEventListener("click", () => openStockPopup(name,portfolioString));
+    row.addEventListener("click", () => openStockPopup(portfolioString));
     row.appendChild(priceCell);
                    
   // Append the table cells to the row
