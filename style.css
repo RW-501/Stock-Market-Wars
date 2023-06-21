@@ -140,6 +140,7 @@ font-size: 30px;
     right: 0;
     top: 0;
     min-width: 40%;
+ 
 }
 
 .popup h2 {
@@ -237,5 +238,13 @@ box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 display: block;
 }
 
+#portfolio-body th,
+#portfolio-body td {
+border: #3371AB solid 2px;
+    border-left: none;
+    border-right: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+}
 
   
