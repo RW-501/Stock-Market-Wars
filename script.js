@@ -481,8 +481,10 @@ stockPopupQuantity.textContent = `Own: ${getStockQuantity(theCompanyName)?.stock
 if (xxx !== '' && xxx !== null && xxx !== undefined) {
   openPopup("stock-popup");
     startUITimer();
-    stockPopupInput.value = "";
-    stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
+ stockPopupBuy.removeEventListener("click", buyStock);
+  stockPopupSell.removeEventListener("click", sellStock);
+        stockPopupInput.value = "";
+        stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
   stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
     stockPopupQuantity.addEventListener("click", () => stockQuantity(stockQuantity).stockQuantity);
 
@@ -494,6 +496,9 @@ return;
     if(stockName){
         closePopup("portfolio-popup");
   openPopup("stock-popup");
+ 
+ stockPopupBuy.removeEventListener("click", buyStock);
+  stockPopupSell.removeEventListener("click", sellStock);
         stockPopupInput.value = "";
         stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
   stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
