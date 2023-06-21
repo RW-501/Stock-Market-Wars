@@ -995,6 +995,11 @@ function updateLenderDetails() {
   }
 
 
+
+
+}
+
+
 // Event listener for opening the loans popup
 document.getElementById('open-loans-popup').addEventListener('click', () => {
   displayLoanHistory();
@@ -1005,11 +1010,6 @@ document.getElementById('open-loans-popup').addEventListener('click', () => {
 document.getElementById('close-loans-popup').addEventListener('click', () => {
   closePopup('loans-popup');
 });
-
-}
-
-
-
 
 function updateLenderOptions() {
   const lenderSelect = document.getElementById("lender-select");
@@ -1235,7 +1235,7 @@ if(xxx =="bank"){
   const reversedEvents = savedEvents.reverse();
   
   reversedEvents.forEach(function (event) {
-    const newsContent = document.getElementById("loans-content");
+    const newsContent = document.getElementById("bank-content");
     const newsItem = document.createElement("div");
     newsItem.classList.add("news-item");
     newsItem.textContent = event;
