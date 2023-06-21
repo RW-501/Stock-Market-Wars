@@ -803,12 +803,15 @@ function calculateNetWorth() {
   return netWorth;
 }
 
+var counT = 0;
+
 function buyStock(companyName, quantityToBuy, event) {
   const company = companies.find((company) => company.name === companyName);
   const stockPrice = company.price;
   const availableFunds = getAvailableFunds();
-
-         console.log("event buy   "+event);
+counT++;
+  
+         console.log(counT+"    event buy   "+event);
 
   const totalCost = stockPrice * quantityToBuy;
 
@@ -833,11 +836,12 @@ if (totalCost <= availableFunds && quantityToBuy > 0) {
 
 
 
+         console.log(counT+"    event buy   "+event);
 
       updateNetWorthDisplay();
 
-      const event = `Bought ${quantityToBuy} shares of ${companyName} for $${totalCost.toFixed(2)}`;
-      addNewsEvent(event);
+      const eventBuy = `Bought ${quantityToBuy} shares of ${companyName} for $${totalCost.toFixed(2)}`;
+      addNewsEvent(eventBuy);
     } else {
       alert("1 buy : Invalid quantity or insufficient funds to buy stocks.");
     }
