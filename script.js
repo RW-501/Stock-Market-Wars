@@ -282,13 +282,13 @@ for (const [name, { stockQuantity, totalCost }] of Object.entries(portfolio)) {
   const nameCell = document.createElement("td");
   nameCell.textContent = name;
   const priceCell = document.createElement("td");
-  priceCell.textContent = "$" + stockPrice.toFixed(2) || 0;
   const totalCostCell = document.createElement("td");
-  totalCostCell.textContent = "$" + totalCost.toFixed(2) || 0; // Display the average stock price
   const quantityCell = document.createElement("td");
   quantityCell.textContent = stockQuantity  || ""; 
   const valueCell = document.createElement("td");
-  valueCell.textContent = "$" + companyValue.toFixed(2)  || 0; 
+priceCell.textContent = "$" + (stockPrice?.toFixed(2) ?? 0);
+totalCostCell.textContent = "$" + (totalCost?.toFixed(2) ?? 0);
+valueCell.textContent = "$" + (companyValue?.toFixed(2) ?? 0);
   
     row.addEventListener("click", () => openStockPopup(name));
     row.appendChild(priceCell);
