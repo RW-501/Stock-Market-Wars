@@ -298,9 +298,9 @@ for (const [name, { stockQuantity, totalCost }] of Object.entries(portfolioStrin
 
     // Apply conditional styling based on totalCost and companyValue
   if (totalCost < companyValue) {
-    row.style.backgroundColor = "lightgreen";
+    row.style.backgroundColor = "#4CAF50";
   } else if (totalCost > companyValue) {
-    row.style.backgroundColor = "lightred";
+    row.style.backgroundColor = "#f44336";
   } else {
     row.style.backgroundColor = "white";
   }
