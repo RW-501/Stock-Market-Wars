@@ -380,6 +380,8 @@ if (Math.random() < 0.1) { // 10% chance of a news event
       const changePercentageFormatted = `${Math.abs(changePercentage).toFixed(2)}%`;
       const isPositiveLabel = isPositiveChangeNew ? 'increased' : 'decreased';
       const newsEvent = `Breaking News: ${company.name} price ${isPositiveLabel} by ${changePercentageFormatted}`;
+      
+document.getElementById("msg-area").textContent = "";
 
       addNewsEvent(newsEvent, "main"); // Add the news event to the UI
 
@@ -1021,7 +1023,6 @@ if (lenderPaymentInfo && lenderPaymentInfo.automaticPayments && counterValue - s
   // Calculate the number of payment cycles based on paymentFrequency and counterValue
   const paymentCycles = Math.floor(counterValue / paymentFrequency);
   
-document.getElementById("msg-area").textContent = "";
 
   // Check if the borrower owes any payment
   if (lenderPaymentInfo.borrowedAmount < lenderPaymentInfo.paymentAmount) {
