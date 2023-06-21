@@ -484,6 +484,7 @@ return;
     startUITimer();
   }
     if(stockName){
+        closePopup("portfolio-popup");
   openPopup("stock-popup");
   }
   //clearInterval(intervalStock);
