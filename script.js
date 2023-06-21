@@ -799,7 +799,7 @@ function calculateNetWorth() {
 
   // Calculate the total net worth by adding the stock value and other assets value
   const netWorth = stockValue + cashValue + carValue + houseValue;
-    console.log("stockValue    " + stockValue);
+    //console.log("stockValue    " + stockValue);
 
   // Return the total net worth
   return netWorth;
@@ -1052,7 +1052,7 @@ if (lenderPaymentInfo && lenderPaymentInfo.automaticPayments && counterValue - s
      eventDayCount = 0;
   }
   eventDayCount++;
-  console.log("eventDayCount   "+eventDayCount);
+//  console.log("eventDayCount   "+eventDayCount);
 }
 
 
