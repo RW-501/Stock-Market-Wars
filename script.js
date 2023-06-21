@@ -263,8 +263,13 @@ function displayPortfolio() {
   let totalValue = 0;
   
 
- // Iterate over each company in the portfolio
+// Iterate over each company in the portfolio
 for (const [name, { stockQuantity, totalCost }] of Object.entries(portfolioString)) {
+  // Skip companies with stock quantity of 0
+  if (stockQuantity === 0) {
+    continue;
+  }
+
   // Retrieve the stock price for the current company (assuming it's stored somewhere)
   const stockPrice = getStockPrice(name);
 
@@ -277,25 +282,32 @@ for (const [name, { stockQuantity, totalCost }] of Object.entries(portfolioStrin
   // Create a new table row for the company in the portfolio display
   const row = document.createElement("tr");
 
+
   
-// Create table cells for the company name, stock price, average stock price, stock quantity, and company value
+  // Create table cells for the company name, stock price, average stock price, stock quantity, and company value
   const nameCell = document.createElement("td");
   nameCell.textContent = name;
   const priceCell = document.createElement("td");
   const totalCostCell = document.createElement("td");
   const quantityCell = document.createElement("td");
-  quantityCell.textContent = stockQuantity  || ""; 
+  quantityCell.textContent = stockQuantity || "";
   const valueCell = document.createElement("td");
-priceCell.textContent = "$" + (stockPrice.toFixed(2) || 0);
-totalCostCell.textContent = "$" + (totalCost.toFixed(2) || 0);
-valueCell.textContent = "$" + (companyValue.toFixed(2) || 0);
+  priceCell.textContent = "$" + (stockPrice.toFixed(2) || 0);
+  totalCostCell.textContent = "$" + (totalCost.toFixed(2) || 0);
+  valueCell.textContent = "$" + (companyValue.toFixed(2) || 0);
 
+    // Apply conditional styling based on totalCost and companyValue
+  if (totalCost < companyValue) {
+    row.style.backgroundColor = "lightgreen";
+  } else if (totalCost > companyValue) {
+    row.style.backgroundColor = "lightred";
+  } else {
+    row.style.backgroundColor = "white";
+  }
   
- // console.log(portfolioString.name+"    portfolioString.name    " + portfolioString);
-  
-    row.addEventListener("click", () => openStockPopup('',name));
-    row.appendChild(priceCell);
-                   
+  row.addEventListener("click", () => openStockPopup('', name));
+  row.appendChild(priceCell);
+
   // Append the table cells to the row
   row.appendChild(nameCell);
   row.appendChild(priceCell);
@@ -306,6 +318,7 @@ valueCell.textContent = "$" + (companyValue.toFixed(2) || 0);
   // Append the row to the portfolio display
   portfolioContainer.appendChild(row);
 }
+
 
 
   // Display the total value of the portfolio
