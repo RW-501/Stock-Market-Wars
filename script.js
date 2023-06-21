@@ -385,7 +385,7 @@ if (Math.random() < 0.1) { // 10% chance of a news event
       
 document.getElementById("msg-area").textContent = "";
 
-      addNewsEvent(newsEvent, "main", ${company.name}); // Add the news event to the UI
+      addNewsEvent(newsEvent, "main", company.name); // Add the news event to the UI
 
       console.log("newsEvent    " + newsEvent);
     }
