@@ -1309,6 +1309,7 @@ document.getElementById("pause-game-btn").addEventListener("click", function() {
 });
 
 document.getElementById("close-pause-popup").addEventListener("click", function() {
+  interval = setInterval(updateStockPrices, dayTimer);
   closePopup("pause-popup");
 });
 
