@@ -31,7 +31,7 @@ h1 {
 display: flex;
 }
 
-#info-area, #msg-area{
+#total-cash, #msg-area{
       width: 50%;
     display: block;
 }
