@@ -659,7 +659,8 @@ function newWeek() {
       clearInterval(intervalStock); // Stop the timer
     clearInterval(interval); // Stop the timer
       clearInterval(weekendTimer); // Stop the timer
-    interval = setInterval(updateStockPrices, dayTimer);
+  //  interval = setInterval(updateStockPrices, dayTimer);
+  updateStockPrices();
 }
 
 
