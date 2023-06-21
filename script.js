@@ -292,7 +292,7 @@ valueCell.textContent = "$" + (companyValue.toFixed(2) || 0);
   
   console.log(portfolioString.name+"    portfolioString.name    " + portfolioString);
   
-    row.addEventListener("click", () => openStockPopup(portfolioString.name));
+    row.addEventListener("click", () => openStockPopup('',name));
     row.appendChild(priceCell);
                    
   // Append the table cells to the row
@@ -429,7 +429,7 @@ function startUITimer() {
 }
 
 // Open the stock popup and populate it with the company details
-function openStockPopup(xxx) {
+function openStockPopup(xxx, stockName) {
 
       console.log("xxxxxxxxxxxxxxxxxxxxxxx   " + xxx);
 
@@ -442,13 +442,16 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
       console.log("storged company.name   " + theCompanyName);
 // console.log("????????????????????????????????????>   ");
 }
+  if(stockName){
+theCompanyName = stockName;
+  }
   const stockPrices = getStockPrices(theCompanyName);
 //  console.log("stockPrices xxxx   " + stockPrices);
 
   generateStockChart(stockPrices);
   
 
-  const stockPrice = getStockPrice(theCompanyName);
+ // const stockPrice = getStockPrice(theCompanyName);
 //  console.log("stockPrice?? xxxx   " + stockPrice);
   
   const stockPopup = document.getElementById("stock-popup");
@@ -462,7 +465,7 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
 
   stockPopupTitle.textContent = theCompanyName;
 
-    stockPopupPrice.textContent = `Price: $${theCompany.price.toFixed(2) || 0}`;
+    stockPopupPrice.textContent = `Price: $${getStockPrice(theCompanyName).toFixed(2) || 0}`;
 stockPopupQuantity.textContent = `Own: ${getStockQuantity(theCompanyName)?.stockQuantity || 0}`;
   stockPopupInput.value = "";
   stockPopupCash.textContent = `Cash: $${getAvailableFunds().toFixed(2) || 0}`;
