@@ -569,7 +569,6 @@ document.getElementById("net-worth-value").textContent = `$${netWorth.toFixed(2)
      
 
 
-
   newDayFunc();
 }
 
@@ -1021,6 +1020,8 @@ if (lenderPaymentInfo && lenderPaymentInfo.automaticPayments && counterValue - s
 
   // Calculate the number of payment cycles based on paymentFrequency and counterValue
   const paymentCycles = Math.floor(counterValue / paymentFrequency);
+  
+document.getElementById("msg-area").textContent = "";
 
   // Check if the borrower owes any payment
   if (lenderPaymentInfo.borrowedAmount < lenderPaymentInfo.paymentAmount) {
