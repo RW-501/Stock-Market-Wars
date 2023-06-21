@@ -819,7 +819,7 @@ if (totalCost <= availableFunds && quantityToBuy > 0) {
   
   const updatedStockQuantity = stockQuantity + quantityToBuy;
   
-  const currentTotalCost = currentStock.totalCost;
+  const currentTotalCost = currentStock.totalCost || 0;
 
   let stockCost = currentTotalCost + totalCost;
   
@@ -1302,6 +1302,8 @@ document.getElementById("close-pause-popup").addEventListener("click", function(
 
 // Function to restart the game
 function restartGame() {
+    clearInterval(interval); // Clear the interval to stop updating stock prices
+
   // Clear local storage
 document.addEventListener('DOMContentLoaded', function() {
   // Clean variables
