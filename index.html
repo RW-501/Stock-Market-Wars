@@ -117,12 +117,23 @@
 <p>Payment Amount: <span id="lender-PaymentAmount"></span></p>
 <p>Payment Frequency: <span id="lender-PaymentFrequency"></span></p>
 
+    <button onclick=openPopup("loans-popup");>Loans</button>
     <button onclick="requestLoan()">Request Loan</button>
 
     <button id="close-lender-popup">Close</button>
   </div>
 </div>
 
+<!-- Loans Popup -->
+<div id="loans-popup" class="popup">
+  <div class="popup-content h80">
+    <h2>Loans</h2>
+    <div id="loans-content" class="scrollable-content"></div>
+    <button id="close-loans-popup">Close</button>
+  </div>
+</div>
+
+	
 <!-- News Popup -->
 <div id="news-popup" class="popup">
   <div class="popup-content h80">
