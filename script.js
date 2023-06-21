@@ -634,7 +634,7 @@ if (counterValue > 365) {
     clearInterval(intervalStock); // Stop the timer
     clearInterval(interval); // Stop the timer
   }
-}, 20000); // Run the timer every 10 seconds (10,000 milliseconds)
+}, 20000); // Run the timer every 10 seconds (10 000 milliseconds)
   displayPortfolio();
 updateNetWorthDisplay();
 }
