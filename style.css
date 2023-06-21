@@ -238,8 +238,7 @@ box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 display: block;
 }
 
-#portfolio-body th,
-#portfolio-body td {
+#portfolio-body th{
 border: #3371AB solid 2px;
     border-left: none;
     border-right: none;
