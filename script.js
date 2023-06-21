@@ -1177,15 +1177,8 @@ if(xxx =="main"){
   
  // openPopup("news-popup");
 
-}else{
-
-    const newsContent = document.getElementById("news-content");
-    const newsItem = document.createElement("div");
-    newsItem.classList.add("news-item");
-    newsItem.textContent = event;
-    newsContent.prepend(newsItem); // Add the event to the top of the news content
-    newsContent.scrollTop = 0; // Scroll to the top of the news content
-}  
+}
+  
 if(xxx =="bank"){
 
 
@@ -1195,7 +1188,7 @@ if(xxx =="bank"){
   savedBankEvents.push(event);
   localStorage.setItem("savedBankEvents", JSON.stringify(savedBankEvents));
   updateNetWorthDisplay();
-  
+   getBankEvents();
 }else{
 
   // Save the event to localStorage
@@ -1203,12 +1196,16 @@ if(xxx =="bank"){
   savedEvents.push(event);
   localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
   updateNetWorthDisplay();
+     getStockEvents();
+
 }
 }
 
 
 
 window.addEventListener("DOMContentLoaded", function () {
+
+  function getStockEvents(){
   const savedEvents = JSON.parse(localStorage.getItem("savedEvents")) || [];
   
   // Reverse the order of savedEvents array to display the events in descending order (latest events on top)
@@ -1222,11 +1219,16 @@ window.addEventListener("DOMContentLoaded", function () {
     newsContent.prepend(newsItem); // Add the event to the top of the news content
     newsContent.scrollTop = 0; // Scroll to the top of the news content
   });
+  }
+  getStockEvents();
+  
 });
 
 
 
 window.addEventListener("DOMContentLoaded", function () {
+
+  function  getBankEvents(){
   const savedEvents = JSON.parse(localStorage.getItem("savedBankEvents")) || [];
   
   // Reverse the order of savedEvents array to display the events in descending order (latest events on top)
@@ -1240,6 +1242,8 @@ window.addEventListener("DOMContentLoaded", function () {
     newsContent.prepend(newsItem); // Add the event to the top of the news content
     newsContent.scrollTop = 0; // Scroll to the top of the news content
   });
+  }
+  getBankEvents();
 });
 
 
