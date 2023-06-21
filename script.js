@@ -468,9 +468,9 @@ stockPopupQuantity.textContent = `Own: ${getStockQuantity(theCompanyName)?.stock
 
 
 if (xxx !== '' && xxx !== null && xxx !== undefined) {
-
-    startUITimer();
   openPopup("stock-popup");
+    startUITimer();
+
 }
   
   //clearInterval(intervalStock);
