@@ -425,7 +425,7 @@ function startUITimer() {
 // Open the stock popup and populate it with the company details
 function openStockPopup(xxx, theCompanyName) {
 
-      console.log("xxxxxxxxxxxxxxxxxxxxxxx   " + xxx);
+     // console.log("xxxxxxxxxxxxxxxxxxxxxxx   " + xxx);
 
 if (xxx !== '' && xxx !== null && xxx !== undefined) {
   theCompany = xxx;
@@ -443,7 +443,7 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
   
 
   const stockPrice = getStockPrice(theCompanyName);
-  console.log("stockPrice?? xxxx   " + stockPrice);
+//  console.log("stockPrice?? xxxx   " + stockPrice);
   
   const stockPopup = document.getElementById("stock-popup");
   const stockPopupTitle = document.getElementById("stock-popup-title");
@@ -455,10 +455,10 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
   const stockPopupCash = document.getElementById("stock-popup-cash");
 
   stockPopupTitle.textContent = theCompanyName;
-  stockPopupPrice.textContent = `Price: $${theCompany.price.toFixed(2)}`;
+  stockPopupPrice.textContent = `Price: $${theCompany.price.toFixed(2) || 0}`;
 stockPopupQuantity.textContent = `Own: ${getStockQuantity(theCompanyName)?.stockQuantity || 0}`;
   stockPopupInput.value = "";
-  stockPopupCash.textContent = `Cash: $${getAvailableFunds().toFixed(2)}`;
+  stockPopupCash.textContent = `Cash: $${getAvailableFunds().toFixed(2) || 0}`;
 
   stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
   stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
