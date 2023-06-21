@@ -442,7 +442,7 @@ function openStockPopup(xxx, stockName) {
 if (xxx !== '' && xxx !== null && xxx !== undefined) {
   theCompany = xxx;
   theCompanyName = xxx.name;
-  console.log("company.name   " + theCompanyName);
+ // console.log("company.name   " + theCompanyName);
   
 }else{
     //  console.log("storged company.name   " + theCompanyName);
