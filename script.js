@@ -607,7 +607,6 @@ function timeAndDateFunc() {
 
     const counter = document.getElementById("counter");
 
-  
 if (counterValue > 365) {
   const years = Math.floor(counterValue / 365);
   const remainingDays = counterValue % 365;
@@ -616,10 +615,41 @@ if (counterValue > 365) {
 } else {
   counter.textContent = `${counterValue} days`;
 }
+
+  // Check if the counter is divisible by 5 (every 5 increments)
+  if (counterValue % 5 === 0) {
+    weekend(); // Call the weekend function
+  }
+
+  // Check if the counter is equal to 7 (2 more increments after 5)
+  if (counterValue === 7) {
+    newWeek(); // Call the newWeek function
+  }
+
+  // Output the current counter value
+  console.log('counterValue:', counterValue);
+
+  // Check if the counter has reached the desired limit (e.g., 10)
+  if (counterValue === 10) {
+    clearInterval(intervalStock); // Stop the timer
+    clearInterval(interval); // Stop the timer
+  }
+}, 20000); // Run the timer every 10 seconds (10,000 milliseconds)
   displayPortfolio();
 updateNetWorthDisplay();
-
 }
+
+function weekend() {
+  const event = `Weekend Market Closed`;
+          addNewsEvent(event, "main"); // Add the news event to the UI
+}
+function newWeek() {
+  const event = `New Week`;
+          addNewsEvent(event, "main"); // Add the news event to the UI
+    interval = setInterval(updateStockPrices, dayTimer);
+}
+
+
 
 
 // Function to update the net worth display
@@ -1617,7 +1647,4 @@ function endGame() {
     // Player canceled, do nothing or handle the cancellation as desired
   }
 }
-
-
-
 
