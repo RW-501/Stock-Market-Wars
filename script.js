@@ -1329,6 +1329,7 @@ document.getElementById("open-options-popup").addEventListener("click", function
 
 document.getElementById("close-options-popup").addEventListener("click", function() {
   closePopup("options-popup");
+    interval = setInterval(updateStockPrices, dayTimer);
 });
 
 
@@ -1338,6 +1339,13 @@ document.getElementById("open-news-popup").addEventListener("click", function() 
 
 document.getElementById("close-news-popup").addEventListener("click", function() {
   closePopup("news-popup");
+});
+
+
+
+
+document.getElementById("close-loans-popup").addEventListener("click", function() {
+  closePopup("loans-popup");
 });
 
 
