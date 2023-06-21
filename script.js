@@ -415,6 +415,12 @@ saveStockPrices(stockPrices);
 
 }
 
+function stockQuantity(xxx){
+document.getElementById("stock-popup-input").value = xxx;
+
+}
+
+
 var intervalStock;
 let theCompany;
 let theCompanyName;
@@ -478,6 +484,7 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
     stockPopupInput.value = "";
     stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
   stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
+    stockPopupQuantity.textContent.addEventListener("click", () => stockQuantity(stockQuantity));
 
 return;
 }
@@ -490,6 +497,8 @@ return;
         stockPopupInput.value = "";
         stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
   stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
+          stockPopupQuantity.textContent.addEventListener("click", () => stockQuantity(stockQuantity));
+
   }   
 
   //clearInterval(intervalStock);
