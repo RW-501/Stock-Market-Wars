@@ -250,9 +250,9 @@ function displayPortfolio() {
  const portfolioString = JSON.parse(portfolio);
 
   
-  console.log(portfolio+"    portfolioString    " + portfolioString);
+  ///console.log(portfolio+"    portfolioString    " + portfolioString);
 // Check if the portfolio is null or undefined
-  if (portfolio == "" || portfolio == null || portfolio == "undefined" || portfolio == undefined  ) {
+  if (portfolioString == "" || portfolioString == null || portfolioString == "undefined" || portfolioString == undefined  ) {
     // Handle the case when the portfolio is empty or not available
     console.log("Portfolio is empty or not available");
     return;
