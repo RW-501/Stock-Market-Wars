@@ -486,7 +486,8 @@ return;
     if(stockName){
         closePopup("portfolio-popup");
   openPopup("stock-popup");
-  }
+  }   
+
   //clearInterval(intervalStock);
 }
 
@@ -1076,8 +1077,8 @@ if (lenderPaymentInfo && lenderPaymentInfo.automaticPayments && counterValue - s
 
 
 // Function to add news event
-function addNewsEvent(event, xxx) {
-        console.log(xxx +"  event    " + event);
+function addNewsEvent(event, xxx,name) {
+        console.log(xxx +"  xxx  "+ name+"   event    " + event);
 
   eventDayCount = 0;
   
@@ -1085,6 +1086,9 @@ if(xxx =="main"){
 
       const newsContent = document.getElementById("msg-area");
     const newsItem = document.createElement("div");
+  
+     newsItem.addEventListener("click", () => openStockPopup('',name));
+
     newsItem.classList.add("breaking-news-item");
     newsItem.textContent = event;
     newsContent.prepend(newsItem); // Add the event to the top of the news content
