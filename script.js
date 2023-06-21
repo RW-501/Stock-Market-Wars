@@ -639,7 +639,7 @@ if (counterValue > 365) {
 //  displayPortfolio();
 //updateNetWorthDisplay();
 }
-const weekendTimer;
+var weekendTimer;
 function weekend() {
   const event = `Weekend Market Closed`;
           addNewsEvent(event, "main"); // Add the news event to the UI
