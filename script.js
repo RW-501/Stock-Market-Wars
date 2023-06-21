@@ -290,7 +290,7 @@ priceCell.textContent = "$" + (stockPrice.toFixed(2) || 0);
 totalCostCell.textContent = "$" + (totalCost.toFixed(2) || 0);
 valueCell.textContent = "$" + (companyValue.toFixed(2) || 0);
   
-    row.addEventListener("click", () => openStockPopup('',name));
+    row.addEventListener("click", () => openStockPopup(name,portfolioString));
     row.appendChild(priceCell);
                    
   // Append the table cells to the row
@@ -456,11 +456,10 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
 
   stockPopupTitle.textContent = theCompanyName;
 
-  
-stockPopupPrice.textContent = `Price: $${(theCompany.price?.toFixed(2) || 0)}`;
+    stockPopupPrice.textContent = `Price: $${theCompany.price.toFixed(2) || 0}`;
 stockPopupQuantity.textContent = `Own: ${getStockQuantity(theCompanyName)?.stockQuantity || 0}`;
-stockPopupInput.value = "";
-stockPopupCash.textContent = `Cash: $${(getAvailableFunds()?.toFixed(2) || 0)}`;
+  stockPopupInput.value = "";
+  stockPopupCash.textContent = `Cash: $${getAvailableFunds().toFixed(2) || 0}`;
 
   stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
   stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
