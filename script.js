@@ -1304,6 +1304,8 @@ document.getElementById("close-pause-popup").addEventListener("click", function(
 function restartGame() {
     clearInterval(interval); // Clear the interval to stop updating stock prices
 
+      closePopup("options-popup");
+
   // Clear local storage
 document.addEventListener('DOMContentLoaded', function() {
   // Clean variables
@@ -1326,6 +1328,15 @@ for (const key in keys) {
   
 console.log(keys);
 
+
+  
+  });
+
+  // Reset game state, UI elements, or perform necessary actions
+  console.log("Game restarted");
+}
+
+/*
 //getMarket();
   
     // Update the stock prices in the user interface
@@ -1334,15 +1345,7 @@ console.log(keys);
 updateStockPrices();
 // Call the updateNetWorthDisplay function initially and whenever there's a change in net worth
 updateNetWorthDisplay();
-  
-  });
-  clearInterval(interval); // Clear the interval to stop updating stock prices
-    interval = setInterval(updateStockPrices, dayTimer); // Restart the interval to resume updating stock prices
-
-  // Reset game state, UI elements, or perform necessary actions
-  console.log("Game restarted");
-}
-
+*/
 
 
 
