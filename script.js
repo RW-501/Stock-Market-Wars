@@ -416,6 +416,8 @@ let theCompany;
 let theCompanyName;
 
 function startUITimer() {
+    console.log("startUITimer");
+
   clearInterval(intervalStock);
   intervalStock = setTimeout(() => {
     openStockPopup('');
