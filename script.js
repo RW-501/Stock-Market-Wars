@@ -649,7 +649,7 @@ function weekend() {
 // Start the timer
 const weekendTimer = setTimeout(() => {
   counterValue = counterValue + 2; // Increment the counter by 1
-  timeAndDateFunc();
+  newWeek();
   }, 20000); // Run the timer every 10 seconds (10 000 milliseconds)
   
 }
