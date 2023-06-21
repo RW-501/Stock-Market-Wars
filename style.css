@@ -66,6 +66,14 @@ h1 {
   padding: 8px;
   text-align: center;
 }
+  #portfolio-body tr{
+border: #3371AB solid 2px;
+    border-left: none;
+    border-right: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+
+}
 
 .buttons {
     display: flex;
