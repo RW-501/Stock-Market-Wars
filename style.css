@@ -34,6 +34,8 @@ display: flex;
 #total-cash, #msg-area{
       width: 50%;
     display: block;
+        cursor: pointer;
+
 }
 
 
