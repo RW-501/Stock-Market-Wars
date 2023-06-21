@@ -289,7 +289,9 @@ for (const [name, { stockQuantity, totalCost }] of Object.entries(portfolio)) {
   quantityCell.textContent = stockQuantity  || ""; 
   const valueCell = document.createElement("td");
   valueCell.textContent = "$" + companyValue.toFixed(2)  || ""; 
-
+  
+    row.addEventListener("click", () => openStockPopup(name));
+    row.appendChild(priceCell);
                    
   // Append the table cells to the row
   row.appendChild(nameCell);
@@ -476,8 +478,8 @@ function closeStockPopup() {
   const stockPopupBuy = document.getElementById("stock-popup-buy");
   const stockPopupSell = document.getElementById("stock-popup-sell");
 
-  stockPopupBuy.removeEventListener("click", buyStock);
-  stockPopupSell.removeEventListener("click", sellStock);
+ // stockPopupBuy.removeEventListener("click", buyStock);
+ // stockPopupSell.removeEventListener("click", sellStock);
 clearInterval(intervalStock);
   closePopup("stock-popup");
 }
