@@ -487,8 +487,10 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
         stockPopupInput.value = "";
         stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
   stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
-    stockPopupQuantity.addEventListener("click", () => getStockQuantity(theCompanyName)?.stockQuantity || 0);
-
+stockPopupQuantity.addEventListener("click", () => {
+  const stockQuantity = getStockQuantity(theCompanyName)?.stockQuantity || 0;
+  // Handle the click event here
+});
 return;
 }
   if(theCompanyName){
@@ -503,8 +505,10 @@ return;
         stockPopupInput.value = "";
         stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
   stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
-    stockPopupQuantity.addEventListener("click", () => getStockQuantity(theCompanyName)?.stockQuantity || 0);
-
+stockPopupQuantity.addEventListener("click", () => {
+  const stockQuantity = getStockQuantity(theCompanyName)?.stockQuantity || 0;
+  // Handle the click event here
+});
   }   
 
   //clearInterval(intervalStock);
