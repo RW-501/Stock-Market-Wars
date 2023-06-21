@@ -267,7 +267,9 @@ function displayPortfolio() {
 for (const [name, { stockQuantity, totalCost }] of Object.entries(portfolioString)) {
   // Skip companies with stock quantity of 0
   if (stockQuantity === 0) {
-    continue;
+//    continue;
+       // Remove the company from the portfolio object
+    delete portfolioString[name];
   }
 
   // Retrieve the stock price for the current company (assuming it's stored somewhere)
@@ -319,7 +321,8 @@ for (const [name, { stockQuantity, totalCost }] of Object.entries(portfolioStrin
   portfolioContainer.appendChild(row);
 }
 
-
+// Save the updated portfolio back to local storage
+localStorage.setItem('portfolio', JSON.stringify(portfolioString));
 
   // Display the total value of the portfolio
   const totalValueCell = document.getElementById("portfolio-total-value");
@@ -630,32 +633,33 @@ if (counterValue > 365) {
   // Output the current counter value
   console.log('counterValue:', counterValue);
 
-  // Check if the counter has reached the desired limit (e.g., 10)
-  if (counterValue === 10) {
-    clearInterval(intervalStock); // Stop the timer
-    clearInterval(interval); // Stop the timer
-  }
 
 
 
-  displayPortfolio();
-updateNetWorthDisplay();
+//  displayPortfolio();
+//updateNetWorthDisplay();
 }
-
+const weekendTimer;
 function weekend() {
   const event = `Weekend Market Closed`;
           addNewsEvent(event, "main"); // Add the news event to the UI
-
+    clearInterval(intervalStock); // Stop the timer
+    clearInterval(interval); // Stop the timer
+    clearInterval(weekendTimer); // Stop the timer
+  
 // Start the timer
-const weekendTimer = setTimeout(() => {
+ weekendTimer = setTimeout(() => {
   counterValue = counterValue + 2; // Increment the counter by 1
   newWeek();
   }, 20000); // Run the timer every 10 seconds (10 000 milliseconds)
   
 }
 function newWeek() {
-  const event = `New Week`;
+  const event = `New Week Market Open`;
           addNewsEvent(event, "main"); // Add the news event to the UI
+      clearInterval(intervalStock); // Stop the timer
+    clearInterval(interval); // Stop the timer
+      clearInterval(weekendTimer); // Stop the timer
     interval = setInterval(updateStockPrices, dayTimer);
 }
 
@@ -1224,17 +1228,30 @@ if(xxx =="bank"){
 
   
   // Save the event to localStorage
-  const savedBankEvents = JSON.parse(localStorage.getItem("savedBankEvents")) || [];
-  savedBankEvents.push(event);
-  localStorage.setItem("savedBankEvents", JSON.stringify(savedBankEvents));
+const savedBankEvents = JSON.parse(localStorage.getItem("savedBankEvents")) || [];
+// Push the new event to the array
+savedBankEvents.push(event);
+// Keep only the last 20 entries in the array
+if (savedBankEvents.length > 20) {
+  savedBankEvents.shift(); // Remove the oldest entry from the beginning of the array
+}
+// Save the updated array in local storage
+localStorage.setItem("savedBankEvents", JSON.stringify(savedBankEvents));
+
   updateNetWorthDisplay();
    getBankEvents();
 }else{
 
-  // Save the event to localStorage
-  const savedEvents = JSON.parse(localStorage.getItem("savedEvents")) || [];
-  savedEvents.push(event);
-  localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
+const savedEvents = JSON.parse(localStorage.getItem("savedEvents")) || [];
+// Push the new event to the array
+savedEvents.push(event);
+// Keep only the last 20 entries in the array
+if (savedEvents.length > 20) {
+  savedEvents.splice(0, savedEvents.length - 20); // Remove the oldest entries from the beginning of the array
+}
+// Save the updated array in local storage
+localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
+
   updateNetWorthDisplay();
      getStockEvents();
 
