@@ -412,12 +412,17 @@ saveStockPrices(stockPrices);
 
   // Save the updated stock prices object in local storage
   localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
-
-
 }
 
+
+function howMuchStock(stockPrice, availableFunds) {
+  const quantity = Math.floor(availableFunds / stockPrice);
+  document.getElementById("stock-popup-input").value = quantity;
+}
+
+
 function getStockOwned(xxx){
-  console.log("????????????????????????????? xxxx   " + xxx);
+//  console.log("????????????????????????????? xxxx   " + xxx);
   
 document.getElementById("stock-popup-input").value = xxx;
 
@@ -493,6 +498,12 @@ stockPopupQuantity.addEventListener("click", () => {
   const stockQuantity = getStockQuantity(theCompanyName)?.stockQuantity || 0;
 getStockOwned(stockQuantity);
 });
+
+        stockPopupCash.addEventListener("click", () => {
+  const stockPrice = getStockPrice(theCompanyName).toFixed(2) || 0;
+  const availableFunds = getAvailableFunds().toFixed(2) || 0;
+howMuchStock(stockPrice, availableFunds);
+});
 return;
 }
   if(theCompanyName){
@@ -510,6 +521,13 @@ return;
 stockPopupQuantity.addEventListener("click", () => {
   const stockQuantity = getStockQuantity(theCompanyName)?.stockQuantity || 0;
 getStockOwned(stockQuantity);
+});
+
+
+      stockPopupCash.addEventListener("click", () => {
+  const stockPrice = getStockPrice(theCompanyName).toFixed(2) || 0;
+  const availableFunds = getAvailableFunds().toFixed(2) || 0;
+howMuchStock(stockPrice, availableFunds);
 });
   }   
 
@@ -890,7 +908,7 @@ if (totalCost <= availableFunds && quantityToBuy > 0) {
       const eventBuy = `Bought ${quantityToBuy} shares of ${companyName} for $${totalCost.toFixed(2)}`;
   addNewsEvent(eventBuy); // Add the news event to the UI  
   
-      alert("1 buy : Invalid quantity or insufficient funds to buy stocks.");
+      alert(counT+"    buy : Invalid quantity or insufficient funds to buy stocks.");
     }
   clearInterval(intervalStock);
   closePopup("stock-popup");
@@ -908,11 +926,11 @@ function sellStock(companyName, quantityToSell) {
     if (quantityToSell <= stockQuantity && quantityToSell > 0) {
       const totalEarnings = stockPrice * quantityToSell;
       addFunds(totalEarnings);
-         console.log("totalEarnings sell   "+totalEarnings);
+       //  console.log("totalEarnings sell   "+totalEarnings);
 
-      const updatedStockQuantity = stockQuantity - quantityToSell;
+ const updatedStockQuantity = stockQuantity - quantityToSell || 0;
 
-
+      
   let stockCost = updatedStockQuantity / stockPrice;
 
       
@@ -962,7 +980,23 @@ function updateLenderDetails() {
     document.getElementById("lender-PaymentAmount").textContent = "$"+selectedLender.paymentAmount;
     document.getElementById("lender-PaymentFrequency").textContent = selectedLender.paymentFrequency+" days";
   }
+
+
+// Event listener for opening the loans popup
+document.getElementById('open-loans-popup').addEventListener('click', () => {
+  displayLoanHistory();
+  openPopup('loans-popup');
+});
+
+// Event listener for closing the loans popup
+document.getElementById('close-loans-popup').addEventListener('click', () => {
+  closePopup('loans-popup');
+});
+
 }
+
+
+
 
 function updateLenderOptions() {
   const lenderSelect = document.getElementById("lender-select");
@@ -1362,17 +1396,6 @@ function makePayment(loanId) {
   // ...
   console.log(`Payment made for loan: ${loan.name}`);
 }
-
-// Event listener for opening the loans popup
-document.getElementById('open-loans-popup').addEventListener('click', () => {
-  displayLoanHistory();
-  openPopup('loans-popup');
-});
-
-// Event listener for closing the loans popup
-document.getElementById('close-loans-popup').addEventListener('click', () => {
-  closePopup('loans-popup');
-});
 
 
 
