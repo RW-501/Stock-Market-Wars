@@ -252,7 +252,7 @@ function displayPortfolio() {
   
 //   console.log(portfolio+"    portfolioString    " + portfolioString);
 // Check if the portfolio is null or undefined
-  if (!portfolio) {
+  if (portfolio == "" || portfolio == null || portfolio == "undefined" || portfolio == undefined  ) {
     // Handle the case when the portfolio is empty or not available
     console.log("Portfolio is empty or not available");
     return;
@@ -286,9 +286,9 @@ for (const [name, { stockQuantity, totalCost }] of Object.entries(portfolio)) {
   const quantityCell = document.createElement("td");
   quantityCell.textContent = stockQuantity  || ""; 
   const valueCell = document.createElement("td");
-priceCell.textContent = "$" + (stockPrice?.toFixed(2) || 0);
-totalCostCell.textContent = "$" + (totalCost?.toFixed(2) || 0);
-valueCell.textContent = "$" + (companyValue?.toFixed(2) || 0);
+priceCell.textContent = "$" + (stockPrice.toFixed(2) || 0);
+totalCostCell.textContent = "$" + (totalCost.toFixed(2) || 0);
+valueCell.textContent = "$" + (companyValue.toFixed(2) || 0);
   
     row.addEventListener("click", () => openStockPopup(name));
     row.appendChild(priceCell);
