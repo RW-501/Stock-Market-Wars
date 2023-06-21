@@ -1066,14 +1066,14 @@ function addNewsEvent(event, xxx) {
   
 if(xxx =="main"){
 
-      const newsContent = document.getElementById("news-content");
+      const newsContent = document.getElementById("msg-area");
     const newsItem = document.createElement("div");
     newsItem.classList.add("breaking-news-item");
     newsItem.textContent = event;
     newsContent.prepend(newsItem); // Add the event to the top of the news content
     newsContent.scrollTop = 0; // Scroll to the top of the news content
   
-  openPopup("news-popup");
+ // openPopup("news-popup");
 
 }else{
 
