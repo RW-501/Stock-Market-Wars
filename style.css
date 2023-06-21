@@ -26,6 +26,7 @@ h1 {
 
 .h80{
     height: 80%;
+      min-height: 80%;
 }
 #info-area{
 display: flex;
@@ -267,7 +268,13 @@ border: #3371AB solid 2px;
         cursor: pointer;
 
 }
-
+#portfolio-body{
+    height: 60%;
+    width: auto;
+    overflow-y: scroll;
+    padding: 5%;
+display: block;
+  }
 
 
   
