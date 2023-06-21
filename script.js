@@ -803,12 +803,12 @@ function calculateNetWorth() {
   return netWorth;
 }
 
-function buyStock(companyName, quantityToBuy) {
+function buyStock(companyName, quantityToBuy, event) {
   const company = companies.find((company) => company.name === companyName);
   const stockPrice = company.price;
   const availableFunds = getAvailableFunds();
 
-         console.log("availableFunds buy   "+availableFunds);
+         console.log("event buy   "+event);
 
   const totalCost = stockPrice * quantityToBuy;
 
