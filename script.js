@@ -484,7 +484,7 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
     stockPopupInput.value = "";
     stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
   stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
-    stockPopupQuantity.addEventListener("click", () => stockQuantity(stockQuantity).stockQuantity || 0);
+    stockPopupQuantity.addEventListener("click", () => stockQuantity(stockQuantity).stockQuantity);
 
 return;
 }
@@ -497,7 +497,7 @@ return;
         stockPopupInput.value = "";
         stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
   stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
-    stockPopupQuantity.addEventListener("click", () => stockQuantity(stockQuantity).stockQuantity || 0);
+    stockPopupQuantity.addEventListener("click", () => stockQuantity(stockQuantity).stockQuantity);
 
   }   
 
