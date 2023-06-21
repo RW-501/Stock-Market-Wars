@@ -633,27 +633,26 @@ if (counterValue > 365) {
   // Output the current counter value
   console.log('counterValue:', counterValue);
 
-
-
-
 //  displayPortfolio();
 //updateNetWorthDisplay();
 }
+
+
 var weekendTimer;
 function weekend() {
   const event = `Weekend Market Closed`;
           addNewsEvent(event, "main"); // Add the news event to the UI
     clearInterval(intervalStock); // Stop the timer
     clearInterval(interval); // Stop the timer
-    clearInterval(weekendTimer); // Stop the timer
+    clearTimeout(weekendTimer); // Stop the timer
   
 // Start the timer
  weekendTimer = setTimeout(() => {
   counterValue = counterValue + 2; // Increment the counter by 1
   newWeek();
   }, 20000); // Run the timer every 10 seconds (10 000 milliseconds)
-  
 }
+
 function newWeek() {
   const event = `New Week Market Open`;
           addNewsEvent(event, "main"); // Add the news event to the UI
@@ -1570,7 +1569,9 @@ document.getElementById("close-news-popup").addEventListener("click", function()
 // Event listener for the Pause Game button
 document.getElementById("pause-game-btn").addEventListener("click", function() {
     closePopup("options-popup");
-  clearInterval(interval); // Clear the interval to stop updating stock prices
+      clearInterval(intervalStock); // Stop the timer
+    clearInterval(interval); // Stop the timer
+      clearInterval(weekendTimer); // Stop the timer
   openPopup("pause-popup");
   pauseGame(); // Pause the game
 });
