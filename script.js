@@ -435,7 +435,7 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
   console.log("company.name   " + theCompanyName);
   
 }else{
-    //  console.log("storged company.name   " + theCompanyName);
+      console.log("storged company.name   " + theCompanyName);
 // console.log("????????????????????????????????????>   ");
 }
   const stockPrices = getStockPrices(theCompanyName);
@@ -470,8 +470,13 @@ stockPopupQuantity.textContent = `Own: ${getStockQuantity(theCompanyName)?.stock
 if (xxx !== '' && xxx !== null && xxx !== undefined) {
   openPopup("stock-popup");
     startUITimer();
-
+  
+return;
 }
+  if(theCompanyName){
+    startUITimer();
+
+  }
   
   //clearInterval(intervalStock);
 }
