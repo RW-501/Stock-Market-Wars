@@ -1379,7 +1379,9 @@ function displayLoanHistory() {
   loansContent.innerHTML = ''; // Clear previous loan history
   
   const loanInfo = getLoanInfo();
+console.log(loanInfo+"    loanInfo   "+loanInfo);
 
+  
   if (loanInfo.length === 0) {
     loansContent.textContent = 'No loan history found.';
     return;
