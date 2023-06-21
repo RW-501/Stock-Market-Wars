@@ -278,19 +278,19 @@ for (const [name, { stockQuantity, totalCost }] of Object.entries(portfolio)) {
   const row = document.createElement("tr");
 
   
-  // Create table cells for the company name, stock price, average stock price, stock quantity, and company value
+// Create table cells for the company name, stock price, average stock price, stock quantity, and company value
   const nameCell = document.createElement("td");
   nameCell.textContent = name;
   const priceCell = document.createElement("td");
-  priceCell.textContent = stockPrice ? "$" + stockPrice.toFixed(2) : ""; // Check if stockPrice is defined
+  priceCell.textContent = "$" + stockPrice.toFixed(2);
   const totalCostCell = document.createElement("td");
-  totalCostCell.textContent = totalCost ? "$" + totalCost.toFixed(2) : ""; // Check if totalCost is defined
+  totalCostCell.textContent = "$" + totalCost.toFixed(2) || ""; // Display the average stock price
   const quantityCell = document.createElement("td");
-  quantityCell.textContent = stockQuantity !== undefined ? stockQuantity : ""; // Check if stockQuantity is defined
+  quantityCell.textContent = stockQuantity  || ""; 
   const valueCell = document.createElement("td");
-  valueCell.textContent = companyValue ? "$" + companyValue.toFixed(2) : ""; // Check if companyValue is defined
+  valueCell.textContent = "$" + companyValue.toFixed(2)  || ""; 
 
-
+                   
   // Append the table cells to the row
   row.appendChild(nameCell);
   row.appendChild(priceCell);
