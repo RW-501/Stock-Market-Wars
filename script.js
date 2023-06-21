@@ -1203,7 +1203,7 @@ if(xxx =="bank"){
 
 
 
-window.addEventListener("DOMContentLoaded", function () {
+//window.addEventListener("DOMContentLoaded", function () {
 
   function getStockEvents(){
   const savedEvents = JSON.parse(localStorage.getItem("savedEvents")) || [];
@@ -1222,11 +1222,11 @@ window.addEventListener("DOMContentLoaded", function () {
   }
   getStockEvents();
   
-});
+//});
 
 
 
-window.addEventListener("DOMContentLoaded", function () {
+//window.addEventListener("DOMContentLoaded", function () {
 
   function  getBankEvents(){
   const savedEvents = JSON.parse(localStorage.getItem("savedBankEvents")) || [];
@@ -1244,7 +1244,7 @@ window.addEventListener("DOMContentLoaded", function () {
   });
   }
   getBankEvents();
-});
+//});
 
 
 
