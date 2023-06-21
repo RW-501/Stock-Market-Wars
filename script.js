@@ -452,7 +452,7 @@ let theCompanyName;
 function startUITimer() {
     console.log("startUITimer");
 //setInterval
-  clearInterval(intervalStock);
+  clearTimeout(intervalStock);
   intervalStock = setTimeout(() => {
     openStockPopup('');
   }, 5000);
