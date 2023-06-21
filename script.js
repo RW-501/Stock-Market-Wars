@@ -752,6 +752,8 @@ function getAvailableFunds() {
   // If no funds are stored, set the initial funds and return it
   if (!fundsString) {
     const initialFunds = 500;
+      const event = `$${initialFunds} added to account`;
+          addNewsEvent(event, "bank"); // Add the news event to the UI
     localStorage.setItem('availableFunds', initialFunds.toString());
     return initialFunds;
   }
@@ -773,9 +775,9 @@ function deductFunds(amount) {
   // Check if the amount is valid (positive and not exceeding the available funds)
   if (amount <= 0 || amount > currentFunds) {
         // Add the news event
-  const event = `Funds are low ${amount}`;
-  addNewsEvent(event);
-    
+  const event = `Funds are low $${amount}`;
+          addNewsEvent(event, "bank"); // Add the news event to the UI
+
     // Handle the error case (e.g., display an error message, throw an error, etc.)
     return;
   }
@@ -800,16 +802,17 @@ function addFunds(amount) {
     // Handle the error case (e.g., display an error message, throw an error, etc.)
 
     // Add the news event
-  const event = `Funds are low ${amount}`;
-  addNewsEvent(event);
-    return;
+  const event = `Funds are low $${amount}`;
+          addNewsEvent(event, "bank"); // Add the news event to the UI    return;
   }
   
   // Add the specified amount to the current funds
   const newFunds = currentFunds + amount;
 
-         console.log("newFunds add   "+newFunds);
-
+        // console.log("newFunds add   "+newFunds);
+  const event = `$${amount} added to account`;
+  addNewsEvent(event, "bank"); // Add the news event to the UI  
+  
   // Update the available funds in local storage
   localStorage.setItem('availableFunds', newFunds.toString());
        updateNetWorthDisplay();
@@ -855,7 +858,7 @@ function buyStock(companyName, quantityToBuy, event) {
   const availableFunds = getAvailableFunds();
 counT++;
   
-         console.log(counT+"    event buy   "+event);
+       //  console.log(counT+"    event buy   "+event);
 
   const totalCost = stockPrice * quantityToBuy;
 
@@ -870,9 +873,9 @@ if (totalCost <= availableFunds && quantityToBuy > 0) {
 
   let stockCost = currentTotalCost + totalCost;
   
-    console.log(currentTotalCost + " currentTotalCost " + totalCost);
+//    console.log(currentTotalCost + " currentTotalCost " + totalCost);
   
-  console.log("stockCost    " + stockCost);
+//  console.log("stockCost    " + stockCost);
 
   updateStockQuantity(companyName, updatedStockQuantity, stockCost);
 
@@ -880,13 +883,13 @@ if (totalCost <= availableFunds && quantityToBuy > 0) {
 
 
 
-         console.log(counT+"    event buy   "+event);
+        // console.log(counT+"    event buy   "+event);
 
       updateNetWorthDisplay();
 
       const eventBuy = `Bought ${quantityToBuy} shares of ${companyName} for $${totalCost.toFixed(2)}`;
-      addNewsEvent(eventBuy);
-    } else {
+  addNewsEvent(eventBuy); // Add the news event to the UI  
+  
       alert("1 buy : Invalid quantity or insufficient funds to buy stocks.");
     }
   clearInterval(intervalStock);
@@ -919,8 +922,9 @@ function sellStock(companyName, quantityToSell) {
 
       updateNetWorthDisplay();
 
-      const event = `Sold ${quantityToSell} shares of ${companyName} for $${totalEarnings.toFixed(2)}`;
-      addNewsEvent(event);
+      const eventSell = `Sold ${quantityToSell} shares of ${companyName} for $${totalEarnings.toFixed(2)}`;
+  addNewsEvent(eventSell); // Add the news event to the UI    
+      
     } else {
       alert("1 sell : Invalid quantity or insufficient stocks to sell.");
     }
@@ -1134,13 +1138,25 @@ if(xxx =="main"){
     newsItem.textContent = event;
     newsContent.prepend(newsItem); // Add the event to the top of the news content
     newsContent.scrollTop = 0; // Scroll to the top of the news content
-}
+}  
+if(xxx =="bank"){
+
+
+  
+  // Save the event to localStorage
+  const savedBankEvents = JSON.parse(localStorage.getItem("savedBankEvents")) || [];
+  savedBankEvents.push(event);
+  localStorage.setItem("savedBankEvents", JSON.stringify(savedBankEvents));
+  updateNetWorthDisplay();
+  
+}else{
 
   // Save the event to localStorage
   const savedEvents = JSON.parse(localStorage.getItem("savedEvents")) || [];
   savedEvents.push(event);
   localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
   updateNetWorthDisplay();
+}
 }
 
 
@@ -1161,6 +1177,23 @@ window.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+
+
+window.addEventListener("DOMContentLoaded", function () {
+  const savedEvents = JSON.parse(localStorage.getItem("savedBankEvents")) || [];
+  
+  // Reverse the order of savedEvents array to display the events in descending order (latest events on top)
+  const reversedEvents = savedEvents.reverse();
+  
+  reversedEvents.forEach(function (event) {
+    const newsContent = document.getElementById("loans-content");
+    const newsItem = document.createElement("div");
+    newsItem.classList.add("news-item");
+    newsItem.textContent = event;
+    newsContent.prepend(newsItem); // Add the event to the top of the news content
+    newsContent.scrollTop = 0; // Scroll to the top of the news content
+  });
+});
 
 
 
@@ -1281,6 +1314,96 @@ document.getElementById("portfolio-button").addEventListener("click", openPortfo
 document.getElementById("close-portfolio-popup").addEventListener("click", closePortfolioPopup);
 
 
+
+
+
+// Function to retrieve loan information from local storage
+function getLoanInfo() {
+  const loanInfo = JSON.parse(localStorage.getItem('lenderPaymentInfo'));
+  return loanInfo || [];
+}
+
+// Function to display loan history on the loans page
+function displayLoanHistory() {
+  const loansContent = document.getElementById('loans-content');
+  loansContent.innerHTML = ''; // Clear previous loan history
+  
+  const loanInfo = getLoanInfo();
+
+  if (loanInfo.length === 0) {
+    loansContent.textContent = 'No loan history found.';
+    return;
+  }
+
+  // Loop through loan information and create loan elements
+  loanInfo.forEach((loan) => {
+    const loanElement = document.createElement('div');
+    loanElement.classList.add('loan-item');
+    loanElement.textContent = loan.name;
+
+    // Add click event listener to make payment
+    loanElement.addEventListener('click', () => makePayment(loan.id));
+
+    loansContent.appendChild(loanElement);
+  });
+}
+
+// Function to make a payment for a specific loan
+function makePayment(loanId) {
+  const loanInfo = getLoanInfo();
+  const loan = loanInfo.find((loan) => loan.id === loanId);
+
+  if (!loan) {
+    console.log('Loan not found.');
+    return;
+  }
+
+  // Perform payment logic here
+  // ...
+  console.log(`Payment made for loan: ${loan.name}`);
+}
+
+// Event listener for opening the loans popup
+document.getElementById('open-loans-popup').addEventListener('click', () => {
+  displayLoanHistory();
+  openPopup('loans-popup');
+});
+
+// Event listener for closing the loans popup
+document.getElementById('close-loans-popup').addEventListener('click', () => {
+  closePopup('loans-popup');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Add event listeners for other popups in a similar manner
 document.getElementById("open-bank-popup").addEventListener("click", function () {
   openPopup("bank-popup");
@@ -1342,11 +1465,6 @@ document.getElementById("close-news-popup").addEventListener("click", function()
 });
 
 
-
-
-document.getElementById("close-loans-popup").addEventListener("click", function() {
-  closePopup("loans-popup");
-});
 
 
 
