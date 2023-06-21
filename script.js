@@ -290,7 +290,7 @@ totalCostCell.textContent = "$" + (totalCost.toFixed(2) || 0);
 valueCell.textContent = "$" + (companyValue.toFixed(2) || 0);
 
   
-  console.log(portfolioString.name+"    portfolioString.name    " + portfolioString);
+ // console.log(portfolioString.name+"    portfolioString.name    " + portfolioString);
   
     row.addEventListener("click", () => openStockPopup('',name));
     row.appendChild(priceCell);
@@ -482,9 +482,10 @@ return;
 }
   if(theCompanyName){
     startUITimer();
-
   }
-  
+    if(stockName){
+  openPopup("stock-popup");
+  }
   //clearInterval(intervalStock);
 }
 
