@@ -416,7 +416,7 @@ saveStockPrices(stockPrices);
 
 }
 
-function stockQuantity(xxx){
+function getStockOwned(xxx){
   console.log("????????????????????????????? xxxx   " + xxx);
   
 document.getElementById("stock-popup-input").value = xxx;
@@ -491,7 +491,7 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
   stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
 stockPopupQuantity.addEventListener("click", () => {
   const stockQuantity = getStockQuantity(theCompanyName)?.stockQuantity || 0;
-stockQuantity(stockQuantity);
+getStockOwned(stockQuantity);
 });
 return;
 }
@@ -509,7 +509,7 @@ return;
   stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
 stockPopupQuantity.addEventListener("click", () => {
   const stockQuantity = getStockQuantity(theCompanyName)?.stockQuantity || 0;
-stockQuantity(stockQuantity);
+getStockOwned(stockQuantity);
 });
   }   
 
