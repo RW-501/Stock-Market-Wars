@@ -250,7 +250,7 @@ function displayPortfolio() {
  const portfolioString = JSON.parse(portfolio);
 
   
-//   console.log(portfolio+"    portfolioString    " + portfolioString);
+  console.log(portfolio+"    portfolioString    " + portfolioString);
 // Check if the portfolio is null or undefined
   if (portfolio == "" || portfolio == null || portfolio == "undefined" || portfolio == undefined  ) {
     // Handle the case when the portfolio is empty or not available
@@ -264,7 +264,7 @@ function displayPortfolio() {
 //let portfolio = {"SmartSolutions":{"stockQuantity":30,"avgStockPrice":14.993866453874158}};
 
  // Iterate over each company in the portfolio
-for (const [name, { stockQuantity, totalCost }] of Object.entries(portfolio)) {
+for (const [name, { stockQuantity, totalCost }] of Object.entries(portfolioString)) {
   // Retrieve the stock price for the current company (assuming it's stored somewhere)
   const stockPrice = getStockPrice(name);
 
