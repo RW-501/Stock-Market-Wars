@@ -633,8 +633,8 @@ if (counterValue > 365) {
   // Output the current counter value
   console.log('counterValue:', counterValue);
 
-//  displayPortfolio();
-//updateNetWorthDisplay();
+  displayPortfolio();
+updateNetWorthDisplay();
 }
 
 
@@ -649,8 +649,8 @@ function weekend() {
 // Start the timer
  weekendTimer = setTimeout(() => {
   counterValue = counterValue + 2; // Increment the counter by 1
-  newWeek();
-  }, 20000); // Run the timer every 10 seconds (10 000 milliseconds)
+  timeAndDateFunc();
+  }, 10000); // Run the timer every 10 seconds (10 000 milliseconds)
 }
 
 function newWeek() {
@@ -660,7 +660,7 @@ function newWeek() {
     clearInterval(interval); // Stop the timer
       clearInterval(weekendTimer); // Stop the timer
   //  interval = setInterval(updateStockPrices, dayTimer);
-  updateStockPrices();
+  timeAndDateFunc();
 }
 
 
