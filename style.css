@@ -27,7 +27,14 @@ h1 {
 .h80{
     height: 80%;
 }
+#info-area{
+display: flex;
+}
 
+#info-area, #msg-area{
+      width: 50%;
+    display: block;
+}
 
 
 #stocks {
