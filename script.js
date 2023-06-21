@@ -455,10 +455,12 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
   const stockPopupCash = document.getElementById("stock-popup-cash");
 
   stockPopupTitle.textContent = theCompanyName;
-  stockPopupPrice.textContent = `Price: $${theCompany.price.toFixed(2) || 0}`;
+
+  
+stockPopupPrice.textContent = `Price: $${(theCompany.price?.toFixed(2) || 0)}`;
 stockPopupQuantity.textContent = `Own: ${getStockQuantity(theCompanyName)?.stockQuantity || 0}`;
-  stockPopupInput.value = "";
-  stockPopupCash.textContent = `Cash: $${getAvailableFunds().toFixed(2) || 0}`;
+stockPopupInput.value = "";
+stockPopupCash.textContent = `Cash: $${(getAvailableFunds()?.toFixed(2) || 0)}`;
 
   stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
   stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
