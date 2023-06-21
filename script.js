@@ -37,8 +37,9 @@ function getMarket() {
 //console.log("storedStockPrices   "+storedStockPrices);
 
  // Check if stockPrices data exists in local storage
-  if (storedStockPrices) {
-    
+ // if (storedStockPrices) {
+  if (storedStockPrices !== "" || storedStockPrices !== null || storedStockPrices !== "undefined" || storedStockPrices !== undefined  ) {
+
   // Parse the stored stock prices string into an object or set it to an empty object if null
   const stockPrices = JSON.parse(storedStockPrices) || {};
 
