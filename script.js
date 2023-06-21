@@ -425,7 +425,7 @@ function startUITimer() {
 // Open the stock popup and populate it with the company details
 function openStockPopup(xxx) {
 
-     // console.log("xxxxxxxxxxxxxxxxxxxxxxx   " + xxx);
+      console.log("xxxxxxxxxxxxxxxxxxxxxxx   " + xxx);
 
 if (xxx !== '' && xxx !== null && xxx !== undefined) {
   theCompany = xxx;
