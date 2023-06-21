@@ -491,7 +491,7 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
   stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
 stockPopupQuantity.addEventListener("click", () => {
   const stockQuantity = getStockQuantity(theCompanyName)?.stockQuantity || 0;
-  // Handle the click event here
+stockQuantity(stockQuantity);
 });
 return;
 }
@@ -509,7 +509,7 @@ return;
   stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
 stockPopupQuantity.addEventListener("click", () => {
   const stockQuantity = getStockQuantity(theCompanyName)?.stockQuantity || 0;
-  // Handle the click event here
+stockQuantity(stockQuantity);
 });
   }   
 
