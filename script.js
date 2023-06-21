@@ -261,7 +261,6 @@ function displayPortfolio() {
   // Initialize the total value variable
   let totalValue = 0;
   
-//let portfolio = {"SmartSolutions":{"stockQuantity":30,"avgStockPrice":14.993866453874158}};
 
  // Iterate over each company in the portfolio
 for (const [name, { stockQuantity, totalCost }] of Object.entries(portfolioString)) {
@@ -289,6 +288,9 @@ for (const [name, { stockQuantity, totalCost }] of Object.entries(portfolioStrin
 priceCell.textContent = "$" + (stockPrice.toFixed(2) || 0);
 totalCostCell.textContent = "$" + (totalCost.toFixed(2) || 0);
 valueCell.textContent = "$" + (companyValue.toFixed(2) || 0);
+
+  
+  console.log(portfolioString.name+"    portfolioString.name    " + portfolioString);
   
     row.addEventListener("click", () => openStockPopup(portfolioString.name));
     row.appendChild(priceCell);
