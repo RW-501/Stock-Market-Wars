@@ -431,7 +431,7 @@ function startUITimer() {
 // Open the stock popup and populate it with the company details
 function openStockPopup(xxx, stockName) {
 
-      console.log("xxxxxxxxxxxxxxxxxxxxxxx   " + xxx);
+    //  console.log("xxxxxxxxxxxxxxxxxxxxxxx   " + xxx);
 
 if (xxx !== '' && xxx !== null && xxx !== undefined) {
   theCompany = xxx;
@@ -439,7 +439,7 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
   console.log("company.name   " + theCompanyName);
   
 }else{
-      console.log("storged company.name   " + theCompanyName);
+    //  console.log("storged company.name   " + theCompanyName);
 // console.log("????????????????????????????????????>   ");
 }
   if(stockName){
@@ -467,17 +467,18 @@ theCompanyName = stockName;
 
     stockPopupPrice.textContent = `Price: $${getStockPrice(theCompanyName).toFixed(2) || 0}`;
 stockPopupQuantity.textContent = `Own: ${getStockQuantity(theCompanyName)?.stockQuantity || 0}`;
-  stockPopupInput.value = "";
   stockPopupCash.textContent = `Cash: $${getAvailableFunds().toFixed(2) || 0}`;
 
-  stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
-  stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
+
 
 
 if (xxx !== '' && xxx !== null && xxx !== undefined) {
   openPopup("stock-popup");
     startUITimer();
-  
+    stockPopupInput.value = "";
+    stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
+  stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
+
 return;
 }
   if(theCompanyName){
@@ -486,6 +487,9 @@ return;
     if(stockName){
         closePopup("portfolio-popup");
   openPopup("stock-popup");
+        stockPopupInput.value = "";
+        stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
+  stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
   }   
 
   //clearInterval(intervalStock);
