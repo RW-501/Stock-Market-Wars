@@ -883,7 +883,12 @@ function sellStock(companyName, quantityToSell) {
          console.log("totalEarnings sell   "+totalEarnings);
 
       const updatedStockQuantity = stockQuantity - quantityToSell;
-      updateStockQuantity(companyName, updatedStockQuantity);
+
+
+  let stockCost = updatedStockQuantity / stockPrice;
+
+      
+      updateStockQuantity(companyName, updatedStockQuantity, stockCost);
 
       alert(`Successfully sold ${quantityToSell} ${companyName} stocks for $${totalEarnings.toFixed(2)}.`);
 
