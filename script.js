@@ -448,7 +448,7 @@ let theCompanyName;
 
 function startUITimer() {
     console.log("startUITimer");
-
+//setInterval
   clearInterval(intervalStock);
   intervalStock = setTimeout(() => {
     openStockPopup('');
@@ -616,6 +616,7 @@ if (counterValue > 365) {
   counter.textContent = `${counterValue} days`;
 }
 
+  
   // Check if the counter is divisible by 5 (every 5 increments)
   if (counterValue % 5 === 0) {
     weekend(); // Call the weekend function
@@ -634,7 +635,9 @@ if (counterValue > 365) {
     clearInterval(intervalStock); // Stop the timer
     clearInterval(interval); // Stop the timer
   }
-}, 20000); // Run the timer every 10 seconds (10 000 milliseconds)
+
+
+
   displayPortfolio();
 updateNetWorthDisplay();
 }
@@ -642,6 +645,13 @@ updateNetWorthDisplay();
 function weekend() {
   const event = `Weekend Market Closed`;
           addNewsEvent(event, "main"); // Add the news event to the UI
+
+// Start the timer
+const weekendTimer = setTimeout(() => {
+  counterValue = counterValue + 2; // Increment the counter by 1
+  timeAndDateFunc();
+  }, 20000); // Run the timer every 10 seconds (10 000 milliseconds)
+  
 }
 function newWeek() {
   const event = `New Week`;
