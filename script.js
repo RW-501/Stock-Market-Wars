@@ -1366,12 +1366,13 @@ document.getElementById("close-portfolio-popup").addEventListener("click", close
 
 
 
+
+
 // Function to retrieve loan information from local storage
 function getLoanInfo() {
   const loanInfo = JSON.parse(localStorage.getItem('lenderPaymentInfo'));
-  return Array.isArray(loanInfo) ? loanInfo : []; // Return loanInfo if it's an array, otherwise return an empty array
+  return loanInfo || [];
 }
-
 
 // Function to display loan history on the loans page
 function displayLoanHistory() {
