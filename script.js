@@ -630,25 +630,17 @@ if (counterValue > 365) {
   msgArea.innerHTML = "";
 
   // Increment the weekend counter
-  if (counterValue % 6 === 0) {
-    weekendCounter++;
-  }
-
-  // Increment the new week counter
-  if (counterValue % 8 === 0) {
-    newWeekCounter++;
-  }
-
-  
-  // Check if counterValue is divisible by 6
-  if (weekendCounter === 1) {
+  if (incrementCounter  % 6 === 0) {
     weekend(); // Call the weekend function
   }
 
-  // Check if counterValue is divisible by 8
-  if (newWeekCounter === 2) {
+  // Increment the new week counter
+  if (incrementCounter  % 8 === 0) {
     newWeek(); // Call the newWeek function
+    incrementCounter = 0;
   }
+
+
     displayPortfolio();
 updateNetWorthDisplay();
 
