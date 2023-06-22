@@ -1473,11 +1473,9 @@ function displayLoanHistory() {
   
   const loanInfo = getLoanInfo();
   
-//console.log("    loanInfo   " + loanInfo);
-//console.log("    loanInfo   " + loanInfo);
+
   const parsedLoanInfo = JSON.parse(loanInfo);
 
-/*
 if (!Array.isArray(loanInfo)) {
   // Handle the case when loanInfo is not an array
   loansContent.textContent = 'No loan history found.';
@@ -1485,17 +1483,6 @@ if (!Array.isArray(loanInfo)) {
 }
 
 
-// Convert loanInfo object to JSON string and format with indentation
-const loanString = JSON.stringify(loanInfo, null, 2);
-console.log("    loanString   " + loanString);
-
-// Parse the JSON string back into an object
-const parsedLoanInfo = JSON.parse("["+loanString+"]");
-
-console.log("    parsedLoanInfo   " + parsedLoanInfo);
-*/
-//const parsedLoanInfo = JSON.parse(JSON.stringify(loanInfo));
-console.log("    parsedLoanInfo   " + parsedLoanInfo);
 
 
 
@@ -1509,6 +1496,7 @@ loanLengthCell.innerHTML = parsedLoanInfo.loanLength;
 
 const loanCellsWrapper = document.createElement("div");
 loanCellsWrapper.classList.add('loan-item');
+loanCellsWrapper.addEventListener('click', () => makePayment(parsedLoanInfo));
 
 loanCellsWrapper.appendChild(nameCell);
 loanCellsWrapper.appendChild(borrowedAmountCell);
@@ -1532,24 +1520,62 @@ loansContent.appendChild(loanCellsWrapper);
 
   
 }
+// Retrieve payment container and buttons
+const paymentContainer = document.getElementById("payment-container");
+const paymentAmountInput = document.getElementById("payment-amount");
+const payButton = document.getElementById("pay-button");
+const payFullButton = document.getElementById("pay-full-button");
 
-// Function to make a payment for a specific loan
-function makePayment(newLoan) {
-    console.log("newLoan  ?????    "  + newLoan.name);
+// Add click event listener to pay button
+payButton.addEventListener("click", makePayment);
 
-  const loanInfo = getLoanInfo();
-  const loan = loanInfo.find((loan) => loan.id === newLoan.id);
+// Add click event listener to pay in full button
+payFullButton.addEventListener("click", makeFullPayment);
 
-  if (!loan) {
-    console.log('Loan not found.');
-    return;
+function makePayment(lenderPaymentInfo) {
+  const paymentAmount = parseFloat(paymentAmountInput.value);
+  if (!isNaN(paymentAmount) && paymentAmount > 0) {
+  //  const lenderPaymentInfo = JSON.parse(localStorage.getItem("lenderPaymentInfo")) || {};
+    const availableFunds = getAvailableFunds();
+
+    if (paymentAmount <= availableFunds) {
+      deductFunds(paymentAmount);
+      updateLoan(paymentAmount);
+
+      // Update lender payment info
+      lenderPaymentInfo.paymentAmount = paymentAmount;
+      lenderPaymentInfo.paymentDate = new Date().toISOString();
+
+      localStorage.setItem("lenderPaymentInfo", JSON.stringify(lenderPaymentInfo));
+
+      // Add news event
+      const event = `Paid $${paymentAmount.toFixed(2)} towards loan from ${selectedLender.name}`;
+      addNewsEvent(event);
+    } else {
+      alert("Insufficient funds");
+    }
+  } else {
+    alert("Please enter a valid payment amount");
   }
-
-  // Perform payment logic here
-  // ...
-  console.log(`Payment made for loan: ${loan.name}`);
 }
 
+function makeFullPayment() {
+  const lenderPaymentInfo = JSON.parse(localStorage.getItem("lenderPaymentInfo")) || {};
+  const availableFunds = getAvailableFunds();
+
+  deductFunds(availableFunds);
+  updateLoan(availableFunds);
+
+  // Update lender payment info
+  lenderPaymentInfo.paymentAmount = availableFunds;
+  lenderPaymentInfo.paymentDate = new Date().toISOString();
+
+  localStorage.setItem("lenderPaymentInfo", JSON.stringify(lenderPaymentInfo));
+
+  // Add news event
+  const event = `Paid in full towards loan from ${selectedLender.name}`;
+  addNewsEvent(event);
+}
 
 
 
