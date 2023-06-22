@@ -606,18 +606,18 @@ function updateStockPricesUI() {
 
   });
 }
-var counterValue = 0;
+
 var incrementCounter = 0;
 var weekendCounter = 0;
 var newWeekCounter = 0;
-counterValue = parseInt(localStorage.getItem('counterValue')) || 0;
+var counterValue = parseInt(localStorage.getItem('counterValue')) || 0;
 
 function timeAndDateFunc() {
-  localStorage.setItem('counterValue', counterValue.toString());
   incrementCounter++;
     counterValue++;
 
-  
+    localStorage.setItem('counterValue', counterValue.toString());
+
     // Output the current counter value
   console.log('counterValue:', counterValue);
 
