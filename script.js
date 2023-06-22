@@ -1468,6 +1468,7 @@ const loanInfo = [info];
 // Function to display loan history on the loans page
 function displayLoanHistory() {
   const loansContent = document.getElementById('loans-content');
+  
   loansContent.innerHTML = ''; // Clear previous loan history
   
   const loanInfo = getLoanInfo();
@@ -1482,6 +1483,7 @@ if (!Array.isArray(loanInfo)) {
   loansContent.textContent = 'No loan history found.';
   return;
 }
+  const loanElement = document.createElement('div');
 
 loanElement.classList.add('loan-item');
 
