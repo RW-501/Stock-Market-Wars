@@ -1488,13 +1488,13 @@ for (const [name, loanObj] of Object.entries(parsedLoanInfo)) {
 
 const loanElement = document.createElement('td');
 
- loanElement.classList.add('loan-item');
-  const nameCell = document.createElement("tr");
-  const borrowedAmount = document.createElement("tr");
-  const loanLength = document.createElement("tr");
-    nameCell.textContent = `${parsedLoanInfo.name}`;
-  borrowedAmount.textContent = "$"+`${parsedLoanInfo.borrowedAmount.toFixed(2) || 0}`;
-  loanLength.textContent = `${parsedLoanInfo.loanLength}`;
+// loanElement.classList.add('loan-item');
+  ///const nameCell = document.createElement("tr");
+
+  
+ let   nameCell = `${parsedLoanInfo.name}`;
+  let borrowedAmount = "$"+`${parsedLoanInfo.borrowedAmount.toFixed(2) || 0}`;
+  let loanLength = `${parsedLoanInfo.loanLength}`;
 
 /*
     // Apply conditional styling based on totalCost and companyValue
@@ -1508,9 +1508,8 @@ const loanElement = document.createElement('td');
   */
 
   // Append the table cells to the row
-  loanElement.appendChild(nameCell);
-  loanElement.appendChild(borrowedAmount);
-  loanElement.appendChild(loanLength);
+  loanElement.innerHTML = textContent+"   "+borrowedAmount+"   "+loanLength;
+
 
   
 
