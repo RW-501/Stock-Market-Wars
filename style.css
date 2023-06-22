@@ -267,7 +267,7 @@ display: flex;
 display: block;
       text-align: center;
   padding: 20px;
-
+    flex: 3;
 }
 #portfolio-body th{
 border: #3371AB solid 2px;
