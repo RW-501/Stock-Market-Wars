@@ -1483,37 +1483,10 @@ if (Object.keys(parsedLoanInfo).length === 0) {
 }
 
 
-const loanElement = document.createElement('div');
-loanElement.classList.add('loan-item');
-
-const row = document.createElement('tr');
 
 for (const [name, loanObj] of Object.entries(parsedLoanInfo)) {
-const nameCell = document.createElement("td");
-const borrowedAmount = document.createElement("td");
-const loanLength = document.createElement("td");
-nameCell.textContent = `${parsedLoanInfo.name}`;
-borrowedAmount.textContent = "$" + `${parsedLoanInfo.borrowedAmount.toFixed(2) || 0}`;
-loanLength.textContent = `${parsedLoanInfo.loanLength}`;
 
-row.appendChild(nameCell);
-row.appendChild(borrowedAmount);
-row.appendChild(loanLength);
-
-// Add click event listener to make payment
-row.addEventListener('click', () => makePayment(parsedLoanInfo));
-}
-
-// Add click event listener to make payment
-row.addEventListener('click', () => makePayment(parsedLoanInfo));
-
-loanElement.appendChild(row);
-loansContent.appendChild(loanElement);
-
-  /*
-for (const [name, loanObj] of Object.entries(parsedLoanInfo)) {
-  const loanElement = document.createElement('div');
-
+const loanElement = document.createElement('tr');
 
  loanElement.classList.add('loan-item');
   const nameCell = document.createElement("td");
@@ -1523,7 +1496,7 @@ for (const [name, loanObj] of Object.entries(parsedLoanInfo)) {
   borrowedAmount.textContent = "$"+`${parsedLoanInfo.borrowedAmount.toFixed(2) || 0}`;
   loanLength.textContent = `${parsedLoanInfo.loanLength}`;
 
-
+/*
     // Apply conditional styling based on totalCost and companyValue
   if (totalCost < companyValue) {
     row.style.backgroundColor = "#4CAF50";
@@ -1532,7 +1505,7 @@ for (const [name, loanObj] of Object.entries(parsedLoanInfo)) {
   } else {
     row.style.backgroundColor = "white";
   }
-  
+  */
 
   // Append the table cells to the row
   loanElement.appendChild(nameCell);
@@ -1545,7 +1518,7 @@ for (const [name, loanObj] of Object.entries(parsedLoanInfo)) {
   loanElement.addEventListener('click', () => makePayment(parsedLoanInfo));
   loansContent.appendChild(loanElement);
   }
-  */
+ 
 
 }
 
