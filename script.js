@@ -637,12 +637,12 @@ if (counterValue > 365) {
 
 
   // Increment the new week counter
-  if (incrementCounter  % 8 === 0) {
+  if (incrementCounter === 8) {
     newWeek(); // Call the newWeek function
     incrementCounter = 0;
   }
   // Increment the weekend counter
-  if (incrementCounter  % 6 === 0) {
+  if (incrementCounter === 6) {
     weekend(); // Call the weekend function
   }
 
