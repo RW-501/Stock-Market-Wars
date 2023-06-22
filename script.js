@@ -1502,19 +1502,17 @@ console.log("    parsedLoanInfo   " + parsedLoanInfo);
 
 loanElement.classList.add('loan-item');
 
-const nameCell = document.createElement("td");
-const borrowedAmountCell = document.createElement("td");
-const loanLengthCell = document.createElement("td");
+const nameCell = document.createElement("div");
+const borrowedAmountCell = document.createElement("div");
+const loanLengthCell = document.createElement("div");
 
-nameCell.textContent = parsedLoanInfo.name;
-borrowedAmountCell.textContent = "$" + (parsedLoanInfo.borrowedAmount ? parsedLoanInfo.borrowedAmount.toFixed(2) : "0");
-loanLengthCell.textContent = parsedLoanInfo.loanLength;
+ nameCell.innerHTML = parsedLoanInfo.name;
+ borrowedAmountCell.innerHTML = "$" + (parsedLoanInfo.borrowedAmount ? parsedLoanInfo.borrowedAmount.toFixed(2) : "0");
+ loanLengthCell.innerHTML = parsedLoanInfo.loanLength;
 
 // Append the table cells to the loan element
-loanElement.appendChild(nameCell);
-loanElement.appendChild(borrowedAmountCell);
-loanElement.appendChild(loanLengthCell);
-  
+
+loanElement.innerHTML = nameCell+ borrowedAmountCell + loanLengthCell;
 /*
     // Apply conditional styling based on totalCost and companyValue
   if (totalCost < companyValue) {
