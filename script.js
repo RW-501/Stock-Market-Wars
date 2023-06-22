@@ -1491,17 +1491,17 @@ for (const [name, loanObj] of Object.entries(parsedLoanInfo)) {
   console.log("Open popup  ?????    "  + loanObj.id);
 
   // Add click event listener to make payment
-  loanElement.addEventListener('click', () => makePayment(parsedLoanInfo.id));
+  loanElement.addEventListener('click', () => makePayment(parsedLoanInfo));
   loansContent.appendChild(loanElement);
 }
 }
 
 // Function to make a payment for a specific loan
-function makePayment(loanId) {
-    console.log("loanId  ?????    "  + loanId);
+function makePayment(newLoan) {
+    console.log("newLoan  ?????    "  + newLoan.name);
 
   const loanInfo = getLoanInfo();
-  const loan = loanInfo.find((loan) => loan.id === loanId);
+  const loan = loanInfo.find((loan) => loan.id === newLoan.id);
 
   if (!loan) {
     console.log('Loan not found.');
