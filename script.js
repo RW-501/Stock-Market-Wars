@@ -1452,7 +1452,14 @@ document.getElementById("close-portfolio-popup").addEventListener("click", close
 
 // Function to retrieve loan information from local storage
 function getLoanInfo() {
-  const loanInfo = JSON.parse(localStorage.getItem('lenderPaymentInfo'));
+
+  // Retrieve the portfolio from local storage
+  const info = localStorage.getItem('lenderPaymentInfo');
+
+  // Parse the portfolio string into an object
+ const loanInfo = JSON.parse(info);
+
+  
   return loanInfo || [];
 }
 
@@ -1462,7 +1469,7 @@ function displayLoanHistory() {
   loansContent.innerHTML = ''; // Clear previous loan history
   
   const loanInfo = getLoanInfo();
-console.log(loanInfo+"    loanInfo   "+loanInfo);
+console.log(loanInfo[0]+"    loanInfo   "+loanInfo);
 
   
   if (loanInfo.length === 0) {
