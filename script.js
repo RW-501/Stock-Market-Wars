@@ -667,11 +667,11 @@ function weekend() {
 function newWeek() {
   const event = `New Week Market Open`;
           addNewsEvent(event, "main"); // Add the news event to the UI
-      clearInterval(intervalStock); // Stop the timer
-    clearInterval(interval); // Stop the timer
-      clearInterval(weekendTimer); // Stop the timer
-    interval = setInterval(updateStockPrices, dayTimer);
-//  updateStockPrices();
+//      clearInterval(intervalStock); // Stop the timer
+  //  clearInterval(interval); // Stop the timer
+    //  clearInterval(weekendTimer); // Stop the timer
+   // interval = setInterval(updateStockPrices, dayTimer);
+  updateStockPrices();
 }
 
 
