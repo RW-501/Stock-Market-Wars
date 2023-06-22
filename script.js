@@ -1207,12 +1207,14 @@ function requestLoan() {
     let loanLength = lenderPaymentInfo?.loanLength || 0;
     let borrowedAmount = lenderPaymentInfo?.borrowedAmount || 0;
     
-    let loanNewTotal = borrowedAmount * (1 + interestRate);
+    let loanNewTotal = borrowedAmount * (interestRate * 100);
     let loanDueDate = startDay + loanLength;
 
     if (loanDueDate >= 0) {
       let daysRemaining  = loanDueDate - counterValue;
       
+              console.log(interestRate +"  borrowedAmount  "+ borrowedAmount+"   (interestRate * 100)    " + (interestRate * 100));
+              console.log(loanNewTotal +"  startDay  "+ startDay+"   loanLength    " + loanLength);
               console.log(daysRemaining +"  loanDueDate  "+ loanDueDate+"   counterValue    " + counterValue);
 
       if (daysRemaining > 0) {
