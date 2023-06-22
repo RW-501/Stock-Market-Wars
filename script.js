@@ -611,6 +611,9 @@ var incrementCounter = 0;
 var weekendCounter = 0;
 var newWeekCounter = 0;
 var counterValue = parseInt(localStorage.getItem('counterValue')) || 0;
+var eventDayCount = 0;
+
+
 
 function timeAndDateFunc() {
   incrementCounter++;
@@ -654,10 +657,20 @@ if (counterValue > 365) {
   }
 
 
+
+  if(eventDayCount > 20){
+    clearInterval(intervalStock); // Stop the timer
+    clearInterval(interval); // Stop the timer
+    clearTimeout(weekendTimer); // Stop the timer
+    openPopup("pause-popup");
+  pauseGame(); // Pause the game
+     eventDayCount = 0;
+  }
+  eventDayCount++;
+ console.log("eventDayCount   "+eventDayCount);
+
     displayPortfolio();
 updateNetWorthDisplay();
-
-
 }
 
 
@@ -1191,9 +1204,9 @@ let newAmount = existingLoanInfo.borrowedAmount + amount;
   }
 }
 
-var eventDayCount = 0;
 
-         function newDayFunc() {
+
+       function newDayFunc() {
   const lenderPaymentInfoString = localStorage.getItem('lenderPaymentInfo');
 
   if (lenderPaymentInfoString) {
@@ -1223,29 +1236,15 @@ var eventDayCount = 0;
         
         // Deduct funds for past-due loan
         deductFunds(loanNewTotal);
-              localStorage.setItem('lenderPaymentInfo', JSON.stringify(''));
-
+        
+        // Clear lender payment info from local storage
+        localStorage.setItem('lenderPaymentInfo', JSON.stringify(''));
       }
     }
   }
 }
 
-      // Start tracking repayment terms
-//       console.log("paymentToDeduct 597   "+paymentToDeduct);
-
-  if(eventDayCount > 20){
-    clearInterval(interval); // Clear the interval to stop updating stock prices
-  openPopup("pause-popup");
-  pauseGame(); // Pause the game
-     eventDayCount = 0;
-  }
-  eventDayCount++;
-//  console.log("eventDayCount   "+eventDayCount);
-}
-
-
-
-
+      
 // Function to add news event
 function addNewsEvent(event, xxx,name) {
         console.log(xxx +"  xxx  "+ name+"   event    " + event);
