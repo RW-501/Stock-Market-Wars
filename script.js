@@ -1498,23 +1498,25 @@ console.log("    parsedLoanInfo   " + parsedLoanInfo);
 console.log("    parsedLoanInfo   " + parsedLoanInfo);
 
   
-  const loanElement = document.createElement('div');
-
+const loanElement = document.createElement('div');
 loanElement.classList.add('loan-item');
 
 const nameCell = document.createElement("div");
 const borrowedAmountCell = document.createElement("div");
 const loanLengthCell = document.createElement("div");
 
- nameCell.innerHTML = parsedLoanInfo.name;
- borrowedAmountCell.innerHTML = "$" + (parsedLoanInfo.borrowedAmount ? parsedLoanInfo.borrowedAmount.toFixed(2) : "0");
- loanLengthCell.innerHTML = parsedLoanInfo.loanLength;
+nameCell.innerHTML = parsedLoanInfo.name;
+borrowedAmountCell.innerHTML = "$" + (parsedLoanInfo.borrowedAmount ? parsedLoanInfo.borrowedAmount.toFixed(2) : "0");
+loanLengthCell.innerHTML = parsedLoanInfo.loanLength;
 
-// Append the table cells to the loan element
+const loanCellsWrapper = document.createElement("div");
+loanCellsWrapper.appendChild(nameCell);
+loanCellsWrapper.appendChild(borrowedAmountCell);
+loanCellsWrapper.appendChild(loanLengthCell);
 
-loanElement.innerHTML = nameCell+ borrowedAmountCell + loanLengthCell;
-  
-    loansContent.appendChild(loanElement);
+loanElement.appendChild(loanCellsWrapper);
+
+loansContent.appendChild(loanElement);
 
 
   
