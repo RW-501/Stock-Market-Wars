@@ -622,8 +622,7 @@ if (counterValue > 365) {
     // Output the current counter value
   console.log('counterValue:', counterValue);
 
-  displayPortfolio();
-updateNetWorthDisplay();
+
     const msgArea = document.getElementById("msg-area");
   // Clear the existing rows
   msgArea.innerHTML = "";
@@ -638,7 +637,8 @@ updateNetWorthDisplay();
     newWeek(); // Call the newWeek function
   }
 
-
+  displayPortfolio();
+updateNetWorthDisplay();
 }
 
 
