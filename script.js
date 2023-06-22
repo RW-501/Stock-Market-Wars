@@ -1484,11 +1484,33 @@ if (Object.keys(parsedLoanInfo).length === 0) {
 
 for (const [name, loanObj] of Object.entries(parsedLoanInfo)) {
   const loanElement = document.createElement('div');
-  loanElement.classList.add('loan-item');
-  loanElement.textContent = `${parsedLoanInfo.name}  ${parsedLoanInfo.loanLength}: ${parsedLoanInfo.loanLength}`;
 
+  
+ loanElement.classList.add('loan-item');
+  const nameCell = document.createElement("td");
+  const borrowedAmount = document.createElement("td");
+  const loanLength = document.createElement("td");
+    nameCell.textContent = ${parsedLoanInfo.name};
+  borrowedAmount.textContent = "$"+${parsedLoanInfo.borrowedAmount.toFixed(2) || 0};
+  loanLength.textContent = ${parsedLoanInfo.loanLength};
 
-  console.log("Open popup  ?????    "  + loanObj.id);
+/*
+    // Apply conditional styling based on totalCost and companyValue
+  if (totalCost < companyValue) {
+    row.style.backgroundColor = "#4CAF50";
+  } else if (totalCost > companyValue) {
+    row.style.backgroundColor = "#f44336";
+  } else {
+    row.style.backgroundColor = "white";
+  }
+  */
+
+  // Append the table cells to the row
+  row.appendChild(nameCell);
+  row.appendChild(borrowedAmount);
+  row.appendChild(loanLength);
+
+  
 
   // Add click event listener to make payment
   loanElement.addEventListener('click', () => makePayment(parsedLoanInfo));
