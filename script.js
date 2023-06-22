@@ -255,7 +255,7 @@ function displayPortfolio() {
 // Check if the portfolio is null or undefined
   if (portfolioString == "" || portfolioString == null || portfolioString == "undefined" || portfolioString == undefined  ) {
     // Handle the case when the portfolio is empty or not available
-    console.log("Portfolio is empty or not available");
+ //   console.log("Portfolio is empty or not available");
     return;
   }
 
@@ -654,7 +654,7 @@ function weekend() {
   
 // Start the timer
  weekendTimer = setTimeout(() => {
-  counterValue = counterValue + 2; // Increment the counter by 1
+  counterValue = counterValue + 1; // Increment the counter by 1
      console.log('counterValue:', counterValue);
    
  clearInterval(interval); // Stop the timer
