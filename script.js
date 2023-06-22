@@ -1193,47 +1193,39 @@ let newAmount = existingLoanInfo.borrowedAmount + amount;
 
 var eventDayCount = 0;
 
-function newDayFunc(){
-// Retrieve the lender payment information from local storage
-const lenderPaymentInfoString = localStorage.getItem('lenderPaymentInfo');
-const lenderPaymentInfo = JSON.parse(lenderPaymentInfoString);
-  let startDay = lenderPaymentInfo?.startDay || 0;
-  let paymentFrequency = lenderPaymentInfo?.paymentFrequency || 0;
+         function newDayFunc() {
+  const lenderPaymentInfoString = localStorage.getItem('lenderPaymentInfo');
 
-  
-// Check if automaticPayments is true and paymentFrequency is valid
-if (lenderPaymentInfo && lenderPaymentInfo.automaticPayments && counterValue - startDay > paymentFrequency) {
-  const paymentFrequency = lenderPaymentInfo.paymentFrequency;
-  const counterValue = parseInt(localStorage.getItem('counterValue')) || 0;
-
-  // Calculate the number of payment cycles based on paymentFrequency and counterValue
-  const paymentCycles = Math.floor(counterValue / paymentFrequency);
-  
-
-  // Check if the borrower owes any payment
-  if (lenderPaymentInfo.borrowedAmount < lenderPaymentInfo.paymentAmount) {
-    const paymentToDeduct = borrowedAmount;
-
-    // Deduct funds from available funds
-    deductFunds(paymentToDeduct);
-    // Add news event
-  const event = `Made a loan payment of $${paymentToDeduct} to ${lenderPaymentInfo.name} `;
-  addNewsEvent(event);
+  if (lenderPaymentInfoString) {
+    // Retrieve the lender payment information from local storage
+    const lenderPaymentInfo = JSON.parse(lenderPaymentInfoString);
     
-  } else {
-    // Calculate the total payment amount based on paymentCycles
-    const totalPaymentAmount = lenderPaymentInfo.paymentAmount * paymentCycles;
+    let startDay = lenderPaymentInfo?.startDay || 0;
+    let interestRate = lenderPaymentInfo?.interestRate || 0;
+    let loanLength = lenderPaymentInfo?.loanLength || 0;
+    let borrowedAmount = lenderPaymentInfo?.borrowedAmount || 0;
+    
+    let loanNewTotal = borrowedAmount * (1 + interestRate);
+    let loanDueDate = startDay + loanLength;
 
-    if (lenderPaymentInfo.borrowedAmount < totalPaymentAmount) {
-      const paymentToDeduct = lenderPaymentInfo.borrowedAmount;
+    if (loanDueDate >= 0) {
+      const daysRemaining = loanDueDate - counterValue;
+      
+      if (daysRemaining > 0) {
+        const event = `$${loanNewTotal.toFixed(2)} is Due to ${lenderPaymentInfo.name} in ${daysRemaining} Days`;
+        addNewsEvent(event, "main");
+      } else if (daysRemaining === 0) {
+        const event = `$${loanNewTotal.toFixed(2)} is Due to ${lenderPaymentInfo.name} Today!`;
+        addNewsEvent(event, "main");
+      } else {
+        const event = `Missed the Payment Due to ${lenderPaymentInfo.name}!`;
+        addNewsEvent(event, "main");
+        
+        // Deduct funds for past-due loan
+        deductFunds(loanNewTotal);
+              localStorage.setItem('lenderPaymentInfo', JSON.stringify(''));
 
-      // Deduct funds from available funds
-      deductFunds(paymentToDeduct);
-        const event = `Made a loan payment of $${paymentToDeduct} to ${lenderPaymentInfo.name} `;
-  addNewsEvent(event);
-    } else {
-      // Handle the case when the borrower owes more than the total payment amount
-      // You can add your own logic here based on your requirements
+      }
     }
   }
 }
