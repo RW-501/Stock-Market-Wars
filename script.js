@@ -600,7 +600,7 @@ function updateStockPricesUI() {
   });
 }
 let counterValue = 0;
-
+let incrementCounter = 0;
 let weekendCounter = 0;
 let newWeekCounter = 0;
 counterValue = parseInt(localStorage.getItem('counterValue')) || 0;
