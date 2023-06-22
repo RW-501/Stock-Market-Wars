@@ -1506,9 +1506,9 @@ for (const [name, loanObj] of Object.entries(parsedLoanInfo)) {
   */
 
   // Append the table cells to the row
-  row.appendChild(nameCell);
-  row.appendChild(borrowedAmount);
-  row.appendChild(loanLength);
+  loanElement.appendChild(nameCell);
+  loanElement.appendChild(borrowedAmount);
+  loanElement.appendChild(loanLength);
 
   
 
