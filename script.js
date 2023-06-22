@@ -1513,6 +1513,11 @@ const loanLengthCell = document.createElement("div");
 // Append the table cells to the loan element
 
 loanElement.innerHTML = nameCell+ borrowedAmountCell + loanLengthCell;
+  
+    loansContent.appendChild(loanElement);
+
+
+  
 /*
     // Apply conditional styling based on totalCost and companyValue
   if (totalCost < companyValue) {
