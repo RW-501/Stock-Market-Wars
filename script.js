@@ -1483,7 +1483,7 @@ if (!Array.isArray(loanInfo)) {
   loansContent.textContent = 'No loan history found.';
   return;
 }
-*/
+
 
 // Convert loanInfo object to JSON string and format with indentation
 const loanString = JSON.stringify(loanInfo, null, 2);
@@ -1493,7 +1493,9 @@ console.log("    loanString   " + loanString);
 const parsedLoanInfo = JSON.parse("["+loanString+"]");
 
 console.log("    parsedLoanInfo   " + parsedLoanInfo);
-
+*/
+const parsedLoanInfo = JSON.parse(JSON.stringify(loanInfo));
+console.log("    parsedLoanInfo   " + parsedLoanInfo);
 
   
   const loanElement = document.createElement('div');
