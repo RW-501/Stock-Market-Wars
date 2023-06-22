@@ -667,7 +667,7 @@ function weekend() {
   
 // Start the timer
  weekendTimer = setTimeout(() => {
-  counterValue = counterValue + 2; // Increment the counter by 1
+  counterValue = 7; // Increment the counter by 1
      console.log('weekend counterValue:', counterValue);
    
  clearInterval(interval); // Stop the timer
