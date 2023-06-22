@@ -1498,7 +1498,7 @@ Object.keys(parsedLoanInfo).forEach((key) => {
 
     loanElement.appendChild(loanItem);
   }
-}
+});
 
 loansContent.appendChild(loanElement);
 
