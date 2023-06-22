@@ -1071,7 +1071,7 @@ function updateLenderDetails() {
     document.getElementById("lender-LoanLength").textContent = selectedLender.loanLength + " days";
   }
 
-
+}
 
 
 // Event listener for opening the loans popup
@@ -1106,7 +1106,7 @@ function updateLenderOptions() {
     console.log("firstOption.value sell   "+firstOption);
     updateLenderDetails(); // Call the function again to update the details for the selected lender
   }
-}
+
   
 }
 
