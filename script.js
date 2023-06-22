@@ -1468,13 +1468,11 @@ function displayLoanHistory() {
   
   const loanInfo = getLoanInfo();
   
-let loanString = JSON.stringify(loanInfo, null, 2);
-  
-  console.log("???????????????/     "+JSON.stringify(loanInfo, null, 2)); // Logging the object as a JSON string with indentation
 
-  console.log(loanString[0]+"    loanInfo   "+loanInfo);
+const loanString = JSON.parse(JSON.stringify(loanInfo, null, 2));
 
-  
+    console.log("    loanString   "+loanString);
+
   if (loanString.length === 0) {
     loansContent.textContent = 'No loan history found.';
     return;
