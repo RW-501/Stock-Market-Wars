@@ -1467,7 +1467,10 @@ function displayLoanHistory() {
   loansContent.innerHTML = ''; // Clear previous loan history
   
   const loanInfo = getLoanInfo();
-console.log(loanInfo[0]+"    loanInfo   "+loanInfo);
+
+  console.log(JSON.stringify(loanInfo, null, 2)); // Logging the object as a JSON string with indentation
+
+  console.log(loanInfo[0]+"    loanInfo   "+loanInfo);
 
   
   if (loanInfo.length === 0) {
