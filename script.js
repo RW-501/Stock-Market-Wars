@@ -628,7 +628,7 @@ if (counterValue > 365) {
   msgArea.innerHTML = "";
   
   // Check if the counter is divisible by 5 (every 5 increments)
-  if (counterValue % 5 === 0) {
+  if (counterValue % 6 === 0) {
     weekend(); // Call the weekend function
   }
 
@@ -658,7 +658,7 @@ function weekend() {
  clearInterval(interval); // Stop the timer
     interval = setInterval(updateStockPrices, dayTimer);
    
-  timeAndDateFunc();
+ // timeAndDateFunc();
   }, 10000); // Run the timer every 10 seconds (10 000 milliseconds)
 }
 
@@ -668,8 +668,8 @@ function newWeek() {
       clearInterval(intervalStock); // Stop the timer
     clearInterval(interval); // Stop the timer
       clearInterval(weekendTimer); // Stop the timer
-  //  interval = setInterval(updateStockPrices, dayTimer);
-  updateStockPrices();
+    interval = setInterval(updateStockPrices, dayTimer);
+//  updateStockPrices();
 }
 
 
