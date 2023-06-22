@@ -1428,7 +1428,7 @@ function openPopup(popupId) {
   } else {
     // Get the specified popup element
     var popupElement = document.getElementById(popupId);
-    console.log("Open popup  ?????");
+    console.log("Open popup  ?????"+popupId);
    popupElement.style.display = "block";
    popupElement.classList.add("popupOpened");
   }
