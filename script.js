@@ -1475,7 +1475,7 @@ function displayLoanHistory() {
 //console.log("    loanInfo   " + loanInfo);
 //  const parsedLoanInfo = JSON.parse(loanInfo);
 
-if (Object.keys(parsedLoanInfo).length === 0) {
+if (Object.keys(loanInfo).length === 0) {
   loansContent.textContent = 'No loan history found.';
   return;
 }
