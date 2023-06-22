@@ -1485,7 +1485,7 @@ if (Object.keys(parsedLoanInfo).length === 0) {
 for (const [name, loanObj] of Object.entries(parsedLoanInfo)) {
   const loanElement = document.createElement('div');
   loanElement.classList.add('loan-item');
-  loanElement.textContent = `${name}: ${loanObj.borrowedAmount}, ${loanObj.loanLength}`;
+  loanElement.textContent = `${name.borrowedAmount}: ${loanObj}`;
 
 
   console.log("Open popup  ?????    "  + loanObj.id);
