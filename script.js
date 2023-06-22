@@ -627,15 +627,24 @@ if (counterValue > 365) {
   // Clear the existing rows
   msgArea.innerHTML = "";
 
+  // Increment the weekend counter
+  if (incrementCounter % 6 === 0) {
+    weekendCounter++;
+  }
+
+  // Increment the new week counter
+  if (incrementCounter % 8 === 0) {
+    newWeekCounter++;
+  }
 
   
   // Check if counterValue is divisible by 6
-  if (counterValue % 6 === 0) {
+  if (weekendCounter === 1) {
     weekend(); // Call the weekend function
   }
 
   // Check if counterValue is divisible by 8
-  if (counterValue % 8 === 0) {
+  if (newWeekCounter === 2) {
     newWeek(); // Call the newWeek function
   }
     displayPortfolio();
