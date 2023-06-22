@@ -626,6 +626,9 @@ if (counterValue > 365) {
     const msgArea = document.getElementById("msg-area");
   // Clear the existing rows
   msgArea.innerHTML = "";
+
+    displayPortfolio();
+updateNetWorthDisplay();
   
   // Check if the counter is divisible by 5 (every 5 increments)
   if (counterValue % 6 === 0) {
@@ -637,8 +640,7 @@ if (counterValue > 365) {
     newWeek(); // Call the newWeek function
   }
 
-  displayPortfolio();
-updateNetWorthDisplay();
+
 }
 
 
@@ -652,7 +654,7 @@ function weekend() {
   
 // Start the timer
  weekendTimer = setTimeout(() => {
-  counterValue = counterValue + 1; // Increment the counter by 1
+  counterValue = counterValue + 2; // Increment the counter by 1
      console.log('counterValue:', counterValue);
    
  clearInterval(interval); // Stop the timer
