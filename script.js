@@ -1474,15 +1474,15 @@ function displayLoanHistory() {
   const loanInfo = getLoanInfo();
   
 
-console.log("    loanInfo   " + loanInfo);
-//const parsedLoanInfo = JSON.parse(loanInfo);
+//console.log("    loanInfo   " + loanInfo);
+  const parsedLoanInfo = JSON.parse(loanInfo);
 
-if (Object.keys(loanInfo).length === 0) {
+if (Object.keys(parsedLoanInfo).length === 0) {
   loansContent.textContent = 'No loan history found.';
   return;
 }
 
-for (const [name, loanObj] of Object.entries(loanInfo)) {
+for (const [name, loanObj] of Object.entries(parsedLoanInfo)) {
   const loanElement = document.createElement('div');
   loanElement.classList.add('loan-item');
   loanElement.textContent = `${name}: ${loanObj.borrowedAmount}, ${loanObj.loanLength}`;
