@@ -608,6 +608,7 @@ counterValue = parseInt(localStorage.getItem('counterValue')) || 0;
 function timeAndDateFunc() {
   counterValue++;
   localStorage.setItem('counterValue', counterValue.toString());
+  incrementCounter++;
 
 
     const counter = document.getElementById("counter");
