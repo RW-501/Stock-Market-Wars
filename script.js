@@ -1473,7 +1473,7 @@ function displayLoanHistory() {
   
   const parsedLoanInfo = getLoanInfo();
   
-console.log("    loanInfo   " + loanInfo);
+//console.log("    loanInfo   " + loanInfo);
 //console.log("    loanInfo   " + loanInfo);
 //  const parsedLoanInfo = JSON.parse(loanInfo);
 
