@@ -607,7 +607,10 @@ counterValue = parseInt(localStorage.getItem('counterValue')) || 0;
 
 function timeAndDateFunc() {
   localStorage.setItem('counterValue', counterValue.toString());
+  incrementCounter++;
+    counterValue++;
 
+  
     // Output the current counter value
   console.log('counterValue:', counterValue);
 
@@ -646,8 +649,7 @@ if (counterValue > 365) {
 
     displayPortfolio();
 updateNetWorthDisplay();
-  incrementCounter++;
-    counterValue++;
+
 
 }
 
