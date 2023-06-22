@@ -630,15 +630,15 @@ if (counterValue > 365) {
   // Clear the existing rows
   msgArea.innerHTML = "";
 
-  // Increment the weekend counter
-  if (incrementCounter  % 6 === 0) {
-    weekend(); // Call the weekend function
-  }
 
   // Increment the new week counter
   if (incrementCounter  % 8 === 0) {
     newWeek(); // Call the newWeek function
     incrementCounter = 0;
+  }
+  // Increment the weekend counter
+  if (incrementCounter  % 6 === 0) {
+    weekend(); // Call the weekend function
   }
 
 
@@ -658,7 +658,7 @@ function weekend() {
   
 // Start the timer
  weekendTimer = setTimeout(() => {
-  counterValue = counterValue + 1; // Increment the counter by 1
+  counterValue = counterValue + 2; // Increment the counter by 1
      console.log('counterValue:', counterValue);
    
  clearInterval(interval); // Stop the timer
