@@ -1150,18 +1150,21 @@ function requestLoan() {
 
       // Check if the user already has a loan with the selected lender
       const existingLoanInfo = JSON.parse(localStorage.getItem('lenderPaymentInfo'));
+      let newAmount = amount;
+      
       if (existingLoanInfo && existingLoanInfo.id === selectedLender.id) {
         console.log("You already have a loan with this lender.");
-        
-let newAmount = existingLoanInfo.borrowedAmount + amount;
-        
-      // console.log(existingLoanInfo.borrowedAmount+"     existingLoanInfo.borrowedAmount     "+newAmount);
- 
-      // If the loan is approved, deduct the loan amount from the lender's funds and add it to the player's funds
+        newAmount += existingLoanInfo.borrowedAmount;
+      }
+      
+      // Deduct the loan amount from the lender's funds
       selectedLender.funds -= newAmount;
+
+      // Add the loan amount to the player's funds
       addFunds(amount);
       closePopup("lender-popup");
-              // Create an object to store the lender payment information
+      
+      // Create an object to store the lender payment information
       const lenderPaymentInfo = {
         id: selectedLender.id,
         borrowedAmount: newAmount,
@@ -1170,23 +1173,7 @@ let newAmount = existingLoanInfo.borrowedAmount + amount;
         loanLength: selectedLender.loanLength,
         startDay: counterValue
       };
-      }else{
-
-      // If the loan is approved, deduct the loan amount from the lender's funds and add it to the player's funds
-      selectedLender.funds -= amount;
-      addFunds(amount);
-      closePopup("lender-popup");
- 
-      // Create an object to store the lender payment information
-      const lenderPaymentInfo = {
-        id: selectedLender.id,
-        borrowedAmount: amount,
-        name: selectedLender.name,
-        interestRate: selectedLender.interestRate,
-        loanLength: selectedLender.loanLength,
-        startDay: counterValue
-      };
-   }
+   
       // Save the lender payment information to local storage
       localStorage.setItem('lenderPaymentInfo', JSON.stringify(lenderPaymentInfo));
 
@@ -1233,7 +1220,7 @@ let newAmount = existingLoanInfo.borrowedAmount + amount;
         const event = `$${loanNewTotal.toFixed(2)} is Due to ${lenderPaymentInfo.name} Today!`;
         addNewsEvent(event, "main");
       } else {
-        const event = `Missed the Payment Due to ${lenderPaymentInfo.name}!`;
+        const event = `${lenderPaymentInfo.name} came and got $${loanNewTotal}`;
         addNewsEvent(event, "main");
         
         // Deduct funds for past-due loan
