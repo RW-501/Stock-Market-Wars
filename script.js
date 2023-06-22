@@ -1477,19 +1477,20 @@ function displayLoanHistory() {
   
     console.log(" 1   loanInfo   "+loanInfo);
 
-console.log("    loanInfo   " + JSON.stringify(loanInfo));
+console.log("    loanInfo   " + JSON.parse(loanInfo));
+const parsedLoanInfo = JSON.parse(loanInfo);
 
-if (Object.keys(loanInfo).length === 0) {
+if (Object.keys(parsedLoanInfo).length === 0) {
   loansContent.textContent = 'No loan history found.';
   return;
 }
 
 // Loop through loan information and create loan elements
-for (const key in loanInfo) {
-  if (Object.hasOwnProperty.call(loanInfo, key)) {
+for (const key in parsedLoanInfo) {
+  if (Object.hasOwnProperty.call(parsedLoanInfo, key)) {
     const loanElement = document.createElement('div');
     loanElement.classList.add('loan-item');
-    loanElement.textContent = loanInfo[key];
+    loanElement.textContent = parsedLoanInfo[key];
 
     // Add click event listener to make payment
     loanElement.addEventListener('click', () => makePayment(loanInfo.id));
