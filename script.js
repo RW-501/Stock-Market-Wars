@@ -1489,11 +1489,11 @@ for (const loan in parsedLoanInfo) {
     loanElement.textContent = `${loan}: ${parsedLoanInfo[loan]}`;
 
     // Add click event listener to make payment
-    loanElement.addEventListener('click', () => makePayment(parsedLoanInfo.id));
+    loanElement.addEventListener('click', () => makePayment(loan.id));
 
   
-    console.log(" parsedLoanInfo   "+parsedLoanInfo);
-    console.log(" parsedLoanInfo.id   "+parsedLoanInfo.id);
+    console.log(" parsedLoanInfo   "+loan);
+    console.log(" parsedLoanInfo.id   "+loan.id);
 
     loansContent.appendChild(loanElement);
   }
