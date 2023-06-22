@@ -1471,11 +1471,11 @@ function displayLoanHistory() {
   
   loansContent.innerHTML = ''; // Clear previous loan history
   
-  const parsedLoanInfo = getLoanInfo();
+  const loanInfo = getLoanInfo();
   
 //console.log("    loanInfo   " + loanInfo);
 //console.log("    loanInfo   " + loanInfo);
-//  const parsedLoanInfo = JSON.parse(loanInfo);
+  const parsedLoanInfo = JSON.parse(loanInfo);
 
 /*
 if (!Array.isArray(loanInfo)) {
