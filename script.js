@@ -1498,6 +1498,8 @@ for (const [name, loanObj] of Object.entries(parsedLoanInfo)) {
 
 // Function to make a payment for a specific loan
 function makePayment(loanId) {
+    console.log("loanId  ?????    "  + loanId);
+
   const loanInfo = getLoanInfo();
   const loan = loanInfo.find((loan) => loan.id === loanId);
 
