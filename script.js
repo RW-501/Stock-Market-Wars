@@ -1484,7 +1484,7 @@ if (Object.keys(parsedLoanInfo).length === 0) {
 
 
 
-for (const [name, loanObj] of Object.entries(parsedLoanInfo)) {
+for (const { name, borrowedAmount, loanLength } of Object.entries(parsedLoanInfo)) {
 
 const loanElement = document.createElement('div');
 
