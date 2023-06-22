@@ -1068,7 +1068,6 @@ function updateLenderDetails() {
   if (selectedLender) {
     document.getElementById("lender-Max").textContent = "$" + selectedLender.funds;
     document.getElementById("lender-Rate").textContent = selectedLender.interestRate;
-    document.getElementById("lender-AutoPayments").textContent = selectedLender.automaticPayments ? "Yes" : "No";
     document.getElementById("lender-LoanLength").textContent = selectedLender.loanLength + " days";
   }
 
