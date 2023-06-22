@@ -1497,9 +1497,7 @@ console.log("    parsedLoanInfo   " + parsedLoanInfo);
 //const parsedLoanInfo = JSON.parse(JSON.stringify(loanInfo));
 console.log("    parsedLoanInfo   " + parsedLoanInfo);
 
-  
-const loanElement = document.createElement('div');
-loanElement.classList.add('loan-item');
+
 
 const nameCell = document.createElement("div");
 const borrowedAmountCell = document.createElement("div");
@@ -1510,13 +1508,14 @@ borrowedAmountCell.innerHTML = "$" + (parsedLoanInfo.borrowedAmount ? parsedLoan
 loanLengthCell.innerHTML = parsedLoanInfo.loanLength;
 
 const loanCellsWrapper = document.createElement("div");
+loanCellsWrapper.classList.add('loan-item');
+
 loanCellsWrapper.appendChild(nameCell);
 loanCellsWrapper.appendChild(borrowedAmountCell);
 loanCellsWrapper.appendChild(loanLengthCell);
 
-loanElement.appendChild(loanCellsWrapper);
+loansContent.appendChild(loanCellsWrapper);
 
-loansContent.appendChild(loanElement);
 
 
   
