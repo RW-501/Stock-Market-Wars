@@ -1485,7 +1485,7 @@ if (Object.keys(parsedLoanInfo).length === 0) {
 
 const loanElement = document.createElement('div');
 
-for (const key in parsedLoanInfo) {
+Object.keys(parsedLoanInfo).forEach((key) => {
   if (Object.hasOwnProperty.call(parsedLoanInfo, key)) {
     const { name, borrowedAmount, loanLength } = parsedLoanInfo;
 
