@@ -1490,7 +1490,7 @@ const loanString = JSON.stringify(loanInfo, null, 2);
 console.log("    loanString   " + loanString);
 
 // Parse the JSON string back into an object
-const parsedLoanInfo = JSON.parse(loanString);
+const parsedLoanInfo = JSON.parse("["+loanString+"]");
 
 console.log("    parsedLoanInfo   " + parsedLoanInfo);
 
