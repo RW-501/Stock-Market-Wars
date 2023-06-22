@@ -1485,13 +1485,13 @@ if (Object.keys(parsedLoanInfo).length === 0) {
 for (const [name, loanObj] of Object.entries(parsedLoanInfo)) {
   const loanElement = document.createElement('div');
   loanElement.classList.add('loan-item');
-  loanElement.textContent = `${name.borrowedAmount}: ${loanObj}`;
+  loanElement.textContent = `${name.name}  ${name.loanLength}: ${parsedLoanInfo.name}`;
 
 
   console.log("Open popup  ?????    "  + loanObj.id);
 
   // Add click event listener to make payment
-  loanElement.addEventListener('click', () => makePayment(loanObj.id));
+  loanElement.addEventListener('click', () => makePayment(parsedLoanInfo.id));
   loansContent.appendChild(loanElement);
 }
 }
