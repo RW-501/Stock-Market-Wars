@@ -1487,9 +1487,11 @@ for (const [name, loanObj] of Object.entries(parsedLoanInfo)) {
   loanElement.classList.add('loan-item');
   loanElement.textContent = `${name}: ${loanObj.borrowedAmount}, ${loanObj.loanLength}`;
 
+
+  console.log("Open popup  ?????    "  + loanObj.id);
+
   // Add click event listener to make payment
   loanElement.addEventListener('click', () => makePayment(loanObj.id));
-
   loansContent.appendChild(loanElement);
 }
 }
