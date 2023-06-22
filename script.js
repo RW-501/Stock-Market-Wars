@@ -1215,13 +1215,13 @@ function requestLoan() {
       
       if (daysRemaining > 0) {
         const event = `$${loanNewTotal.toFixed(2)} is Due to ${lenderPaymentInfo.name} in ${daysRemaining} Days`;
-        addNewsEvent(event, "main");
+        addNewsEvent(event, "loan");
       } else if (daysRemaining === 0) {
         const event = `$${loanNewTotal.toFixed(2)} is Due to ${lenderPaymentInfo.name} Today!`;
-        addNewsEvent(event, "main");
+        addNewsEvent(event, "loan");
       } else {
         const event = `${lenderPaymentInfo.name} came and got $${loanNewTotal}`;
-        addNewsEvent(event, "main");
+        addNewsEvent(event, "loan");
         
         // Deduct funds for past-due loan
         deductFunds(loanNewTotal);
@@ -1240,7 +1240,7 @@ function addNewsEvent(event, xxx,name) {
 
   eventDayCount = 0;
   
-if(xxx =="main"){
+if(xxx =="main" && name){
 
       const newsContent = document.getElementById("msg-area");
     const newsItem = document.createElement("div");
@@ -1251,11 +1251,23 @@ if(xxx =="main"){
     newsItem.textContent = event;
     newsContent.prepend(newsItem); // Add the event to the top of the news content
     newsContent.scrollTop = 0; // Scroll to the top of the news content
-  
- // openPopup("news-popup");
 
 }
+  if(xxx =="loan" ){
+
+      const newsContent = document.getElementById("msg-area");
+    const newsItem = document.createElement("div");
   
+     newsItem.addEventListener("click", () => openStockPopup('',name));
+
+    newsItem.classList.add("breaking-news-item");
+    newsItem.textContent = event;
+    newsContent.prepend(newsItem); // Add the event to the top of the news content
+    newsContent.scrollTop = 0; // Scroll to the top of the news content
+    openPopup("loan-popup");
+
+
+}
 if(xxx =="bank"){
 
 
