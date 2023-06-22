@@ -1532,19 +1532,19 @@ payButton.addEventListener("click", makePayment);
 // Add click event listener to pay in full button
 payFullButton.addEventListener("click", makeFullPayment);
 
-function makePayment(lenderPaymentInfo) {
+function makePayment() {
   const paymentAmount = parseFloat(paymentAmountInput.value);
   if (!isNaN(paymentAmount) && paymentAmount > 0) {
-  //  const lenderPaymentInfo = JSON.parse(localStorage.getItem("lenderPaymentInfo")) || {};
+    const lenderPaymentInfo = JSON.parse(localStorage.getItem("lenderPaymentInfo")) || {};
     const availableFunds = getAvailableFunds();
 
     if (paymentAmount <= availableFunds) {
       deductFunds(paymentAmount);
-      updateLoan(paymentAmount);
+     // updateLoan(paymentAmount);
 
       // Update lender payment info
-      lenderPaymentInfo.paymentAmount = paymentAmount;
-      lenderPaymentInfo.paymentDate = new Date().toISOString();
+      lenderPaymentInfo.borrowedAmount = lenderPaymentInfo.borrowedAmount - paymentAmount;
+    //  lenderPaymentInfo.paymentDate = new Date().toISOString();
 
       localStorage.setItem("lenderPaymentInfo", JSON.stringify(lenderPaymentInfo));
 
@@ -1562,19 +1562,23 @@ function makePayment(lenderPaymentInfo) {
 function makeFullPayment() {
   const lenderPaymentInfo = JSON.parse(localStorage.getItem("lenderPaymentInfo")) || {};
   const availableFunds = getAvailableFunds();
+    if (paymentAmount <= availableFunds) {
 
   deductFunds(availableFunds);
   updateLoan(availableFunds);
 
   // Update lender payment info
-  lenderPaymentInfo.paymentAmount = availableFunds;
-  lenderPaymentInfo.paymentDate = new Date().toISOString();
+  lenderPaymentInfo.borrowedAmount = availableFunds;
+ // lenderPaymentInfo.paymentDate = new Date().toISOString();
 
   localStorage.setItem("lenderPaymentInfo", JSON.stringify(lenderPaymentInfo));
 
   // Add news event
   const event = `Paid in full towards loan from ${selectedLender.name}`;
   addNewsEvent(event);
+         } else {
+      alert("Insufficient funds");
+    }
 }
 
 
