@@ -1204,7 +1204,7 @@ function requestLoan() {
     let loanDueDate = startDay + loanLength;
 
     if (loanDueDate >= 0) {
-      let daysRemaining  = loanDueDate - counterValue;
+let daysRemaining = Math.max(loanDueDate - counterValue, 0);
       
               console.log(interestRate +"  borrowedAmount  "+ borrowedAmount+"   (interestRate * 100)    " + (interestRate * 100));
               console.log(loanNewTotal +"  startDay  "+ startDay+"   loanLength    " + loanLength);
