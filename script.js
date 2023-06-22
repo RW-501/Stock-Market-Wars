@@ -1482,21 +1482,15 @@ if (Object.keys(parsedLoanInfo).length === 0) {
   return;
 }
 
-for (const loan in parsedLoanInfo) {
-  if (Object.hasOwnProperty.call(parsedLoanInfo, loan)) {
-    const loanElement = document.createElement('div');
-    loanElement.classList.add('loan-item');
-    loanElement.textContent = `${loan}: ${parsedLoanInfo[loan]}`;
+for (const [name, { borrowedAmount, id, startDay, loanLength }] of Object.entries(parsedLoanInfo)) {
+  const loanElement = document.createElement('div');
+  loanElement.classList.add('loan-item');
+  loanElement.textContent = `${name}: ${borrowedAmount}, ${id}, ${startDay}, ${loanLength}`;
 
-    // Add click event listener to make payment
-    loanElement.addEventListener('click', () => makePayment(loan.id));
-
-  
-    console.log(" parsedLoanInfo   "+loan);
-    console.log(" parsedLoanInfo.id   "+loan.id);
-
-    loansContent.appendChild(loanElement);
-  }
+  // Add click event listener to make payment
+  loanElement.addEventListener('click', () => makePayment(id));
+console.log("    id   " + id);
+  loansContent.appendChild(loanElement);
 }
 
 }
