@@ -1486,12 +1486,12 @@ if (Object.keys(parsedLoanInfo).length === 0) {
 
 for (const [name, loanObj] of Object.entries(parsedLoanInfo)) {
 
-const loanElement = document.createElement('tr');
+const loanElement = document.createElement('td');
 
  loanElement.classList.add('loan-item');
-  const nameCell = document.createElement("td");
-  const borrowedAmount = document.createElement("td");
-  const loanLength = document.createElement("td");
+  const nameCell = document.createElement("tr");
+  const borrowedAmount = document.createElement("tr");
+  const loanLength = document.createElement("tr");
     nameCell.textContent = `${parsedLoanInfo.name}`;
   borrowedAmount.textContent = "$"+`${parsedLoanInfo.borrowedAmount.toFixed(2) || 0}`;
   loanLength.textContent = `${parsedLoanInfo.loanLength}`;
