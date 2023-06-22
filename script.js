@@ -1482,17 +1482,16 @@ if (Object.keys(parsedLoanInfo).length === 0) {
   return;
 }
 
-for (const [name, { borrowedAmount, id, startDay, loanLength }] of Object.entries(parsedLoanInfo)) {
+for (const [name, loanObj] of Object.entries(parsedLoanInfo)) {
   const loanElement = document.createElement('div');
   loanElement.classList.add('loan-item');
-  loanElement.textContent = `${name}: ${borrowedAmount}, ${id}, ${startDay}, ${loanLength}`;
+  loanElement.textContent = `${name}: ${loanObj.borrowedAmount}, ${loanObj.loanLength}`;
 
   // Add click event listener to make payment
-  loanElement.addEventListener('click', () => makePayment(id));
-console.log("    id   " + id);
+  loanElement.addEventListener('click', () => makePayment(loanObj.id));
+
   loansContent.appendChild(loanElement);
 }
-
 }
 
 // Function to make a payment for a specific loan
