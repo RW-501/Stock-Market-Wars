@@ -1074,16 +1074,6 @@ function updateLenderDetails() {
 }
 
 
-// Event listener for opening the loans popup
-document.getElementById('open-loans-popup').addEventListener('click', () => {
-  displayLoanHistory();
-  openPopup('loans-popup');
-});
-
-// Event listener for closing the loans popup
-document.getElementById('close-loans-popup').addEventListener('click', () => {
-  closePopup('loans-popup');
-});
 
 function updateLenderOptions() {
   const lenderSelect = document.getElementById("lender-select");
@@ -1104,48 +1094,70 @@ function updateLenderOptions() {
   
 }
 
+// Event listener for opening the loans popup
+document.getElementById('open-loans-popup').addEventListener('click', () => {
+  displayLoanHistory();
+  openPopup('loans-popup');
+});
 
-// Function to request a loan
+// Event listener for closing the loans popup
+document.getElementById('close-loans-popup').addEventListener('click', () => {
+  closePopup('loans-popup');
+});
+
 function requestLoan() {
   const amountInput = document.getElementById("loan-amount");
   const lenderSelect = document.getElementById("lender-select");
 
-  
   const amount = parseFloat(amountInput.value);
   const lender = lenderSelect.value;
-  
+
   // Find the selected lender
   const selectedLender = lenders.find(l => l.name === lender);
-  
+
   // Check if the lender and loan amount are valid
   if (selectedLender && !isNaN(amount) && amount > 0) {
     // Check if the lender has enough funds
     if (selectedLender.funds >= amount) {
       // Implement additional checks for loan approval based on credit score, debt, or collateral
-    
+
+      // Check if the user already has a loan with the selected lender
+      const existingLoanInfo = JSON.parse(localStorage.getItem('lenderPaymentInfo'));
+      if (existingLoanInfo && existingLoanInfo.id === selectedLender.id) {
+        console.log("You already have a loan with this lender.");
+        
+let newAmount = existingLoanInfo.borrowedAmount + amount;
+        
+      // If the loan is approved, deduct the loan amount from the lender's funds and add it to the player's funds
+      selectedLender.funds -= newAmount;
+      addFunds(amount);
+      closePopup("lender-popup");
+        
+      }else(
+
       // If the loan is approved, deduct the loan amount from the lender's funds and add it to the player's funds
       selectedLender.funds -= amount;
       addFunds(amount);
-  closePopup("lender-popup");
-      
-// Create an object to store the lender payment information
-const lenderPaymentInfo = {
-  id: selectedLender.id,
-  borrowedAmount: amount,
-  name: selectedLender.name,
-  interestRate: selectedLender.interestRate,
-  loanLength: selectedLender.loanLength,
-  startDay: counterValue
-};
+      closePopup("lender-popup");
+    }
+      // Create an object to store the lender payment information
+      const lenderPaymentInfo = {
+        id: selectedLender.id,
+        borrowedAmount: amount,
+        name: selectedLender.name,
+        interestRate: selectedLender.interestRate,
+        loanLength: selectedLender.loanLength,
+        startDay: counterValue
+      };
 
-// Save the lender payment information to local storage
-localStorage.setItem('lenderPaymentInfo', JSON.stringify(lenderPaymentInfo));
+      // Save the lender payment information to local storage
+      localStorage.setItem('lenderPaymentInfo', JSON.stringify(lenderPaymentInfo));
 
- // Add news event
-  const event = `Borrowed $${amount} from ${selectedLender.name}`;
-  addNewsEvent(event);
-      
-        // updateNetWorthDisplay();
+      // Add news event
+      const event = `Borrowed $${amount} from ${selectedLender.name}`;
+      addNewsEvent(event);
+
+      // updateNetWorthDisplay();
       console.log("Loan approved! Amount: $" + amount);
     } else {
       // Display error message or update UI elements
@@ -1496,7 +1508,7 @@ loanLengthCell.innerHTML = parsedLoanInfo.loanLength;
 
 const loanCellsWrapper = document.createElement("div");
 loanCellsWrapper.classList.add('loan-item');
-loanCellsWrapper.addEventListener('click', () => makePayment(parsedLoanInfo));
+//loanCellsWrapper.addEventListener('click', () => makePayment(parsedLoanInfo));
 
 loanCellsWrapper.appendChild(nameCell);
 loanCellsWrapper.appendChild(borrowedAmountCell);
