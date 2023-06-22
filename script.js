@@ -1477,7 +1477,7 @@ function displayLoanHistory() {
   
     console.log(" 1   loanInfo   "+loanInfo);
 
-console.log("    loanInfo   " + JSON.parse(loanInfo));
+//console.log("    loanInfo   " + JSON.parse(loanInfo));
 const parsedLoanInfo = JSON.parse(loanInfo);
 
 if (Object.keys(parsedLoanInfo).length === 0) {
@@ -1494,6 +1494,7 @@ for (const key in parsedLoanInfo) {
 
     // Add click event listener to make payment
     loanElement.addEventListener('click', () => makePayment(loanInfo.id));
+    console.log(" 1   loanInfo.id   "+loanInfo.id);
 
     loansContent.appendChild(loanElement);
   }
