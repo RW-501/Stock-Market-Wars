@@ -1471,7 +1471,7 @@ function displayLoanHistory() {
   
   loansContent.innerHTML = ''; // Clear previous loan history
   
-  const loanInfo = getLoanInfo();
+  const parsedLoanInfo = getLoanInfo();
   
 console.log("    loanInfo   " + loanInfo);
 //console.log("    loanInfo   " + loanInfo);
@@ -1494,7 +1494,7 @@ const parsedLoanInfo = JSON.parse("["+loanString+"]");
 
 console.log("    parsedLoanInfo   " + parsedLoanInfo);
 */
-const parsedLoanInfo = JSON.parse(JSON.stringify(loanInfo));
+//const parsedLoanInfo = JSON.parse(JSON.stringify(loanInfo));
 console.log("    parsedLoanInfo   " + parsedLoanInfo);
 
   
