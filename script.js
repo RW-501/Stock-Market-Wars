@@ -1260,7 +1260,7 @@ if(xxx =="main" && name){
       const newsContent = document.getElementById("msg-area");
     const newsItem = document.createElement("div");
   
-     newsItem.addEventListener("click", () => openPopup("loan-popup"));
+     newsItem.addEventListener("click", () => openPopup("loans-popup"));
 
     newsItem.classList.add("breaking-news-item");
     newsItem.textContent = event;
