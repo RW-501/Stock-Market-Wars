@@ -619,6 +619,14 @@ if (counterValue > 365) {
   counter.textContent = `${counterValue} days`;
 }
 
+    // Output the current counter value
+  console.log('counterValue:', counterValue);
+
+  displayPortfolio();
+updateNetWorthDisplay();
+    const msgArea = document.getElementById("msg-area");
+  // Clear the existing rows
+  msgArea.innerHTML = "";
   
   // Check if the counter is divisible by 5 (every 5 increments)
   if (counterValue % 5 === 0) {
@@ -626,15 +634,11 @@ if (counterValue > 365) {
   }
 
   // Check if the counter is equal to 7 (2 more increments after 5)
-  if (counterValue === 7) {
+  if (counterValue === 8) {
     newWeek(); // Call the newWeek function
   }
 
-  // Output the current counter value
-  console.log('counterValue:', counterValue);
 
-  displayPortfolio();
-updateNetWorthDisplay();
 }
 
 
