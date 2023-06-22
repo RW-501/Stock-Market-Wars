@@ -1071,13 +1071,7 @@ function updateLenderDetails() {
     document.getElementById("lender-LoanLength").textContent = selectedLender.loanLength + " days";
   }
 
-  // Check if the first option is not null and select it
-  const firstOption = lenderSelect.options[0];
-  if (firstOption && firstOption.value !== "") {
-    lenderSelect.value = firstOption.value;
-    updateLenderDetails(); // Call the function again to update the details for the selected lender
-  }
-}
+
 
 
 // Event listener for opening the loans popup
@@ -1096,7 +1090,7 @@ function updateLenderOptions() {
   const newWorth = calculateNetWorth();
   const eligibleLenders = lenders.filter(lender => lender.minNetWorth <= newWorth);
 
-  lenderSelect.innerHTML = "";
+//  lenderSelect.innerHTML = "";
 
   eligibleLenders.forEach(lender => {
     const option = document.createElement("option");
@@ -1105,7 +1099,14 @@ function updateLenderOptions() {
     lenderSelect.appendChild(option);
   });
 
-  
+    // Check if the first option is not null and select it
+  const firstOption = lenderSelect.options[0];
+  if (firstOption && firstOption.value !== "") {
+    lenderSelect.value = firstOption.value;
+    console.log("firstOption.value sell   "+firstOption.value);
+    updateLenderDetails(); // Call the function again to update the details for the selected lender
+  }
+}
   
 }
 
