@@ -606,10 +606,13 @@ let newWeekCounter = 0;
 counterValue = parseInt(localStorage.getItem('counterValue')) || 0;
 
 function timeAndDateFunc() {
-  counterValue++;
   localStorage.setItem('counterValue', counterValue.toString());
-  incrementCounter++;
 
+    // Output the current counter value
+  console.log('counterValue:', counterValue);
+
+      // Output the current counter value
+  console.log('incrementCounter:', incrementCounter);
 
     const counter = document.getElementById("counter");
 
@@ -622,8 +625,7 @@ if (counterValue > 365) {
   counter.textContent = `${counterValue} days`;
 }
 
-    // Output the current counter value
-  console.log('counterValue:', counterValue);
+
 
 
     const msgArea = document.getElementById("msg-area");
@@ -644,8 +646,13 @@ if (counterValue > 365) {
 
     displayPortfolio();
 updateNetWorthDisplay();
+  incrementCounter++;
+    counterValue++;
 
 }
+
+
+
 
 
 var weekendTimer;
@@ -659,7 +666,7 @@ function weekend() {
 // Start the timer
  weekendTimer = setTimeout(() => {
   counterValue = counterValue + 2; // Increment the counter by 1
-     console.log('counterValue:', counterValue);
+     console.log('weekend counterValue:', counterValue);
    
  clearInterval(interval); // Stop the timer
     interval = setInterval(updateStockPrices, dayTimer);
@@ -671,6 +678,8 @@ function weekend() {
 function newWeek() {
   const event = `New Week Market Open`;
           addNewsEvent(event, "main"); // Add the news event to the UI
+       console.log('new week counterValue:', counterValue);
+
 //      clearInterval(intervalStock); // Stop the timer
   //  clearInterval(interval); // Stop the timer
     //  clearInterval(weekendTimer); // Stop the timer
