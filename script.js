@@ -1100,10 +1100,10 @@ function updateLenderOptions() {
   });
 
     // Check if the first option is not null and select it
-  const firstOption = option.value;
+  const firstOption = option;
   if (firstOption && firstOption.value !== "") {
-    lenderSelect.value = firstOption;
-    console.log("firstOption.value sell   "+firstOption);
+    lenderSelect.value = firstOption.value;
+    console.log("firstOption.value sell   "+firstOption.value);
     updateLenderDetails(); // Call the function again to update the details for the selected lender
   }
 
