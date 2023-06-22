@@ -248,12 +248,17 @@ box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 
-#news-content, #bank-content, loans-content{
+#news-content, #bank-content, #loans-content{
     height: 60%;
     width: auto;
     overflow-y: scroll;
     padding: 5%;
 display: block;
+}
+
+#loans-popup > .popup-content{
+
+display: inline-grid !important;
 }
 
 .loan-item{
@@ -266,7 +271,7 @@ display: flex;
 .loan-item div{
 display: block;
       text-align: center;
-  padding: 20px;
+  padding: 2%;
     flex: 3;
 }
 #portfolio-body th{
