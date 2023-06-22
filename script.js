@@ -1454,10 +1454,10 @@ function getLoanInfo() {
   // Retrieve the portfolio from local storage
 
 const info = localStorage.getItem('lenderPaymentInfo');
-const loanInfo = JSON.parse(info);
+//const loanInfo = JSON.parse(info);
 
 
-  return loanInfo || [];
+  return info || [];
 }
 
 
