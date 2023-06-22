@@ -1128,7 +1128,7 @@ function requestLoan() {
         
 let newAmount = existingLoanInfo.borrowedAmount + amount;
         
-       console.log(existingLoanInfo.id+"     existingLoanInfo.id     "+selectedLender.id);
+       console.log(existingLoanInfo.borrowedAmount+"     existingLoanInfo.borrowedAmount     "+newAmount);
  
       // If the loan is approved, deduct the loan amount from the lender's funds and add it to the player's funds
       selectedLender.funds -= newAmount;
