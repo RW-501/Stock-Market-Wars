@@ -1483,22 +1483,21 @@ if (!Array.isArray(loanInfo)) {
   return;
 }
 
-const loanElement = document.createElement('div');
 loanElement.classList.add('loan-item');
 
-for (const loan of loanInfo) {
-  const { name, borrowedAmount, loanLength } = loan;
+const nameCell = document.createElement("td");
+const borrowedAmountCell = document.createElement("td");
+const loanLengthCell = document.createElement("td");
 
-  const loanItem = document.createElement('div');
-  loanItem.textContent = `${name} ${borrowedAmount} ${loanLength}`;
+nameCell.textContent = parsedLoanInfo.name;
+borrowedAmountCell.textContent = "$" + (parsedLoanInfo.borrowedAmount ? parsedLoanInfo.borrowedAmount.toFixed(2) : "0");
+loanLengthCell.textContent = parsedLoanInfo.loanLength;
 
-  // Add click event listener to make payment
-  loanItem.addEventListener('click', () => makePayment(loan));
-
-  loanElement.appendChild(loanItem);
-}
-
-loansContent.appendChild(loanElement);
+// Append the table cells to the loan element
+loanElement.appendChild(nameCell);
+loanElement.appendChild(borrowedAmountCell);
+loanElement.appendChild(loanLengthCell);
+  
 /*
     // Apply conditional styling based on totalCost and companyValue
   if (totalCost < companyValue) {
