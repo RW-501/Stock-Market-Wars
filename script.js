@@ -601,6 +601,8 @@ function updateStockPricesUI() {
 }
 let counterValue = 0;
 
+let weekendCounter = 0;
+let newWeekCounter = 0;
 counterValue = parseInt(localStorage.getItem('counterValue')) || 0;
 
 function timeAndDateFunc() {
@@ -628,12 +630,12 @@ if (counterValue > 365) {
   msgArea.innerHTML = "";
 
   // Increment the weekend counter
-  if (incrementCounter % 6 === 0) {
+  if (counterValue % 6 === 0) {
     weekendCounter++;
   }
 
   // Increment the new week counter
-  if (incrementCounter % 8 === 0) {
+  if (counterValue % 8 === 0) {
     newWeekCounter++;
   }
 
