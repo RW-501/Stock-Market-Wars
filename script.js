@@ -1260,13 +1260,12 @@ if(xxx =="main" && name){
       const newsContent = document.getElementById("msg-area");
     const newsItem = document.createElement("div");
   
-     newsItem.addEventListener("click", () => openStockPopup('',name));
+     newsItem.addEventListener("click", () => openPopup("loan-popup"));
 
     newsItem.classList.add("breaking-news-item");
     newsItem.textContent = event;
     newsContent.prepend(newsItem); // Add the event to the top of the news content
     newsContent.scrollTop = 0; // Scroll to the top of the news content
-    openPopup("loan-popup");
 
 
 }
