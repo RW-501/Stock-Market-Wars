@@ -340,7 +340,7 @@ localStorage.setItem('portfolio', JSON.stringify(portfolioString));
 /// START UPDATE PRICES
 function updateStockPrices() {
 
-     timeAndDateFunc();
+  
   // Update the stock prices in the user interface
 updateStockPricesUI();
   
@@ -435,6 +435,8 @@ saveStockPrices(stockPrices);
 
   // Save the updated stock prices object in local storage
   localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
+
+     timeAndDateFunc();
 }
 
 
