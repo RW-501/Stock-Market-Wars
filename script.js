@@ -1462,6 +1462,10 @@ const loanInfo = JSON.stringify(Info, null, 2);
   return loanInfo || [];
 }
 
+
+
+
+
 // Function to display loan history on the loans page
 function displayLoanHistory() {
   const loansContent = document.getElementById('loans-content');
@@ -1471,24 +1475,29 @@ function displayLoanHistory() {
   
 
   
-    console.log("    loanInfo   "+loanInfo);
+    console.log(" 1   loanInfo   "+loanInfo);
 
-  if (loanInfo.length === 0) {
-    loansContent.textContent = 'No loan history found.';
-    return;
-  }
+console.log("    loanInfo   " + JSON.stringify(loanInfo));
 
-  // Loop through loan information and create loan elements
-  loanInfo.forEach((loan) => {
+if (Object.keys(loanInfo).length === 0) {
+  loansContent.textContent = 'No loan history found.';
+  return;
+}
+
+// Loop through loan information and create loan elements
+for (const key in loanInfo) {
+  if (Object.hasOwnProperty.call(loanInfo, key)) {
     const loanElement = document.createElement('div');
     loanElement.classList.add('loan-item');
-    loanElement.textContent = loan.name;
+    loanElement.textContent = loanInfo[key];
 
     // Add click event listener to make payment
-    loanElement.addEventListener('click', () => makePayment(loan.id));
+    loanElement.addEventListener('click', () => makePayment(loanInfo.id));
 
     loansContent.appendChild(loanElement);
-  });
+  }
+}
+
 }
 
 // Function to make a payment for a specific loan
