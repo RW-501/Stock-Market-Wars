@@ -1490,9 +1490,9 @@ for (const [name, loanObj] of Object.entries(parsedLoanInfo)) {
   const nameCell = document.createElement("td");
   const borrowedAmount = document.createElement("td");
   const loanLength = document.createElement("td");
-    nameCell.textContent = ${parsedLoanInfo.name};
-  borrowedAmount.textContent = "$"+${parsedLoanInfo.borrowedAmount.toFixed(2) || 0};
-  loanLength.textContent = ${parsedLoanInfo.loanLength};
+    nameCell.textContent = `${parsedLoanInfo.name}`;
+  borrowedAmount.textContent = "$"+`${parsedLoanInfo.borrowedAmount.toFixed(2) || 0}`;
+  loanLength.textContent = `${parsedLoanInfo.loanLength}`;
 
 /*
     // Apply conditional styling based on totalCost and companyValue
