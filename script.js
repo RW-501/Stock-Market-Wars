@@ -653,6 +653,11 @@ function weekend() {
 // Start the timer
  weekendTimer = setTimeout(() => {
   counterValue = counterValue + 2; // Increment the counter by 1
+     console.log('counterValue:', counterValue);
+   
+ clearInterval(interval); // Stop the timer
+    interval = setInterval(updateStockPrices, dayTimer);
+   
   timeAndDateFunc();
   }, 10000); // Run the timer every 10 seconds (10 000 milliseconds)
 }
@@ -664,7 +669,7 @@ function newWeek() {
     clearInterval(interval); // Stop the timer
       clearInterval(weekendTimer); // Stop the timer
   //  interval = setInterval(updateStockPrices, dayTimer);
-  timeAndDateFunc();
+  updateStockPrices();
 }
 
 
