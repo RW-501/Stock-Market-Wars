@@ -1211,7 +1211,7 @@ function requestLoan() {
     let loanDueDate = startDay + loanLength;
 
     if (loanDueDate >= 0) {
-      let daysRemaining = daysRemaining = loanDueDate - counterValue;
+      let daysRemaining  = loanDueDate - counterValue;
       
       if (daysRemaining > 0) {
         const event = `$${loanNewTotal.toFixed(2)} is Due to ${lenderPaymentInfo.name} in ${daysRemaining} Days`;
