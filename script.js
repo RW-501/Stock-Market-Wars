@@ -1047,36 +1047,37 @@ function sellStock(companyName, quantityToSell) {
 
 
 
-// List of fictional lenders and their information
 const lenders = [
-  { id: "1", name: "Fortune Finance", funds: 100000, interestRate: 0.1, minNetWorth: 100, automaticPayments: true, paymentAmount: 50, paymentFrequency: "30" },
-  {  id: "2", name: "Prestige Bank", funds: 50000, interestRate: 0.15, minNetWorth: 300, automaticPayments: false, paymentAmount: 100, paymentFrequency: "" },
-  {  id: "3", name: "Elite Capital", funds: 75000, interestRate: 0.12, minNetWorth: 3000, automaticPayments: true, paymentAmount: 25, paymentFrequency: "15" },
-  {  id: "4", name: "Opulent Investments", funds: 200000, interestRate: 0.08, minNetWorth: 15000, automaticPayments: true, paymentAmount: 50, paymentFrequency: "30" },
-  {  id: "5", name: "Prosperity Lending", funds: 150000, interestRate: 0.11, minNetWorth: 55000, automaticPayments: false, paymentAmount: 100, paymentFrequency: "" },
-  {  id: "6", name: "Wealthy Trust", funds: 300000, interestRate: 0.07, minNetWorth: 250500, automaticPayments: true, paymentAmount: 25, paymentFrequency: "15" },
-  {  id: "7", name: "Grandiose Bank", funds: 1000000, interestRate: 0.05, minNetWorth: 5000000, automaticPayments: true, paymentAmount: 50, paymentFrequency: "30" },
-  {  id: "8", name: "Noble Finance", funds: 250000, interestRate: 0.09, minNetWorth: 800000, automaticPayments: true, paymentAmount: 25, paymentFrequency: "15" },
-  {  id: "9", name: "Luxe Lenders", funds: 400000, interestRate: 0.06, minNetWorth: 2000000, automaticPayments: true, paymentAmount: 25, paymentFrequency: "30" },
-  {  id: "10", name: "Exquisite Funding", funds: 600000, interestRate: 0.04, minNetWorth: 20500100, automaticPayments: false, paymentAmount: 100, paymentFrequency: "" }
+  { id: "1", name: "Fortune Finance", funds: 100000, interestRate: 0.1, minNetWorth: 100, loanLength: "30" },
+  { id: "2", name: "Prestige Bank", funds: 50000, interestRate: 0.15, minNetWorth: 300, loanLength: "" },
+  { id: "3", name: "Elite Capital", funds: 75000, interestRate: 0.12, minNetWorth: 3000, loanLength: "15" },
+  { id: "4", name: "ABC Lenders", funds: 200000, interestRate: 0.09, minNetWorth: 500, loanLength: "20" },
+  { id: "5", name: "Global Investments", funds: 1500000, interestRate: 0.08, minNetWorth: 10000, loanLength: "45" },
+  { id: "6", name: "Wealthy Funding", funds: 300000, interestRate: 0.07, minNetWorth: 2000, loanLength: "25" },
+  { id: "7", name: "Prime Lenders", funds: 500000, interestRate: 0.06, minNetWorth: 5000, loanLength: "40" },
+  { id: "8", name: "Golden Bank", funds: 80000, interestRate: 0.11, minNetWorth: 800, loanLength: "10" },
+  { id: "9", name: "Silver Finance", funds: 250000, interestRate: 0.13, minNetWorth: 1500, loanLength: "35" },
+  { id: "10", name: "Diamond Capital", funds: 400000, interestRate: 0.05, minNetWorth: 50000, loanLength: "30" }
 ];
 
 function updateLenderDetails() {
   const lenderSelect = document.getElementById("lender-select");
   const selectedLenderName = lenderSelect.value;
-  const selectedLender = lenders.find(lender => lender.name === selectedLenderName);
+  const selectedLender = lenders.find((lender) => lender.name === selectedLenderName);
 
   if (selectedLender) {
-    document.getElementById("lender-Max").textContent = selectedLender.funds;
+    document.getElementById("lender-Max").textContent = "$" + selectedLender.funds;
     document.getElementById("lender-Rate").textContent = selectedLender.interestRate;
     document.getElementById("lender-AutoPayments").textContent = selectedLender.automaticPayments ? "Yes" : "No";
-    document.getElementById("lender-PaymentAmount").textContent = "$"+selectedLender.paymentAmount;
-    document.getElementById("lender-PaymentFrequency").textContent = selectedLender.paymentFrequency+" days";
+    document.getElementById("lender-LoanLength").textContent = selectedLender.loanLength + " days";
   }
 
-
-
-
+  // Check if the first option is not null and select it
+  const firstOption = lenderSelect.options[0];
+  if (firstOption && firstOption.value !== "") {
+    lenderSelect.value = firstOption.value;
+    updateLenderDetails(); // Call the function again to update the details for the selected lender
+  }
 }
 
 
@@ -1104,18 +1105,8 @@ function updateLenderOptions() {
     option.textContent = lender.name;
     lenderSelect.appendChild(option);
   });
-/*
-  const selectedLender = eligibleLenders.find(lender => lender.name === lenderSelect.value);
 
-  if (selectedLender) {
-    document.getElementById("lender-Max").textContent = `$${selectedLender.funds}`;
-    document.getElementById("lender-Rate").textContent = `${selectedLender.interestRate * 100}%`;
-  } else {
-    document.getElementById("lender-Max").textContent = "";
-    document.getElementById("lender-Rate").textContent = "";
-  }
-*/
-
+  
   
 }
 
@@ -1148,10 +1139,8 @@ const lenderPaymentInfo = {
   id: selectedLender.id,
   borrowedAmount: amount,
   name: selectedLender.name,
-  paymentFrequency: selectedLender.paymentFrequency,
   interestRate: selectedLender.interestRate,
-  paymentAmount: selectedLender.paymentAmount,
-  automaticPayments: selectedLender.automaticPayments,
+  loanLength: selectedLender.loanLength,
   startDay: counterValue
 };
 
@@ -1550,6 +1539,7 @@ document.getElementById("close-bank-popup").addEventListener("click", function (
 
 document.getElementById("open-lender-popup").addEventListener("click", function () {
   updateLenderOptions();
+  
   openPopup("lender-popup");
 });
 
