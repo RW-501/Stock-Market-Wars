@@ -668,6 +668,9 @@ function newWeek() {
 
 // Function to update the net worth display
 function updateNetWorthDisplay() {
+  console.log('updateNetWorthDisplay');
+
+  
   // Calculate the net worth based on the stocks owned and their current prices
   let netWorth = calculateNetWorth();
 
@@ -1238,7 +1241,7 @@ if (savedBankEvents.length > 20) {
 // Save the updated array in local storage
 localStorage.setItem("savedBankEvents", JSON.stringify(savedBankEvents));
 
-  updateNetWorthDisplay();
+//  updateNetWorthDisplay();
    getBankEvents();
 }else{
 
@@ -1252,7 +1255,7 @@ if (savedEvents.length > 20) {
 // Save the updated array in local storage
 localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
 
-  updateNetWorthDisplay();
+  //updateNetWorthDisplay();
      getStockEvents();
 
 }
