@@ -119,7 +119,7 @@ function getStockPrices(stockName) {
 
 
 
-function generateStockChart(stockData) {
+function generateStockChart(stockData, theName) {
   console.log("stockData   " + stockData);
   console.log("stockData   " + stockData.name);
   console.log("stockData.name   " + stockData[0]);
@@ -187,13 +187,13 @@ function generateStockChart(stockData) {
   ctx.font = "12px Arial";
   ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
   ctx.textAlign = "center";
-  ctx.fillText("Date", canvas.width / 2, chartHeight + marginBottom - 5);
+  ctx.fillText(theName, canvas.width / 2, chartHeight + marginBottom - 5);
   ctx.textAlign = "right";
-  //ctx.fillText(maxValue.toFixed(2), marginLeft - 5, marginTop + 12);
-  //ctx.fillText(minValue.toFixed(2), marginLeft - 5, chartHeight - marginBottom + 12);  
+  ctx.fillText(maxValue.toFixed(2), marginLeft - 5, marginTop + 12);
+  ctx.fillText(minValue.toFixed(2), marginLeft - 5, chartHeight - marginBottom + 12);  
   
-  ctx.fillText(maxValue, marginLeft - 5, marginTop + 12);
-  ctx.fillText(minValue, marginLeft - 5, chartHeight - marginBottom + 12);
+  //ctx.fillText(maxValue, marginLeft - 5, marginTop + 12);
+  //ctx.fillText(minValue, marginLeft - 5, chartHeight - marginBottom + 12);
 }
 
 
@@ -485,7 +485,7 @@ theCompanyName = stockName;
   const stockPrices = getStockPrices(theCompanyName);
 //  console.log("stockPrices xxxx   " + stockPrices);
 
-  generateStockChart(stockPrices);
+  generateStockChart(stockPrices, theCompanyName);
   
 
  // const stockPrice = getStockPrice(theCompanyName);
