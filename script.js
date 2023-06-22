@@ -1274,6 +1274,10 @@ savedEvents.push(event);
 if (savedEvents.length > 20) {
   savedEvents.splice(0, savedEvents.length - 20); // Remove the oldest entries from the beginning of the array
 }
+if (savedEvents.length > 20) {
+  savedEvents.shift(); // Remove the oldest entry from the beginning of the array
+}
+  
 // Save the updated array in local storage
 localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
 
