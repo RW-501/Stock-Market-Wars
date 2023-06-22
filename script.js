@@ -627,8 +627,7 @@ if (counterValue > 365) {
   // Clear the existing rows
   msgArea.innerHTML = "";
 
-    displayPortfolio();
-updateNetWorthDisplay();
+
   
   // Check if counterValue is divisible by 6
   if (counterValue % 6 === 0) {
@@ -639,7 +638,8 @@ updateNetWorthDisplay();
   if (counterValue % 8 === 0) {
     newWeek(); // Call the newWeek function
   }
-
+    displayPortfolio();
+updateNetWorthDisplay();
 
 }
 
