@@ -111,16 +111,12 @@
     <select id="lender-select" onchange="updateLenderDetails()">
       <!-- Options will be dynamically updated by JavaScript -->
     </select>
-<!-- Lender Details -->
-<p>Max Funding: <span id="lender-Max"></span></p>
-<p>Interest Rate: <span id="lender-Rate"></span></p>
-<p>Automatic Payments: <span id="lender-AutoPayments"></span></p>
-<p>Payment Amount: <span id="lender-PaymentAmount"></span></p>
-<p>Payment Frequency: <span id="lender-PaymentFrequency"></span></p>
-
+    <!-- Lender Details -->
+    <p>Max Funding: <span id="lender-Max"></span></p>
+    <p>Interest Rate: <span id="lender-Rate"></span></p>
+    <p>Loan Length: <span id="lender-LoanLength"></span></p>
     <button id="open-loans-popup">Loans</button>
     <button onclick="requestLoan()">Request Loan</button>
-
     <button id="close-lender-popup">Close</button>
   </div>
 </div>
