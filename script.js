@@ -1467,19 +1467,21 @@ function displayLoanHistory() {
   loansContent.innerHTML = ''; // Clear previous loan history
   
   const loanInfo = getLoanInfo();
+  
+let loanString = JSON.stringify(loanInfo, null, 2);
+  
+  console.log("???????????????/     "+JSON.stringify(loanInfo, null, 2)); // Logging the object as a JSON string with indentation
 
-  console.log(JSON.stringify(loanInfo, null, 2)); // Logging the object as a JSON string with indentation
-
-  console.log(loanInfo[0]+"    loanInfo   "+loanInfo);
+  console.log(loanString[0]+"    loanInfo   "+loanInfo);
 
   
-  if (loanInfo.length === 0) {
+  if (loanString.length === 0) {
     loansContent.textContent = 'No loan history found.';
     return;
   }
 
   // Loop through loan information and create loan elements
-  loanInfo.forEach((loan) => {
+  loanString.forEach((loan) => {
     const loanElement = document.createElement('div');
     loanElement.classList.add('loan-item');
     loanElement.textContent = loan.name;
