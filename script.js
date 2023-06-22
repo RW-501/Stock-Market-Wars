@@ -1133,7 +1133,7 @@ let newAmount = existingLoanInfo.borrowedAmount + amount;
       addFunds(amount);
       closePopup("lender-popup");
         
-      }else(
+      }else{
 
       // If the loan is approved, deduct the loan amount from the lender's funds and add it to the player's funds
       selectedLender.funds -= amount;
