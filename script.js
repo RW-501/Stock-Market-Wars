@@ -633,7 +633,7 @@ if (counterValue > 365) {
   }
 
   // Check if the counter is equal to 7 (2 more increments after 5)
-  if (counterValue === 8) {
+  if (counterValue % 8 === 0) {
     newWeek(); // Call the newWeek function
   }
 
