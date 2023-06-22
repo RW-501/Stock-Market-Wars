@@ -1456,8 +1456,9 @@ function getLoanInfo() {
 const info = localStorage.getItem('lenderPaymentInfo');
 //const loanInfo = JSON.parse(info);
 
-
-  return info || [];
+const loanInfo = [info];
+  
+  return loanInfo || [];
 }
 
 
