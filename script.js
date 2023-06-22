@@ -1508,7 +1508,7 @@ const loanElement = document.createElement('div');
   */
 
   // Append the table cells to the row
-  loanElement.innerHTML = textContent+"   "+borrowedAmount+"   "+loanLength;
+  loanElement.innerHTML = nameCell+"   "+borrowedAmount+"   "+loanLength;
 
 
   
