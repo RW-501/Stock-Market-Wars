@@ -599,10 +599,10 @@ function updateStockPricesUI() {
 
   });
 }
-let counterValue = 0;
-let incrementCounter = 0;
-let weekendCounter = 0;
-let newWeekCounter = 0;
+var counterValue = 0;
+var incrementCounter = 0;
+var weekendCounter = 0;
+var newWeekCounter = 0;
 counterValue = parseInt(localStorage.getItem('counterValue')) || 0;
 
 function timeAndDateFunc() {
