@@ -1473,16 +1473,29 @@ function displayLoanHistory() {
   
   const loanInfo = getLoanInfo();
   
-
+console.log("    loanInfo   " + loanInfo);
 //console.log("    loanInfo   " + loanInfo);
 //  const parsedLoanInfo = JSON.parse(loanInfo);
 
-
+/*
 if (!Array.isArray(loanInfo)) {
   // Handle the case when loanInfo is not an array
   loansContent.textContent = 'No loan history found.';
   return;
 }
+*/
+
+// Convert loanInfo object to JSON string and format with indentation
+const loanString = JSON.stringify(loanInfo, null, 2);
+console.log("    loanString   " + loanString);
+
+// Parse the JSON string back into an object
+const parsedLoanInfo = JSON.parse(loanString);
+
+console.log("    parsedLoanInfo   " + parsedLoanInfo);
+
+
+  
   const loanElement = document.createElement('div');
 
 loanElement.classList.add('loan-item');
