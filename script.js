@@ -1128,6 +1128,8 @@ function requestLoan() {
         
 let newAmount = existingLoanInfo.borrowedAmount + amount;
         
+       console.log(existingLoanInfo.id+"     existingLoanInfo.id     "+selectedLender.id);
+ 
       // If the loan is approved, deduct the loan amount from the lender's funds and add it to the player's funds
       selectedLender.funds -= newAmount;
       addFunds(amount);
@@ -1294,16 +1296,15 @@ localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
 }
 
 
-
 //window.addEventListener("DOMContentLoaded", function () {
 
   function getStockEvents(){
   const savedEvents = JSON.parse(localStorage.getItem("savedEvents")) || [];
   
   // Reverse the order of savedEvents array to display the events in descending order (latest events on top)
-  const reversedEvents = savedEvents.reverse();
+ // const reversedEvents = savedEvents.reverse();
   
-  reversedEvents.forEach(function (event) {
+  savedEvents.forEach(function (event) {
     const newsContent = document.getElementById("news-content");
     const newsItem = document.createElement("div");
     newsItem.classList.add("news-item");
@@ -1324,9 +1325,9 @@ localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
   const savedEvents = JSON.parse(localStorage.getItem("savedBankEvents")) || [];
   
   // Reverse the order of savedEvents array to display the events in descending order (latest events on top)
-  const reversedEvents = savedEvents.reverse();
+//  const reversedEvents = savedEvents.reverse();
   
-  reversedEvents.forEach(function (event) {
+  savedEvents.forEach(function (event) {
     const newsContent = document.getElementById("bank-content");
     const newsItem = document.createElement("div");
     newsItem.classList.add("news-item");
