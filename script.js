@@ -1358,12 +1358,12 @@ localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
 
 
 
-
+updateStockPrices();
 
 // Call the updateStockPrices  see 27 dayTimer
 var interval = setInterval(updateStockPrices, dayTimer);
 
-updateStockPrices();
+
 // Call the updateNetWorthDisplay function initially and whenever there's a change in net worth
 updateNetWorthDisplay();
 
