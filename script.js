@@ -689,8 +689,6 @@ function weekend() {
   
 // Start the timer
  weekendTimer = setTimeout(() => {
-  counterValue = 7; // Increment the counter by 1
-     console.log('weekend counterValue:', counterValue);
    
  clearInterval(interval); // Stop the timer
     interval = setInterval(updateStockPrices, dayTimer);
@@ -702,12 +700,7 @@ function weekend() {
 function newWeek() {
   const event = `New Week Market Open`;
           addNewsEvent(event, "main"); // Add the news event to the UI
-       console.log('new week counterValue:', counterValue);
 
-//      clearInterval(intervalStock); // Stop the timer
-  //  clearInterval(interval); // Stop the timer
-    //  clearInterval(weekendTimer); // Stop the timer
-   // interval = setInterval(updateStockPrices, dayTimer);
   updateStockPrices();
 }
 
