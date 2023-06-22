@@ -630,12 +630,12 @@ if (counterValue > 365) {
     displayPortfolio();
 updateNetWorthDisplay();
   
-  // Check if the counter is divisible by 5 (every 5 increments)
+  // Check if counterValue is divisible by 6
   if (counterValue % 6 === 0) {
     weekend(); // Call the weekend function
   }
 
-  // Check if the counter is equal to 7 (2 more increments after 5)
+  // Check if counterValue is divisible by 8
   if (counterValue % 8 === 0) {
     newWeek(); // Call the newWeek function
   }
