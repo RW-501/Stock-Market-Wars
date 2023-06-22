@@ -1452,12 +1452,10 @@ document.getElementById("close-portfolio-popup").addEventListener("click", close
 function getLoanInfo() {
 
   // Retrieve the portfolio from local storage
-  const info = localStorage.getItem('lenderPaymentInfo');
 
-  // Parse the portfolio string into an object
- const Info = JSON.parse(info);
+const info = localStorage.getItem('lenderPaymentInfo');
+const loanInfo = JSON.parse(info);
 
-const loanInfo = JSON.stringify(Info, null, 2);
 
   return loanInfo || [];
 }
@@ -1475,30 +1473,26 @@ function displayLoanHistory() {
   
 
 //console.log("    loanInfo   " + loanInfo);
-  const parsedLoanInfo = JSON.parse(loanInfo);
+//  const parsedLoanInfo = JSON.parse(loanInfo);
 
 if (Object.keys(parsedLoanInfo).length === 0) {
   loansContent.textContent = 'No loan history found.';
   return;
 }
-
-
 const loanElement = document.createElement('div');
+loanElement.classList.add('loan-item');
 
-Object.keys(parsedLoanInfo).forEach((key) => {
-  if (Object.hasOwnProperty.call(parsedLoanInfo, key)) {
-    const { name, borrowedAmount, loanLength } = parsedLoanInfo;
+for (const loan of loanInfo) {
+  const { name, borrowedAmount, loanLength } = loan;
 
-    const loanItem = document.createElement('div');
-    loanItem.classList.add('loan-item');
-    loanItem.textContent = `${name} ${borrowedAmount} ${loanLength}`;
+  const loanItem = document.createElement('div');
+  loanItem.textContent = `${name} ${borrowedAmount} ${loanLength}`;
 
-    // Add click event listener to make payment
-    loanItem.addEventListener('click', () => makePayment(parsedLoanInfo));
+  // Add click event listener to make payment
+  loanItem.addEventListener('click', () => makePayment(loan));
 
-    loanElement.appendChild(loanItem);
-  }
-});
+  loanElement.appendChild(loanItem);
+}
 
 loansContent.appendChild(loanElement);
 
