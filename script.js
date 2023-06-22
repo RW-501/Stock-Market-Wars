@@ -1486,7 +1486,7 @@ if (Object.keys(parsedLoanInfo).length === 0) {
 
 for (const [name, loanObj] of Object.entries(parsedLoanInfo)) {
 
-const loanElement = document.createElement('td');
+const loanElement = document.createElement('div');
 
 // loanElement.classList.add('loan-item');
   ///const nameCell = document.createElement("tr");
