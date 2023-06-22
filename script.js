@@ -120,6 +120,10 @@ function getStockPrices(stockName) {
 
 
 function generateStockChart(stockData) {
+  console.log("stockData   " + stockData);
+  console.log("stockData   " + stockData.name);
+  console.log("stockData.name   " + stockData[0]);
+
   const canvas = document.getElementById("stock-chart");
   const ctx = canvas.getContext("2d");
 
@@ -185,8 +189,11 @@ function generateStockChart(stockData) {
   ctx.textAlign = "center";
   ctx.fillText("Date", canvas.width / 2, chartHeight + marginBottom - 5);
   ctx.textAlign = "right";
-  ctx.fillText(maxValue.toFixed(2), marginLeft - 5, marginTop + 12);
-  ctx.fillText(minValue.toFixed(2), marginLeft - 5, chartHeight - marginBottom + 12);
+  //ctx.fillText(maxValue.toFixed(2), marginLeft - 5, marginTop + 12);
+  //ctx.fillText(minValue.toFixed(2), marginLeft - 5, chartHeight - marginBottom + 12);  
+  
+  ctx.fillText(maxValue, marginLeft - 5, marginTop + 12);
+  ctx.fillText(minValue, marginLeft - 5, chartHeight - marginBottom + 12);
 }
 
 
