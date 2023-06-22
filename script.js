@@ -1066,9 +1066,21 @@ function updateLenderDetails() {
   const selectedLender = lenders.find((lender) => lender.name === selectedLenderName);
 
   if (selectedLender) {
-    document.getElementById("lender-Max").textContent = "$" + selectedLender.funds;
-    document.getElementById("lender-Rate").textContent = selectedLender.interestRate;
+
+          // Check if the user already has a loan with the selected lender
+      const existingLoanInfo = JSON.parse(localStorage.getItem('lenderPaymentInfo'));
+      if (existingLoanInfo && existingLoanInfo.id === selectedLender.id) {
+        console.log("You already have a loan with this lender.");
+let newAmount = selectedLender.funds - existingLoanInfo.borrowedAmount ;
+
+            document.getElementById("lender-Max").textContent = "$" + newAmount;
+    document.getElementById("lender-Rate").textContent = selectedLender.interestRate +" per day";
     document.getElementById("lender-LoanLength").textContent = selectedLender.loanLength + " days";
+      }else{
+    document.getElementById("lender-Max").textContent = "$" + selectedLender.funds;
+    document.getElementById("lender-Rate").textContent = selectedLender.interestRate +" per day";
+    document.getElementById("lender-LoanLength").textContent = selectedLender.loanLength + " days";
+      }
   }
 
 }
@@ -1128,20 +1140,28 @@ function requestLoan() {
         
 let newAmount = existingLoanInfo.borrowedAmount + amount;
         
-       console.log(existingLoanInfo.borrowedAmount+"     existingLoanInfo.borrowedAmount     "+newAmount);
+      // console.log(existingLoanInfo.borrowedAmount+"     existingLoanInfo.borrowedAmount     "+newAmount);
  
       // If the loan is approved, deduct the loan amount from the lender's funds and add it to the player's funds
       selectedLender.funds -= newAmount;
       addFunds(amount);
       closePopup("lender-popup");
-        
+              // Create an object to store the lender payment information
+      const lenderPaymentInfo = {
+        id: selectedLender.id,
+        borrowedAmount: newAmount,
+        name: selectedLender.name,
+        interestRate: selectedLender.interestRate,
+        loanLength: selectedLender.loanLength,
+        startDay: counterValue
+      };
       }else{
 
       // If the loan is approved, deduct the loan amount from the lender's funds and add it to the player's funds
       selectedLender.funds -= amount;
       addFunds(amount);
       closePopup("lender-popup");
-    }
+ 
       // Create an object to store the lender payment information
       const lenderPaymentInfo = {
         id: selectedLender.id,
@@ -1151,7 +1171,7 @@ let newAmount = existingLoanInfo.borrowedAmount + amount;
         loanLength: selectedLender.loanLength,
         startDay: counterValue
       };
-
+   }
       // Save the lender payment information to local storage
       localStorage.setItem('lenderPaymentInfo', JSON.stringify(lenderPaymentInfo));
 
