@@ -1455,9 +1455,9 @@ function getLoanInfo() {
   const info = localStorage.getItem('lenderPaymentInfo');
 
   // Parse the portfolio string into an object
- const loanInfo = JSON.parse(info);
+ const Info = JSON.parse(info);
 
-const loanInfo = JSON.stringify(loanInfo, null, 2);
+const loanInfo = JSON.stringify(Info, null, 2);
 
   return loanInfo || [];
 }
