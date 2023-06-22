@@ -1475,10 +1475,13 @@ function displayLoanHistory() {
 //console.log("    loanInfo   " + loanInfo);
 //  const parsedLoanInfo = JSON.parse(loanInfo);
 
-if (Object.keys(loanInfo).length === 0) {
+
+if (!Array.isArray(loanInfo)) {
+  // Handle the case when loanInfo is not an array
   loansContent.textContent = 'No loan history found.';
   return;
 }
+
 const loanElement = document.createElement('div');
 loanElement.classList.add('loan-item');
 
@@ -1495,7 +1498,6 @@ for (const loan of loanInfo) {
 }
 
 loansContent.appendChild(loanElement);
-
 /*
     // Apply conditional styling based on totalCost and companyValue
   if (totalCost < companyValue) {
