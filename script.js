@@ -1483,18 +1483,24 @@ if (Object.keys(parsedLoanInfo).length === 0) {
 }
 
 
-
-for (const { name, borrowedAmount, loanLength } of Object.entries(parsedLoanInfo)) {
-
 const loanElement = document.createElement('div');
 
-// loanElement.classList.add('loan-item');
-  ///const nameCell = document.createElement("tr");
+for (const key in parsedLoanInfo) {
+  if (Object.hasOwnProperty.call(parsedLoanInfo, key)) {
+    const { name, borrowedAmount, loanLength } = parsedLoanInfo;
 
-  
- let   nameCell = `${parsedLoanInfo.name}`;
-  let borrowedAmount = "$"+`${parsedLoanInfo.borrowedAmount.toFixed(2) || 0}`;
-  let loanLength = `${parsedLoanInfo.loanLength}`;
+    const loanItem = document.createElement('div');
+    loanItem.classList.add('loan-item');
+    loanItem.textContent = `${name} ${borrowedAmount} ${loanLength}`;
+
+    // Add click event listener to make payment
+    loanItem.addEventListener('click', () => makePayment(parsedLoanInfo));
+
+    loanElement.appendChild(loanItem);
+  }
+}
+
+loansContent.appendChild(loanElement);
 
 /*
     // Apply conditional styling based on totalCost and companyValue
@@ -1507,18 +1513,7 @@ const loanElement = document.createElement('div');
   }
   */
 
-  // Append the table cells to the row
-  loanElement.innerHTML = nameCell+"   "+borrowedAmount+"   "+loanLength;
-
-
   
-
-  // Add click event listener to make payment
-  loanElement.addEventListener('click', () => makePayment(parsedLoanInfo));
-  loansContent.appendChild(loanElement);
-  }
- 
-
 }
 
 // Function to make a payment for a specific loan
