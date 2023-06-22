@@ -1213,6 +1213,8 @@ function requestLoan() {
     if (loanDueDate >= 0) {
       let daysRemaining  = loanDueDate - counterValue;
       
+              console.log(daysRemaining +"  loanDueDate  "+ loanDueDate+"   counterValue    " + counterValue);
+
       if (daysRemaining > 0) {
         const event = `$${loanNewTotal.toFixed(2)} is Due to ${lenderPaymentInfo.name} in ${daysRemaining} Days`;
         addNewsEvent(event, "loan");
