@@ -189,8 +189,8 @@ function generateStockChart(stockData, theName) {
   ctx.textAlign = "center";
   ctx.fillText(theName, canvas.width / 2, chartHeight + marginBottom - 5);
   ctx.textAlign = "right";
-  ctx.fillText(maxValue.toFixed(2), marginLeft - 5, marginTop + 12);
-  ctx.fillText(minValue.toFixed(2), marginLeft - 5, chartHeight - marginBottom + 12);  
+  ctx.fillText(maxValue.toFixed(4), marginLeft - 5, marginTop + 12);
+  ctx.fillText(minValue.toFixed(4), marginLeft - 5, chartHeight - marginBottom + 12);  
   
   //ctx.fillText(maxValue, marginLeft - 5, marginTop + 12);
   //ctx.fillText(minValue, marginLeft - 5, chartHeight - marginBottom + 12);
