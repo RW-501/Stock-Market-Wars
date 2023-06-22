@@ -1474,9 +1474,6 @@ function displayLoanHistory() {
   const loanInfo = getLoanInfo();
   
 
-  
-    console.log(" 1   loanInfo   "+loanInfo);
-
 //console.log("    loanInfo   " + JSON.parse(loanInfo));
 const parsedLoanInfo = JSON.parse(loanInfo);
 
@@ -1485,16 +1482,18 @@ if (Object.keys(parsedLoanInfo).length === 0) {
   return;
 }
 
-// Loop through loan information and create loan elements
-for (const key in parsedLoanInfo) {
-  if (Object.hasOwnProperty.call(parsedLoanInfo, key)) {
+for (const loan in parsedLoanInfo) {
+  if (Object.hasOwnProperty.call(parsedLoanInfo, loan)) {
     const loanElement = document.createElement('div');
     loanElement.classList.add('loan-item');
-    loanElement.textContent = parsedLoanInfo[key];
+    loanElement.textContent = `${loan}: ${parsedLoanInfo[loan]}`;
 
     // Add click event listener to make payment
-    loanElement.addEventListener('click', () => makePayment(loanInfo.id));
-    console.log(" 1   loanInfo.id   "+loanInfo.id);
+    loanElement.addEventListener('click', () => makePayment(parsedLoanInfo.id));
+
+  
+    console.log(" parsedLoanInfo   "+parsedLoanInfo);
+    console.log(" parsedLoanInfo.id   "+parsedLoanInfo.id);
 
     loansContent.appendChild(loanElement);
   }
