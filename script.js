@@ -1457,7 +1457,8 @@ function getLoanInfo() {
   // Parse the portfolio string into an object
  const loanInfo = JSON.parse(info);
 
-  
+const loanInfo = JSON.stringify(loanInfo, null, 2);
+
   return loanInfo || [];
 }
 
@@ -1469,20 +1470,16 @@ function displayLoanHistory() {
   const loanInfo = getLoanInfo();
   
 
-const loanString = JSON.stringify(loanInfo, null, 2);
-
-// Parse the JSON string back into an object
-const loanCopy = JSON.parse(loanString);
   
-    console.log("    loanCopy   "+loanCopy);
+    console.log("    loanInfo   "+loanInfo);
 
-  if (loanCopy.length === 0) {
+  if (loanInfo.length === 0) {
     loansContent.textContent = 'No loan history found.';
     return;
   }
 
   // Loop through loan information and create loan elements
-  loanCopy.forEach((loan) => {
+  loanInfo.forEach((loan) => {
     const loanElement = document.createElement('div');
     loanElement.classList.add('loan-item');
     loanElement.textContent = loan.name;
