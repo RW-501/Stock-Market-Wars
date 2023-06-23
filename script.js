@@ -1200,14 +1200,14 @@ let interestRate = lenderPaymentInfo?.interestRate || 0;
 let loanLength = parseInt(lenderPaymentInfo?.loanLength) || 0;
     let borrowedAmount = lenderPaymentInfo?.borrowedAmount || 0;
     
-  let loanNewTotal = parseInt(borrowedAmount * (interestRate * 100), 10);
+  let loanNewTotal = parseInt(borrowedAmount * (interestRate * 10), 10);
 let loanDueDate = parseInt(startDay) + parseInt(loanLength, 10);
 
 
     if (loanDueDate >= 0) {
 let daysRemaining = Math.floor(loanDueDate - counterValue);
       
-              console.log(interestRate +"  borrowedAmount  "+ borrowedAmount+"   (interestRate * 100)    " + (interestRate * 100));
+              console.log(interestRate +"  borrowedAmount  "+ borrowedAmount+"   (interestRate * 10)    " + (interestRate * 10));
               console.log(loanNewTotal +"  startDay  "+ startDay+"   loanLength    " + loanLength);
               console.log(daysRemaining +"  loanDueDate  "+ loanDueDate+"   counterValue    " + counterValue);
 
