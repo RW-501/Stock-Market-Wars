@@ -1105,7 +1105,7 @@ function updateLenderDetails() {
       if (existingLoanInfo && existingLoanInfo.id === selectedLender.id) {
         console.log("You already have a loan with this lender.");
 let newAmount = selectedLender.funds - existingLoanInfo.borrowedAmount ;
-displayStatusMessage("lender", "You already have a $" + newAmount.toFixed(2) + " loan with " + selectedLender.name);
+displayStatusMessage("lender", "You already have a $" + existingLoanInfo.borrowedAmount.toFixed(2) + " loan with " + selectedLender.name);
 
        // console.log(newAmount +"  selectedLender.funds  "+ selectedLender.funds+"   existingLoanInfo.borrowedAmount    " + existingLoanInfo.borrowedAmount);
 if(newAmount < 0){newAmount = 0; }
@@ -1199,9 +1199,9 @@ function requestLoan() {
       localStorage.setItem('lenderPaymentInfo', JSON.stringify(lenderPaymentInfo));
 
       // Add news event
-      const event = `Borrowed $${amount.toFixed(2) } from ${selectedLender.name}`;
+      const event = `Borrowed $${newAmount.toFixed(2) } from ${selectedLender.name}`;
       addNewsEvent(event);
-        displayStatusMessage("lender","Loan approved! Amount: $" + amount.toFixed(2) );
+        displayStatusMessage("lender","Loan approved! Amount: $" + newAmount.toFixed(2) );
 
       // updateNetWorthDisplay();
      // console.log("Loan approved! Amount: $" + amount);
