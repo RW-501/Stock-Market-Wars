@@ -37,7 +37,7 @@ function getMarket() {
   if (storedStockPrices) {
     const stockPrices = JSON.parse(storedStockPrices) || {};
 
-    const updatedCompanies = market.map(company => {
+    const updatedCompanies = stockPrices.map(company => {
       const { name } = company;
       const price = company.price || stockPrices[name];
       return { name, price };
@@ -46,8 +46,8 @@ function getMarket() {
     // Store the updated market data back to local storage
   //  localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
 
-    return storedStockPrices;
-   // return updatedCompanies;
+   // return storedStockPrices;
+    return updatedCompanies;
   }
 
   return market;
