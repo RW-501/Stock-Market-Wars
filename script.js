@@ -560,8 +560,8 @@ function closeStockPopup() {
   const stockPopupBuy = document.getElementById("stock-popup-buy");
   const stockPopupSell = document.getElementById("stock-popup-sell");
 
- stockPopupBuy.removeEventListener("click", buyStock);
-  stockPopupSell.removeEventListener("click", sellStock);
+// stockPopupBuy.removeEventListener("click", buyStock);
+//  stockPopupSell.removeEventListener("click", sellStock);
 clearInterval(intervalStock);
   closePopup("stock-popup");
 }
