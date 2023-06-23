@@ -1080,6 +1080,8 @@ function updateLenderDetails() {
       if (existingLoanInfo && existingLoanInfo.id === selectedLender.id) {
         console.log("You already have a loan with this lender.");
 let newAmount = selectedLender.funds - existingLoanInfo.borrowedAmount ;
+        
+        console.log(newAmount +"  selectedLender.funds  "+ selectedLender.funds+"   existingLoanInfo.borrowedAmount    " + existingLoanInfo.borrowedAmount);
 
             document.getElementById("lender-Max").textContent = "$" + newAmount;
     document.getElementById("lender-Rate").textContent = selectedLender.interestRate +" per day";
