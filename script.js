@@ -1530,14 +1530,14 @@ function displayLoanHistory() {
   const loanInfo = getLoanInfo();
   
 
-  const parsedLoanInfo = JSON.parse(loanInfo);
-
 if (!Array.isArray(loanInfo)) {
   // Handle the case when loanInfo is not an array
   loansContent.textContent = 'No loan history found.';
   return;
 }
 
+
+  const parsedLoanInfo = JSON.parse(loanInfo);
 
 
 
