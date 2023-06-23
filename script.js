@@ -1196,7 +1196,7 @@ function requestLoan() {
     const lenderPaymentInfo = JSON.parse(lenderPaymentInfoString);
     
     let startDay = lenderPaymentInfo?.startDay || 0;
-let interestRate = parseInt(lenderPaymentInfo?.interestRate) || 0;
+let interestRate = lenderPaymentInfo?.interestRate || 0;
 let loanLength = parseInt(lenderPaymentInfo?.loanLength) || 0;
     let borrowedAmount = lenderPaymentInfo?.borrowedAmount || 0;
     
