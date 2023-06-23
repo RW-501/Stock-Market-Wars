@@ -504,11 +504,11 @@ stockPopupQuantity.textContent = `Own: ${getStockQuantity(theCompanyName)?.stock
   stockPopupCash.textContent = `Cash: $${getAvailableFunds().toFixed(2) || 0}`;
 
 
-addLimitedEventListener(stockPopupBuy, "click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
-addLimitedEventListener(stockPopupSell, "click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
+//addLimitedEventListener(stockPopupBuy, "click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
+//addLimitedEventListener(stockPopupSell, "click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
 
-//        stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
-  //stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
+      stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
+stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
 
 if (xxx !== '' && xxx !== null && xxx !== undefined) {
   openPopup("stock-popup");
@@ -569,8 +569,8 @@ function closeStockPopup() {
   const stockPopupBuy = document.getElementById("stock-popup-buy");
   const stockPopupSell = document.getElementById("stock-popup-sell");
 
-// stockPopupBuy.removeEventListener("click", buyStock);
-//  stockPopupSell.removeEventListener("click", sellStock);
+stockPopupBuy.removeEventListener("click", buyStock);
+ stockPopupSell.removeEventListener("click", sellStock);
 clearInterval(intervalStock);
   closePopup("stock-popup");
 }
