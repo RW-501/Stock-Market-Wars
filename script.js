@@ -508,9 +508,9 @@ theCompanyName = stockName;
 stockPopupQuantity.textContent = `Own: ${getStockQuantity(theCompanyName)?.stockQuantity || 0}`;
   stockPopupCash.textContent = `Cash: $${getAvailableFunds().toFixed(2) || 0}`;
 
-limitEventListenersToOne(stockPopupBuy, "click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
-limitEventListenersToOne(stockPopupSell, "click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
 
+addLimitedEventListener(stockPopupBuy, "click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
+addLimitedEventListener(stockPopupSell, "click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
 
 //        stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
   //stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
@@ -558,19 +558,14 @@ howMuchStock(stockPrice, availableFunds);
 
 
 
-function limitEventListenersToOne(element, event, callback) {
-  const eventHandler = () => {
-    // Remove the event listener
-    element.removeEventListener(event, eventHandler);
-    
-    // Call the callback function
-    callback();
-  };
-  
-  // Add the event listener
-  element.addEventListener(event, eventHandler);
-}
+let eventListenerCounter = 0;
 
+function addLimitedEventListener(element, event, callback) {
+  if (eventListenerCounter < 1) {
+    element.addEventListener(event, callback);
+    eventListenerCounter++;
+  }
+}
 
 
 
