@@ -409,7 +409,9 @@ document.getElementById("msg-area").textContent = "";
       const newsEvent = `Breaking News: ${company.name} price ${isPositiveLabel} by ${changePercentageFormatted}`;
       addNewsEvent(newsEvent, "main", company.name); // Add the news event to the UI
 
-        
+        // Update the stock prices in the user interface
+updateStockPricesUI();
+
  
       
       console.log("newsEvent    " + newsEvent);
@@ -418,9 +420,7 @@ document.getElementById("msg-area").textContent = "";
 }
 
 
-    // Update the stock prices in the user interface
-updateStockPricesUI();
-
+    
 
 
 
