@@ -596,11 +596,11 @@ function updateStockPricesUI() {
  // Retrieve the stock prices from local storage
   const storedStockPrices = localStorage.getItem('stockPrices');
   // Parse the stored stock prices object
-  let stockPrices = JSON.parse(storedStockPrices);
+const stockPrices = JSON.parse(JSON.stringify(storedStockPrices));
   
  companies.forEach((companyX) => {
     const { name, price, quantity } = companyX;
-   console.log(storedStockPrices.price+"   local company   " + storedStockPrices.name+"  name   ");
+   console.log(stockPrices.price+"   local company   " + stockPrices.name+"  name   ");
 
   });
   // Loop through each company and update the price and buttons in the UI
