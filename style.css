@@ -255,10 +255,17 @@ box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 
-#news-content, #bank-content, #loans-content{
+#news-content, #bank-content{
     height: 60%;
     width: auto;
     overflow-y: scroll !important;
+    padding: 5%;
+display: block;
+}
+#loans-content{
+  height: 60%;
+    width: auto;
+    overflow-y: auto !important;
     padding: 5%;
 display: block;
 }
