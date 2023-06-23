@@ -509,8 +509,8 @@ stockPopupQuantity.textContent = `Own: ${getStockQuantity(theCompanyName)?.stock
   stockPopupCash.textContent = `Cash: $${getAvailableFunds().toFixed(2) || 0}`;
 
 
- stockPopupBuy.removeEventListener("click", buyStock);
-  stockPopupSell.removeEventListener("click", sellStock);
+// stockPopupBuy.removeEventListener("click", buyStock);
+  //stockPopupSell.removeEventListener("click", sellStock);
         stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
   stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
 
@@ -539,11 +539,6 @@ return;
         closePopup("portfolio-popup");
   openPopup("stock-popup");
  
- stockPopupBuy.removeEventListener("click", buyStock);
-stockPopupSell.removeEventListener("click", sellStock);
-        stockPopupInput.value = "";
-       // stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
-//  stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
 stockPopupQuantity.addEventListener("click", () => {
   const stockQuantity = getStockQuantity(theCompanyName)?.stockQuantity || 0;
 getStockOwned(stockQuantity);
