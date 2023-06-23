@@ -114,9 +114,9 @@ function getStockPrices(stockName) {
 
 
 function generateStockChart(stockData, theName) {
-  console.log("stockData   " + stockData);
-  console.log("stockData   " + stockData.name);
-  console.log("stockData.name   " + stockData[0]);
+//  console.log("stockData   " + stockData);
+//  console.log("stockData   " + stockData.name);
+ // console.log("stockData.name   " + stockData[0]);
 
   const canvas = document.getElementById("stock-chart");
   const ctx = canvas.getContext("2d");
@@ -634,7 +634,7 @@ function timeAndDateFunc() {
     localStorage.setItem('counterValue', counterValue.toString());
 
     // Output the current counter value
-  console.log('counterValue:', counterValue);
+//  console.log('counterValue:', counterValue);
 
       // Output the current counter value
   console.log('incrementCounter:', incrementCounter);
@@ -719,7 +719,7 @@ function newWeek() {
 
 // Function to update the net worth display
 function updateNetWorthDisplay() {
-  console.log('updateNetWorthDisplay');
+//  console.log('updateNetWorthDisplay');
 
   
   // Calculate the net worth based on the stocks owned and their current prices
