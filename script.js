@@ -1194,8 +1194,8 @@ function requestLoan() {
     // Retrieve the lender payment information from local storage
     const lenderPaymentInfo = JSON.parse(lenderPaymentInfoString);
     
-    let startDay = lenderPaymentInfo?.startDay || 0;
-let interestRate = lenderPaymentInfo?.interestRate;
+    let startDay = lenderPaymentInfo.startDay || 0;
+let interestRate = lenderPaymentInfo.interestRate;
 let loanLength = parseInt(lenderPaymentInfo?.loanLength) || 0;
 let borrowedAmount = parseInt(lenderPaymentInfo?.borrowedAmount) || 0;
     
@@ -1218,7 +1218,7 @@ let daysRemaining = Math.floor(loanDueDate - counterValue);
       // Save the lender payment information to local storage
       localStorage.setItem('lenderPaymentInfo', JSON.stringify(lenderPaymentInfoNew));
          
-              console.log(borrowedAmount +"  borrowedAmount  ");
+              console.log(borrowedAmount +"  borrowedAmount  "+startDay);
               console.log(loanNewTotal +"  loanNewTotal  "+ interestRate+"   interestRate    " + (interestRate * 10));
 
       if (daysRemaining < 4) {
@@ -1234,7 +1234,7 @@ let daysRemaining = Math.floor(loanDueDate - counterValue);
         deductFunds(loanNewTotal);
         
         // Clear lender payment info from local storage
-//localStorage.removeItem('lenderPaymentInfo');
+localStorage.removeItem('lenderPaymentInfo');
       }
        }
   }
