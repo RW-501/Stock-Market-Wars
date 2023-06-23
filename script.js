@@ -910,7 +910,7 @@ function deductFunds(amount) {
   // Check if the amount is valid (positive and not exceeding the available funds)
   if (amount <= 0 || amount > currentFunds) {
         // Add the news event
-  const event = `Funds are low $${amount}`;
+  const event = `Funds are low $${amount.toFixed(2) }`;
           addNewsEvent(event, "bank"); // Add the news event to the UI
 
     // Handle the error case (e.g., display an error message, throw an error, etc.)
@@ -919,9 +919,11 @@ function deductFunds(amount) {
   
   // Deduct the specified amount from the current funds
   const newFunds = currentFunds - amount;
-  
   // Update the available funds in local storage
   localStorage.setItem('availableFunds', newFunds.toString());
+
+     const event = `$${amount.toFixed(2) } Deducted from account`;
+          addNewsEvent(event, "bank"); // Add the news event to the UI    return;
        updateNetWorthDisplay();
 }
 
@@ -937,7 +939,7 @@ function addFunds(amount) {
     // Handle the error case (e.g., display an error message, throw an error, etc.)
 
     // Add the news event
-  const event = `Funds are low $${amount}`;
+  const event = `Funds are low $${amount.toFixed(2) }`;
           addNewsEvent(event, "bank"); // Add the news event to the UI    return;
   }
   
@@ -945,7 +947,7 @@ function addFunds(amount) {
   const newFunds = currentFunds + amount;
 
         // console.log("newFunds add   "+newFunds);
-  const event = `$${amount} added to account`;
+  const event = `$${amount.toFixed(2) } added to account`;
   addNewsEvent(event, "bank"); // Add the news event to the UI  
   
   // Update the available funds in local storage
@@ -1105,7 +1107,7 @@ function updateLenderDetails() {
       if (existingLoanInfo && existingLoanInfo.id === selectedLender.id) {
         console.log("You already have a loan with this lender.");
 let newAmount = selectedLender.funds - existingLoanInfo.borrowedAmount ;
-        displayStatusMessage("lender","You already have a $"+newAmount+" loan with "+selectedLender.name );
+        displayStatusMessage("lender","You already have a $"+${newAmount.toFixed(2) }+" loan with "+selectedLender.name );
 
        // console.log(newAmount +"  selectedLender.funds  "+ selectedLender.funds+"   existingLoanInfo.borrowedAmount    " + existingLoanInfo.borrowedAmount);
 if(newAmount < 0){newAmount = 0; }
@@ -1199,9 +1201,9 @@ function requestLoan() {
       localStorage.setItem('lenderPaymentInfo', JSON.stringify(lenderPaymentInfo));
 
       // Add news event
-      const event = `Borrowed $${amount} from ${selectedLender.name}`;
+      const event = `Borrowed $${amount.toFixed(2) } from ${selectedLender.name}`;
       addNewsEvent(event);
-        displayStatusMessage("lender","Loan approved! Amount: $" + amount);
+        displayStatusMessage("lender","Loan approved! Amount: $" + ${amount.toFixed(2) });
 
       // updateNetWorthDisplay();
      // console.log("Loan approved! Amount: $" + amount);
