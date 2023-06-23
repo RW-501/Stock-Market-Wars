@@ -1195,7 +1195,7 @@ function requestLoan() {
     const lenderPaymentInfo = JSON.parse(lenderPaymentInfoString);
     
     let startDay = lenderPaymentInfo?.startDay || 0;
-let interestRate = parseInt(lenderPaymentInfo?.interestRate) || 0;
+let interestRate = lenderPaymentInfo?.interestRate;
 let loanLength = parseInt(lenderPaymentInfo?.loanLength) || 0;
 let borrowedAmount = parseInt(lenderPaymentInfo?.borrowedAmount) || 0;
     
@@ -1219,7 +1219,7 @@ let daysRemaining = Math.floor(loanDueDate - counterValue);
       localStorage.setItem('lenderPaymentInfo', JSON.stringify(lenderPaymentInfoNew));
          
               console.log(borrowedAmount +"  borrowedAmount  ");
-              console.log(loanNewTotal +"  loanNewTotal  "+ interestRate+"   interestRate    " + loanLength);
+              console.log(loanNewTotal +"  loanNewTotal  "+ interestRate+"   interestRate    " + (interestRate * 10));
 
       if (daysRemaining < 4) {
 
