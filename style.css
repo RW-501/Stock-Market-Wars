@@ -38,7 +38,16 @@ display: flex;
         cursor: pointer;
 
 }
+.status{
+      width: 100%;
+    max-height: fit-content;
+    display: block;
+    margin: 2%;
+  text-align: center;
+  padding: 5%;
+  font-size: 26px;
 
+}
 
 #stocks {
   margin-bottom: 20px;
