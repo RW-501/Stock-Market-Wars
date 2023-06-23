@@ -76,6 +76,7 @@ function saveStockPrices(xxx) {
   stockData.forEach(stock => {
     const { name, price } = stock;
     let lastSevenPrices = storedStockPrices[name] || [];
+ console.log("333333333333333333333333333333333333");
 
     // Ensure lastSevenPrices is an array
     if (!Array.isArray(lastSevenPrices)) {
@@ -339,7 +340,7 @@ function updateStockPrices() {
         // Update the stock prices in the user interface
 updateStockPricesUI();
 
- 
+ console.log("111111111111111111111111111111111111111111");
 
 const msgArea = document.getElementById("msg-area");
   // Clear the existing rows
@@ -411,6 +412,7 @@ document.getElementById("msg-area").textContent = "";
       
       const newsEvent = `Breaking News: ${company.name} price ${isPositiveLabel} by ${changePercentageFormatted}`;
       addNewsEvent(newsEvent, "main", company.name); // Add the news event to the UI
+ console.log("2222222222222222222222222222222222222222222222222222222222222222222222222222");
 
  
       
@@ -690,6 +692,9 @@ if (counterValue > 365) {
   
     displayPortfolio();
 updateNetWorthDisplay();
+
+   console.log("5555555555555555555555555555555555");
+
 }
 
 
