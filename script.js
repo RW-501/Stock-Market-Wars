@@ -1196,15 +1196,16 @@ function requestLoan() {
     const lenderPaymentInfo = JSON.parse(lenderPaymentInfoString);
     
     let startDay = lenderPaymentInfo?.startDay || 0;
-    let interestRate = lenderPaymentInfo?.interestRate || 0;
-    let loanLength = lenderPaymentInfo?.loanLength || 0;
+let interestRate = parseInt(lenderPaymentInfo?.interestRate) || 0;
+let loanLength = parseInt(lenderPaymentInfo?.loanLength) || 0;
     let borrowedAmount = lenderPaymentInfo?.borrowedAmount || 0;
     
-    let loanNewTotal = borrowedAmount * (interestRate * 100);
-    let loanDueDate = startDay + loanLength;
+  let loanNewTotal = parseInt(borrowedAmount * (interestRate * 100), 10);
+let loanDueDate = parseInt(startDay) + parseInt(loanLength, 10);
+
 
     if (loanDueDate >= 0) {
-let daysRemaining = Math.max(loanDueDate - counterValue, 0);
+let daysRemaining = Math.floor(loanDueDate - counterValue);
       
               console.log(interestRate +"  borrowedAmount  "+ borrowedAmount+"   (interestRate * 100)    " + (interestRate * 100));
               console.log(loanNewTotal +"  startDay  "+ startDay+"   loanLength    " + loanLength);
