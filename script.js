@@ -429,16 +429,17 @@ document.getElementById("msg-area").textContent = "";
      stockPrices[company.name] = company.price;
 
   }
+// Update the stock prices in the user interface
+updateStockPricesUI();
 
- //   console.log(JSON.stringify(stockPrices)+" <br> stockPrices 44   "+stockPrices);
-//saveStockPrices(JSON.parse(JSON.stringify(stockPrices)));
+
+  
 saveStockPrices(stockPrices);
 
   // Save the updated stock prices object in local storage
   localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
   
-// Update the stock prices in the user interface
-updateStockPricesUI();
+
   
      timeAndDateFunc();
 }
