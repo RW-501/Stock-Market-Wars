@@ -1056,16 +1056,16 @@ function sellStock(companyName, quantityToSell) {
 
 
 const lenders = [
-  { id: "1", name: "Fortune Finance", funds: 100000, interestRate: 0.1, minNetWorth: 100, loanLength: "30" },
-  { id: "2", name: "Prestige Bank", funds: 50000, interestRate: 0.15, minNetWorth: 300, loanLength: "" },
-  { id: "3", name: "Elite Capital", funds: 75000, interestRate: 0.12, minNetWorth: 3000, loanLength: "15" },
-  { id: "4", name: "ABC Lenders", funds: 200000, interestRate: 0.09, minNetWorth: 500, loanLength: "20" },
-  { id: "5", name: "Global Investments", funds: 1500000, interestRate: 0.08, minNetWorth: 10000, loanLength: "45" },
-  { id: "6", name: "Wealthy Funding", funds: 300000, interestRate: 0.07, minNetWorth: 2000, loanLength: "25" },
-  { id: "7", name: "Prime Lenders", funds: 500000, interestRate: 0.06, minNetWorth: 5000, loanLength: "40" },
-  { id: "8", name: "Golden Bank", funds: 80000, interestRate: 0.11, minNetWorth: 800, loanLength: "10" },
-  { id: "9", name: "Silver Finance", funds: 250000, interestRate: 0.13, minNetWorth: 1500, loanLength: "35" },
-  { id: "10", name: "Diamond Capital", funds: 400000, interestRate: 0.05, minNetWorth: 50000, loanLength: "30" }
+  { id: "1", name: "Fortune Finance", funds: 1000, interestRate: 0.1, minNetWorth: 500, loanLength: "30" },
+  { id: "2", name: "Prestige Bank", funds: 10000, interestRate: 0.15, minNetWorth: 1000, loanLength: "15" },
+  { id: "3", name: "Elite Capital", funds: 50000, interestRate: 0.12, minNetWorth: 3000, loanLength: "15" },
+  { id: "4", name: "ABC Lenders", funds: 100000, interestRate: 0.09, minNetWorth: 10000, loanLength: "20" },
+  { id: "5", name: "Global Investments", funds: 500000, interestRate: 0.08, minNetWorth: 50000, loanLength: "45" },
+  { id: "6", name: "Wealthy Funding", funds: 1000000, interestRate: 0.07, minNetWorth: 100000, loanLength: "25" },
+  { id: "7", name: "Prime Lenders", funds: 5000000, interestRate: 0.06, minNetWorth: 500000, loanLength: "40" },
+  { id: "8", name: "Golden Bank", funds: 10000000, interestRate: 0.11, minNetWorth: 1000000, loanLength: "10" },
+  { id: "9", name: "Silver Finance", funds: 40000000, interestRate: 0.13, minNetWorth: 5000000, loanLength: "35" },
+  { id: "10", name: "Diamond Capital", funds: 100000000, interestRate: 0.05, minNetWorth: 10000000, loanLength: "30" }
 ];
 
 function updateLenderDetails() {
@@ -1101,14 +1101,14 @@ function updateLenderOptions() {
   const eligibleLenders = lenders.filter(lender => lender.minNetWorth <= newWorth);
 
 //  lenderSelect.innerHTML = "";
-
+/*
   eligibleLenders.forEach(lender => {
     const option = document.createElement("option");
     option.value = lender.name;
     option.textContent = lender.name;
     lenderSelect.appendChild(option);
   });
-
+*/
       updateLenderDetails();
 
   
