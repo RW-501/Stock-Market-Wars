@@ -1203,7 +1203,7 @@ function requestLoan() {
       // Add news event
       const event = `Borrowed $${amount.toFixed(2) } from ${selectedLender.name}`;
       addNewsEvent(event);
-        displayStatusMessage("lender","Loan approved! Amount: $" + ${amount.toFixed(2) });
+        displayStatusMessage("lender","Loan approved! Amount: $" + amount.toFixed(2) );
 
       // updateNetWorthDisplay();
      // console.log("Loan approved! Amount: $" + amount);
