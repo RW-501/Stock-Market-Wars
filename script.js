@@ -336,6 +336,9 @@ localStorage.setItem('portfolio', JSON.stringify(portfolioString));
 /// START UPDATE PRICES
 function updateStockPrices() {
 
+        // Update the stock prices in the user interface
+updateStockPricesUI();
+
  
 
 const msgArea = document.getElementById("msg-area");
@@ -408,9 +411,6 @@ document.getElementById("msg-area").textContent = "";
       
       const newsEvent = `Breaking News: ${company.name} price ${isPositiveLabel} by ${changePercentageFormatted}`;
       addNewsEvent(newsEvent, "main", company.name); // Add the news event to the UI
-
-        // Update the stock prices in the user interface
-updateStockPricesUI();
 
  
       
