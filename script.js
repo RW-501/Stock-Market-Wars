@@ -1765,12 +1765,12 @@ document.getElementById("close-pause-popup").addEventListener("click", function(
 
 // Function to restart the game
 function restartGame() {
-    clearInterval(interval); // Clear the interval to stop updating stock prices
 
       closePopup("options-popup");
-
+      clearInterval(intervalStock); // Stop the timer
+    clearInterval(interval); // Stop the timer
+      clearInterval(weekendTimer); // Stop the timer
   // Clear local storage
-document.addEventListener('DOMContentLoaded', function() {
   // Clean variables
 counterValue = 0;
 
@@ -1793,8 +1793,6 @@ console.log(keys);
 
 
   
-  });
-
   // Reset game state, UI elements, or perform necessary actions
   console.log("Game restarted");
 }
