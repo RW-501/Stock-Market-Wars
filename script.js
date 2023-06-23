@@ -938,7 +938,10 @@ function addFunds(amount) {
 }
 
 
-
+function displayStatusMessage(xxx, message) {
+  const statusMessageElement = document.getElementById(xxx+"-status");
+  statusMessageElement.textContent = message;
+}
 
 
 
@@ -998,8 +1001,8 @@ if (totalCost <= availableFunds && quantityToBuy > 0) {
 
   updateStockQuantity(companyName, updatedStockQuantity, stockCost);
 
-  alert(`Successfully bought ${quantityToBuy} ${companyName} stocks for $${totalCost.toFixed(2)}. total stock price: $${stockCost.toFixed(2)}.`);
-
+  //alert(`Successfully bought ${quantityToBuy} ${companyName} stocks for $${totalCost.toFixed(2)}. total stock price: $${stockCost.toFixed(2)}.`);
+displayStatusMessage("stock",`Successfully bought ${quantityToBuy} ${companyName} stocks for $${totalCost.toFixed(2)}. total stock price: $${stockCost.toFixed(2)}.`);
 
 
         // console.log(counT+"    event buy   "+event);
@@ -1009,8 +1012,11 @@ if (totalCost <= availableFunds && quantityToBuy > 0) {
       const eventBuy = `Bought ${quantityToBuy} shares of ${companyName} for $${totalCost.toFixed(2)}`;
   addNewsEvent(eventBuy); // Add the news event to the UI  
   
-      alert(counT+"    buy : Invalid quantity or insufficient funds to buy stocks.");
-    }
+    }else{
+displayStatusMessage("stock",`Invalid quantity or insufficient funds to buy stocks.`);
+      //alert(counT+"    buy : Invalid quantity or insufficient funds to buy stocks.");
+
+}
   clearInterval(intervalStock);
   closePopup("stock-popup");
 
@@ -1037,7 +1043,8 @@ function sellStock(companyName, quantityToSell) {
       
       updateStockQuantity(companyName, updatedStockQuantity, stockCost);
 
-      alert(`Successfully sold ${quantityToSell} ${companyName} stocks for $${totalEarnings.toFixed(2)}.`);
+      //alert(`Successfully sold ${quantityToSell} ${companyName} stocks for $${totalEarnings.toFixed(2)}.`);
+displayStatusMessage("stock",`Successfully sold ${quantityToSell} ${companyName} stocks for $${totalEarnings.toFixed(2)}.`);
 
       updateNetWorthDisplay();
 
@@ -1045,7 +1052,9 @@ function sellStock(companyName, quantityToSell) {
   addNewsEvent(eventSell); // Add the news event to the UI    
       
     } else {
-      alert("1 sell : Invalid quantity or insufficient stocks to sell.");
+    //  alert("1 sell : Invalid quantity or insufficient stocks to sell.");
+      displayStatusMessage("stock",`sell : Invalid quantity or insufficient stocks to sell.`);
+
     }
   clearInterval(intervalStock);
   closePopup("stock-popup");
@@ -1080,8 +1089,9 @@ function updateLenderDetails() {
       if (existingLoanInfo && existingLoanInfo.id === selectedLender.id) {
         console.log("You already have a loan with this lender.");
 let newAmount = selectedLender.funds - existingLoanInfo.borrowedAmount ;
-        
-        console.log(newAmount +"  selectedLender.funds  "+ selectedLender.funds+"   existingLoanInfo.borrowedAmount    " + existingLoanInfo.borrowedAmount);
+        displayStatusMessage("loan",`You already have a $`+newAmount+` loan with `+lender.name );
+
+       // console.log(newAmount +"  selectedLender.funds  "+ selectedLender.funds+"   existingLoanInfo.borrowedAmount    " + existingLoanInfo.borrowedAmount);
 if(newAmount < 0){newAmount = 0; }
             document.getElementById("lender-Max").textContent = "$" + newAmount;
     document.getElementById("lender-Rate").textContent = selectedLender.interestRate +"% per day";
@@ -1150,7 +1160,8 @@ function requestLoan() {
         console.log("You already have a loan with this lender.");
         newAmount += existingLoanInfo.borrowedAmount;
       }
-      
+          if (selectedLender.funds >= newAmount) {
+
       // Deduct the loan amount from the lender's funds
       selectedLender.funds -= newAmount;
 
@@ -1174,16 +1185,26 @@ function requestLoan() {
       // Add news event
       const event = `Borrowed $${amount} from ${selectedLender.name}`;
       addNewsEvent(event);
+        displayStatusMessage("lender","Loan approved! Amount: $" + amount);
 
       // updateNetWorthDisplay();
-      console.log("Loan approved! Amount: $" + amount);
+     // console.log("Loan approved! Amount: $" + amount);
+          }else{
+      //console.log("Loan request denied. Insufficient funds.");
+        displayStatusMessage("lender","Loan request denied. Insufficient funds." );
+
+          }
     } else {
       // Display error message or update UI elements
-      console.log("Loan request denied. Insufficient funds.");
+     // console.log("Loan request denied. Insufficient funds.");
+              displayStatusMessage("lender","Loan request denied. Insufficient funds.");
+
     }
   } else {
     // Display error message or update UI elements for invalid input
-    console.log("Invalid loan request. Please enter a valid amount and select a lender.");
+                  displayStatusMessage("lender","Invalid loan request. Please enter a valid amount and select a lender.");
+
+  //  console.log("Invalid loan request. Please enter a valid amount and select a lender.");
   }
 }
 
@@ -1220,8 +1241,8 @@ let daysRemaining = Math.floor(loanDueDate - counterValue);
       // Save the lender payment information to local storage
       localStorage.setItem('lenderPaymentInfo', JSON.stringify(lenderPaymentInfoNew));
          
-              console.log(borrowedAmount +"  borrowedAmount  "+startDay);
-              console.log(loanNewTotal +"  loanNewTotal  "+ interestRate+"   interestRate    " + (interestRate * 10));
+            //  console.log(borrowedAmount +"  borrowedAmount  "+startDay);
+             // console.log(loanNewTotal +"  loanNewTotal  "+ interestRate+"   interestRate    " + (interestRate * 10));
 
       if (daysRemaining < 4 && daysRemaining > -3 ) {
 
@@ -1247,7 +1268,7 @@ localStorage.removeItem('lenderPaymentInfo');
       
 // Function to add news event
 function addNewsEvent(event, xxx,name) {
-        console.log(xxx +"  xxx  "+ name+"   event    " + event);
+   //    console.log(xxx +"  xxx  "+ name+"   event    " + event);
 
   eventDayCount = 0;
   
@@ -1588,10 +1609,14 @@ function makePayment() {
       const event = `Paid $${paymentAmount.toFixed(2)} towards loan from ${selectedLender.name}`;
       addNewsEvent(event);
     } else {
-      alert("Insufficient funds");
+      //alert("Insufficient funds");
+                        displayStatusMessage("loans","Insufficient funds");
+
     }
   } else {
-    alert("Please enter a valid payment amount");
+   // alert("Please enter a valid payment amount");
+                      displayStatusMessage("loans","Please enter a valid payment amount");
+
   }
 }
 
