@@ -1196,22 +1196,22 @@ function requestLoan() {
     const lenderPaymentInfo = JSON.parse(lenderPaymentInfoString);
     
     let startDay = lenderPaymentInfo?.startDay || 0;
-let interestRate = lenderPaymentInfo?.interestRate || 0;
+let interestRate = parseInt(lenderPaymentInfo?.interestRate) || 0;
 let loanLength = parseInt(lenderPaymentInfo?.loanLength) || 0;
-    let borrowedAmount = lenderPaymentInfo?.borrowedAmount || 0;
+let borrowedAmount = parseInt(lenderPaymentInfo?.borrowedAmount) || 0;
     
-  let loanNewTotal = parseInt(borrowedAmount * (interestRate * 10), 10);
+  let loanNewTotal = borrowedAmount * (interestRate * 10);
 let loanDueDate = parseInt(startDay) + parseInt(loanLength, 10);
 
 
     if (loanDueDate >= 0) {
 let daysRemaining = Math.floor(loanDueDate - counterValue);
       
-              console.log(interestRate +"  borrowedAmount  "+ borrowedAmount+"   (interestRate * 10)    " + (interestRate * 10));
-              console.log(loanNewTotal +"  startDay  "+ startDay+"   loanLength    " + loanLength);
-              console.log(daysRemaining +"  loanDueDate  "+ loanDueDate+"   counterValue    " + counterValue);
+         
+              console.log(borrowedAmount +"  borrowedAmount  ");
+              console.log(loanNewTotal +"  loanNewTotal  "+ interestRate+"   interestRate    " + loanLength);
 
-      if (daysRemaining > 0) {
+      if (daysRemaining < 4) {
         localStorage.setItem("lenderPaymentInfo", JSON.stringify(borrowedAmount.borrowedAmount));
 
         const event = `$${loanNewTotal.toFixed(2)} is Due to ${lenderPaymentInfo.name} in ${daysRemaining} Days`;
@@ -1220,14 +1220,14 @@ let daysRemaining = Math.floor(loanDueDate - counterValue);
         const event = `$${loanNewTotal.toFixed(2)} is Due to ${lenderPaymentInfo.name} Today!`;
         addNewsEvent(event, "loan");
       } else {
-        const event = `${lenderPaymentInfo.name} came and got $${loanNewTotal}`;
+        const event = `${lenderPaymentInfo.name} came and got $${loanNewTotal.toFixed(2)}`;
         addNewsEvent(event, "loan");
         
         // Deduct funds for past-due loan
         deductFunds(loanNewTotal);
         
         // Clear lender payment info from local storage
-        localStorage.setItem('lenderPaymentInfo', JSON.stringify(''));
+        localStorage.setItem('lenderPaymentInfo', );
       }
     }
   }
