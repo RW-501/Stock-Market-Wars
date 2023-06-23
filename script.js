@@ -788,23 +788,62 @@ function calculateItemValue(itemType) {
 }
 
 // Sample item data for the store
-const storeItems = [
-  { name: "Car A", price: 20000, quantity: 1 },
-  { name: "Car B", price: 15000, quantity: 1 },
-  { name: "Car C", price: 30000, quantity: 1 },
-  { name: "House A", price: 250000, quantity: 1 },
-  { name: "House B", price: 350000, quantity: 1 },
-  { name: "House C", price: 500000, quantity: 1 },
-  { name: "Expensive Item X", price: 1000000, quantity: 1 },
-  // Add more items as needed
-];
+function showStoreItems() {
+  // Retrieve the store items from your data structure or storage mechanism
+  const storeItems = [
+    { name: "Car A", price: 20000 },
+    { name: "Car B", price: 15000 },
+    { name: "Car C", price: 30000 },
+    { name: "House A", price: 250000 },
+    { name: "House B", price: 350000 },
+    { name: "House C", price: 500000 },
+    // Add more items as needed
+  ];
+
+  // Get the container element to display the store items
+  const storeContainer = document.getElementById("store-container");
+
+  // Clear the existing content of the store container
+  storeContainer.innerHTML = "";
+
+  // Loop through the store items and create HTML elements to display each item
+  storeItems.forEach(item => {
+    // Create a div element for the item
+    const itemDiv = document.createElement("div");
+    itemDiv.classList.add("store-item");
+
+    // Create a span element to display the item name
+    const nameSpan = document.createElement("span");
+    nameSpan.textContent = item.name;
+
+    // Create a span element to display the item price
+    const priceSpan = document.createElement("span");
+    priceSpan.textContent = "$" + item.price.toFixed(2);
+
+    // Create a button element to buy the item
+    const buyButton = document.createElement("button");
+    buyButton.textContent = "Buy";
+    buyButton.addEventListener("click", () => {
+      // Handle the buying functionality for the item
+      buyItem(item);
+    });
+
+    // Append the name, price, and buy button to the item div
+    itemDiv.appendChild(nameSpan);
+    itemDiv.appendChild(priceSpan);
+    itemDiv.appendChild(buyButton);
+
+    // Append the item div to the store container
+    storeContainer.appendChild(itemDiv);
+  });
+}
+
 
 /*
 // Uncomment the following code to update the player's item collections in local storage
 localStorage.setItem('playerCars', JSON.stringify([]));
 localStorage.setItem('playerHouses', JSON.stringify([]));
 localStorage.setItem('playerExpensiveItems', JSON.stringify([]));
-*/
 
 // Example usage:
 
@@ -823,6 +862,13 @@ console.log('Total value of cars:', totalCarValue);
 // Calculate the total value of houses owned by the player
 const totalHouseValue = calculateItemValue('Houses');
 console.log('Total value of houses:', totalHouseValue);
+
+
+*/
+
+
+
+
 
 
 
@@ -1650,20 +1696,14 @@ document.getElementById("close-lender-popup").addEventListener("click", function
 });
 
 document.getElementById("open-buy-car-popup").addEventListener("click", function() {
-  openPopup("buy-car-popup");
+  openPopup("buy-item-popup");
 });
 
 document.getElementById("close-buy-car-popup").addEventListener("click", function() {
-  closePopup("buy-car-popup");
+  closePopup("buy-item-popup");
 });
 
-document.getElementById("open-buy-house-popup").addEventListener("click", function() {
-  openPopup("buy-house-popup");
-});
 
-document.getElementById("close-buy-house-popup").addEventListener("click", function() {
-  closePopup("buy-house-popup");
-});
 
 document.getElementById("open-business-popup").addEventListener("click", function() {
   openPopup("business-popup");
