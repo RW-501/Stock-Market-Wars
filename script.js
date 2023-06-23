@@ -336,8 +336,7 @@ localStorage.setItem('portfolio', JSON.stringify(portfolioString));
 /// START UPDATE PRICES
 function updateStockPrices() {
 
- // Update the stock prices in the user interface
-updateStockPricesUI();
+ 
 
 const msgArea = document.getElementById("msg-area");
   // Clear the existing rows
@@ -437,7 +436,10 @@ saveStockPrices(stockPrices);
 
   // Save the updated stock prices object in local storage
   localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
-
+  
+// Update the stock prices in the user interface
+updateStockPricesUI();
+  
      timeAndDateFunc();
 }
 
