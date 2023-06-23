@@ -32,30 +32,23 @@ function getMarket() {
 
 
 
-  // Retrieve the stored stock prices from local storage
-  const storedStockPrices = localStorage.getItem('stockPrices');
-//console.log("storedStockPrices   "+storedStockPrices);
+ const storedStockPrices = localStorage.getItem('stockPrices');
 
- // Check if stockPrices data exists in local storage
- // if (storedStockPrices) {
-if (storedStockPrices !== "" && storedStockPrices !== null && storedStockPrices !== undefined) {
+  if (storedStockPrices) {
+    const stockPrices = JSON.parse(storedStockPrices) || {};
 
-  // Parse the stored stock prices string into an object or set it to an empty object if null
-  const stockPrices = JSON.parse(storedStockPrices) || {};
+    const updatedCompanies = market.map(company => {
+      const { name } = company;
+      const price = company.price || stockPrices[name];
+      return { name, price };
+    });
 
-  // Update the prices of the companies with the stored stock prices
-  const updatedCompanies = market.map(company => {
-    const { name } = company;
-    const price = company.price || stockPrices[name];
-    return { name, price };
-  });
+    // Store the updated market data back to local storage
+    localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
 
-  // You can use the updatedCompanies array in your code as needed
+    return updatedCompanies;
+  }
 
-  return updatedCompanies;
-}
-  
-// If stockPrices data doesn't exist in local storage, return the default market data
   return market;
 }
 
