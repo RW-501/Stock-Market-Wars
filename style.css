@@ -46,7 +46,7 @@ display: flex;
   text-align: center;
   padding: 5%;
   font-size: 26px;
-
+box-sizing: border-box;
 }
 
 #stocks {
@@ -153,12 +153,10 @@ font-size: 30px;
 
 .popup-content {
     background-color: #fff;
-    max-width: fit-content;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     overflow: auto;
-    max-height: fit-content;
     display: block;
     margin: auto;
     position: absolute;
@@ -166,7 +164,7 @@ font-size: 30px;
     bottom: 0;
     right: 0;
     top: 0;
-width: 50%; 
+width: 70%; 
 }
 
 .popup h2 {
