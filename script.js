@@ -1098,7 +1098,7 @@ if(newAmount < 0){newAmount = 0; }
     document.getElementById("lender-LoanLength").textContent = selectedLender.loanLength + " days";
       }else{
     document.getElementById("lender-Max").textContent = "$" + selectedLender.funds;
-    document.getElementById("lender-Rate").textContent = selectedLender.interestRate +" per day";
+    document.getElementById("lender-Rate").textContent = selectedLender.interestRate +"% per day";
     document.getElementById("lender-LoanLength").textContent = selectedLender.loanLength + " days";
       }
   }
