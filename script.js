@@ -1695,11 +1695,11 @@ document.getElementById("close-lender-popup").addEventListener("click", function
   closePopup("lender-popup");
 });
 
-document.getElementById("open-buy-car-popup").addEventListener("click", function() {
+document.getElementById("open-buy-item-popup").addEventListener("click", function() {
   openPopup("buy-item-popup");
 });
 
-document.getElementById("close-buy-car-popup").addEventListener("click", function() {
+document.getElementById("close-buy-item-popup").addEventListener("click", function() {
   closePopup("buy-item-popup");
 });
 
