@@ -1205,8 +1205,18 @@ let loanDueDate = parseInt(startDay) + parseInt(loanLength, 10);
 
     if (loanDueDate >= 0) {
 let daysRemaining = Math.floor(loanDueDate - counterValue);
-      localStorage.setItem("lenderPaymentInfo", JSON.stringify({ borrowedAmount: borrowedAmount }));
-
+      
+      const lenderPaymentInfoNew = {
+        id: lenderPaymentInfo.id,
+        borrowedAmount: borrowedAmount,
+        name: lenderPaymentInfo.name,
+        interestRate: interestRate,
+        loanLength: loanLength,
+        startDay: startDay
+      };
+   
+      // Save the lender payment information to local storage
+      localStorage.setItem('lenderPaymentInfo', JSON.stringify(lenderPaymentInfoNew));
          
               console.log(borrowedAmount +"  borrowedAmount  ");
               console.log(loanNewTotal +"  loanNewTotal  "+ interestRate+"   interestRate    " + loanLength);
