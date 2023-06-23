@@ -1528,7 +1528,7 @@ let dueDate = parsedLoanInfo.startDay + parsedLoanInfo.loanLength;
   let daysLeft = dueDate - counterValue;
 nameCell.innerHTML = parsedLoanInfo.name;
 borrowedAmountCell.innerHTML = "$" + (parsedLoanInfo.borrowedAmount ? parsedLoanInfo.borrowedAmount.toFixed(2) : "0") + " due";
-loanLengthCell.innerHTML = parsedLoanInfo.loanLength + "  days left";
+loanLengthCell.innerHTML = daysLeft + "  days left";
 
 const loanCellsWrapper = document.createElement("div");
 loanCellsWrapper.classList.add('loan-item');
