@@ -493,8 +493,8 @@ theCompanyName = stockName;
   const stockPopupPrice = document.getElementById("stock-popup-price");
   const stockPopupQuantity = document.getElementById("stock-popup-quantity");
   const stockPopupInput = document.getElementById("stock-popup-input");
-  const stockPopupBuy = document.getElementById("stock-popup-buy");
-  const stockPopupSell = document.getElementById("stock-popup-sell");
+  var stockPopupBuy = document.getElementById("stock-popup-buy");
+  var stockPopupSell = document.getElementById("stock-popup-sell");
   const stockPopupCash = document.getElementById("stock-popup-cash");
 
   stockPopupTitle.textContent = theCompanyName;
@@ -566,8 +566,7 @@ function addLimitedEventListener(element, event, callback) {
 
 // Close the stock popup and remove event listeners
 function closeStockPopup() {
-  const stockPopupBuy = document.getElementById("stock-popup-buy");
-  const stockPopupSell = document.getElementById("stock-popup-sell");
+
 
 stockPopupBuy.removeEventListener("click", buyStock);
  stockPopupSell.removeEventListener("click", sellStock);
