@@ -262,10 +262,10 @@ display: inline-grid !important;
 }
 
 .loan-item{
-display: flex;
-      cursor: pointer;
-    margin: auto;
-
+    cursor: pointer;
+    margin: 5%;
+    font-size: 26px;
+    font-weight: 500;
 }
 .loan-item div{
 display: block;
