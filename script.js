@@ -1216,9 +1216,7 @@ let daysRemaining = Math.floor(loanDueDate - counterValue);
         const event = `$${loanNewTotal.toFixed(2)} is Due to ${lenderPaymentInfo.name} in ${daysRemaining} Days`;
         addNewsEvent(event, "loan");
       } else if (daysRemaining === 0) {
-        const event = `$${loanNewTotal.toFixed(2)} is Due to ${lenderPaymentInfo.name} Today!`;
-        addNewsEvent(event, "loan");
-      } else {
+  
         const event = `${lenderPaymentInfo.name} came and got $${loanNewTotal.toFixed(2)}`;
         addNewsEvent(event, "loan");
         
@@ -1228,7 +1226,7 @@ let daysRemaining = Math.floor(loanDueDate - counterValue);
         // Clear lender payment info from local storage
 //localStorage.removeItem('lenderPaymentInfo');
       }
-    }
+    
   }
 }
 
