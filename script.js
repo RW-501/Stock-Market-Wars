@@ -753,123 +753,76 @@ function getStockQuantity(companyName) {
 }
 
 
+function getPlayerItems(itemType) {
+  // Retrieve the list of items owned by the player from local storage based on the itemType
+  const items = JSON.parse(localStorage.getItem(`player${itemType}`)) || [];
 
-
-
-
-function getPlayerCars() {
-  // Retrieve the list of cars owned by the player from local storage
-  const cars = JSON.parse(localStorage.getItem('playerCars')) || [];
-
-  return cars;
+  return items;
 }
 
-function getPlayerHouses() {
-  // Retrieve the list of houses owned by the player from local storage
-  const houses = JSON.parse(localStorage.getItem('playerHouses')) || [];
+function buyItem(itemType, item) {
+  // Deduct the item price from the player's available funds
+  const itemPrice = item.price;
+  deductFunds(itemPrice);
 
-  return houses;
+  // Add the item to the player's item collection
+  const playerItems = getPlayerItems(itemType);
+  playerItems.push(item);
+
+  // Update the player's item collection in local storage
+  localStorage.setItem(`player${itemType}`, JSON.stringify(playerItems));
 }
 
-// Sample car data
-const cars = [
-  { name: "Car A", price: 20000 },
-  { name: "Car B", price: 15000 },
-  { name: "Car C", price: 30000 },
-  // Add more cars as needed
+function calculateItemValue(itemType) {
+  // Retrieve the list of items owned by the player from your data structure or storage mechanism based on the itemType
+  const items = getPlayerItems(itemType); // Implement this function to get the list of items owned
+
+  // Calculate the total value of items by summing up the individual item values
+  const totalItemValue = items.reduce((total, item) => {
+    const itemPrice = item.price; // Retrieve the price of the item
+    const itemQuantity = item.quantity; // Retrieve the quantity of the item owned
+    return total + itemPrice * itemQuantity;
+  }, 0);
+
+  return totalItemValue;
+}
+
+// Sample item data for the store
+const storeItems = [
+  { name: "Car A", price: 20000, quantity: 1 },
+  { name: "Car B", price: 15000, quantity: 1 },
+  { name: "Car C", price: 30000, quantity: 1 },
+  { name: "House A", price: 250000, quantity: 1 },
+  { name: "House B", price: 350000, quantity: 1 },
+  { name: "House C", price: 500000, quantity: 1 },
+  { name: "Expensive Item X", price: 1000000, quantity: 1 },
+  // Add more items as needed
 ];
 
-// Sample house data
-const houses = [
-  { name: "House A", price: 250000 },
-  { name: "House B", price: 350000 },
-  { name: "House C", price: 500000 },
-  // Add more houses as needed
-];
 /*
-// Update the player's car and house collections in local storage
-localStorage.setItem('playerCars', JSON.stringify(cars));
-localStorage.setItem('playerHouses', JSON.stringify(houses));
+// Uncomment the following code to update the player's item collections in local storage
+localStorage.setItem('playerCars', JSON.stringify([]));
+localStorage.setItem('playerHouses', JSON.stringify([]));
+localStorage.setItem('playerExpensiveItems', JSON.stringify([]));
 */
 
+// Example usage:
 
+// Buy a car from the store
+const carToBuy = storeItems.find(item => item.name === "Car A");
+buyItem('Cars', carToBuy);
 
+// Buy a house from the store
+const houseToBuy = storeItems.find(item => item.name === "House A");
+buyItem('Houses', houseToBuy);
 
+// Calculate the total value of cars owned by the player
+const totalCarValue = calculateItemValue('Cars');
+console.log('Total value of cars:', totalCarValue);
 
-
-
-function getPlayerCars() {
-  // Retrieve the list of cars owned by the player from local storage
-  const cars = JSON.parse(localStorage.getItem('playerCars')) || [];
-
-  return cars;
-}
-
-function getPlayerHouses() {
-  // Retrieve the list of houses owned by the player from local storage
-  const houses = JSON.parse(localStorage.getItem('playerHouses')) || [];
-
-  return houses;
-}
-
-function buyCar(car) {
-  // Deduct the car price from the player's available funds
-  const carPrice = car.price;
-  deductFunds(carPrice);
-
-  // Add the car to the player's car collection
-  const playerCars = getPlayerCars();
-  playerCars.push(car);
-
-  // Update the player's car collection in local storage
-  localStorage.setItem('playerCars', JSON.stringify(playerCars));
-}
-
-function buyHouse(house) {
-  // Deduct the house price from the player's available funds
-  const housePrice = house.price;
-  deductFunds(housePrice);
-
-  // Add the house to the player's house collection
-  const playerHouses = getPlayerHouses();
-  playerHouses.push(house);
-
-  // Update the player's house collection in local storage
-  localStorage.setItem('playerHouses', JSON.stringify(playerHouses));
-}
-
-
-
-
-
-
-function calculateCarValue() {
-  // Retrieve the list of cars owned by the player from your data structure or storage mechanism
-  const cars = getPlayerCars(); // Implement this function to get the list of cars owned
-  
-  // Calculate the total value of cars by summing up the individual car values
-  const totalCarValue = cars.reduce((total, car) => {
-    const carPrice = car.price; // Retrieve the price of the car
-    const carQuantity = car.quantity; // Retrieve the quantity of the car owned
-    return total + carPrice * carQuantity;
-  }, 0);
-  
-  return totalCarValue;
-}
-
-function calculateHouseValue() {
-  // Retrieve the list of houses owned by the player from your data structure or storage mechanism
-  const houses = getPlayerHouses(); // Implement this function to get the list of houses owned
-  
-  // Calculate the total value of houses by summing up the individual house values
-  const totalHouseValue = houses.reduce((total, house) => {
-    const housePrice = house.price; // Retrieve the price of the house
-    const houseQuantity = house.quantity; // Retrieve the quantity of the house owned
-    return total + housePrice * houseQuantity;
-  }, 0);
-  
-  return totalHouseValue;
-}
+// Calculate the total value of houses owned by the player
+const totalHouseValue = calculateItemValue('Houses');
+console.log('Total value of houses:', totalHouseValue);
 
 
 
@@ -958,28 +911,23 @@ function displayStatusMessage(xxx, message) {
 
 
 
-// Function to calculate the net worth
 function calculateNetWorth() {
   // Calculate the value of all stocks owned
   const stockValue = companies.reduce((total, company) => {
     const stockPrice = getStockPrice(company.name); // Retrieve the current stock price for the company
-    const  stockQuantity  = getStockQuantity(company.name).stockQuantity || 0; // Retrieve the stock quantity owned
-
+    const stockQuantity = getStockQuantity(company.name).stockQuantity || 0; // Retrieve the stock quantity owned
 
     return total + stockPrice * stockQuantity;
   }, 0);
-  
+
   // Calculate the value of other assets like cash, cars, houses, etc.
   const cashValue = getAvailableFunds(); // Implement this function to get the available funds
-  const carValue = calculateCarValue(); // Implement this function to calculate the value of cars
-  const houseValue = calculateHouseValue(); // Implement this function to calculate the value of houses
-
-
-              // console.log(cashValue +"    calculate   "+carValue+"   NetWorth    "+houseValue);
+  const carValue = calculateItemValue('Cars'); // Calculate the value of cars using the generic function
+  const houseValue = calculateItemValue('Houses'); // Calculate the value of houses using the generic function
+  const expensiveItemValue = calculateItemValue('ExpensiveItems'); // Calculate the value of other expensive items
 
   // Calculate the total net worth by adding the stock value and other assets value
-  const netWorth = stockValue + cashValue + carValue + houseValue;
-    //console.log("stockValue    " + stockValue);
+  const netWorth = stockValue + cashValue + carValue + houseValue + expensiveItemValue;
 
   // Return the total net worth
   return netWorth;
