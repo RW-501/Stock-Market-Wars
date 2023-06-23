@@ -598,9 +598,9 @@ function updateStockPricesUI() {
   // Parse the stored stock prices object
   let stockPrices = JSON.parse(storedStockPrices);
   
- companies.forEach((companyX) => {
+ stockPrices.forEach((companyX) => {
     const { name, price, quantity } = companyX;
-   console.log(companyX.price+"   company   " + companyX.name+"  name   ");
+   console.log(companyX.price+"   local company   " + companyX.name+"  name   ");
 
   });
   // Loop through each company and update the price and buttons in the UI
