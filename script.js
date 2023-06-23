@@ -1528,17 +1528,15 @@ function displayLoanHistory() {
   loansContent.innerHTML = ''; // Clear previous loan history
   
   const loanInfo = getLoanInfo();
+
   
+    const parsedLoanInfo = JSON.parse(loanInfo);
 
-if (!Array.isArray(loanInfo)) {
-  // Handle the case when loanInfo is not an array
-  loansContent.textContent = 'No loan history found.';
-  return;
-}
-
-
-  const parsedLoanInfo = JSON.parse(loanInfo);
-
+    if (!Array.isArray(parsedLoanInfo)) {
+      // Handle the case when parsedLoanInfo is not an array
+      loansContent.textContent = 'No loan history found.';
+      return;
+    }
 
 
 
