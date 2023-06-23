@@ -976,7 +976,7 @@ function buyStock(companyName, quantityToBuy, event) {
   const availableFunds = getAvailableFunds();
 counT++;
   
-       //  console.log(counT+"    event buy   "+event);
+        console.log(counT+" buyStock   counT ?????????????????????????????????  "+counT);
 
   const totalCost = stockPrice * quantityToBuy;
 
