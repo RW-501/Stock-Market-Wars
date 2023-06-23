@@ -1548,7 +1548,7 @@ function displayLoanHistory() {
   
     const parsedLoanInfo = JSON.parse(loanInfo);
 
-    if (!Array.isArray(parsedLoanInfo)) {
+    if (!parsedLoanInfo) {
       // Handle the case when parsedLoanInfo is not an array
       loansContent.textContent = 'No loan history found.';
       return;
