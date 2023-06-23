@@ -1100,15 +1100,14 @@ function updateLenderOptions() {
   const newWorth = calculateNetWorth();
   const eligibleLenders = lenders.filter(lender => lender.minNetWorth <= newWorth);
 
-//  lenderSelect.innerHTML = "";
-/*
+ lenderSelect.innerHTML = "";
+
   eligibleLenders.forEach(lender => {
     const option = document.createElement("option");
     option.value = lender.name;
     option.textContent = lender.name;
     lenderSelect.appendChild(option);
   });
-*/
       updateLenderDetails();
 
   
