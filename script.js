@@ -1107,7 +1107,7 @@ function updateLenderDetails() {
       if (existingLoanInfo && existingLoanInfo.id === selectedLender.id) {
         console.log("You already have a loan with this lender.");
 let newAmount = selectedLender.funds - existingLoanInfo.borrowedAmount ;
-        displayStatusMessage("lender","You already have a $"+${newAmount.toFixed(2) }+" loan with "+selectedLender.name );
+displayStatusMessage("lender", "You already have a $" + newAmount.toFixed(2) + " loan with " + selectedLender.name);
 
        // console.log(newAmount +"  selectedLender.funds  "+ selectedLender.funds+"   existingLoanInfo.borrowedAmount    " + existingLoanInfo.borrowedAmount);
 if(newAmount < 0){newAmount = 0; }
