@@ -335,8 +335,7 @@ localStorage.setItem('portfolio', JSON.stringify(portfolioString));
 function updateStockPrices() {
 
   
-  // Update the stock prices in the user interface
-updateStockPricesUI();
+
   
   // Retrieve the stock prices from local storage
   const storedStockPrices = localStorage.getItem('stockPrices');
@@ -399,10 +398,10 @@ if (Math.random() < 0.8) { // 20% chance of a news event
       const isPositiveChangeNew = newsChange >= 0;
       const changePercentageFormatted = `${Math.abs(changePercentage).toFixed(2)}%`;
       const isPositiveLabel = isPositiveChangeNew ? 'increased' : 'decreased';
-      const newsEvent = `Breaking News: ${company.name} price ${isPositiveLabel} by ${changePercentageFormatted}`;
       
 document.getElementById("msg-area").textContent = "";
-
+      
+      const newsEvent = `Breaking News: ${company.name} price ${isPositiveLabel} by ${changePercentageFormatted}`;
       addNewsEvent(newsEvent, "main", company.name); // Add the news event to the UI
 
       
@@ -651,7 +650,9 @@ if (counterValue > 365) {
   // Clear the existing rows
   msgArea.innerHTML = "";
 
-
+  // Update the stock prices in the user interface
+updateStockPricesUI();
+  
   // Increment the new week counter
   if (incrementCounter === 7) {
     newWeek(); // Call the newWeek function
@@ -674,7 +675,9 @@ if (counterValue > 365) {
   }
   eventDayCount++;
  console.log("eventDayCount   "+eventDayCount);
+  
 
+  
     displayPortfolio();
 updateNetWorthDisplay();
 }
