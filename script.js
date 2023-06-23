@@ -1696,6 +1696,7 @@ document.getElementById("close-lender-popup").addEventListener("click", function
 });
 
 document.getElementById("open-buy-item-popup").addEventListener("click", function() {
+  showStoreItems();
   openPopup("buy-item-popup");
 });
 
