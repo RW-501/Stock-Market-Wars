@@ -600,7 +600,7 @@ function updateStockPricesUI() {
   
  companies.forEach((companyX) => {
     const { name, price, quantity } = companyX;
-   console.log(stockPrices.price+"   local company   " + stockPrices.name+"  name   ");
+   console.log(storedStockPrices.price+"   local company   " + storedStockPrices.name+"  name   ");
 
   });
   // Loop through each company and update the price and buttons in the UI
