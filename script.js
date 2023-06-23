@@ -428,10 +428,12 @@ document.getElementById("msg-area").textContent = "";
     // For example, you can store it in the stockPrices object
      stockPrices[company.name] = company.price;
 
-  }
-// Update the stock prices in the user interface
+
+    // Update the stock prices in the user interface
 updateStockPricesUI();
 
+
+  }
 
   
 saveStockPrices(stockPrices);
