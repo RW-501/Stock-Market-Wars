@@ -508,11 +508,15 @@ theCompanyName = stockName;
 stockPopupQuantity.textContent = `Own: ${getStockQuantity(theCompanyName)?.stockQuantity || 0}`;
   stockPopupCash.textContent = `Cash: $${getAvailableFunds().toFixed(2) || 0}`;
 
+limitClickEventListeners(stockPopupBuy, "click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
+limitClickEventListeners(stockPopupSell, "click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
 
 // stockPopupBuy.removeEventListener("click", buyStock);
   //stockPopupSell.removeEventListener("click", sellStock);
-        stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
-  stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
+  
+
+//        stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
+  //stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
 
 if (xxx !== '' && xxx !== null && xxx !== undefined) {
   openPopup("stock-popup");
@@ -554,6 +558,22 @@ howMuchStock(stockPrice, availableFunds);
 
   //clearInterval(intervalStock);
 }
+
+
+
+      function limitClickEventListeners(element, event, callback) {
+  element.addEventListener(event, function handler() {
+    // Execute the callback function
+    callback();
+
+    // Remove the event listener
+    element.removeEventListener(event, handler);
+  });
+}
+
+
+
+
 
 // Close the stock popup and remove event listeners
 function closeStockPopup() {
