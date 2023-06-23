@@ -404,6 +404,8 @@ document.getElementById("msg-area").textContent = "";
 
       addNewsEvent(newsEvent, "main", company.name); // Add the news event to the UI
 
+      
+localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
       console.log("newsEvent    " + newsEvent);
     }
   }
