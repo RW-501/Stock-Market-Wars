@@ -1084,7 +1084,7 @@ let newAmount = selectedLender.funds - existingLoanInfo.borrowedAmount ;
         console.log(newAmount +"  selectedLender.funds  "+ selectedLender.funds+"   existingLoanInfo.borrowedAmount    " + existingLoanInfo.borrowedAmount);
 
             document.getElementById("lender-Max").textContent = "$" + newAmount;
-    document.getElementById("lender-Rate").textContent = selectedLender.interestRate +" per day";
+    document.getElementById("lender-Rate").textContent = selectedLender.interestRate +"% per day";
     document.getElementById("lender-LoanLength").textContent = selectedLender.loanLength + " days";
       }else{
     document.getElementById("lender-Max").textContent = "$" + selectedLender.funds;
@@ -1200,8 +1200,8 @@ function requestLoan() {
 let interestRate = lenderPaymentInfo.interestRate;
 let loanLength = parseInt(lenderPaymentInfo?.loanLength) || 0;
 let borrowedAmount = parseInt(lenderPaymentInfo?.borrowedAmount) || 0;
-    
-  let loanNewTotal = borrowedAmount * (interestRate * 10);
+    let interest = borrowedAmount / interestRate;
+  let loanNewTotal = borrowedAmount + interest;
 let loanDueDate = parseInt(startDay) + parseInt(loanLength, 10);
 
 
