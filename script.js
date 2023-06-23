@@ -77,7 +77,8 @@ function saveStockPrices(xxx) {
     const { name, price } = stock;
     let lastSevenPrices = storedStockPrices[name] || [];
  console.log("333333333333333333333333333333333333");
-
+updateStockPrices();
+    
     // Ensure lastSevenPrices is an array
     if (!Array.isArray(lastSevenPrices)) {
       lastSevenPrices = [];
