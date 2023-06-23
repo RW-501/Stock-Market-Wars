@@ -46,7 +46,8 @@ function getMarket() {
     // Store the updated market data back to local storage
   //  localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
 
-    return updatedCompanies;
+    return storedStockPrices;
+   // return updatedCompanies;
   }
 
   return market;
@@ -405,7 +406,6 @@ document.getElementById("msg-area").textContent = "";
       addNewsEvent(newsEvent, "main", company.name); // Add the news event to the UI
 
       
-localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
       console.log("newsEvent    " + newsEvent);
     }
   }
