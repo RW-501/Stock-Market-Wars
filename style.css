@@ -313,6 +313,7 @@ display: block;
   padding: 10px;
   background-color: #f5f5f5;
   border-radius: 5px;
+      flex: 2;
 }
 
 .store-item img {
@@ -345,3 +346,10 @@ display: block;
 
 /* Add more custom styles as needed */
 
+
+#store-container {
+    display: flex;
+    flex-flow: wrap-reverse;
+    overflow: auto;
+    height: 500px;
+}
