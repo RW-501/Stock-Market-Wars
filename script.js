@@ -1796,18 +1796,10 @@ console.log(keys);
   // Reset game state, UI elements, or perform necessary actions
   console.log("Game restarted");
    getMarket();
+    interval = setInterval(updateStockPrices, dayTimer);
+
 }
 
-/*
-//getMarket();
-  
-    // Update the stock prices in the user interface
-    playerFunds = 500; // Reset initial funds to 500
-
-updateStockPrices();
-// Call the updateNetWorthDisplay function initially and whenever there's a change in net worth
-updateNetWorthDisplay();
-*/
 
 
 
