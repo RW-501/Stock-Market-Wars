@@ -1103,7 +1103,7 @@ function updateLenderOptions() {
   const eligibleLenders = lenders.filter(lender => lender.minNetWorth <= newWorth);
 
  lenderSelect.innerHTML = "";
-
+document.getElementById("loan-amount").value='';
   eligibleLenders.forEach(lender => {
     const option = document.createElement("option");
     option.value = lender.name;
