@@ -1082,7 +1082,7 @@ function updateLenderDetails() {
 let newAmount = selectedLender.funds - existingLoanInfo.borrowedAmount ;
         
         console.log(newAmount +"  selectedLender.funds  "+ selectedLender.funds+"   existingLoanInfo.borrowedAmount    " + existingLoanInfo.borrowedAmount);
-
+if(newAmount < 0){newAmount = 0; }
             document.getElementById("lender-Max").textContent = "$" + newAmount;
     document.getElementById("lender-Rate").textContent = selectedLender.interestRate +"% per day";
     document.getElementById("lender-LoanLength").textContent = selectedLender.loanLength + " days";
