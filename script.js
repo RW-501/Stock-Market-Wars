@@ -213,6 +213,8 @@ function updateStockQuantity(companyName, updatedStockQuantity, totalStockCost) 
 }
 
 function getStockPrice(companyName) {
+
+  
   // Retrieve the stock prices from local storage
   const storedStockPrices = localStorage.getItem('stockPrices');
   
@@ -334,8 +336,13 @@ localStorage.setItem('portfolio', JSON.stringify(portfolioString));
 /// START UPDATE PRICES
 function updateStockPrices() {
 
-  
 
+  
+  // Update the stock prices in the user interface
+updateStockPricesUI();
+const msgArea = document.getElementById("msg-area");
+  // Clear the existing rows
+  msgArea.innerHTML = "";
   
   // Retrieve the stock prices from local storage
   const storedStockPrices = localStorage.getItem('stockPrices');
@@ -646,12 +653,8 @@ if (counterValue > 365) {
 
 
 
-    const msgArea = document.getElementById("msg-area");
-  // Clear the existing rows
-  //msgArea.innerHTML = "";
 
-  // Update the stock prices in the user interface
-updateStockPricesUI();
+
   
   // Increment the new week counter
   if (incrementCounter === 7) {
