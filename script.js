@@ -1221,12 +1221,14 @@ let daysRemaining = Math.floor(loanDueDate - counterValue);
               console.log(borrowedAmount +"  borrowedAmount  "+startDay);
               console.log(loanNewTotal +"  loanNewTotal  "+ interestRate+"   interestRate    " + (interestRate * 10));
 
-      if (daysRemaining < 4) {
+      if (daysRemaining < 4 && daysRemaining > -3 ) {
 
         const event = `$${loanNewTotal.toFixed(2)} is Due to ${lenderPaymentInfo.name} in ${daysRemaining} Days`;
         addNewsEvent(event, "loan");
       } else if (daysRemaining === 0) {
-  
+        const event = `You Loan with ${lenderPaymentInfo.name} is Due`;
+        addNewsEvent(event, "loan");
+      } else if (daysRemaining < 3) {
         const event = `${lenderPaymentInfo.name} came and got $${loanNewTotal.toFixed(2)}`;
         addNewsEvent(event, "loan");
         
@@ -1236,7 +1238,7 @@ let daysRemaining = Math.floor(loanDueDate - counterValue);
         // Clear lender payment info from local storage
 localStorage.removeItem('lenderPaymentInfo');
       }
-       }
+      }
   }
 }
 
