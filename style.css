@@ -164,6 +164,8 @@ font-size: 30px;
     right: 0;
     top: 0;
 width: 60%; 
+      min-height: fit-content;
+    max-height: max-content;
 }
 
 .popup h2 {
