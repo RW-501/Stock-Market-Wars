@@ -940,7 +940,7 @@ function addFunds(amount) {
     // Handle the error case (e.g., display an error message, throw an error, etc.)
 
     // Add the news event
- // const event = `Funds are low $${amount.toFixed(2)}`;
+  const event = `Funds are low $${amount.toFixed(2)}`;
           addNewsEvent(event, "bank"); // Add the news event to the UI    return;
   }
   
@@ -948,7 +948,7 @@ function addFunds(amount) {
   const newFunds = currentFunds + amount;
 
         // console.log("newFunds add   "+newFunds);
-//  const event = `$${amount.toFixed(2)} added to account`;
+  const event = `$${amount.toFixed(2)} added to account`;
   addNewsEvent(event, "bank"); // Add the news event to the UI  
   
   // Update the available funds in local storage
@@ -1084,9 +1084,9 @@ displayStatusMessage("stock",`Successfully sold ${quantityToSell} ${companyName}
 
 
 const lenders = [
-  { id: "1", name: "Fortune Finance", funds: 1000, interestRate: 20, minNetWorth: 500, loanLength: "30" },
-  { id: "2", name: "Prestige Bank", funds: 10000, interestRate: 15, minNetWorth: 1000, loanLength: "15" },
-  { id: "3", name: "Elite Capital", funds: 50000, interestRate: 25, minNetWorth: 3000, loanLength: "15" },
+  { id: "1", name: "Fortune Finance", funds: 1000, interestRate: 20, minNetWorth: 100, loanLength: "30" },
+  { id: "2", name: "Prestige Bank", funds: 10000, interestRate: 15, minNetWorth: 500, loanLength: "15" },
+  { id: "3", name: "Elite Capital", funds: 50000, interestRate: 25, minNetWorth: 2500, loanLength: "15" },
   { id: "4", name: "ABC Lenders", funds: 100000, interestRate: 20, minNetWorth: 10000, loanLength: "20" },
   { id: "5", name: "Global Investments", funds: 500000, interestRate: 10, minNetWorth: 50000, loanLength: "45" },
   { id: "6", name: "Wealthy Funding", funds: 1000000, interestRate: 15, minNetWorth: 100000, loanLength: "10" },
