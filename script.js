@@ -787,16 +787,18 @@ function calculateItemValue(itemType) {
   return totalItemValue;
 }
 
-// Sample item data for the store
 function showStoreItems() {
   // Retrieve the store items from your data structure or storage mechanism
   const storeItems = [
-    { name: "Car A", price: 20000 },
-    { name: "Car B", price: 15000 },
-    { name: "Car C", price: 30000 },
-    { name: "House A", price: 250000 },
-    { name: "House B", price: 350000 },
-    { name: "House C", price: 500000 },
+    { name: "Car A", price: 20000, image: "car-a.jpg" },
+    { name: "Car B", price: 15000, image: "car-b.jpg" },
+    { name: "Car C", price: 30000, image: "car-c.jpg" },
+    { name: "House A", price: 250000, image: "house-a.jpg" },
+    { name: "House B", price: 350000, image: "house-b.jpg" },
+    { name: "House C", price: 500000, image: "house-c.jpg" },
+    { name: "Gadget X", price: 1000, image: "gadget-x.jpg" },
+    { name: "Gadget Y", price: 800, image: "gadget-y.jpg" },
+    { name: "Gadget Z", price: 1200, image: "gadget-z.jpg" },
     // Add more items as needed
   ];
 
@@ -812,13 +814,21 @@ function showStoreItems() {
     const itemDiv = document.createElement("div");
     itemDiv.classList.add("store-item");
 
+    // Create an image element for the item
+    const imageElement = document.createElement("img");
+    imageElement.src = "placeholder.jpg"; // Replace "placeholder.jpg" with the actual image source
+    imageElement.alt = item.name;
+    itemDiv.appendChild(imageElement);
+
     // Create a span element to display the item name
     const nameSpan = document.createElement("span");
     nameSpan.textContent = item.name;
+    itemDiv.appendChild(nameSpan);
 
     // Create a span element to display the item price
     const priceSpan = document.createElement("span");
     priceSpan.textContent = "$" + item.price.toFixed(2);
+    itemDiv.appendChild(priceSpan);
 
     // Create a button element to buy the item
     const buyButton = document.createElement("button");
@@ -827,16 +837,15 @@ function showStoreItems() {
       // Handle the buying functionality for the item
       buyItem(item);
     });
-
-    // Append the name, price, and buy button to the item div
-    itemDiv.appendChild(nameSpan);
-    itemDiv.appendChild(priceSpan);
     itemDiv.appendChild(buyButton);
 
     // Append the item div to the store container
     storeContainer.appendChild(itemDiv);
   });
 }
+
+
+
 
 
 /*
