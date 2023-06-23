@@ -1236,7 +1236,7 @@ let daysRemaining = Math.floor(loanDueDate - counterValue);
         // Clear lender payment info from local storage
 //localStorage.removeItem('lenderPaymentInfo');
       }
-    
+       }
   }
 }
 
