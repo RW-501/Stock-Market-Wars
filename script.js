@@ -464,7 +464,7 @@ function startUITimer() {
 // Open the stock popup and populate it with the company details
 function openStockPopup(xxx, stockName) {
 
-     console.log("xxxxxxxxxxxxxxxxxxxxxxx   " + xxx);
+    //console.log("xxxxxxxxxxxxxxxxxxxxxxx   " + xxx);
 
 if (xxx !== '' && xxx !== null && xxx !== undefined) {
   theCompany = xxx;
@@ -648,7 +648,7 @@ if (counterValue > 365) {
 
     const msgArea = document.getElementById("msg-area");
   // Clear the existing rows
-  msgArea.innerHTML = "";
+  //msgArea.innerHTML = "";
 
   // Update the stock prices in the user interface
 updateStockPricesUI();
