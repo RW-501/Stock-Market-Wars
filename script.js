@@ -593,21 +593,12 @@ function updateStockPricesUI() {
   // Clear the existing rows
   stocksTableBody.innerHTML = "";
   
- // Retrieve the stock prices from local storage
-  const storedStockPrices = localStorage.getItem('stockPrices');
-  // Parse the stored stock prices object
-const stockPrices = JSON.parse(storedStockPrices);
-  
- companies.forEach((companyX) => {
-    const { name, price, quantity } = companyX;
-   console.log(stockPrices[companyX.name]+"   local company   " + name+"  name ");
 
-  });
   // Loop through each company and update the price and buttons in the UI
   companies.forEach((company) => {
     const { name, price, quantity } = company;
     
-   console.log(company.price+"   company   " + company.name+"  name   ");
+  // console.log(company.price+"   company   " + company.name+"  name   ");
     
     // Create a new row for the company
     const row = document.createElement("tr");
