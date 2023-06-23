@@ -37,7 +37,7 @@ function getMarket() {
   if (storedStockPrices) {
     const stockPrices = JSON.parse(storedStockPrices) || {};
 
-    const updatedCompanies = stockPrices.map(company => {
+    const updatedCompanies = storedStockPrices.map(company => {
       const { name } = company;
       const price = company.price || stockPrices[name];
       return { name, price };
