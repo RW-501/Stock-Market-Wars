@@ -910,7 +910,7 @@ function deductFunds(amount) {
   // Check if the amount is valid (positive and not exceeding the available funds)
   if (amount <= 0 || amount > currentFunds) {
         // Add the news event
-  const event = `Funds are low $${amount.toFixed(2) }`;
+ // const event = `Funds are low $${amount.toFixed(2)}`;
           addNewsEvent(event, "bank"); // Add the news event to the UI
 
     // Handle the error case (e.g., display an error message, throw an error, etc.)
@@ -922,8 +922,9 @@ function deductFunds(amount) {
   // Update the available funds in local storage
   localStorage.setItem('availableFunds', newFunds.toString());
 
-     const event = `$${amount.toFixed(2) } Deducted from account`;
-          addNewsEvent(event, "bank"); // Add the news event to the UI    return;
+ //    const event = `$${amount.toFixed(2)} Deducted from account`;
+          addNewsEvent(event, "bank"); // Add the news event to the UI    
+  
        updateNetWorthDisplay();
 }
 
@@ -939,7 +940,7 @@ function addFunds(amount) {
     // Handle the error case (e.g., display an error message, throw an error, etc.)
 
     // Add the news event
-  const event = `Funds are low $${amount.toFixed(2) }`;
+ // const event = `Funds are low $${amount.toFixed(2)}`;
           addNewsEvent(event, "bank"); // Add the news event to the UI    return;
   }
   
@@ -947,7 +948,7 @@ function addFunds(amount) {
   const newFunds = currentFunds + amount;
 
         // console.log("newFunds add   "+newFunds);
-  const event = `$${amount.toFixed(2) } added to account`;
+//  const event = `$${amount.toFixed(2)} added to account`;
   addNewsEvent(event, "bank"); // Add the news event to the UI  
   
   // Update the available funds in local storage
