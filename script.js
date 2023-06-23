@@ -1210,7 +1210,7 @@ let daysRemaining = Math.floor(loanDueDate - counterValue);
       
       const lenderPaymentInfoNew = {
         id: lenderPaymentInfo.id,
-        borrowedAmount: borrowedAmount,
+        borrowedAmount: loanNewTotal,
         name: lenderPaymentInfo.name,
         interestRate: interestRate,
         loanLength: loanLength,
@@ -1524,10 +1524,11 @@ if (!Array.isArray(loanInfo)) {
 const nameCell = document.createElement("div");
 const borrowedAmountCell = document.createElement("div");
 const loanLengthCell = document.createElement("div");
-
+let dueDate = parsedLoanInfo.startDay + parsedLoanInfo.loanLength;
+  let daysLeft = dueDate - counterValue;
 nameCell.innerHTML = parsedLoanInfo.name;
-borrowedAmountCell.innerHTML = "$" + (parsedLoanInfo.borrowedAmount ? parsedLoanInfo.borrowedAmount.toFixed(2) : "0");
-loanLengthCell.innerHTML = parsedLoanInfo.loanLength;
+borrowedAmountCell.innerHTML = "$" + (parsedLoanInfo.borrowedAmount ? parsedLoanInfo.borrowedAmount.toFixed(2) : "0") + " due";
+loanLengthCell.innerHTML = parsedLoanInfo.loanLength + "  days left";
 
 const loanCellsWrapper = document.createElement("div");
 loanCellsWrapper.classList.add('loan-item');
