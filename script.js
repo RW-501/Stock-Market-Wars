@@ -730,6 +730,12 @@ function weekend() {
   const event = `Weekend Market Closed`;
           addNewsEvent(event, "main"); // Add the news event to the UI
 
+
+
+
+  openPopup("weekend-popup");
+
+
     clearTimeout(weekendTimer); // Stop the timer
 // Start the timer
  weekendTimer = setTimeout(() => {
@@ -742,9 +748,11 @@ updateNetWorthDisplay();
 function newWeek() {
   const event = `New Week Market Open`;
           addNewsEvent(event, "main"); // Add the news event to the UI
-updateNetWorthDisplay();
+    closePopup("weekend-popup");
 
+updateNetWorthDisplay();
   updateStockPrices();
+  
 }
 
 
