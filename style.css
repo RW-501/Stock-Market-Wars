@@ -178,6 +178,9 @@ background-color: #84adea;
     border-radius: 10px;
     margin-top: 10%;
 }
+#pause-popup .popup-content{
+    height: fit-content !important
+}
 
 #stocks-table-body{
 
@@ -285,6 +288,7 @@ font-size: 30px;
     border: #84adea  solid 2px;
     border-left: none;
     border-right: none;
+    background-color: #6a9f9f9e;
 
   }
 
