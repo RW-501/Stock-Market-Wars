@@ -1,6 +1,6 @@
 
 var daySpeedTimer = 5000; //10000 = 10sec 5000 = 5sec
-var adTimer = 10000; //10000 = 10sec 5000 = 5sec
+var adTimer = 10; //10000 = 10sec 5000 = 5sec
 
 var runCount = 0;
 
@@ -738,7 +738,7 @@ updateNetWorthDisplay();
 
 
 
-
+var adCounter;
 var weekendTimer;
 function weekend() {
   const event = `Weekend Market Closed`;
@@ -750,7 +750,7 @@ function weekend() {
 
   openPopup("weekend-popup");
 
-
+adCounter = adTimer;
     clearInterval(weekendTimer); // Stop the timer
 // Start the timer
  weekendTimer = setInterval(() => {
@@ -760,13 +760,13 @@ function weekend() {
 
 function weekend() {
 
-  if(adTimer === 0){
+  if(adCounter === 0){
 updateNetWorthDisplay();
-
   updateStockPrices();
   }else{
-  const adTimer = document.getElementById("ad-body");
-  adTimer.innerHTML = adTime+" sec left";
+  let adTimerBox = document.getElementById("ad-body");
+  adTimerBox.innerHTML = adCounter+" sec left";
+    adCounter--;
   }
 }
   
@@ -1936,9 +1936,7 @@ const skipWeekendsCheckbox = document.getElementById('skipWeekends');
 // Retrieve the saved game options from local storage
 const savedGameOptions = JSON.parse(localStorage.getItem('gameOptions')) || {};
 
-// Set the initial slider value and display
-//slider.value = savedGameOptions.sliderSpeed || daySpeedTimer;
-//sliderValue.textContent = `Slider Speed: ${slider.value}`;
+
 
 // Set the initial checkbox state
 skipWeekendsCheckbox.checked = savedGameOptions.skipAds || false;
@@ -1977,13 +1975,6 @@ function handleCheckboxChange() {
   // Save the game options to local storage
   localStorage.setItem('gameOptions', JSON.stringify(savedGameOptions));
 
-
-// Set the ad speed timer based on the checkbox state
-if (skipWeekends) {
-  adTimer = 0;
-} else {
-  adTimer = 5;
-}
 }
 
 // Add event listener for slider change event
@@ -1995,7 +1986,6 @@ skipWeekendsCheckbox.addEventListener('change', handleCheckboxChange);
 // Set initial timer speed (replace this with your actual timer logic)
 slider.speed = parseInt(savedGameOptions.sliderSpeed) || 5;
 
-//var daySpeedTimer = 5000; //10000 = 10sec 5000 = 5sec
-//var adSpeedTimer = 10000; //10000 = 10sec 5000 = 5sec
+handleCheckboxChange();
+handleSliderChange();
 
-  
