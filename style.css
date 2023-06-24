@@ -59,7 +59,13 @@ h1 {
       min-height: 80%;
 }
 #info-area{
-display: grid;
+    display: grid;
+    background-color: #6a9f9f9e;
+    border-radius: 10px;
+    border: #84ADEA 1px solid;
+    border-top: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
 
