@@ -1934,10 +1934,15 @@ skipWeekendsCheckbox.checked = savedGameOptions.skipAds || false;
 // Function to handle slider change event
 function handleSliderChange() {
   // Get the selected slider value
-  const sliderSpeed = slider.value;
+const sliderSpeed = parseInt(slider.value);
+
+const convertedSpeed = 1000 * sliderSpeed;
+
+    let dayspeedLabel = sliderSpeed + " secend days";
+
 
   // Update the display with the selected slider value
-  sliderValue.textContent = `Slider Speed: ${sliderSpeed}`;
+  sliderValue.textContent = `Slider Speed: ${dayspeedLabel}`;
 
   // Update the game options object with the new slider speed
   savedGameOptions.sliderSpeed = sliderSpeed;
@@ -1946,7 +1951,7 @@ function handleSliderChange() {
   localStorage.setItem('gameOptions', JSON.stringify(savedGameOptions));
 
   // Update the timer speed (replace this with your actual timer logic)
-  dayTimer.speed = parseInt(sliderSpeed);
+  dayTimer.speed = parseInt(convertedSpeed);
 }
 
 // Function to handle checkbox change event
