@@ -61,7 +61,6 @@ function getMarket() {
 
 // Example usage
 var companies = getMarket();
-console.log("???????????????????????????????????????? "  +companies);
 
 function saveStockPrices(xxx) {
   let data = JSON.parse(JSON.stringify(xxx));
@@ -76,7 +75,6 @@ function saveStockPrices(xxx) {
   stockData.forEach(stock => {
     const { name, price } = stock;
     let lastSevenPrices = storedStockPrices[name] || [];
- console.log("333333333333333333333333333333333333");
 
         
     // Ensure lastSevenPrices is an array
@@ -342,7 +340,6 @@ function updateStockPrices() {
 
       
 
- console.log("111111111111111111111111111111111111111111");
 
 const msgArea = document.getElementById("msg-area");
   // Clear the existing rows
@@ -351,7 +348,6 @@ const msgArea = document.getElementById("msg-area");
   // Retrieve the stock prices from local storage
   const storedStockPrices = localStorage.getItem('stockPrices');
 
-  console.log("???storedStockPrices????????????????????????????????????? "  +storedStockPrices);
 
   // Parse the stored stock prices object
   let stockPrices = JSON.parse(storedStockPrices);
@@ -415,7 +411,6 @@ document.getElementById("msg-area").textContent = "";
       
       const newsEvent = `Breaking News: ${company.name} price ${isPositiveLabel} by ${changePercentageFormatted}`;
       addNewsEvent(newsEvent, "main", company.name); // Add the news event to the UI
- console.log("2222222222222222222222222222222222222222222222222222222222222222222222222222");
 
  
       
@@ -1040,7 +1035,6 @@ function buyStock(companyName, quantityToBuy, event) {
   const availableFunds = getAvailableFunds();
 counT++;
   
-        console.log(counT+" buyStock   counT ?????????????????????????????????  "+counT);
 
   const totalCost = stockPrice * quantityToBuy;
 
