@@ -1974,9 +1974,10 @@ function handleCheckboxChange() {
 
   // Save the game options to local storage
   localStorage.setItem('gameOptions', JSON.stringify(savedGameOptions));
-adCounter 
 
-  IF(skipWeekends){
+  
+
+  if(skipWeekends){
     adCounter = 0;
   }else{
     adCounter = adTimer;
