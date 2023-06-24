@@ -61,7 +61,7 @@ function getMarket() {
 
 // Example usage
 var companies = getMarket();
-//console.log(companies);
+console.log("???????????????????????????????????????? "  +companies);
 
 function saveStockPrices(xxx) {
   let data = JSON.parse(JSON.stringify(xxx));
@@ -256,7 +256,7 @@ function displayPortfolio() {
  const portfolioString = JSON.parse(portfolio);
 
   
-  ///console.log(portfolio+"    portfolioString    " + portfolioString);
+  //console.log(portfolio+"    portfolioString    " + portfolioString);
 // Check if the portfolio is null or undefined
   if (portfolioString == "" || portfolioString == null || portfolioString == "undefined" || portfolioString == undefined  ) {
     // Handle the case when the portfolio is empty or not available
@@ -335,6 +335,8 @@ localStorage.setItem('portfolio', JSON.stringify(portfolioString));
 }
 
 var nextDayTimeout;
+
+
 /// START UPDATE PRICES
 function updateStockPrices() {
 
@@ -349,7 +351,8 @@ const msgArea = document.getElementById("msg-area");
   // Retrieve the stock prices from local storage
   const storedStockPrices = localStorage.getItem('stockPrices');
 
-  
+  console.log("???storedStockPrices????????????????????????????????????? "  +storedStockPrices);
+
   // Parse the stored stock prices object
   let stockPrices = JSON.parse(storedStockPrices);
 
@@ -1222,7 +1225,7 @@ function requestLoan() {
 
       // Add the loan amount to the player's funds
       addFunds(amount);
-      closePopup("lender-popup");
+    //  closePopup("lender-popup");
       
       // Create an object to store the lender payment information
       const lenderPaymentInfo = {
@@ -1261,6 +1264,8 @@ function requestLoan() {
 
   //  console.log("Invalid loan request. Please enter a valid amount and select a lender.");
   }
+        updateLenderDetails();
+
 }
 
 
@@ -1653,8 +1658,9 @@ function closePopup(popupId) {
 if (nextDayTimeout) {
   console.log("Timeout is running.");
 } else {
-updateStockPrices();
 }
+  updateStockPrices();
+
   console.log("closePopup");
   document.getElementById(popupId).classList.remove("popupOpened");
 
@@ -1823,7 +1829,7 @@ for (const key in keys) {
   
 console.log(keys);
 
-
+ companies = getMarket();
   
   // Reset game state, UI elements, or perform necessary actions
   console.log("Game restarted");
