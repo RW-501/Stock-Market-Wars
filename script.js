@@ -337,7 +337,7 @@ var nextDayTimeout;
 
 
 /// START UPDATE PRICES
-function updateStockPrices() {
+async function updateStockPrices() {
 console.log("111111111111111   ");
        // Update the stock prices in the user interface
 updateStockPricesUI();
