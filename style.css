@@ -10,8 +10,11 @@ body {
   
 }
 .mainTitle{
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  color:#fff;
+    color: #7a828e26;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    margin: 10% auto 2% auto;
+    border-radius: 10px;
 }
 {
 box-sizing: border-box;
@@ -22,11 +25,11 @@ box-sizing: border-box;
 
 }
 #open-news-popup h2{
-    text-align: right;
+    text-align: center;
 
 }
   #open-bank-popup h2{
-  text-align: left;
+  text-align: right;
 
 }
 
@@ -35,7 +38,7 @@ h1 {
 }
 
 .game {
-  background-color: #7a828e;
+  background-color: #7a828e5e;
   /*background-color: #f7f7f8;*/
   padding: 20px;
   border-radius: 10px;
@@ -54,10 +57,14 @@ h1 {
       min-height: 80%;
 }
 #info-area{
-display: flex;
+display: grid;
 }
 
-#total-cash, #msg-area{
+#total-cash{
+
+}
+
+#msg-area{
       width: 50%;
     display: block;
 
@@ -294,9 +301,13 @@ display: flex;
 
 }
 #counter {
-    width: 50%;
-
-    text-align: right;
+    background-color: #f0f8ff45;
+    border-radius: 10px;
+    padding: 2%;
+    box-sizing: border-box;
+    margin: auto;
+      width: 50%;
+    text-align: center;
 }
 
 
