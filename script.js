@@ -1,5 +1,6 @@
 
 var dayTimer = 5000; //10000 = 10sec 5000 = 5sec
+var adTimer = 10000; //10000 = 10sec 5000 = 5sec
 
 var runCount = 0;
 
@@ -339,6 +340,8 @@ var nextDayTimeout;
 /// START UPDATE PRICES
 async function updateStockPrices() {
 console.log("111111111111111   ");
+         timeAndDateFunc();
+
        // Update the stock prices in the user interface
 console.log("222222   ");
 updateNetWorthDisplay();
@@ -455,7 +458,7 @@ console.log("77777777777777777777   ");
     console.log("8888888888888888888888888888888888888888   ");
 
     NewDayFunc();
-  }, 5000); // Run the timer every 10 seconds (10 000 milliseconds)
+  }, dayTimer); // Run the timer every 10 seconds (10 000 milliseconds)
   
   
 }
@@ -470,7 +473,6 @@ console.log("9999999999999999999999999999999999999   ");
  updateStockPricesUI();
 
  
-       timeAndDateFunc();
 
 }
 
@@ -629,7 +631,7 @@ function updateStockPricesUI() {
   // Clear the existing rows
   stocksTableBody.innerHTML = "";
   
-console.log("updateStockPricesUI nxxxxxxxxxxxxxxxxx   ");
+//console.log("updateStockPricesUI nxxxxxxxxxxxxxxxxx   ");
 
   // Loop through each company and update the price and buttons in the UI
   companies.forEach((company) => {
@@ -753,7 +755,7 @@ function weekend() {
 updateNetWorthDisplay();
 
   updateStockPrices();
-  }, 10000); // Run the timer every 10 seconds (10 000 milliseconds)
+  }, adTimer); // Run the timer every 10 seconds (10 000 milliseconds)
 }
 
 function newWeek() {
@@ -1458,9 +1460,18 @@ function getLoanInfo() {
   // Retrieve the portfolio from local storage
 
 const info = localStorage.getItem('lenderPaymentInfo');
-//const loanInfo = JSON.parse(info);
+let loanInfo;
 
-const loanInfo = [info];
+if (info) {
+  try {
+    loanInfo = JSON.parse(info);
+  } catch (error) {
+    // Handle JSON parsing error
+    console.error('Error parsing lenderPaymentInfo:', error);
+  }
+}
+
+
   
   return loanInfo || [];
 }
@@ -1475,17 +1486,15 @@ function displayLoanHistory() {
   
   loansContent.innerHTML = ''; // Clear previous loan history
   
-  const loanInfo = getLoanInfo();
+  const parsedLoanInfo = getLoanInfo();
 
 
-    if (!loanInfo) {
+    if (!parsedLoanInfo) {
       // Handle the case when parsedLoanInfo is not an array
       loansContent.textContent = 'No loan history found.';
       return;
     }
   
-    const parsedLoanInfo = JSON.parse(loanInfo);
-
 
 
 const nameCell = document.createElement("div");
