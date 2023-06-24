@@ -710,8 +710,8 @@ if (counterValue > 365) {
   
   // Increment the new week counter
   if (incrementCounter >= 7) {
-    newWeek(); // Call the newWeek function
     incrementCounter = 0;
+    newWeek(); // Call the newWeek function
   } else
   // Increment the weekend counter
   if (incrementCounter === 6) {
