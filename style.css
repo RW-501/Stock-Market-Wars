@@ -63,13 +63,14 @@ display: grid;
 }
 
 #total-cash{
-background-color: #f0f8ff45;
+  background-color: #f0f8ff45;
     border-radius: 10px;
     padding: 2%;
     box-sizing: border-box;
     margin: auto;
-    width: 100%;
+      width: 50%;
     text-align: center;
+      border: #84ADEA 1px solid;
 }
 
 #msg-area{
