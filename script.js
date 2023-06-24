@@ -744,7 +744,8 @@ function weekend() {
   const event = `Weekend Market Closed`;
           addNewsEvent(event, "main"); // Add the news event to the UI
 
-
+        clearTimeout(nextDayTimeout);
+    clearInterval(stockInterval); // Stop the timer
 
 
   openPopup("weekend-popup");
