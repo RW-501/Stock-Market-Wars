@@ -745,8 +745,8 @@ var weekendTimer;
 function adCounterFunc() {
 
   if(adCounter === 0){
-updateNetWorthDisplay();
-  updateStockPrices();
+    
+newWeek();
   }else{
   let adTimerBox = document.getElementById("ad-body");
   adTimerBox.innerHTML = adCounter+" sec left";
