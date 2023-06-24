@@ -452,7 +452,8 @@ saveStockPrices(stockPrices);
   localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
 console.log("77777777777777777777   ");
 
-
+console.log('daySpeedTimer:', daySpeedTimer);
+   
   clearTimeout(nextDayTimeout);
   nextDayTimeout = setTimeout(() => {
     console.log("8888888888888888888888888888888888888888   ");
