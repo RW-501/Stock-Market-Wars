@@ -54,8 +54,9 @@ function getMarket() {
 }
 
 
-
-
+function formatCurrency(number) {
+  return "$" + number.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 
 
@@ -674,7 +675,7 @@ function timeAndDateFunc() {
 if (counterValue > 365) {
   const years = Math.floor(counterValue / 365);
   const remainingDays = counterValue % 365;
-  counter.textContent = `${years} years,<br> ${remainingDays} days`;
+  counter.innerHTML = `${years} years,<br> ${remainingDays} days`;
   // Show reminder or perform any other actions
 } else {
   counter.textContent = `${counterValue} days`;
@@ -759,10 +760,11 @@ function updateNetWorthDisplay() {
 
      let totalCashCell = document.getElementById("cash-total-value");
   let cash = getAvailableFunds();
-  totalCashCell.textContent = "$" +  `${cash.toFixed(2)}`;
+  totalCashCell.textContent =  formatCurrency(cash);  // "$" +  `${cash.toFixed(2)}`;
   // Update the net worth value in the UI
-document.getElementById("net-worth-value").textContent = `$${netWorth.toFixed(2).toLocaleString()}`;
+//document.getElementById("net-worth-value").textContent = `$${netWorth.toFixed(2).toLocaleString()}`;
      
+document.getElementById("net-worth-value").textContent =  formatCurrency(netWorth);
 
 
   lenderCheckFunc();
