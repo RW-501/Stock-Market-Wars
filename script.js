@@ -340,8 +340,8 @@ var nextDayTimeout;
 async function updateStockPrices() {
 console.log("111111111111111   ");
        // Update the stock prices in the user interface
-updateStockPricesUI();
 console.log("222222   ");
+updateNetWorthDisplay();
 
 
 const msgText = document.getElementById("msg-Text");
@@ -467,7 +467,8 @@ function NewDayFunc(){
 console.log("9999999999999999999999999999999999999   ");
 
 
- 
+ updateStockPricesUI();
+
  
        timeAndDateFunc();
 
