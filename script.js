@@ -1965,12 +1965,13 @@ function handleCheckboxChange() {
   // Save the game options to local storage
   localStorage.setItem('gameOptions', JSON.stringify(savedGameOptions));
 
-  if(skipWeekends  === true){
-adSpeedTimer = 0;
-  }else{
 
-adSpeedTimer  = 10000;
-  }
+// Set the ad speed timer based on the checkbox state
+if (skipWeekends) {
+  adSpeedTimer = 0;
+} else {
+  adSpeedTimer = 10000;
+}
 }
 
 // Add event listener for slider change event
@@ -1982,5 +1983,7 @@ skipWeekendsCheckbox.addEventListener('change', handleCheckboxChange);
 // Set initial timer speed (replace this with your actual timer logic)
 ///dayTimer.speed = parseInt(savedGameOptions.sliderSpeed) || 5;
 
+var daySpeedTimer = 5000; //10000 = 10sec 5000 = 5sec
+var adSpeedTimer = 10000; //10000 = 10sec 5000 = 5sec
 
   
