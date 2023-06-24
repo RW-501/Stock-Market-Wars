@@ -482,3 +482,21 @@ display: block;
     overflow: auto;
     height: 500px;
 }
+
+
+/* Slider styles */
+#slider {
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+#sliderValue {
+  font-weight: bold;
+}
+
+/* Checkbox styles */
+#skipWeekends {
+  margin-left: 5px;
+}
+
+
