@@ -10,11 +10,13 @@ body {
   
 }
 .mainTitle{
-    color: #7a828e26;
+    color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     width: 90%;
     margin: 10% auto 2% auto;
     border-radius: 10px;
+      background-color: #f1f3f485;
+  border: #84ADEA 1px solid;
 }
 {
 box-sizing: border-box;
@@ -314,6 +316,7 @@ display: flex;
     margin: auto;
       width: 50%;
     text-align: center;
+      border: #84ADEA 1px solid;
 }
 
 
