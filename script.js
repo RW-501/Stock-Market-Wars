@@ -685,34 +685,40 @@ if (counterValue > 365) {
 
 
 
-
-
-  
-  // Increment the new week counter
-  if (incrementCounter === 7) {
-    newWeek(); // Call the newWeek function
-    incrementCounter = 0;
-  }
-  // Increment the weekend counter
-  if (incrementCounter === 6) {
-    weekend(); // Call the weekend function
-  }
-
-
-
   if(eventDayCount > 20){
 
   pauseGame(); // Pause the game
      eventDayCount = 0;
   }
   eventDayCount++;
+
  console.log("eventDayCount   "+eventDayCount);
-  
+
 
   
+  
+  // Increment the new week counter
+  if (incrementCounter === 7) {
+    newWeek(); // Call the newWeek function
+    incrementCounter = 0;
+  } else
+  // Increment the weekend counter
+  if (incrementCounter === 6) {
+    weekend(); // Call the weekend function
+  }else{
+
+
 updateNetWorthDisplay();
 
+  updateStockPrices();
    console.log("day end");
+
+  }
+
+
+
+
+
 
 }
 
@@ -728,14 +734,16 @@ function weekend() {
     clearTimeout(weekendTimer); // Stop the timer
 // Start the timer
  weekendTimer = setTimeout(() => {
-   updateStockPrices();
-   
+updateNetWorthDisplay();
+
+  updateStockPrices();
   }, 10000); // Run the timer every 10 seconds (10 000 milliseconds)
 }
 
 function newWeek() {
   const event = `New Week Market Open`;
           addNewsEvent(event, "main"); // Add the news event to the UI
+updateNetWorthDisplay();
 
   updateStockPrices();
 }
