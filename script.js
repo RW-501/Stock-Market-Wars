@@ -459,7 +459,7 @@ console.log('daySpeedTimer:', daySpeedTimer);
     console.log("8888888888888888888888888888888888888888   ");
 
     NewDayFunc();
-  }, daySpeedTimer); // Run the timer every 10 seconds (10 000 milliseconds)
+  }, parseInt(daySpeedTimer)); // Run the timer every 10 seconds (10 000 milliseconds)
   
   
 }
