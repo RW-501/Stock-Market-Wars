@@ -740,6 +740,22 @@ updateNetWorthDisplay();
 
 var adCounter;
 var weekendTimer;
+
+
+function adCounter() {
+
+  if(adCounter === 0){
+updateNetWorthDisplay();
+  updateStockPrices();
+  }else{
+  let adTimerBox = document.getElementById("ad-body");
+  adTimerBox.innerHTML = adCounter+" sec left";
+    adCounter--;
+  }
+}
+  
+
+
 function weekend() {
   const event = `Weekend Market Closed`;
           addNewsEvent(event, "main"); // Add the news event to the UI
@@ -758,18 +774,7 @@ adCounter();
   }, 1000); // Run the timer every 10 seconds (10 000 milliseconds)
 }
 
-function adCounter() {
 
-  if(adCounter === 0){
-updateNetWorthDisplay();
-  updateStockPrices();
-  }else{
-  let adTimerBox = document.getElementById("ad-body");
-  adTimerBox.innerHTML = adCounter+" sec left";
-    adCounter--;
-  }
-}
-  
 function newWeek() {
   const event = `New Week Market Open`;
           addNewsEvent(event, "main"); // Add the news event to the UI
