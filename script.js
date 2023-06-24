@@ -341,9 +341,9 @@ function updateStockPrices() {
       
 
 
-const msgArea = document.getElementById("msg-area");
+const msgText = document.getElementById("msg-Text");
   // Clear the existing rows
-  msgArea.innerHTML = "";
+  msgText.innerHTML = "";
   
   // Retrieve the stock prices from local storage
   const storedStockPrices = localStorage.getItem('stockPrices');
