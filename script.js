@@ -1981,7 +1981,7 @@ slider.addEventListener('change', handleSliderChange);
 skipWeekendsCheckbox.addEventListener('change', handleCheckboxChange);
 
 // Set initial timer speed (replace this with your actual timer logic)
-dayTimer.speed = parseInt(savedGameOptions.sliderSpeed) || 5;
+slider.speed = parseInt(savedGameOptions.sliderSpeed) || 5;
 
 //var daySpeedTimer = 5000; //10000 = 10sec 5000 = 5sec
 //var adSpeedTimer = 10000; //10000 = 10sec 5000 = 5sec
