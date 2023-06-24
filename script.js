@@ -1676,6 +1676,7 @@ function closePortfolioPopup() {
 
 // Event listener for opening the portfolio popup
 document.getElementById("portfolio-button").addEventListener("click", openPortfolioPopup);
+document.getElementById("portfolio-BTN").addEventListener("click", openPortfolioPopup);
 
 // Event listener for closing the portfolio popup
 document.getElementById("close-portfolio-popup").addEventListener("click", closePortfolioPopup);
