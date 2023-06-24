@@ -340,7 +340,7 @@ var nextDayTimeout;
 /// START UPDATE PRICES
  function updateStockPrices() {
 console.log("111111111111111   ");
-         timeAndDateFunc();
+         timeAndDateFuncUI();
 
        // Update the stock prices in the user interface
 console.log("222222   ");
@@ -670,7 +670,7 @@ var eventDayCount = 0;
 
 
 
-function timeAndDateFunc() {
+function timeAndDateFuncUI() {
   incrementCounter++;
     counterValue++;
 
@@ -692,8 +692,9 @@ if (counterValue > 365) {
 } else {
   counter.textContent = `${counterValue} days`;
 }
+}
 
-
+function timeAndDateFunc() {
 
 
   if(eventDayCount > 20){
