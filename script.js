@@ -339,7 +339,8 @@ var nextDayTimeout;
 /// START UPDATE PRICES
 function updateStockPrices() {
 
-      
+       // Update the stock prices in the user interface
+updateStockPricesUI();
 
 
 const msgText = document.getElementById("msg-Text");
@@ -446,7 +447,7 @@ saveStockPrices(stockPrices);
   clearTimeout(nextDayTimeout);
   nextDayTimeout = setTimeout(() => {
     NewDayFunc();
-  }, 5000);; // Run the timer every 10 seconds (10 000 milliseconds)
+  }, 5000); // Run the timer every 10 seconds (10 000 milliseconds)
   
   
 }
@@ -457,11 +458,10 @@ function NewDayFunc(){
 
 
 
-  
-
  
- // Update the stock prices in the user interface
-updateStockPricesUI();
+ 
+       timeAndDateFunc();
+
 }
 
 
@@ -646,7 +646,6 @@ function updateStockPricesUI() {
 
   });
 
-       timeAndDateFunc();
 
 }
 
@@ -706,10 +705,11 @@ if (counterValue > 365) {
     weekend(); // Call the weekend function
   }else{
 
-
+ 
 updateNetWorthDisplay();
 
   updateStockPrices();
+
    console.log("day end");
 
   }
