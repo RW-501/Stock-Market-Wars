@@ -34,7 +34,7 @@ h1 {
 }
 
 .game {
-  background-color: #f5f5f5;
+  background-color: #f7f7f8;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -258,11 +258,11 @@ width: 60%;
 
 
 .stock-row{
-    border: #3371AB solid 2px;
+    border: #84adea  solid 2px;
     border-left: none;
     border-right: none;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
+
+  }
 
 
 .news-item{
