@@ -1404,7 +1404,6 @@ localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
     newsContent.scrollTop = 0; // Scroll to the top of the news content
   });
   }
-  getStockEvents();
 
 
 
@@ -1566,16 +1565,15 @@ function makeFullPayment() {
 
 
 
+  getStockEvents();
 
   getBankEvents();
 
+
+
+ updateStockPricesUI();
+
 updateStockPrices();
-
-// Call the updateNetWorthDisplay function initially and whenever there's a change in net worth
-updateNetWorthDisplay();
-
-
-
 
 
 
