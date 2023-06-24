@@ -1925,8 +1925,8 @@ const skipWeekendsCheckbox = document.getElementById('skipWeekends');
 const savedGameOptions = JSON.parse(localStorage.getItem('gameOptions')) || {};
 
 // Set the initial slider value and display
-slider.value = savedGameOptions.sliderSpeed || daySpeedTimer;
-sliderValue.textContent = `Slider Speed: ${slider.value}`;
+//slider.value = savedGameOptions.sliderSpeed || daySpeedTimer;
+//sliderValue.textContent = `Slider Speed: ${slider.value}`;
 
 // Set the initial checkbox state
 skipWeekendsCheckbox.checked = savedGameOptions.skipAds || false;
@@ -1951,7 +1951,7 @@ const convertedSpeed = 1000 * sliderSpeed;
   localStorage.setItem('gameOptions', JSON.stringify(savedGameOptions));
 
   // Update the timer speed (replace this with your actual timer logic)
-  dayTimer.speed = parseInt(convertedSpeed);
+  slider.speed = parseInt(convertedSpeed);
 }
 
 // Function to handle checkbox change event
@@ -1983,7 +1983,7 @@ skipWeekendsCheckbox.addEventListener('change', handleCheckboxChange);
 // Set initial timer speed (replace this with your actual timer logic)
 dayTimer.speed = parseInt(savedGameOptions.sliderSpeed) || 5;
 
-var daySpeedTimer = 5000; //10000 = 10sec 5000 = 5sec
-var adSpeedTimer = 10000; //10000 = 10sec 5000 = 5sec
+//var daySpeedTimer = 5000; //10000 = 10sec 5000 = 5sec
+//var adSpeedTimer = 10000; //10000 = 10sec 5000 = 5sec
 
   
