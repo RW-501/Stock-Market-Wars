@@ -334,7 +334,7 @@ localStorage.setItem('portfolio', JSON.stringify(portfolioString));
   totalValueCell.textContent = "$" + totalValue.toFixed(2);
 }
 
-var nextDay;
+var nextDayTimeout;
 /// START UPDATE PRICES
 function updateStockPrices() {
 
@@ -444,8 +444,8 @@ saveStockPrices(stockPrices);
   localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
 
 
-  clearTimeout(nextDay);
-  nextDay = setTimeout(() => {
+  clearTimeout(nextDayTimeout);
+  nextDayTimeout = setTimeout(() => {
     NewDayFunc();
   }, 5000);; // Run the timer every 10 seconds (10 000 milliseconds)
   
@@ -484,15 +484,15 @@ document.getElementById("stock-popup-input").value = xxx;
 }
 
 
-var intervalStock;
+var stockInterval;
 let theCompany;
 let theCompanyName;
 
 function startUITimer() {
     console.log("startUITimer");
 //setInterval
-  clearInterval(intervalStock);
-  intervalStock = setInterval(() => {
+  clearInterval(stockInterval);
+  stockInterval = setInterval(() => {
     openStockPopup('');
   }, 3000);
 }
@@ -604,12 +604,12 @@ function closeStockPopup() {
 
 stockPopupBuy.removeEventListener("click", buyStock);
  stockPopupSell.removeEventListener("click", sellStock);
-clearInterval(intervalStock);
+clearInterval(stockInterval);
   closePopup("stock-popup");
 }
 
 document.getElementById("close-stock-popup").addEventListener("click", function () {
-  clearInterval(intervalStock);
+  clearInterval(stockInterval);
   closePopup("stock-popup");
 });
 
@@ -940,7 +940,14 @@ function deductFunds(amount) {
         // Add the news event
   const event = `Funds are low $${amount.toFixed(2)}`;
           addNewsEvent(event, "bank"); // Add the news event to the UI
-
+    
+let networth = calculateNetWorth();
+      if (amount <= 0 || amount > networth) {
+  const event = `Bankrupt`;
+          addNewsEvent(event, "main"); // Add the news event to the UI
+endGame(); 
+      }
+    
     // Handle the error case (e.g., display an error message, throw an error, etc.)
     return;
   }
@@ -1303,6 +1310,8 @@ localStorage.removeItem('lenderPaymentInfo');
       }
       }
   }
+           displayPortfolio();
+
 }
 
       
@@ -1596,8 +1605,13 @@ function openPopup(popupId) {
   // Check if the popupId matches specific conditions, and don't take any action
   if (popupId === "portfolio-popup" || popupId === "news-popup" || popupId === "bank-popup" || popupId === "stock-popup") {
     // Do nothing for specific popups
+    if (nextDayTimeout) {
+  console.log("Timeout is running.");
+} else {
+updateStockPrices();
+}
   } else {
-    clearInterval(interval); // Clear the interval to stop updating stock prices
+        clearTimeout(nextDayTimeout);
     console.log("Timer stopped");
   }
 
@@ -1630,10 +1644,10 @@ function openPopup(popupId) {
 
 // Function to close the specified popup window
 function closePopup(popupId) {
-if (interval) {
-  console.log("Interval is running.");
+if (nextDayTimeout) {
+  console.log("Timeout is running.");
 } else {
-  interval = setInterval(updateStockPrices, dayTimer); // Restart the interval to resume updating stock prices
+updateStockPrices();
 }
   console.log("closePopup");
   document.getElementById(popupId).classList.remove("popupOpened");
@@ -1733,8 +1747,8 @@ document.getElementById("open-options-popup").addEventListener("click", function
 });
 
 document.getElementById("close-options-popup").addEventListener("click", function() {
+  updateStockPrices();
   closePopup("options-popup");
-    interval = setInterval(updateStockPrices, dayTimer);
 });
 
 
@@ -1754,10 +1768,9 @@ function pauseGame() {
       closePopup("options-popup");
 
   console.log("Game paused");
-        clearTimeout(nextDay);
-    clearTimeout(intervalStock); // Stop the timer
-    clearInterval(interval); // Stop the timer
-    clearTimeout(weekendTimer); // Stop the timer
+        clearTimeout(nextDayTimeout);
+    clearInterval(stockInterval); // Stop the timer
+  //  clearTimeout(weekendTimer); // Stop the timer
     openPopup("pause-popup");
 }
 
@@ -1771,7 +1784,7 @@ document.getElementById("pause-game-btn").addEventListener("click", function() {
 });
 
 document.getElementById("close-pause-popup").addEventListener("click", function() {
-  interval = setInterval(updateStockPrices, dayTimer);
+updateStockPrices();
   closePopup("pause-popup");
 });
 
