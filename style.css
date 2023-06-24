@@ -300,8 +300,8 @@ display: flex;
     font-weight: 600;
 }
 #portfolio-BTN {
-    text-align: left;
-     width: 50%;
+    text-align: center;
+     width: 100%;
         cursor: pointer;
 
 }
