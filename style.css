@@ -3,6 +3,7 @@ body {
   background-color: #f1f1f1;
   width: 100%;
   font-size: x-large;
+  
 }
 
 
@@ -35,9 +36,13 @@ display: flex;
 #total-cash, #msg-area{
       width: 50%;
     display: block;
+
+}
+#total-cash, #msg-area h2{
         cursor: pointer;
 
 }
+
 .status{
  
     display: block;
@@ -242,8 +247,9 @@ box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 
 
 #counter {
-  font-size: 36px;
-  margin-top: 30px;
+font-size: 36px;
+    margin-top: 30px;
+    text-align: right;
 }
 
 
