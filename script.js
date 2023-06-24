@@ -742,7 +742,7 @@ var adCounter;
 var weekendTimer;
 
 
-function adCounter() {
+function adCounterFunc() {
 
   if(adCounter === 0){
 updateNetWorthDisplay();
@@ -770,7 +770,7 @@ adCounter = adTimer;
     clearInterval(weekendTimer); // Stop the timer
 // Start the timer
  weekendTimer = setInterval(() => {
-adCounter();
+adCounterFunc();
   }, 1000); // Run the timer every 10 seconds (10 000 milliseconds)
 }
 
