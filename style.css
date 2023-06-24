@@ -180,13 +180,15 @@ background-color: #84adea;
 }
 
 #net-worth {
-    text-align: center;
+text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     padding: 2%;
     margin: 2%;
     box-sizing: content-box;
     border-radius: 10px;
     margin-top: 10%;
+    border: #84ADEA 2px solid;
+    background-color: #729dae;
 }
 #pause-popup .popup-content{
     height: fit-content !important
