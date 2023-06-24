@@ -1827,9 +1827,12 @@ console.log(keys);
   
   // Reset game state, UI elements, or perform necessary actions
   console.log("Game restarted");
-   getMarket();
+
+ updateStockPricesUI();
+
 updateStockPrices();
-  
+
+
 }
 
 
