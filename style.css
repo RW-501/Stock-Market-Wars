@@ -310,7 +310,6 @@ display: flex;
     text-align: center;
      width: 100%;
         cursor: pointer;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -328,7 +327,7 @@ display: flex;
 #counter {
     background-color: #f0f8ff45;
     border-radius: 10px;
-    padding: 2%;
+    padding: 8%;
     box-sizing: border-box;
     margin: 2%;
       width: 50%;
@@ -336,6 +335,8 @@ display: flex;
       border: #84ADEA 1px solid;
       cursor: pointer;
       display: grid;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
 }
 
 
