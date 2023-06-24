@@ -332,8 +332,8 @@ display: flex;
 
 
 #total-cash{
-  background-color: #f0f8ff45;
-    border-radius: 10px;
+background-color: #729dae;
+  border-radius: 10px;
     padding: 5%;
     box-sizing: border-box;
     margin: 2%;
@@ -343,8 +343,8 @@ display: flex;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 #counter {
-    background-color: #f0f8ff45;
-    border-radius: 10px;
+background-color: #729dae;
+  border-radius: 10px;
     padding: 8%;
     box-sizing: border-box;
     margin: 2%;
