@@ -1687,9 +1687,9 @@ document.getElementById("close-portfolio-popup").addEventListener("click", close
 
 
 
-
-
-
+document.getElementById("counter").addEventListener("click", function() {
+  openPopup("news-popup");
+});
 
 
 
