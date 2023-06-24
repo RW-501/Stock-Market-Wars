@@ -65,8 +65,13 @@ display: grid;
 
 
 #msg-area{
-      width: 50%;
+
+  width: 100%;
     display: block;
+    text-align: center;
+    padding: 2%;
+    box-sizing: border-box;
+}
 
 }
 #total-cash, #msg-area h2{
