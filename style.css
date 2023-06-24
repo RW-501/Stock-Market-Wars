@@ -303,16 +303,23 @@ font-size: 30px;
     background-color: #6a9f9f9e;
 
   }
+#open-news-popup h2{
+        cursor: pointer;
 
+}
 
 .news-item{
     padding: 5%;
     box-sizing: content-box;
+        cursor: pointer;
+
 }
 .breaking-news-item{
     padding: 5%;
     box-sizing: content-box;
       text-align: center;
+        cursor: pointer;
+
 }
 
 
