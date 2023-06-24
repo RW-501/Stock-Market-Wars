@@ -162,6 +162,7 @@ background-color: #84adea;
     font-weight: 800;
     flex: 1;
     box-sizing: border-box;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .buttons button:hover {
@@ -169,7 +170,13 @@ background-color: #84adea;
 }
 
 #net-worth {
-  text-align: center;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 2%;
+    margin: 2%;
+    box-sizing: content-box;
+    border-radius: 10px;
+    margin-top: 10%;
 }
 
 #stocks-table-body{
@@ -303,19 +310,20 @@ display: flex;
     text-align: center;
      width: 100%;
         cursor: pointer;
-
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 
 #total-cash{
   background-color: #f0f8ff45;
     border-radius: 10px;
-    padding: 2%;
+    padding: 5%;
     box-sizing: border-box;
     margin: 2%;
       width: 50%;
     text-align: center;
       border: #84ADEA 1px solid;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 #counter {
     background-color: #f0f8ff45;
@@ -326,6 +334,8 @@ display: flex;
       width: 50%;
     text-align: center;
       border: #84ADEA 1px solid;
+      cursor: pointer;
+      display: grid;
 }
 
 
