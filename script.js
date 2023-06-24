@@ -1,6 +1,6 @@
 
 var daySpeedTimer = 5000; //10000 = 10sec 5000 = 5sec
-var adSpeedTimer = 10000; //10000 = 10sec 5000 = 5sec
+var adTimer = 10000; //10000 = 10sec 5000 = 5sec
 
 var runCount = 0;
 
@@ -751,15 +751,25 @@ function weekend() {
   openPopup("weekend-popup");
 
 
-    clearTimeout(weekendTimer); // Stop the timer
+    clearInterval(weekendTimer); // Stop the timer
 // Start the timer
- weekendTimer = setTimeout(() => {
+ weekendTimer = setInterval(() => {
+
+  }, 1000); // Run the timer every 10 seconds (10 000 milliseconds)
+}
+
+function weekend() {
+
+  if(adTimer === 0){
 updateNetWorthDisplay();
 
   updateStockPrices();
-  }, adSpeedTimer); // Run the timer every 10 seconds (10 000 milliseconds)
+  }else{
+  const adTimer = document.getElementById("ad-body");
+  adTimer.innerHTML = adTime+" sec left";
+  }
 }
-
+  
 function newWeek() {
   const event = `New Week Market Open`;
           addNewsEvent(event, "main"); // Add the news event to the UI
@@ -1809,7 +1819,7 @@ function pauseGame() {
   console.log("Game paused");
         clearTimeout(nextDayTimeout);
     clearInterval(stockInterval); // Stop the timer
-  //  clearTimeout(weekendTimer); // Stop the timer
+  //  clearInterval(weekendTimer); // Stop the timer
     openPopup("pause-popup");
 }
 
@@ -1970,9 +1980,9 @@ function handleCheckboxChange() {
 
 // Set the ad speed timer based on the checkbox state
 if (skipWeekends) {
-  adSpeedTimer = 0;
+  adTimer = 0;
 } else {
-  adSpeedTimer = 10000;
+  adTimer = 5;
 }
 }
 
