@@ -1,6 +1,9 @@
 
 html{
   width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+      width: 100% !important;
 }
 body {
   font-family: Arial, sans-serif;
@@ -66,6 +69,7 @@ h1 {
     border-top: none;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+  min-height: 200px;
 }
 
 
