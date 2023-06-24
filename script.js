@@ -468,8 +468,8 @@ console.log("77777777777777777777   ");
 function NewDayFunc(){
 
 console.log("9999999999999999999999999999999999999   ");
-
-
+timeAndDateFunc();
+  
  updateStockPricesUI();
 
  
