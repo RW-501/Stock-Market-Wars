@@ -1330,7 +1330,7 @@ function addNewsEvent(event, xxx,name) {
   
 if(xxx =="main" && name){
 
-      const newsContent = document.getElementById("msg-area");
+      const newsContent = document.getElementById("msg-Text");
     const newsItem = document.createElement("div");
   
      newsItem.addEventListener("click", () => openStockPopup('',name));
@@ -1343,7 +1343,7 @@ if(xxx =="main" && name){
 }
   if(xxx =="loan" ){
 
-      const newsContent = document.getElementById("msg-area");
+      const newsContent = document.getElementById("msg-Text");
     const newsItem = document.createElement("div");
   
      newsItem.addEventListener("click", () => openPopup("loans-popup"));
