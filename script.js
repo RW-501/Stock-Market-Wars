@@ -407,7 +407,7 @@ if (Math.random() < 0.8) { // 20% chance of a news event
       const changePercentageFormatted = `${Math.abs(changePercentage).toFixed(2)}%`;
       const isPositiveLabel = isPositiveChangeNew ? 'increased' : 'decreased';
       
-document.getElementById("msg-area").textContent = "";
+document.getElementById("msg-text").textContent = "";
       
       const newsEvent = `Breaking News: ${company.name} price ${isPositiveLabel} by ${changePercentageFormatted}`;
       addNewsEvent(newsEvent, "main", company.name); // Add the news event to the UI
