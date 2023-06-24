@@ -674,7 +674,7 @@ function timeAndDateFunc() {
 if (counterValue > 365) {
   const years = Math.floor(counterValue / 365);
   const remainingDays = counterValue % 365;
-  counter.textContent = `${years} years, ${remainingDays} days`;
+  counter.textContent = `${years} years,<br> ${remainingDays} days`;
   // Show reminder or perform any other actions
 } else {
   counter.textContent = `${counterValue} days`;
