@@ -338,9 +338,10 @@ var nextDayTimeout;
 
 /// START UPDATE PRICES
 function updateStockPrices() {
-
+console.log("111111111111111   ");
        // Update the stock prices in the user interface
 updateStockPricesUI();
+console.log("222222   ");
 
 
 const msgText = document.getElementById("msg-Text");
@@ -413,6 +414,7 @@ document.getElementById("msg-Text").textContent = "";
       
       const newsEvent = `Breaking News: ${company.name} price ${isPositiveLabel} by ${changePercentageFormatted}`;
       addNewsEvent(newsEvent, "main", company.name); // Add the news event to the UI
+console.log("33333333   ");
 
  
       
@@ -423,11 +425,13 @@ document.getElementById("msg-Text").textContent = "";
 
 
     
+console.log("44444444444444444444444444444   ");
 
 
 
   }
    
+console.log("5555555555555555555   ");
 
     // Save the updated company price in your data structure or storage mechanism
     // For example, you can store it in the stockPrices object
@@ -437,15 +441,19 @@ document.getElementById("msg-Text").textContent = "";
 
   }
 
-  
+  console.log("6666666666   ");
+
 saveStockPrices(stockPrices);
 
   // Save the updated stock prices object in local storage
   localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
+console.log("77777777777777777777   ");
 
 
   clearTimeout(nextDayTimeout);
   nextDayTimeout = setTimeout(() => {
+    console.log("8888888888888888888888888888888888888888   ");
+
     NewDayFunc();
   }, 5000); // Run the timer every 10 seconds (10 000 milliseconds)
   
@@ -456,6 +464,7 @@ saveStockPrices(stockPrices);
 
 function NewDayFunc(){
 
+console.log("9999999999999999999999999999999999999   ");
 
 
  
@@ -619,6 +628,7 @@ function updateStockPricesUI() {
   // Clear the existing rows
   stocksTableBody.innerHTML = "";
   
+console.log("updateStockPricesUI nxxxxxxxxxxxxxxxxx   ");
 
   // Loop through each company and update the price and buttons in the UI
   companies.forEach((company) => {
