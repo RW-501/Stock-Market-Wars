@@ -499,4 +499,7 @@ display: block;
   margin-left: 5px;
 }
 
-
+#ad-body {
+text-align: center;
+    padding: 10%;
+}
