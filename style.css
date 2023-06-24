@@ -11,21 +11,22 @@ body {
 }
 #mainTitle{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  color:#fff;
 }
 {
 box-sizing: border-box;
 }
 
-#titles{
+#titles th{
     font-weight: 600;
 
 }
 #open-news-popup h2{
-    text-align: left;
+    text-align: right;
 
 }
   #open-bank-popup h2{
-  text-align: right;
+  text-align: left;
 
 }
 
