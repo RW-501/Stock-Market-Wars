@@ -334,12 +334,11 @@ localStorage.setItem('portfolio', JSON.stringify(portfolioString));
   totalValueCell.textContent = "$" + totalValue.toFixed(2);
 }
 
-
+var nextDay;
 /// START UPDATE PRICES
 function updateStockPrices() {
 
-        // Update the stock prices in the user interface
-updateStockPricesUI();
+      
 
  console.log("111111111111111111111111111111111111111111");
 
@@ -443,11 +442,32 @@ saveStockPrices(stockPrices);
 
   // Save the updated stock prices object in local storage
   localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
+
+
+  clearTimeout(nextDay);
+  nextDay = setTimeout(() => {
+    NewDayFunc();
+  }, 5000);; // Run the timer every 10 seconds (10 000 milliseconds)
   
+  
+}
+
+
+
+function NewDayFunc(){
+
+
 
   
-     timeAndDateFunc();
+
+ 
+ // Update the stock prices in the user interface
+updateStockPricesUI();
 }
+
+
+
+
 
 
 function howMuchStock(stockPrice, availableFunds) {
@@ -471,10 +491,10 @@ let theCompanyName;
 function startUITimer() {
     console.log("startUITimer");
 //setInterval
-  clearTimeout(intervalStock);
-  intervalStock = setTimeout(() => {
+  clearInterval(intervalStock);
+  intervalStock = setInterval(() => {
     openStockPopup('');
-  }, 5000);
+  }, 3000);
 }
 
 // Open the stock popup and populate it with the company details
@@ -563,7 +583,6 @@ howMuchStock(stockPrice, availableFunds);
 });
   }   
 
-  //clearInterval(intervalStock);
 }
 
 
@@ -627,6 +646,9 @@ function updateStockPricesUI() {
     stocksTableBody.appendChild(row);
 
   });
+
+       timeAndDateFunc();
+
 }
 
 var incrementCounter = 0;
@@ -679,10 +701,7 @@ if (counterValue > 365) {
 
 
   if(eventDayCount > 20){
-    clearInterval(intervalStock); // Stop the timer
-    clearInterval(interval); // Stop the timer
-    clearTimeout(weekendTimer); // Stop the timer
-    openPopup("pause-popup");
+
   pauseGame(); // Pause the game
      eventDayCount = 0;
   }
@@ -691,10 +710,9 @@ if (counterValue > 365) {
   
 
   
-    displayPortfolio();
 updateNetWorthDisplay();
 
-   console.log("5555555555555555555555555555555555");
+   console.log("day end");
 
 }
 
@@ -706,17 +724,12 @@ var weekendTimer;
 function weekend() {
   const event = `Weekend Market Closed`;
           addNewsEvent(event, "main"); // Add the news event to the UI
-    clearInterval(intervalStock); // Stop the timer
-    clearInterval(interval); // Stop the timer
+
     clearTimeout(weekendTimer); // Stop the timer
-  
 // Start the timer
  weekendTimer = setTimeout(() => {
+   updateStockPrices();
    
- clearInterval(interval); // Stop the timer
-    interval = setInterval(updateStockPrices, dayTimer);
-   
- // timeAndDateFunc();
   }, 10000); // Run the timer every 10 seconds (10 000 milliseconds)
 }
 
@@ -746,7 +759,7 @@ document.getElementById("net-worth-value").textContent = `$${netWorth.toFixed(2)
      
 
 
-  newDayFunc();
+  lenderCheckFunc();
 }
 
 
@@ -1046,7 +1059,6 @@ displayStatusMessage("stock",`Invalid quantity or insufficient funds to buy stoc
       //alert(counT+"    buy : Invalid quantity or insufficient funds to buy stocks.");
 
 }
-  clearInterval(intervalStock);
   closePopup("stock-popup");
 
 }
@@ -1085,7 +1097,6 @@ displayStatusMessage("stock",`Successfully sold ${quantityToSell} ${companyName}
       displayStatusMessage("stock",`sell : Invalid quantity or insufficient stocks to sell.`);
 
     }
-  clearInterval(intervalStock);
   closePopup("stock-popup");
 
 }
@@ -1239,7 +1250,7 @@ function requestLoan() {
 
 
 
-       function newDayFunc() {
+       function lenderCheckFunc() {
   const lenderPaymentInfoString = localStorage.getItem('lenderPaymentInfo');
 
   if (lenderPaymentInfoString) {
@@ -1368,7 +1379,6 @@ localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
 }
 
 
-//window.addEventListener("DOMContentLoaded", function () {
 
   function getStockEvents(){
   const savedEvents = JSON.parse(localStorage.getItem("savedEvents")) || [];
@@ -1386,12 +1396,8 @@ localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
   });
   }
   getStockEvents();
-  
-//});
 
 
-
-//window.addEventListener("DOMContentLoaded", function () {
 
   function  getBankEvents(){
   const savedEvents = JSON.parse(localStorage.getItem("savedBankEvents")) || [];
@@ -1408,129 +1414,6 @@ localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
     newsContent.scrollTop = 0; // Scroll to the top of the news content
   });
   }
-  getBankEvents();
-//});
-
-
-
-
-
-
-
-updateStockPrices();
-
-// Call the updateStockPrices  see 27 dayTimer
-var interval = setInterval(updateStockPrices, dayTimer);
-
-
-// Call the updateNetWorthDisplay function initially and whenever there's a change in net worth
-updateNetWorthDisplay();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Function to pause the game
-function pauseGame() {
-  // Logic to pause the game
-  // Update UI elements or perform necessary actions
-  console.log("Game paused");
-}
-
-
-
-// Function to open the specified popup window
-function openPopup(popupId) {
-  // Check if the popupId matches specific conditions, and don't take any action
-  if (popupId === "portfolio-popup" || popupId === "news-popup" || popupId === "bank-popup" || popupId === "stock-popup") {
-    // Do nothing for specific popups
-  } else {
-    clearInterval(interval); // Clear the interval to stop updating stock prices
-    console.log("Timer stopped");
-  }
-
-  // Check if the popupId is "news-popup"
-  if (popupId === "news-popup") {
-    const popups = document.querySelectorAll(".popup");
-    for (const popup of popups) {
-      if (popup.classList.contains("popupOpened")) {
-        console.log("popupOpened");
-        return; // Exit the function if the "news-popup" is already opened
-      } else {
-        var popupElement = document.getElementById(popupId);
-        console.log("Open news popup");
-        popupElement.style.display = "block";
-      }
-    }
-  } else {
-    // Get the specified popup element
-    var popupElement = document.getElementById(popupId);
-    console.log("Open popup  ?????"+popupId);
-   popupElement.style.display = "block";
-   popupElement.classList.add("popupOpened");
-  }
-}
-
- 
-
-
-
-
-// Function to close the specified popup window
-function closePopup(popupId) {
-if (interval) {
-  console.log("Interval is running.");
-} else {
-  interval = setInterval(updateStockPrices, dayTimer); // Restart the interval to resume updating stock prices
-}
-  console.log("closePopup");
-  document.getElementById(popupId).classList.remove("popupOpened");
-
-  var popup = document.getElementById(popupId);
-  popup.style.display = "none";
-
-}
-
-// Function to open the portfolio popup
-function openPortfolioPopup() {
-  openPopup("portfolio-popup");
-  displayPortfolio();
-}
-
-// Function to close the portfolio popup
-function closePortfolioPopup() {
-  closePopup("portfolio-popup");
-}
-
-// Event listener for opening the portfolio popup
-document.getElementById("portfolio-button").addEventListener("click", openPortfolioPopup);
-
-// Event listener for closing the portfolio popup
-document.getElementById("close-portfolio-popup").addEventListener("click", closePortfolioPopup);
-
-
-
 
 
 // Function to retrieve loan information from local storage
@@ -1675,6 +1558,115 @@ function makeFullPayment() {
 
 
 
+  getBankEvents();
+
+updateStockPrices();
+
+// Call the updateNetWorthDisplay function initially and whenever there's a change in net worth
+updateNetWorthDisplay();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Function to open the specified popup window
+function openPopup(popupId) {
+  // Check if the popupId matches specific conditions, and don't take any action
+  if (popupId === "portfolio-popup" || popupId === "news-popup" || popupId === "bank-popup" || popupId === "stock-popup") {
+    // Do nothing for specific popups
+  } else {
+    clearInterval(interval); // Clear the interval to stop updating stock prices
+    console.log("Timer stopped");
+  }
+
+  // Check if the popupId is "news-popup"
+  if (popupId === "news-popup") {
+    const popups = document.querySelectorAll(".popup");
+    for (const popup of popups) {
+      if (popup.classList.contains("popupOpened")) {
+        console.log("popupOpened");
+        return; // Exit the function if the "news-popup" is already opened
+      } else {
+        var popupElement = document.getElementById(popupId);
+        console.log("Open news popup");
+        popupElement.style.display = "block";
+      }
+    }
+  } else {
+    // Get the specified popup element
+    var popupElement = document.getElementById(popupId);
+    console.log("Open popup  ?????"+popupId);
+   popupElement.style.display = "block";
+   popupElement.classList.add("popupOpened");
+  }
+}
+
+ 
+
+
+
+
+// Function to close the specified popup window
+function closePopup(popupId) {
+if (interval) {
+  console.log("Interval is running.");
+} else {
+  interval = setInterval(updateStockPrices, dayTimer); // Restart the interval to resume updating stock prices
+}
+  console.log("closePopup");
+  document.getElementById(popupId).classList.remove("popupOpened");
+
+  var popup = document.getElementById(popupId);
+  popup.style.display = "none";
+
+}
+
+// Function to open the portfolio popup
+function openPortfolioPopup() {
+  displayPortfolio();
+  openPopup("portfolio-popup");
+}
+
+// Function to close the portfolio popup
+function closePortfolioPopup() {
+  closePopup("portfolio-popup");
+}
+
+// Event listener for opening the portfolio popup
+document.getElementById("portfolio-button").addEventListener("click", openPortfolioPopup);
+
+// Event listener for closing the portfolio popup
+document.getElementById("close-portfolio-popup").addEventListener("click", closePortfolioPopup);
+
+
+
+
+
+
+
+
 
 
 
@@ -1755,16 +1747,26 @@ document.getElementById("close-news-popup").addEventListener("click", function()
 });
 
 
+// Function to pause the game
+function pauseGame() {
+  // Logic to pause the game
+  // Update UI elements or perform necessary actions
+      closePopup("options-popup");
+
+  console.log("Game paused");
+        clearTimeout(nextDay);
+    clearTimeout(intervalStock); // Stop the timer
+    clearInterval(interval); // Stop the timer
+    clearTimeout(weekendTimer); // Stop the timer
+    openPopup("pause-popup");
+}
+
+
 
 
 
 // Event listener for the Pause Game button
 document.getElementById("pause-game-btn").addEventListener("click", function() {
-    closePopup("options-popup");
-      clearInterval(intervalStock); // Stop the timer
-    clearInterval(interval); // Stop the timer
-      clearInterval(weekendTimer); // Stop the timer
-  openPopup("pause-popup");
   pauseGame(); // Pause the game
 });
 
@@ -1778,11 +1780,9 @@ document.getElementById("close-pause-popup").addEventListener("click", function(
 
 // Function to restart the game
 function restartGame() {
+  pauseGame(); // Pause the game
+  closePopup("pause-popup");
 
-      closePopup("options-popup");
-      clearInterval(intervalStock); // Stop the timer
-    clearInterval(interval); // Stop the timer
-      clearInterval(weekendTimer); // Stop the timer
   // Clear local storage
   // Clean variables
 counterValue = 0;
@@ -1809,8 +1809,8 @@ console.log(keys);
   // Reset game state, UI elements, or perform necessary actions
   console.log("Game restarted");
    getMarket();
-    interval = setInterval(updateStockPrices, dayTimer);
-
+updateStockPrices();
+  
 }
 
 
