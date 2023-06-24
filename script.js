@@ -1974,7 +1974,13 @@ function handleCheckboxChange() {
 
   // Save the game options to local storage
   localStorage.setItem('gameOptions', JSON.stringify(savedGameOptions));
+adCounter 
 
+  IF(skipWeekends){
+    adCounter = 0;
+  }else{
+    adCounter = adTimer;
+  }
 }
 
 // Add event listener for slider change event
