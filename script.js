@@ -451,12 +451,7 @@ const msgText = document.getElementById("msg-Text");
 
     openStockPopup('');
 
-  console.log("6666666666   "+stockPrices["TechCom"]);
 
-
- // Save the updated stock prices object in local storage
-localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
-console.log("Saved updated stock prices to local storage");
 
 console.log('daySpeedTimer:', daySpeedTimer);
 
