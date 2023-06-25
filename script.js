@@ -39,13 +39,84 @@ function getMarket() {
     const stockPrices = JSON.parse(storedStockPrices) || {};
 
     const updatedCompanies = market.map(company => {
-      const { name } = company;
-      const price = stockPrices[name] || company.price;
+  //    const { name } = company;
+  //    const price = stockPrices[name] || company.price;
 
-  console.log("???????????????????????????????????/?? num 2   "+price);
-  console.log("???????????????????????????????????/?? num 2   "+name);
+  console.log("???????????????????????????????????/??  price   "+price);
+  console.log("???????????????????????????????????/??  name   "+name);
 
-     
+
+
+    // Example 1: Simulate random fluctuation
+    const randomChange = Math.random() * 0.1 - 0.05; // Random change between -5% and +5%
+    const priceChange = company.price * randomChange;
+    company.price += priceChange;
+    
+
+
+    // Example 2: Simulate trending market
+    const trend = Math.random() > 0.5 ? 1 : -1; // Positive or negative trend
+    const trendChange = company.price * 0.02 * trend; // 2% change in price
+    company.price += trendChange;
+
+
+let randomNum = Math.floor(Math.random() * 15) + 1;
+//console.log("randomNum   "+randomNum); 
+   if(randomNum == 8){
+//   if(isOdd(randomNum)  == true){
+ 
+    
+if (Math.random() < 0.8) { // 20% chance of a news event
+  const numCompaniesAffected = Math.floor(Math.random() * 2) + 1; // Randomly select 1 to 2 companies
+
+  for (let i = 0; i < numCompaniesAffected; i++) {
+    const randomCompanyIndex = Math.floor(Math.random() * companies.length);
+    const company = companies[randomCompanyIndex];
+
+    const newsChance = Math.random() * 0.6 + 0.1; // Random chance between 10% and 70%
+
+    if (Math.random() < newsChance) { // Check if the news event occurs based on the chance
+      const newsChangePercentage = (Math.random() * 0.05 + 0.5) * 100; // Random change between 5% and 10%
+
+      const isPositiveChange = Math.random() < 0.5; // 50% chance of positive change
+
+      const changePercentage = Math.min(newsChangePercentage, 30); // Limit change to 30%
+
+      const newsChange = (isPositiveChange ? 1 : -1) * (company.price * (changePercentage / 100)); // Calculate the news change
+
+      company.price += newsChange; // Apply the news change to the company's stock price
+
+      stockPrices[company.name] = company.price; // Update the stock price in the stockPrices object
+
+      const isPositiveChangeNew = newsChange >= 0;
+      const changePercentageFormatted = `${Math.abs(changePercentage).toFixed(2)}%`;
+      const isPositiveLabel = isPositiveChangeNew ? 'increased' : 'decreased';
+      
+document.getElementById("msg-Text").textContent = "";
+      
+      const newsEvent = `Breaking News: ${company.name} price ${isPositiveLabel} by ${changePercentageFormatted}`;
+      addNewsEvent(newsEvent, "main", company.name); // Add the news event to the UI
+console.log("33333333   ");
+
+ 
+      
+      console.log("newsEvent    " + newsEvent);
+    }
+  }
+}
+
+
+    
+console.log("44444444444444444444444444444   ");
+
+
+
+  }
+
+
+
+
+      
       return { name, price };
     });
 
@@ -53,29 +124,9 @@ function getMarket() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     
     // Store the updated market data back to local storage
-  //  localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
+ localStorage.setItem('stockPrices', JSON.stringify(storedStockPrices));
 
    // return storedStockPrices;
     return updatedCompanies;
@@ -83,6 +134,22 @@ function getMarket() {
 
   return market;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function formatCurrency(number) {
@@ -381,98 +448,7 @@ const msgText = document.getElementById("msg-Text");
   // Clear the existing rows
   msgText.innerHTML = "";
   
-  // Retrieve the stock prices from local storage
-  const storedStockPrices = localStorage.getItem('stockPrices');
 
-
-  // Parse the stored stock prices object
-  let stockPrices = JSON.parse(storedStockPrices);
-
-  // If stockPrices is null or not an object, initialize it as an empty object
-  if (!stockPrices || typeof stockPrices !== 'object') {
-    stockPrices = {};
-  }
-
-  // Loop through each company
-  for (const company of companies) {
-    // Simulate market trends, news events, or simulated market behavior
-    // Adjust the stock price based on these factors
-
-    // Example 1: Simulate random fluctuation
-    const randomChange = Math.random() * 0.1 - 0.05; // Random change between -5% and +5%
-    const priceChange = company.price * randomChange;
-    company.price += priceChange;
-    
-
-
-    // Example 2: Simulate trending market
-    const trend = Math.random() > 0.5 ? 1 : -1; // Positive or negative trend
-    const trendChange = company.price * 0.02 * trend; // 2% change in price
-    company.price += trendChange;
-
-
-let randomNum = Math.floor(Math.random() * 15) + 1;
-//console.log("randomNum   "+randomNum); 
-   if(randomNum == 8){
-//   if(isOdd(randomNum)  == true){
- 
-    
-if (Math.random() < 0.8) { // 20% chance of a news event
-  const numCompaniesAffected = Math.floor(Math.random() * 2) + 1; // Randomly select 1 to 2 companies
-
-  for (let i = 0; i < numCompaniesAffected; i++) {
-    const randomCompanyIndex = Math.floor(Math.random() * companies.length);
-    const company = companies[randomCompanyIndex];
-
-    const newsChance = Math.random() * 0.6 + 0.1; // Random chance between 10% and 70%
-
-    if (Math.random() < newsChance) { // Check if the news event occurs based on the chance
-      const newsChangePercentage = (Math.random() * 0.05 + 0.5) * 100; // Random change between 5% and 10%
-
-      const isPositiveChange = Math.random() < 0.5; // 50% chance of positive change
-
-      const changePercentage = Math.min(newsChangePercentage, 30); // Limit change to 30%
-
-      const newsChange = (isPositiveChange ? 1 : -1) * (company.price * (changePercentage / 100)); // Calculate the news change
-
-      company.price += newsChange; // Apply the news change to the company's stock price
-
-      stockPrices[company.name] = company.price; // Update the stock price in the stockPrices object
-
-      const isPositiveChangeNew = newsChange >= 0;
-      const changePercentageFormatted = `${Math.abs(changePercentage).toFixed(2)}%`;
-      const isPositiveLabel = isPositiveChangeNew ? 'increased' : 'decreased';
-      
-document.getElementById("msg-Text").textContent = "";
-      
-      const newsEvent = `Breaking News: ${company.name} price ${isPositiveLabel} by ${changePercentageFormatted}`;
-      addNewsEvent(newsEvent, "main", company.name); // Add the news event to the UI
-console.log("33333333   ");
-
- 
-      
-      console.log("newsEvent    " + newsEvent);
-    }
-  }
-}
-
-
-    
-console.log("44444444444444444444444444444   ");
-
-
-
-  }
-   
-console.log("5555555555555555555   ");
-
-    // Save the updated company price in your data structure or storage mechanism
-    // For example, you can store it in the stockPrices object
-     stockPrices[company.name] = company.price;
-
-
-  }
-saveStockPrices(stockPrices);
     openStockPopup('');
 
   console.log("6666666666   "+stockPrices["TechCom"]);
