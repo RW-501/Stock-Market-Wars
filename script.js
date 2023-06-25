@@ -450,7 +450,7 @@ saveStockPrices(stockPrices);
 
  // Save the updated stock prices object in local storage
 localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
-console.log("Saved updated stock prices to local storage");
+//console.log("Saved updated stock prices to local storage");
 
 console.log('daySpeedTimer:', daySpeedTimer);
 
@@ -459,7 +459,7 @@ clearTimeout(nextDayTimeout);
 
 // Set a new timeout to run the NewDayFunc() after a specified time interval
 nextDayTimeout = setTimeout(() => {
-  console.log("Executing NewDayFunc()");
+//  console.log("Executing NewDayFunc()");
   NewDayFunc();
     console.log("77777777777777777777777777777   ");
 
@@ -717,10 +717,10 @@ function timeAndDateFunc() {
 
   
 // Increment the new week counter
-if (incrementCounter > 7) {
+if (incrementCounter > 6) {
   incrementCounter = 0;
   newWeek(); // Call the newWeek function
-} else if (incrementCounter === 6) {
+} else if (incrementCounter === 5) {
   weekend(); // Call the weekend function
 } else {
   updateNetWorthDisplay();
@@ -763,13 +763,16 @@ function weekend() {
 
 
   openPopup("weekend-popup");
-
+if(adCounter > 0){
 adCounter = adTimer;
     clearInterval(weekendTimer); // Stop the timer
 // Start the timer
  weekendTimer = setInterval(() => {
 adCounterFunc();
   }, 1000); // Run the timer every 10 seconds (10 000 milliseconds)
+}else{
+  newWeek();
+}
 }
 
 
