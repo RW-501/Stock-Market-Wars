@@ -98,7 +98,7 @@ console.log("33333333   ");
           }
         }
       }
-    }
+    
       
      stockPrices[company.name] = company.price;
 
