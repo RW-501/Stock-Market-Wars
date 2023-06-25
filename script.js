@@ -72,7 +72,7 @@ var companies = getMarket();
 
 function saveStockPrices(xxx) {
   let data = JSON.parse(JSON.stringify(xxx));
-
+console.log("saveStockPrices   " + xxx);
   // Convert the updatedStockData to an array of objects
   const stockData = Object.entries(data).map(([name, price]) => ({ name, price }));
 
@@ -222,7 +222,8 @@ function updateStockQuantity(companyName, updatedStockQuantity, totalStockCost) 
 
 function getStockPrice(companyName) {
 
-  
+  console.log("getStockPrice   " + companyName);
+
   // Retrieve the stock prices from local storage
   const storedStockPrices = localStorage.getItem('stockPrices');
   
@@ -345,7 +346,7 @@ var nextDayTimeout;
 
 /// START UPDATE PRICES
  function updateStockPrices() {
-console.log("111111111111111   ");
+console.log("updateStockPrices  111111111111111   ");
          timeAndDateFuncUI();
 
        // Update the stock prices in the user interface
