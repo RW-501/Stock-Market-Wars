@@ -450,8 +450,8 @@ console.log("5555555555555555555   ");
 
   }
 saveStockPrices(stockPrices);
-startUITimer();
-  console.log("6666666666   "+stockPrices["TechCom"]);
+
+     console.log("6666666666   "+stockPrices["TechCom"]);
 
 
  // Save the updated stock prices object in local storage
