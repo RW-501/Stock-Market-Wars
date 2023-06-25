@@ -1349,7 +1349,7 @@ localStorage.removeItem('lenderPaymentInfo');
       
 // Function to add news event
 function addNewsEvent(event, xxx,name) {
-   //    console.log(xxx +"  xxx  "+ name+"   event    " + event);
+       console.log(xxx +"  xxx  "+ name+"   event    " + event);
 
   eventDayCount = 0;
   
