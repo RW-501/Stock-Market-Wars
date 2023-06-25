@@ -32,14 +32,19 @@ function getMarket() {
 
 
 
-   const storedStockPrices = localStorage.getItem('stockPrices');
+
+  const storedStockPrices = localStorage.getItem('stockPrices');
   const stockPrices = storedStockPrices ? JSON.parse(storedStockPrices) : {};
 
   const updatedCompanies = market.map(company => {
+    const { name } = company;
+    const price = stockPrices[name] || company.price;
 
 
+  // Loop through each company
   for (const company of companies) {
-
+    // Simulate market trends, news events, or simulated market behavior
+    // Adjust the stock price based on these factors
 
       // Example 1: Simulate random fluctuation
     const randomChange = Math.random() * 0.1 - 0.05; // Random change between -5% and +5%
@@ -98,14 +103,14 @@ console.log("33333333   ");
           }
         }
       }
-    
+   }
       
      stockPrices[company.name] = company.price;
 
-  console.log("???????????????????????????????????/??  price   "+price);
-  console.log("???????????????????????????????????/??  name   "+name);
+   // Return the updated company data
+    return { name, price };
+  });
 
-  }
 
   // Store the updated stock prices in local storage
 localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
