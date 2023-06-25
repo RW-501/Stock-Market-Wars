@@ -430,9 +430,9 @@ console.log("222222   ");
 updateNetWorthDisplay();
 
 
-const msgText = document.getElementById("msg-Text");
+//const msgText = document.getElementById("msg-Text");
   // Clear the existing rows
-  msgText.innerHTML = "";
+  //msgText.innerHTML = "";
   
 
  //   openStockPopup('');
