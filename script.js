@@ -532,6 +532,8 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
   if(stockName){
 theCompanyName = stockName;
   }
+      if(theCompanyName){
+
   const stockPrices = getStockPrices(theCompanyName);
 //  console.log("stockPrices xxxx   " + stockPrices);
 
@@ -563,7 +565,8 @@ stockPopupSell.addEventListener("click", sellStock);
 
 stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockValue)));
 stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockValue)));
-
+  }
+  
 if (xxx !== '' && xxx !== null && xxx !== undefined) {
   openPopup("stock-popup");
     startUITimer();
