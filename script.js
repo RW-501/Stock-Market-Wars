@@ -568,11 +568,9 @@ stockPopupQuantity.textContent = `Own: ${getStockQuantity(theCompanyName)?.stock
         stockPopupBuy.removeEventListener("click", buyStock);
  stockPopupSell.removeEventListener("click", sellStock);
         
-stockPopupBuy.addEventListener("click", buyStock(theCompanyName, parseInt(stockValue)));
-stockPopupSell.addEventListener("click", sellStock(theCompanyName, parseInt(stockValue)));
+stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockValue)));
+stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockValue)));
 
-//stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockValue)));
-//stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockValue)));
   }
   
 if (xxx !== '' && xxx !== null && xxx !== undefined) {
