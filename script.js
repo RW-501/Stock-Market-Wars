@@ -567,8 +567,9 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
   openPopup("stock-popup");
           stockPopupInput.value = "";
 
+  const stockPopupQuantityBTN = document.getElementById("stock-popup-quantity");
 
-stockPopupQuantity.addEventListener("click", () => {
+stockPopupQuantityBTN.addEventListener("click", () => {
   const stockQuantity = getStockQuantity(theCompanyName)?.stockQuantity || 0;
 getStockOwned(stockQuantity);
 });
