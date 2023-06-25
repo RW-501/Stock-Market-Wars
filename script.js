@@ -44,6 +44,32 @@ function getMarket() {
       return { name, price };
     });
 
+    
+  console.log("???????????????????????????????????/?? num 1   "+updatedCompanies["TechCom"]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     // Store the updated market data back to local storage
   //  localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
 
