@@ -1365,6 +1365,7 @@ if(xxx =="main" && name){
     newsContent.prepend(newsItem); // Add the event to the top of the news content
     newsContent.scrollTop = 0; // Scroll to the top of the news content
 
+  console.log(xxx +"  kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk ");
 }
   if(xxx =="loan" ){
 
