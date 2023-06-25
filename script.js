@@ -740,7 +740,7 @@ var weekendTimer;
 
 
 function adCounterFunc() {
-
+console.log("adCounter   " + adCounter);
   if(adCounter === 0){
         clearInterval(weekendTimer); // Stop the timer
 
@@ -1981,10 +1981,12 @@ function handleCheckboxChange() {
   
 
   if(skipWeekends){
-    adCounter = 0;
+    adTimer = 0;
   }else{
     adCounter = adTimer;
   }
+
+    
 }
 
 // Add event listener for slider change event
