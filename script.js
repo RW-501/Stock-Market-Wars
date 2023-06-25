@@ -742,7 +742,8 @@ var weekendTimer;
 function adCounterFunc() {
 
   if(adCounter === 0){
-    
+        clearInterval(weekendTimer); // Stop the timer
+
 newWeek();
   }else{
   let adTimerBox = document.getElementById("ad-body");
