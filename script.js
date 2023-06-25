@@ -757,13 +757,11 @@ function weekend() {
           addNewsEvent(event, "main"); // Add the news event to the UI
 
         clearTimeout(nextDayTimeout);
-    clearInterval(stockInterval); // Stop the timer
 
 
   openPopup("weekend-popup");
 if(adCounter > 0){
 adCounter = adTimer;
-    clearInterval(weekendTimer); // Stop the timer
 // Start the timer
  weekendTimer = setInterval(() => {
 adCounterFunc();
