@@ -523,6 +523,7 @@ let theCompanyName;
   var stockPopupSell = document.getElementById("stock-popup-sell");
   const stockPopupInput = document.getElementById("stock-popup-input");
 
+var addCount = 0;
 
 // Open the stock popup and populate it with the company details
 function openStockPopup(xxx, stockName) {
@@ -566,12 +567,15 @@ stockPopupQuantity.textContent = `Own: ${getStockQuantity(theCompanyName)?.stock
 //addLimitedEventListener(stockPopupSell, "click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
 
   let stockValue = stockPopupInput.value;
+        addCount++;
+        if(addCount > 1){
         stockPopupBuy.removeEventListener("click", buyStock);
  stockPopupSell.removeEventListener("click", sellStock);
-        
+        }else{
 stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockValue)));
 stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockValue)));
-
+        }
+        addCount =0;
   }
   
 if (xxx !== '' && xxx !== null && xxx !== undefined) {
