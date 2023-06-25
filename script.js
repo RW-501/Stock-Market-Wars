@@ -32,7 +32,7 @@ function getMarket() {
 
 
 
- const storedStockPrices = localStorage.getItem('stockPrices');
+ const storedStockPrices = localStorage.getItem('currentStockPrices');
 
   if (storedStockPrices) {
     const stockPrices = JSON.parse(storedStockPrices) || {};
@@ -225,7 +225,7 @@ function getStockPrice(companyName) {
   console.log("getStockPrice   " + companyName);
 
   // Retrieve the stock prices from local storage
-  const storedStockPrices = localStorage.getItem('stockPrices');
+  const storedStockPrices = localStorage.getItem('currentStockPrices');
   
   // If no stock prices are stored, return null or a default value
   if (!storedStockPrices) {
@@ -359,7 +359,7 @@ const msgText = document.getElementById("msg-Text");
   msgText.innerHTML = "";
   
   // Retrieve the stock prices from local storage
-  const storedStockPrices = localStorage.getItem('stockPrices');
+  const storedStockPrices = localStorage.getItem('currentStockPrices');
 
 
   // Parse the stored stock prices object
@@ -456,7 +456,7 @@ saveStockPrices(stockPrices);
 
 
  // Save the updated stock prices object in local storage
-localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
+localStorage.setItem('tomorrowStockPrices', JSON.stringify(stockPrices));
 console.log("Saved updated stock prices to local storage");
 
 console.log('daySpeedTimer:', daySpeedTimer);
@@ -480,6 +480,10 @@ nextDayTimeout = setTimeout(() => {
 
 
 function NewDayFunc(){
+
+  const currentStockPrices = localStorage.getItem('tomorrowStockPrices');
+
+  localStorage.setItem('currentStockPrices', JSON.stringify(currentStockPrices));
 
 console.log("9999999999999999999999999999999999999   ");
 timeAndDateFunc();
