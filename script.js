@@ -573,8 +573,8 @@ stockPopupQuantityBTN.addEventListener("click", () => {
   const stockQuantity = getStockQuantity(theCompanyName)?.stockQuantity || 0;
 getStockOwned(stockQuantity);
 });
-
-        stockPopupCash.addEventListener("click", () => {
+  const stockPopupCashBTN = document.getElementById("stock-popup-cash");
+        stockPopupCashBTN.addEventListener("click", () => {
   const stockPrice = getStockPrice(theCompanyName).toFixed(2) || 0;
   const availableFunds = getAvailableFunds().toFixed(2) || 0;
 howMuchStock(stockPrice, availableFunds);
