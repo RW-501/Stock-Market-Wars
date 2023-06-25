@@ -440,17 +440,17 @@ console.log("5555555555555555555   ");
     // For example, you can store it in the stockPrices object
      stockPrices[company.name] = company.price;
 
-  console.log("????????????????????????????????????????????????????????   "+stockPrices);
+  console.log("????????????????????????????????????????????????????????   "+stockPrices[1]);
 
   }
 saveStockPrices(stockPrices);
 
-  console.log("6666666666   "+stockPrices);
+  console.log("6666666666   "+stockPrices["TechCom"]);
 
 
  // Save the updated stock prices object in local storage
 localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
-//console.log("Saved updated stock prices to local storage");
+console.log("Saved updated stock prices to local storage");
 
 console.log('daySpeedTimer:', daySpeedTimer);
 
@@ -460,7 +460,7 @@ clearTimeout(nextDayTimeout);
 // Set a new timeout to run the NewDayFunc() after a specified time interval
 nextDayTimeout = setTimeout(() => {
 //  console.log("Executing NewDayFunc()");
-  NewDayFunc();
+ // NewDayFunc();
     console.log("77777777777777777777777777777   ");
 
 }, parseInt(daySpeedTimer));
