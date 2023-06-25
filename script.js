@@ -523,8 +523,9 @@ theCompanyName = stockName;
       if(theCompanyName){
 
   const stockPrices = getStockPrices(theCompanyName);
-//  console.log("stockPrices xxxx   " + stockPrices);
-
+        
+  console.log("stockPrices xxxx   " + stockPrices);
+ console.log("theCompanyName?? xxxx   " + theCompanyName);
   generateStockChart(stockPrices, theCompanyName);
   
 
