@@ -113,6 +113,9 @@ console.log("33333333   ");
    }
 
         stockPrices[company.name] = company.price;
+    localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
+    
+      console.log("stockPrices    " + stockPrices);
 
     // Return the updated company data
     return { name, price };
