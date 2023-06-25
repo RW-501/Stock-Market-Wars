@@ -443,7 +443,8 @@ console.log("5555555555555555555   ");
 
   }
 saveStockPrices(stockPrices);
-startUITimer();
+    openStockPopup('');
+
   console.log("6666666666   "+stockPrices["TechCom"]);
 
 
@@ -503,11 +504,7 @@ document.getElementById("stock-popup-input").value = xxx;
 let theCompany;
 let theCompanyName;
 
-function startUITimer() {
-    console.log("startUITimer");
-//setInterval
-    openStockPopup('');
-}
+
 
   var stockPopupBuy = document.getElementById("stock-popup-buy");
   var stockPopupSell = document.getElementById("stock-popup-sell");
@@ -568,7 +565,6 @@ stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseIn
   
 if (xxx !== '' && xxx !== null && xxx !== undefined) {
   openPopup("stock-popup");
-    startUITimer();
           stockPopupInput.value = "";
 
 
@@ -582,11 +578,11 @@ getStockOwned(stockQuantity);
   const availableFunds = getAvailableFunds().toFixed(2) || 0;
 howMuchStock(stockPrice, availableFunds);
 });
+
+  
 return;
 }
-  if(theCompanyName){
-    startUITimer();
-  }
+
     if(stockName){
         closePopup("portfolio-popup");
   openPopup("stock-popup");
