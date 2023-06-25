@@ -67,8 +67,8 @@ if (Math.random() < 0.8) { // 20% chance of a news event
   const numCompaniesAffected = Math.floor(Math.random() * 2) + 1; // Randomly select 1 to 2 companies
 
   for (let i = 0; i < numCompaniesAffected; i++) {
-    const randomCompanyIndex = Math.floor(Math.random() * updatedCompanies.length);
-    const company = updatedCompanies[randomCompanyIndex];
+    const randomCompanyIndex = Math.floor(Math.random() * stockPrices.length);
+    const company = stockPrices[randomCompanyIndex];
 
     const newsChance = Math.random() * 0.6 + 0.1; // Random chance between 10% and 70%
 
