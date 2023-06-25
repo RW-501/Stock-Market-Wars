@@ -444,7 +444,7 @@ console.log("5555555555555555555   ");
 
   }
 saveStockPrices(stockPrices);
-
+startUITimer();
   console.log("6666666666   "+stockPrices["TechCom"]);
 
 
@@ -501,18 +501,19 @@ document.getElementById("stock-popup-input").value = xxx;
 }
 
 
-var stockInterval;
 let theCompany;
 let theCompanyName;
 
 function startUITimer() {
     console.log("startUITimer");
 //setInterval
-  clearInterval(stockInterval);
-  stockInterval = setInterval(() => {
     openStockPopup('');
-  }, 3000);
 }
+
+  var stockPopupBuy = document.getElementById("stock-popup-buy");
+  var stockPopupSell = document.getElementById("stock-popup-sell");
+  const stockPopupInput = document.getElementById("stock-popup-input");
+
 
 // Open the stock popup and populate it with the company details
 function openStockPopup(xxx, stockName) {
@@ -544,9 +545,7 @@ theCompanyName = stockName;
   const stockPopupTitle = document.getElementById("stock-popup-title");
   const stockPopupPrice = document.getElementById("stock-popup-price");
   const stockPopupQuantity = document.getElementById("stock-popup-quantity");
-  const stockPopupInput = document.getElementById("stock-popup-input");
-  var stockPopupBuy = document.getElementById("stock-popup-buy");
-  var stockPopupSell = document.getElementById("stock-popup-sell");
+
   const stockPopupCash = document.getElementById("stock-popup-cash");
 
   stockPopupTitle.textContent = theCompanyName;
@@ -559,8 +558,11 @@ stockPopupQuantity.textContent = `Own: ${getStockQuantity(theCompanyName)?.stock
 //addLimitedEventListener(stockPopupBuy, "click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
 //addLimitedEventListener(stockPopupSell, "click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
 
-      stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
-stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockPopupInput.value)));
+  let stockValue = stockPopupInput.value;
+stockPopupSell.addEventListener("click", sellStock);
+
+stockPopupBuy.addEventListener("click", () => buyStock(theCompanyName, parseInt(stockValue)));
+stockPopupSell.addEventListener("click", () => sellStock(theCompanyName, parseInt(stockValue)));
 
 if (xxx !== '' && xxx !== null && xxx !== undefined) {
   openPopup("stock-popup");
@@ -621,12 +623,10 @@ function closeStockPopup() {
 
 stockPopupBuy.removeEventListener("click", buyStock);
  stockPopupSell.removeEventListener("click", sellStock);
-clearInterval(stockInterval);
   closePopup("stock-popup");
 }
 
 document.getElementById("close-stock-popup").addEventListener("click", function () {
-  clearInterval(stockInterval);
   closePopup("stock-popup");
 });
 
@@ -1824,7 +1824,6 @@ function pauseGame() {
 
   console.log("Game paused");
         clearTimeout(nextDayTimeout);
-    clearInterval(stockInterval); // Stop the timer
   //  clearInterval(weekendTimer); // Stop the timer
     openPopup("pause-popup");
 }
