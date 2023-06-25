@@ -32,32 +32,39 @@ function getMarket() {
 
 
 
-
   const storedStockPrices = localStorage.getItem('stockPrices');
-  const stockPrices = storedStockPrices ? JSON.parse(storedStockPrices) : {};
+  let stockPrices = {};
+
+  if (storedStockPrices) {
+    stockPrices = JSON.parse(storedStockPrices);
+  } else {
+    // Local storage is empty, fetch data from market
+    market.forEach(company => {
+      stockPrices[company.name] = company.price;
+    });
+
+    // Save the initial stock prices to local storage
+    localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
+  }
 
   const updatedCompanies = market.map(company => {
     const { name } = company;
     const price = stockPrices[name] || company.price;
 
-
-  // Loop through each company
-  for (const company of companies) {
     // Simulate market trends, news events, or simulated market behavior
     // Adjust the stock price based on these factors
 
-      // Example 1: Simulate random fluctuation
+    // Example 1: Simulate random fluctuation
     const randomChange = Math.random() * 0.1 - 0.05; // Random change between -5% and +5%
-    const priceChange = company.price * randomChange;
+    const priceChange = price * randomChange;
     company.price += priceChange;
-    
-
 
     // Example 2: Simulate trending market
     const trend = Math.random() > 0.5 ? 1 : -1; // Positive or negative trend
-    const trendChange = company.price * 0.02 * trend; // 2% change in price
+    const trendChange = price * 0.02 * trend; // 2% change in price
     company.price += trendChange;
 
+    // ... rest of the code for news events and price updates
 
 let randomNum = Math.floor(Math.random() * 15) + 1;
 //console.log("randomNum   "+randomNum); 
@@ -104,21 +111,18 @@ console.log("33333333   ");
         }
       }
    }
-  }
-     stockPrices[company.name] = company.price;
 
-   // Return the updated company data
+        stockPrices[company.name] = company.price;
+
+    // Return the updated company data
     return { name, price };
   });
 
-
   // Store the updated stock prices in local storage
-localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
+  localStorage.setItem('stockPrices', JSON.stringify(stockPrices));
 
   return updatedCompanies;
 }
-
-
 
 
 
