@@ -435,7 +435,7 @@ const msgText = document.getElementById("msg-Text");
   msgText.innerHTML = "";
   
 
-    openStockPopup('');
+ //   openStockPopup('');
 
 
 
