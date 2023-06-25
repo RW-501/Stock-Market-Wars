@@ -460,7 +460,7 @@ clearTimeout(nextDayTimeout);
 // Set a new timeout to run the NewDayFunc() after a specified time interval
 nextDayTimeout = setTimeout(() => {
 //  console.log("Executing NewDayFunc()");
- // NewDayFunc();
+  NewDayFunc();
     console.log("77777777777777777777777777777   ");
 
 }, parseInt(daySpeedTimer));
@@ -504,7 +504,12 @@ document.getElementById("stock-popup-input").value = xxx;
 let theCompany;
 let theCompanyName;
 
+  const stockPopup = document.getElementById("stock-popup");
+  const stockPopupTitle = document.getElementById("stock-popup-title");
+  const stockPopupPrice = document.getElementById("stock-popup-price");
+  const stockPopupQuantity = document.getElementById("stock-popup-quantity");
 
+  const stockPopupCash = document.getElementById("stock-popup-cash");
 
   var stockPopupBuy = document.getElementById("stock-popup-buy");
   var stockPopupSell = document.getElementById("stock-popup-sell");
@@ -539,12 +544,7 @@ theCompanyName = stockName;
  // const stockPrice = getStockPrice(theCompanyName);
 //  console.log("stockPrice?? xxxx   " + stockPrice);
   
-  const stockPopup = document.getElementById("stock-popup");
-  const stockPopupTitle = document.getElementById("stock-popup-title");
-  const stockPopupPrice = document.getElementById("stock-popup-price");
-  const stockPopupQuantity = document.getElementById("stock-popup-quantity");
 
-  const stockPopupCash = document.getElementById("stock-popup-cash");
 
   stockPopupTitle.textContent = theCompanyName;
 
@@ -567,14 +567,13 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
   openPopup("stock-popup");
           stockPopupInput.value = "";
 
-  const stockPopupQuantityBTN = document.getElementById("stock-popup-quantity");
 
-stockPopupQuantityBTN.addEventListener("click", () => {
+stockPopupQuantity.addEventListener("click", () => {
   const stockQuantity = getStockQuantity(theCompanyName)?.stockQuantity || 0;
 getStockOwned(stockQuantity);
 });
-  const stockPopupCashBTN = document.getElementById("stock-popup-cash");
-        stockPopupCashBTN.addEventListener("click", () => {
+
+          stockPopupCash.addEventListener("click", () => {
   const stockPrice = getStockPrice(theCompanyName).toFixed(2) || 0;
   const availableFunds = getAvailableFunds().toFixed(2) || 0;
 howMuchStock(stockPrice, availableFunds);
