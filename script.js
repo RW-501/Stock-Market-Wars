@@ -222,7 +222,7 @@ function updateStockQuantity(companyName, updatedStockQuantity, totalStockCost) 
 
 function getStockPrice(companyName) {
 
-  console.log("getStockPrice   " + companyName);
+ // console.log("getStockPrice   " + companyName);
 
   // Retrieve the stock prices from local storage
   const storedStockPrices = localStorage.getItem('currentStockPrices');
