@@ -547,7 +547,8 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
   theCompany = xxx;
   theCompanyName = xxx.name;
  // console.log("company.name   " + theCompanyName);
-
+   const priceG = getStockPrice(theCompanyName);
+          const stockPrice = formatStockPrice(priceG);
 }else{
     //  console.log("storged company.name   " + theCompanyName);
 // console.log("????????????????????????????????????>   ");
