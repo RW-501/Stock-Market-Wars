@@ -1041,7 +1041,7 @@ endGame();
 
 
 // Function to add funds to the player's bank account
-function addFunds(amount) {
+function addFunds(xxx) {
   // Retrieve the current available funds from local storage
   const getFunds = getAvailableFunds();
   let amount = xxx;
