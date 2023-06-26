@@ -362,7 +362,6 @@ var nextDayTimeout;
  function updateStockPrices() {
 console.log("updateStockPrices  111111111111111   ");
          timeAndDateFuncUI();
- updateStockPricesUI();
 
        // Update the stock prices in the user interface
 console.log("222222   ");
@@ -497,6 +496,7 @@ nextDayTimeout = setTimeout(() => {
 
 
 function NewDayFunc(){
+ updateStockPricesUI();
 
   const currentStockPrices = localStorage.getItem('tomorrowStockPrices');
 console.log('currentStockPrices:',currentStockPrices);
