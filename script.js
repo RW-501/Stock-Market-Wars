@@ -104,7 +104,7 @@ console.log("saveStockPrices   " + xxx);
       lastSevenPrices = [];
     }
 
-    lastSevenPrices.push(price.toFixed(2)); // Round the price to two decimal places
+    lastSevenPrices.push(formatStockPrice(price)); // Round the price to two decimal places
 
     // Limit the array to store only the last 7 prices
     if (lastSevenPrices.length > 12) {
