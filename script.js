@@ -467,7 +467,7 @@ clearTimeout(nextDayTimeout);
 // Set a new timeout to run the NewDayFunc() after a specified time interval
 nextDayTimeout = setTimeout(() => {
 //  console.log("Executing NewDayFunc()");
- // NewDayFunc();
+  NewDayFunc();
     console.log("77777777777777777777777777777   ");
 
 }, parseInt(daySpeedTimer));
