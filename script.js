@@ -57,10 +57,15 @@ function getMarket() {
 
 
 
-
 function formatStockPrice(price) {
-  return price ? price.toFixed(2) : '0';
+  if (typeof price === 'number') {
+    return price.toFixed(2);
+  } else {
+    return '0';
+  }
 }
+
+
 // formatStockPrice(stockPrice)
 
 
