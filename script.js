@@ -464,7 +464,7 @@ document.getElementById("msg-Text").textContent = "";
   //console.log("????????????????????????????????????????????????????????   "+stockPrices[1]);
 
   }
-//saveStockPrices(stockPrices);
+saveStockPrices(stockPrices);
 
     // console.log("stockPrices6666666666   "+stockPrices);
 
@@ -500,9 +500,9 @@ function NewDayFunc(){
   const currentStockPrices = localStorage.getItem('tomorrowStockPrices');
 
   
-console.log('tomorrowStockPrices:', JSON.stringify(currentStockPrices));
+console.log('tomorrowStockPrices:',currentStockPrices);
 
-  localStorage.setItem('currentStockPrices', JSON.stringify(currentStockPrices));
+  localStorage.setItem('currentStockPrices', currentStockPrices);
   
 
   saveStockPrices(currentStockPrices);
