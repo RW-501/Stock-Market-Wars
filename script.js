@@ -542,23 +542,26 @@ var addCount = 0;
 function openStockPopup(xxx, stockName) {
 
     //console.log("xxxxxxxxxxxxxxxxxxxxxxx   " + xxx);
-  const priceG = getStockPrice(theCompanyName);
-          const stockPrice = formatStockPrice(priceG);
-  
+
 if (xxx !== '' && xxx !== null && xxx !== undefined) {
   theCompany = xxx;
   theCompanyName = xxx.name;
  // console.log("company.name   " + theCompanyName);
-  
+
 }else{
     //  console.log("storged company.name   " + theCompanyName);
 // console.log("????????????????????????????????????>   ");
+    const priceG = getStockPrice(theCompanyName);
+          const stockPrice = formatStockPrice(priceG);
 }
   if(stockName){
 theCompanyName = stockName;
+  
   }
       if(theCompanyName){
-
+  const priceG = getStockPrice(theCompanyName);
+          const stockPrice = formatStockPrice(priceG);
+  
   const stockPrices = getStockPrices(theCompanyName);
               const stockQuantity = getStockQuantity(theCompanyName)?.stockQuantity || 0;
 
@@ -571,7 +574,7 @@ const cashG = getAvailableFunds();
   
 
  // const stockPrice = getStockPrice(theCompanyName);
-//  console.log("stockPrice?? xxxx   " + stockPrice);
+ console.log("stockPrice?? xxxx   " + stockPrice);
   
 
   stockPopupTitle.textContent = theCompanyName;
