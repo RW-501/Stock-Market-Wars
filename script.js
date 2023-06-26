@@ -542,7 +542,7 @@ var addCount = 0;
 function openStockPopup(xxx, stockName) {
 
     //console.log("xxxxxxxxxxxxxxxxxxxxxxx   " + xxx);
-const cashG = getAvailableFunds();
+  const priceG = getStockPrice(theCompanyName);
           const stockPrice = formatStockPrice(priceG);
   
 if (xxx !== '' && xxx !== null && xxx !== undefined) {
@@ -562,8 +562,7 @@ theCompanyName = stockName;
   const stockPrices = getStockPrices(theCompanyName);
               const stockQuantity = getStockQuantity(theCompanyName)?.stockQuantity || 0;
 
-const priceG = getStockPrice(theCompanyName);
-
+const cashG = getAvailableFunds();
           const availableFunds = formatStockPrice(cashG);
 
   console.log("stockPrices xxxx   " + stockPrices);
