@@ -498,8 +498,9 @@ function NewDayFunc(){
   const currentStockPrices = localStorage.getItem('tomorrowStockPrices');
 
   localStorage.setItem('currentStockPrices', currentStockPrices);
+  const stockPrices7Day = currentStockPrices ? JSON.parse(currentStockPrices) : {};
 
-  saveStockPrices(currentStockPrices);
+  saveStockPrices(stockPrices7Day);
   
 console.log("New Day   ");
 timeAndDateFunc();
