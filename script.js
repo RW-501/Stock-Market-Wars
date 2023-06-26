@@ -498,8 +498,11 @@ nextDayTimeout = setTimeout(() => {
 function NewDayFunc(){
 
   const currentStockPrices = localStorage.getItem('tomorrowStockPrices');
+console.log('tomorrowStockPrices:', currentStockPrices);
 
   localStorage.setItem('currentStockPrices', JSON.stringify(currentStockPrices));
+  
+console.log('saveStockPrices:', JSON.stringify(currentStockPrices));
 
   saveStockPrices(currentStockPrices);
   
