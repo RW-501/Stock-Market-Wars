@@ -32,7 +32,7 @@ function getMarket() {
 
 
 
- const storedStockPrices = localStorage.getItem('currentStockPrices');
+ const storedStockPrices = localStorage.getItem('tomorrowStockPrices');
 
   if (storedStockPrices) {
     const stockPrices = JSON.parse(storedStockPrices) || {};
@@ -490,9 +490,9 @@ nextDayTimeout = setTimeout(() => {
 
 function NewDayFunc(){
 
-  const currentStockPrices = localStorage.getItem('tomorrowStockPrices');
+  const currentStockPrices = localStorage.getItem('currentStockPrices');
 
-  localStorage.setItem('currentStockPrices', currentStockPrices);
+  localStorage.setItem('tomorrowStockPrices', currentStockPrices);
 
 console.log("New Day   ");
 timeAndDateFunc();
