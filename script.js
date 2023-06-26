@@ -99,7 +99,7 @@ console.log("saveStockPrices   " + xxx);
       lastSevenPrices = [];
     }
 
-    lastSevenPrices.push(price.toFixed(2)); // Round the price to two decimal places
+    lastSevenPrices.push(formatStockPrice(stockPrice)); // Round the price to two decimal places
 
     // Limit the array to store only the last 7 prices
     if (lastSevenPrices.length > 12) {
@@ -315,9 +315,9 @@ for (const [name, { stockQuantity, totalCost }] of Object.entries(portfolioStrin
   const quantityCell = document.createElement("td");
   quantityCell.textContent = stockQuantity || "";
   const valueCell = document.createElement("td");
-  priceCell.textContent = "$" + (stockPrice.toFixed(2) || 0);
-  totalCostCell.textContent = "$" + (totalCost.toFixed(2) || 0);
-  valueCell.textContent = "$" + (companyValue.toFixed(2) || 0);
+  priceCell.textContent = "$" + (formatStockPrice(stockPrice));
+  totalCostCell.textContent = "$" + (formatStockPrice(totalCost));
+  valueCell.textContent = "$" + (formatStockPrice(totalCost));
 
     // Apply conditional styling based on totalCost and companyValue
   if (totalCost < companyValue) {
@@ -347,7 +347,7 @@ localStorage.setItem('portfolio', JSON.stringify(portfolioString));
 
   // Display the total value of the portfolio
   const totalValueCell = document.getElementById("portfolio-total-value");
-  totalValueCell.textContent = "$" + totalValue.toFixed(2);
+  totalValueCell.textContent = "$" + formatStockPrice(totalValue);
 }
 
 var nextDayTimeout;
@@ -426,7 +426,7 @@ if (Math.random() < 0.8) { // 20% chance of a news event
       stockPrices[company.name] = company.price; // Update the stock price in the stockPrices object
 
       const isPositiveChangeNew = newsChange >= 0;
-      const changePercentageFormatted = `${Math.abs(changePercentage).toFixed(2)}%`;
+      const changePercentageFormatted = `${Math.abs(formatStockPrice(changePercentage))}%`;
       const isPositiveLabel = isPositiveChangeNew ? 'increased' : 'decreased';
       
 document.getElementById("msg-Text").textContent = "";
@@ -461,7 +461,7 @@ console.log("5555555555555555555   ");
   }
 saveStockPrices(stockPrices);
 
-     console.log("6666666666   "+stockPrices["TechCom"]);
+     //console.log("6666666666   "+stockPrices["TechCom"]);
 
 
  // Save the updated stock prices object in local storage
@@ -568,12 +568,19 @@ theCompanyName = stockName;
 //  console.log("stockPrice?? xxxx   " + stockPrice);
   
 
-
   stockPopupTitle.textContent = theCompanyName;
+        
+          const stockQuantity = getStockQuantity(theCompanyName)?.stockQuantity || 0;
 
-    stockPopupPrice.textContent = `Price: $${getStockPrice(theCompanyName).toFixed(2) || 0}`;
+const priceG = getStockPrice(theCompanyName);
+const cashG = getAvailableFunds();
+
+          const stockPrice = formatStockPrice(priceG);
+          const availableFunds = formatStockPrice(cashG);
+
+    stockPopupPrice.textContent = `Price: $${stockPrice}`;
 stockPopupQuantity.textContent = `Own: ${getStockQuantity(theCompanyName)?.stockQuantity || 0}`;
-  stockPopupCash.textContent = `Cash: $${getAvailableFunds().toFixed(2) || 0}`;
+  stockPopupCash.textContent = `Cash: $${availableFunds}`;
 
 
 //addLimitedEventListener(stockPopupBuy, "click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
@@ -597,13 +604,10 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
 
 
 stockPopupQuantity.addEventListener("click", () => {
-  const stockQuantity = getStockQuantity(theCompanyName)?.stockQuantity || 0;
 getStockOwned(stockQuantity);
 });
 
           stockPopupCash.addEventListener("click", () => {
-  const stockPrice = getStockPrice(theCompanyName).toFixed(2) || 0;
-  const availableFunds = getAvailableFunds().toFixed(2) || 0;
 howMuchStock(stockPrice, availableFunds);
 });
 
@@ -616,14 +620,11 @@ return;
   openPopup("stock-popup");
  
 stockPopupQuantity.addEventListener("click", () => {
-  const stockQuantity = getStockQuantity(theCompanyName)?.stockQuantity || 0;
 getStockOwned(stockQuantity);
 });
 
 
       stockPopupCash.addEventListener("click", () => {
-  const stockPrice = getStockPrice(theCompanyName).toFixed(2) || 0;
-  const availableFunds = getAvailableFunds().toFixed(2) || 0;
 howMuchStock(stockPrice, availableFunds);
 });
   }   
@@ -1002,9 +1003,12 @@ function getAvailableFunds() {
 
 
 // Function to get the player's stock quantity for a given company
-function deductFunds(amount) {
+function deductFunds(xxx) {
   // Retrieve the current available funds from local storage
-  const currentFunds = getAvailableFunds();
+  const getFunds = getAvailableFunds();
+  const amount = xxx;
+  const currentFunds = formatStockPrice(getFunds);
+  
   
   // Check if the amount is valid (positive and not exceeding the available funds)
   if (amount <= 0 || amount > currentFunds) {
@@ -1039,8 +1043,11 @@ endGame();
 // Function to add funds to the player's bank account
 function addFunds(amount) {
   // Retrieve the current available funds from local storage
-  const currentFunds = getAvailableFunds();
+  const getFunds = getAvailableFunds();
+  const amount = xxx;
+  const currentFunds = formatStockPrice(getFunds);
   
+    
   // Check if the amount is valid (positive)
   if (amount <= 0) {
     // Handle the error case (e.g., display an error message, throw an error, etc.)
@@ -1550,7 +1557,7 @@ const loanLengthCell = document.createElement("div");
 let dueDate = parsedLoanInfo.startDay + parsedLoanInfo.loanLength;
   let daysLeft = dueDate - counterValue;
 nameCell.innerHTML = parsedLoanInfo.name;
-borrowedAmountCell.innerHTML = "$" + (parsedLoanInfo.borrowedAmount ? parsedLoanInfo.borrowedAmount.toFixed(2) : "0") + " due";
+borrowedAmountCell.innerHTML = "$" + (formatStockPrice(borrowedAmount) ) + " due";
 loanLengthCell.innerHTML = daysLeft + "  days left";
 
 const loanCellsWrapper = document.createElement("div");
@@ -1608,7 +1615,7 @@ function makePayment() {
       localStorage.setItem("lenderPaymentInfo", JSON.stringify(lenderPaymentInfo));
 
       // Add news event
-      const event = `Paid $${paymentAmount.toFixed(2)} towards loan from ${selectedLender.name}`;
+      const event = `Paid $${formatStockPrice(paymentAmount)} towards loan from ${selectedLender.name}`;
       addNewsEvent(event);
     } else {
       //alert("Insufficient funds");
