@@ -464,14 +464,14 @@ document.getElementById("msg-Text").textContent = "";
   //console.log("????????????????????????????????????????????????????????   "+stockPrices[1]);
 
   }
-//saveStockPrices(stockPrices);
+saveStockPrices(stockPrices);
 
     // console.log("stockPrices6666666666   "+stockPrices);
 
 
  // Save the updated stock prices object in local storage
-//localStorage.setItem('tomorrowStockPrices', JSON.stringify(stockPrices));
-   localStorage.setItem('tomorrowStockPrices', stockPrices);
+localStorage.setItem('tomorrowStockPrices', JSON.stringify(stockPrices));
+//   localStorage.setItem('tomorrowStockPrices', stockPrices);
 
 console.log("Saved updated stock prices to local storage");
 
@@ -498,6 +498,7 @@ nextDayTimeout = setTimeout(() => {
 function NewDayFunc(){
 
   const currentStockPrices = localStorage.getItem('tomorrowStockPrices');
+console.log('currentStockPrices:',currentStockPrices);
 
     let stockPricesX = JSON.parse(currentStockPrices);
 
