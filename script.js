@@ -378,14 +378,14 @@ const msgText = document.getElementById("msg-Text");
     // Example 1: Simulate random fluctuation
     const randomChange = Math.random() * 0.1 - 0.05; // Random change between -5% and +5%
     const priceChange = company.price * randomChange;
-    company.price += priceChange;
+    company.price.toFixed(2) += priceChange;
     
 
 
     // Example 2: Simulate trending market
     const trend = Math.random() > 0.5 ? 1 : -1; // Positive or negative trend
     const trendChange = company.price * 0.02 * trend; // 2% change in price
-    company.price += trendChange;
+    company.price.toFixed(2) += trendChange;
 
 
 let randomNum = Math.floor(Math.random() * 15) + 1;
@@ -562,6 +562,7 @@ theCompanyName = stockName;
 
   stockPopupTitle.textContent = theCompanyName;
 
+    stockPopupPrice.textContent = `Price: $${getStockPrice(theCompanyName).toFixed(2) || 0}`;
     stockPopupPrice.textContent = `Price: $${getStockPrice(theCompanyName).toFixed(2) || 0}`;
 stockPopupQuantity.textContent = `Own: ${getStockQuantity(theCompanyName)?.stockQuantity || 0}`;
   stockPopupCash.textContent = `Cash: $${getAvailableFunds().toFixed(2) || 0}`;
