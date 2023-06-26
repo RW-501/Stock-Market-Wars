@@ -1979,6 +1979,7 @@ const skipWeekendsCheckbox = document.getElementById('skipWeekends');
 // Retrieve the saved game options from local storage
 const savedGameOptions = JSON.parse(localStorage.getItem('gameOptions')) || {};
 
+slider.value = savedGameOptions.sliderSpeed;
 
 
 // Set the initial checkbox state
@@ -1989,13 +1990,13 @@ function handleSliderChange() {
   // Get the selected slider value
 const sliderSpeed = parseInt(slider.value);
 
-const convertedSpeed = 1000 * sliderSpeed;
+ daySpeedTimer = 1000 * sliderSpeed;
 
     let dayspeedLabel = sliderSpeed + " secend days";
 
 
   // Update the display with the selected slider value
-  sliderValue.textContent = `Slider Speed: ${dayspeedLabel}`;
+  sliderValue.textContent = `Speed: ${dayspeedLabel}`;
 
   // Update the game options object with the new slider speed
   savedGameOptions.sliderSpeed = sliderSpeed;
