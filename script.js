@@ -465,7 +465,7 @@ saveStockPrices(stockPrices);
 
 
  // Save the updated stock prices object in local storage
-localStorage.setItem('tomorrowStockPrices', JSON.stringify(stockPrices));
+localStorage.setItem('currentStockPrices', JSON.stringify(stockPrices));
 console.log("Saved updated stock prices to local storage");
 
 console.log('daySpeedTimer:', daySpeedTimer);
@@ -490,9 +490,9 @@ nextDayTimeout = setTimeout(() => {
 
 function NewDayFunc(){
 
-  const currentStockPrices = localStorage.getItem('tomorrowStockPrices');
+  const currentStockPrices = localStorage.getItem('currentStockPrices');
 
-  localStorage.setItem('currentStockPrices', currentStockPrices);
+  localStorage.setItem('tomorrowStockPrices', currentStockPrices);
 
 console.log("New Day   ");
 timeAndDateFunc();
