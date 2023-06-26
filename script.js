@@ -2005,7 +2005,7 @@ const sliderSpeed = parseInt(slider.value);
   localStorage.setItem('gameOptions', JSON.stringify(savedGameOptions));
 
   // Update the timer speed (replace this with your actual timer logic)
-  slider.speed = parseInt(convertedSpeed);
+  slider.speed = parseInt(daySpeedTimer);
 }
 
 // Function to handle checkbox change event
