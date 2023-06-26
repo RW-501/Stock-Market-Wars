@@ -590,7 +590,7 @@ const cashG = getAvailableFunds();
   
 
  // const stockPrice = getStockPrice(theCompanyName);
- console.log("stockPrice?? xxxx   " + stockPrice);
+// console.log("stockPrice?? xxxx   " + stockPrice);
   
 
   stockPopupTitle.textContent = theCompanyName;
@@ -731,7 +731,7 @@ function timeAndDateFuncUI() {
 //  console.log('counterValue:', counterValue);
 
       // Output the current counter value
-  console.log('incrementCounter:', incrementCounter);
+  console.log('Day Counter:', incrementCounter);
 
     const counter = document.getElementById("counter");
 
@@ -1434,7 +1434,7 @@ if(xxx =="main" && name){
     newsContent.prepend(newsItem); // Add the event to the top of the news content
     newsContent.scrollTop = 0; // Scroll to the top of the news content
 
-  console.log(xxx +"  kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk ");
+//  console.log(xxx +"  kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk ");
 }
   if(xxx =="loan" ){
 
