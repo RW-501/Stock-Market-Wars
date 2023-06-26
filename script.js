@@ -505,7 +505,7 @@ console.log('tomorrowStockPrices:', JSON.stringify(currentStockPrices));
   localStorage.setItem('currentStockPrices', JSON.stringify(currentStockPrices));
   
 
-  saveStockPrices(JSON.stringify(currentStockPrices));
+  saveStockPrices(currentStockPrices);
   
 console.log("New Day   ");
 timeAndDateFunc();
