@@ -500,9 +500,9 @@ function NewDayFunc(){
   const currentStockPrices = localStorage.getItem('tomorrowStockPrices');
 console.log('tomorrowStockPrices:', currentStockPrices);
 
-  localStorage.setItem('currentStockPrices', JSON.stringify(currentStockPrices));
+  localStorage.setItem('currentStockPrices', JSON.parse(JSON.stringify(currentStockPrices)));
   
-console.log('saveStockPrices:', JSON.stringify(currentStockPrices));
+console.log('saveStockPrices:', JSON.parse(JSON.stringify(currentStockPrices)));
 
   saveStockPrices(currentStockPrices);
   
