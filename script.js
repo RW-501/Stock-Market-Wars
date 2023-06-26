@@ -490,9 +490,9 @@ nextDayTimeout = setTimeout(() => {
 
 function NewDayFunc(){
 
-  const currentStockPrices = localStorage.getItem('currentStockPrices');
+  const currentStockPrices = localStorage.getItem('tomorrowStockPrices');
 
-  localStorage.setItem('tomorrowStockPrices', currentStockPrices);
+  localStorage.setItem('currentStockPrices', currentStockPrices);
 
 console.log("New Day   ");
 timeAndDateFunc();
@@ -541,7 +541,7 @@ var addCount = 0;
 // Open the stock popup and populate it with the company details
 function openStockPopup(xxx, stockName) {
 
-    //console.log("xxxxxxxxxxxxxxxxxxxxxxx   " + xxx);
+    console.log("openStockPopupxxxxxxxxxxxxxxxxxxxxxxx   " + xxx);
 
 if (xxx !== '' && xxx !== null && xxx !== undefined) {
   theCompany = xxx;
@@ -550,7 +550,7 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
    const priceG = getStockPrice(theCompanyName);
           const stockPrice = formatStockPrice(priceG);
 }else{
-    //  console.log("storged company.name   " + theCompanyName);
+      console.log("storged theCompanyName   " + theCompanyName);
 // console.log("????????????????????????????????????>   ");
     const priceG = getStockPrice(theCompanyName);
           const stockPrice = formatStockPrice(priceG);
@@ -569,7 +569,7 @@ theCompanyName = stockName;
 const cashG = getAvailableFunds();
           const availableFunds = formatStockPrice(cashG);
 
-  console.log("stockPrices xxxx   " + stockPrices);
+  //console.log("stockPrices xxxx   " + stockPrices);
  console.log("theCompanyName?? xxxx   " + theCompanyName);
   generateStockChart(stockPrices, theCompanyName);
   
