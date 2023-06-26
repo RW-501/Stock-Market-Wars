@@ -7,26 +7,26 @@ var runCount = 0;
 function getMarket() {
 
   const market = [
-    { id: 1, name: "TechCom", price: 10 },
-    { id: 2, name: "EcoTech", price: 20 },
-    { id: 3, name: "GlobeCorp", price: 30 },
-    { id: 4, name: "InfoSys", price: 15 },
-    { id: 5, name: "InnovaTech", price: 25 },
-    { id: 6, name: "GlobalSoft", price: 18 },
-    { id: 7, name: "DataDynamics", price: 22 },
-    { id: 8, name: "CyberTech", price: 27 },
-    { id: 9, name: "TechLink", price: 13 },
-    { id: 10, name: "PrimeSystems", price: 32 },
-    { id: 11, name: "SmartSolutions", price: 16 },
-    { id: 12, name: "NexGen", price: 24 },
-    { id: 13, name: "MegaTech", price: 19 },
-    { id: 14, name: "ByteCorp", price: 29 },
-    { id: 15, name: "InfiniteSolutions", price: 21 },
-    { id: 16, name: "ElevateTech", price: 11 },
-    { id: 17, name: "VistaSoft", price: 26 },
-    { id: 18, name: "AgileSystems", price: 14 },
-    { id: 19, name: "TechWave", price: 17 },
-    { id: 20, name: "FutureTech", price: 23 }
+    { id: 1, name: "TechCom", price: 10.58 },
+    { id: 2, name: "EcoTech", price: 20.14 },
+    { id: 3, name: "GlobeCorp", price: 30.36 },
+    { id: 4, name: "InfoSys", price: 15.34 },
+    { id: 5, name: "InnovaTech", price: 25.96 },
+    { id: 6, name: "GlobalSoft", price: 18.85 },
+    { id: 7, name: "DataDynamics", price: 22.16 },
+    { id: 8, name: "CyberTech", price: 27.45 },
+    { id: 9, name: "TechLink", price: 13.37 },
+    { id: 10, name: "PrimeSystems", price: 32.81 },
+    { id: 11, name: "SmartSolutions", price: 16.92 },
+    { id: 12, name: "NexGen", price: 24.61 },
+    { id: 13, name: "MegaTech", price: 19.34 },
+    { id: 14, name: "ByteCorp", price: 29.38 },
+    { id: 15, name: "InfiniteSolutions", price: 21.64 },
+    { id: 16, name: "ElevateTech", price: 11.16 },
+    { id: 17, name: "VistaSoft", price: 26.82 },
+    { id: 18, name: "AgileSystems", price: 14.39 },
+    { id: 19, name: "TechWave", price: 17.76 },
+    { id: 20, name: "FutureTech", price: 23.63 }
   ];
 
 
@@ -467,7 +467,7 @@ clearTimeout(nextDayTimeout);
 // Set a new timeout to run the NewDayFunc() after a specified time interval
 nextDayTimeout = setTimeout(() => {
 //  console.log("Executing NewDayFunc()");
- // NewDayFunc();
+  NewDayFunc();
     console.log("77777777777777777777777777777   ");
 
 }, parseInt(daySpeedTimer));
