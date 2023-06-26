@@ -1006,7 +1006,7 @@ function getAvailableFunds() {
 function deductFunds(xxx) {
   // Retrieve the current available funds from local storage
   const getFunds = getAvailableFunds();
-  const amount = xxx;
+  let amount = xxx;
   const currentFunds = formatStockPrice(getFunds);
   
   
@@ -1044,7 +1044,7 @@ endGame();
 function addFunds(amount) {
   // Retrieve the current available funds from local storage
   const getFunds = getAvailableFunds();
-  const amount = xxx;
+  let amount = xxx;
   const currentFunds = formatStockPrice(getFunds);
   
     
