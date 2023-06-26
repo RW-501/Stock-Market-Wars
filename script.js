@@ -542,7 +542,9 @@ var addCount = 0;
 function openStockPopup(xxx, stockName) {
 
     //console.log("xxxxxxxxxxxxxxxxxxxxxxx   " + xxx);
-
+const cashG = getAvailableFunds();
+          const stockPrice = formatStockPrice(priceG);
+  
 if (xxx !== '' && xxx !== null && xxx !== undefined) {
   theCompany = xxx;
   theCompanyName = xxx.name;
@@ -558,7 +560,12 @@ theCompanyName = stockName;
       if(theCompanyName){
 
   const stockPrices = getStockPrices(theCompanyName);
-        
+              const stockQuantity = getStockQuantity(theCompanyName)?.stockQuantity || 0;
+
+const priceG = getStockPrice(theCompanyName);
+
+          const availableFunds = formatStockPrice(cashG);
+
   console.log("stockPrices xxxx   " + stockPrices);
  console.log("theCompanyName?? xxxx   " + theCompanyName);
   generateStockChart(stockPrices, theCompanyName);
@@ -570,14 +577,7 @@ theCompanyName = stockName;
 
   stockPopupTitle.textContent = theCompanyName;
         
-          const stockQuantity = getStockQuantity(theCompanyName)?.stockQuantity || 0;
-
-const priceG = getStockPrice(theCompanyName);
-const cashG = getAvailableFunds();
-
-          const stockPrice = formatStockPrice(priceG);
-          const availableFunds = formatStockPrice(cashG);
-
+    
     stockPopupPrice.textContent = `Price: $${stockPrice}`;
 stockPopupQuantity.textContent = `Own: ${getStockQuantity(theCompanyName)?.stockQuantity || 0}`;
   stockPopupCash.textContent = `Cash: $${availableFunds}`;
