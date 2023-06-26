@@ -494,6 +494,8 @@ function NewDayFunc(){
 
   localStorage.setItem('currentStockPrices', currentStockPrices);
 
+  saveStockPrices(currentStockPrices);
+  
 console.log("New Day   ");
 timeAndDateFunc();
   
