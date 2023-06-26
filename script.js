@@ -58,13 +58,22 @@ function getMarket() {
 
 
 
+function formatStockPrice(price) {
+  return price ? price.toFixed(2) : '0';
+}
+// formatStockPrice(stockPrice)
+
 
 
 
 function formatCurrency(number) {
-  return "$" + number.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  if (number) {
+    return "$" + number.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  } else {
+    return "$0.00";
+  }
 }
-
+// formatCurrency(number)
 
 
 // Example usage
