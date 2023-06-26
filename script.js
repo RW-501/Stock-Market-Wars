@@ -104,7 +104,7 @@ console.log("saveStockPrices   " + xxx);
       lastSevenPrices = [];
     }
 
-    lastSevenPrices.push(formatStockPrice(price)); // Round the price to two decimal places
+    lastSevenPrices.push(price); // Round the price to two decimal places
 
     // Limit the array to store only the last 7 prices
     if (lastSevenPrices.length > 12) {
@@ -466,7 +466,7 @@ document.getElementById("msg-Text").textContent = "";
   }
 //saveStockPrices(stockPrices);
 
-     //console.log("6666666666   "+stockPrices["TechCom"]);
+     console.log("stockPrices6666666666   "+stockPrices);
 
 
  // Save the updated stock prices object in local storage
@@ -498,9 +498,8 @@ function NewDayFunc(){
   const currentStockPrices = localStorage.getItem('tomorrowStockPrices');
 
   localStorage.setItem('currentStockPrices', currentStockPrices);
-  const stockPrices7Day = currentStockPrices ? JSON.parse(currentStockPrices) : {};
 
-  saveStockPrices(stockPrices7Day);
+  saveStockPrices(currentStockPrices);
   
 console.log("New Day   ");
 timeAndDateFunc();
