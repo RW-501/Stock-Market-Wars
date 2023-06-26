@@ -490,9 +490,9 @@ nextDayTimeout = setTimeout(() => {
 
 function NewDayFunc(){
 
-  const currentStockPrices = localStorage.getItem('currentStockPrices');
+  const currentStockPrices = localStorage.getItem('tomorrowStockPrices');
 
-  localStorage.setItem('tomorrowStockPrices', currentStockPrices);
+  localStorage.setItem('currentStockPrices', currentStockPrices);
 
 console.log("New Day   ");
 timeAndDateFunc();
