@@ -32,7 +32,7 @@ function getMarket() {
 
 
 
- const storedStockPrices = localStorage.getItem('currentStockPrices');
+ const storedStockPrices = localStorage.getItem('tomorrowStockPrices');
 
   if (storedStockPrices) {
     const stockPrices = JSON.parse(storedStockPrices) || {};
