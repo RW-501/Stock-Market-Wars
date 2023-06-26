@@ -104,7 +104,7 @@ console.log("saveStockPrices   " + xxx);
       lastSevenPrices = [];
     }
 
-    lastSevenPrices.push(price); // Round the price to two decimal places
+    lastSevenPrices.push(price.toFixed(2)); // Round the price to two decimal places
 
     // Limit the array to store only the last 7 prices
     if (lastSevenPrices.length > 12) {
@@ -401,7 +401,7 @@ const msgText = document.getElementById("msg-Text");
     const trendChange = company.price * 0.02 * trend; // 2% change in price
     company.price += trendChange;
 
-
+    
 let randomNum = Math.floor(Math.random() * 15) + 1;
 //console.log("randomNum   "+randomNum); 
    if(randomNum == 8){
@@ -466,11 +466,13 @@ document.getElementById("msg-Text").textContent = "";
   }
 //saveStockPrices(stockPrices);
 
-     console.log("stockPrices6666666666   "+stockPrices);
+    // console.log("stockPrices6666666666   "+stockPrices);
 
 
  // Save the updated stock prices object in local storage
-localStorage.setItem('tomorrowStockPrices', JSON.stringify(stockPrices));
+//localStorage.setItem('tomorrowStockPrices', JSON.stringify(stockPrices));
+   localStorage.setItem('tomorrowStockPrices', stockPrices);
+
 console.log("Saved updated stock prices to local storage");
 
 console.log('daySpeedTimer:', daySpeedTimer);
@@ -497,7 +499,7 @@ function NewDayFunc(){
 
   const currentStockPrices = localStorage.getItem('tomorrowStockPrices');
 
-  localStorage.setItem('currentStockPrices', currentStockPrices);
+  localStorage.setItem('currentStockPrices', JSON.stringify(currentStockPrices));
 
   saveStockPrices(currentStockPrices);
   
