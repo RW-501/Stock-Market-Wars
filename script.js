@@ -362,6 +362,7 @@ var nextDayTimeout;
  function updateStockPrices() {
 console.log("updateStockPrices  111111111111111   ");
          timeAndDateFuncUI();
+ updateStockPricesUI();
 
        // Update the stock prices in the user interface
 console.log("222222   ");
@@ -512,7 +513,6 @@ console.log('stockPricesX:',stockPricesX);
 console.log("New Day   ");
 timeAndDateFunc();
   
- updateStockPricesUI();
 
  
 
