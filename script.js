@@ -378,14 +378,14 @@ const msgText = document.getElementById("msg-Text");
     // Example 1: Simulate random fluctuation
     const randomChange = Math.random() * 0.1 - 0.05; // Random change between -5% and +5%
     const priceChange = company.price * randomChange;
-    company.price.toFixed(2) += priceChange;
+    company.price += priceChange;
     
 
 
     // Example 2: Simulate trending market
     const trend = Math.random() > 0.5 ? 1 : -1; // Positive or negative trend
     const trendChange = company.price * 0.02 * trend; // 2% change in price
-    company.price.toFixed(2) += trendChange;
+    company.price += trendChange;
 
 
 let randomNum = Math.floor(Math.random() * 15) + 1;
@@ -414,7 +414,7 @@ if (Math.random() < 0.8) { // 20% chance of a news event
 
       company.price += newsChange; // Apply the news change to the company's stock price
 
-      stockPrices[company.name] = company.price; // Update the stock price in the stockPrices object
+      stockPrices[company.name] = company.price.toFixed(2); // Update the stock price in the stockPrices object
 
       const isPositiveChangeNew = newsChange >= 0;
       const changePercentageFormatted = `${Math.abs(changePercentage).toFixed(2)}%`;
@@ -562,10 +562,10 @@ theCompanyName = stockName;
 
   stockPopupTitle.textContent = theCompanyName;
 
-    stockPopupPrice.textContent = `Price: $${getStockPrice(theCompanyName).toFixed(2) || 0}`;
-    stockPopupPrice.textContent = `Price: $${getStockPrice(theCompanyName).toFixed(2) || 0}`;
+    stockPopupPrice.textContent = `Price: $${getStockPrice(theCompanyName) || 0}`;
+    stockPopupPrice.textContent = `Price: $${getStockPrice(theCompanyName) || 0}`;
 stockPopupQuantity.textContent = `Own: ${getStockQuantity(theCompanyName)?.stockQuantity || 0}`;
-  stockPopupCash.textContent = `Cash: $${getAvailableFunds().toFixed(2) || 0}`;
+  stockPopupCash.textContent = `Cash: $${getAvailableFunds() || 0}`;
 
 
 //addLimitedEventListener(stockPopupBuy, "click", () => buyStock(theCompanyName, parseInt(stockPopupInput.value)));
@@ -594,8 +594,8 @@ getStockOwned(stockQuantity);
 });
 
           stockPopupCash.addEventListener("click", () => {
-  const stockPrice = getStockPrice(theCompanyName).toFixed(2) || 0;
-  const availableFunds = getAvailableFunds().toFixed(2) || 0;
+  const stockPrice = getStockPrice(theCompanyName) || 0;
+  const availableFunds = getAvailableFunds() || 0;
 howMuchStock(stockPrice, availableFunds);
 });
 
@@ -614,8 +614,8 @@ getStockOwned(stockQuantity);
 
 
       stockPopupCash.addEventListener("click", () => {
-  const stockPrice = getStockPrice(theCompanyName).toFixed(2) || 0;
-  const availableFunds = getAvailableFunds().toFixed(2) || 0;
+  const stockPrice = getStockPrice(theCompanyName) || 0;
+  const availableFunds = getAvailableFunds() || 0;
 howMuchStock(stockPrice, availableFunds);
 });
   }   
@@ -674,7 +674,7 @@ function updateStockPricesUI() {
     row.appendChild(nameCell);
 
     const priceCell = document.createElement("td");
-    priceCell.textContent = "$" + price.toFixed(2);
+    priceCell.textContent = "$" + price;
     priceCell.addEventListener("click", () => openStockPopup(company));
     row.appendChild(priceCell);
 
@@ -868,7 +868,7 @@ function calculateItemValue(itemType) {
 
   // Calculate the total value of items by summing up the individual item values
   const totalItemValue = items.reduce((total, item) => {
-    const itemPrice = item.price; // Retrieve the price of the item
+    const itemPrice = item.price.toFixed(2); // Retrieve the price of the item
     const itemQuantity = item.quantity; // Retrieve the quantity of the item owned
     return total + itemPrice * itemQuantity;
   }, 0);
@@ -1001,7 +1001,7 @@ function deductFunds(amount) {
   // Check if the amount is valid (positive and not exceeding the available funds)
   if (amount <= 0 || amount > currentFunds) {
         // Add the news event
-  const event = `Funds are low $${amount.toFixed(2)}`;
+  const event = `Funds are low $${amount}`;
           addNewsEvent(event, "bank"); // Add the news event to the UI
     
 let networth = calculateNetWorth();
@@ -1038,7 +1038,7 @@ function addFunds(amount) {
     // Handle the error case (e.g., display an error message, throw an error, etc.)
 
     // Add the news event
-  const event = `Funds are low $${amount.toFixed(2)}`;
+  const event = `Funds are low $${amount}`;
           addNewsEvent(event, "bank"); // Add the news event to the UI    return;
   }
   
@@ -1046,7 +1046,7 @@ function addFunds(amount) {
   const newFunds = currentFunds + amount;
 
         // console.log("newFunds add   "+newFunds);
-  const event = `$${amount.toFixed(2)} added to account`;
+  const event = `$${amount} added to account`;
   addNewsEvent(event, "bank"); // Add the news event to the UI  
   
   // Update the available funds in local storage
@@ -1162,7 +1162,7 @@ displayStatusMessage("stock",`Successfully sold ${quantityToSell} ${companyName}
 
       updateNetWorthDisplay();
 
-      const eventSell = `Sold ${quantityToSell} shares of ${companyName} for $${totalEarnings.toFixed(2)}`;
+      const eventSell = `Sold ${quantityToSell} shares of ${companyName} for $${totalEarnings}`;
   addNewsEvent(eventSell); // Add the news event to the UI    
       
     } else {
