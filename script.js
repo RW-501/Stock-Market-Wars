@@ -32,7 +32,7 @@ function getMarket() {
 
 
 
- const storedStockPrices = localStorage.getItem('tomorrowStockPrices');
+ const storedStockPrices = localStorage.getItem('currentStockPrices');
 
   if (storedStockPrices) {
     const stockPrices = JSON.parse(storedStockPrices) || {};
@@ -465,7 +465,7 @@ saveStockPrices(stockPrices);
 
 
  // Save the updated stock prices object in local storage
-localStorage.setItem('currentStockPrices', JSON.stringify(stockPrices));
+localStorage.setItem('tomorrowStockPrices', JSON.stringify(stockPrices));
 console.log("Saved updated stock prices to local storage");
 
 console.log('daySpeedTimer:', daySpeedTimer);
