@@ -630,6 +630,8 @@ getStockOwned(stockQuantity);
 });
 
           stockPopupCash.addEventListener("click", () => {
+              const priceG = getStockPrice(theCompanyName);
+          const stockPrice = formatStockPrice(priceG);
 howMuchStock(stockPrice, availableFunds);
 });
 
