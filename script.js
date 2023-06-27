@@ -564,11 +564,15 @@ if (xxx !== '' && xxx !== null && xxx !== undefined) {
  // console.log("company.name   " + theCompanyName);
    const priceG = getStockPrice(theCompanyName);
           const stockPrice = formatStockPrice(priceG);
+                const stockQuantity = getStockQuantity(theCompanyName)?.stockQuantity || 0;
+
 }else{
       console.log("storged theCompanyName   " + theCompanyName);
 // console.log("????????????????????????????????????>   ");
     const priceG = getStockPrice(theCompanyName);
           const stockPrice = formatStockPrice(priceG);
+                const stockQuantity = getStockQuantity(theCompanyName)?.stockQuantity || 0;
+
 }
   if(stockName){
 theCompanyName = stockName;
@@ -634,6 +638,7 @@ return;
 }
 
     if(stockName){
+
         closePopup("portfolio-popup");
   openPopup("stock-popup");
  
